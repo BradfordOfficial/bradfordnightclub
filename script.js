@@ -986,29 +986,29 @@ const dateActuelle = new Date();
 
 // --- BASE DE DONNÉES COMPLÈTE DES ÉVÉNEMENTS ---
 const donneesEvenements = [
-// Jeudi 22 Janvier
-    { date: '2026-01-22', jour: 'JEU.', ville: 'LA', artiste: 'FUTURE', details: 'Pluto Club Takeover (Exclusive Showcase - Accès restreint)' },
-    { date: '2026-01-22', jour: 'JEU.', ville: 'MIAMI', artiste: 'A$AP ROCKY', details: 'AWGE Midnight (Showcase Visuel & Hip-Hop - VIP Full)' },
-    { date: '2026-01-22', jour: 'JEU.', ville: 'NYC', artiste: 'ANYMA B2B TALE OF US', details: 'Afterlife Unity (Melodic Techno XXL - VIP Full)' },
-    { date: '2026-01-22', jour: 'JEU.', ville: 'SF', artiste: 'FREDDIE GIBBS', details: 'Kane Train Night (Hardcore Rap Showcase - $90)' },
+// Jeudi 29 Janvier
+    { date: '2026-01-29', jour: 'JEU.', ville: 'LA', artiste: 'ICE SPICE', details: 'Munch NYC Takeover (Showcase Drill/Pop - $110)' },
+    { date: '2026-01-29', jour: 'JEU.', ville: 'MIAMI', artiste: 'REMA', details: 'Calm Down Finale (Afrobeats Global Star - $90)' },
+    { date: '2026-01-29', jour: 'JEU.', ville: 'NYC', artiste: 'CHASE & STATUS', details: 'UK Jungle/DnB Invasion (Rare US Club Set - $90)' },
+    { date: '2026-01-29', jour: 'JEU.', ville: 'SF', artiste: 'UNCLE WAFFLES', details: 'Amapiano Queen Tour (Exclusive Set - $75)' },
 
-    // Vendredi 23 Janvier
-    { date: '2026-01-23', jour: 'VEN.', ville: 'LA', artiste: 'KENDRICK LAMAR', details: 'PG Lang Night (Exclusive Club Performance - Accès restreint)' },
-    { date: '2026-01-23', jour: 'VEN.', ville: 'MIAMI', artiste: 'CARDI B', details: 'Bodak Yellow Party (Special Performance - VIP Full)' },
-    { date: '2026-01-23', jour: 'VEN.', ville: 'NYC', artiste: '50 CENT', details: 'Get Rich or Die Tryin\' 2026 (Exclusive Club Showcase - $120)' },
-    { date: '2026-01-23', jour: 'VEN.', ville: 'SF', artiste: 'ILLENIUM', details: 'Fallen Embers Night (Melodic Dubstep / Bass - $90)' },
+    // Vendredi 30 Janvier
+    { date: '2026-01-30', jour: 'VEN.', ville: 'LA', artiste: 'LIL UZI VERT', details: 'Pink Tape Club Edition (Showcase Explosif - $180)' },
+    { date: '2026-01-30', jour: 'VEN.', ville: 'MIAMI', artiste: 'METRO BOOMIN', details: 'Heroes & Villains Mix (Showcase Producteur - Accès restreint)' },
+    { date: '2026-01-30', jour: 'VEN.', ville: 'NYC', artiste: 'PAWSA', details: 'Extended Tech House Set (Groovy Monday - $90)' },
+    { date: '2026-01-30', jour: 'VEN.', ville: 'SF', artiste: 'I HATE MODELS', details: 'Raw Techno Energy (Industrial Set - $90)' },
 
-    // Samedi 24 Janvier
-    { date: '2026-01-24', jour: 'SAM.', ville: 'LA', artiste: 'LANA DEL REY (DJ SET)', details: 'Summertime Sadness Remix Night (Exclusivité Mondiale - VIP Full)' },
-    { date: '2026-01-24', jour: 'SAM.', ville: 'MIAMI', artiste: 'KANYE WEST (YE)', details: 'Vultures Midnight Mass (Exclusive Solo Performance - VIP Full)' },
-    { date: '2026-01-24', jour: 'SAM.', ville: 'NYC', artiste: 'TYGA', details: 'Rack City Legacy (Showcase West Coast Hip-Hop - $110)' },
-    { date: '2026-01-24', jour: 'SAM.', ville: 'SF', artiste: 'THE PRODIGY (DJ SET)', details: 'Firestarter 2026 (Electronic Punk - $100)' },
+    // Samedi 31 Janvier
+    { date: '2026-01-31', jour: 'SAM.', ville: 'LA', artiste: 'PLAYBOI CARTI', details: 'Opium Night (Vamp Aesthetic - Sur liste VIP uniquement)' },
+    { date: '2026-01-31', jour: 'SAM.', ville: 'MIAMI', artiste: 'HARDWELL', details: 'Rebels Never Die 2026 (Big Room Techno - $90)' },
+    { date: '2026-01-31', jour: 'SAM.', ville: 'NYC', artiste: 'DOJA CAT', details: 'Scarlet Club Performance (Exclusive Showcase - $220)' },
+    { date: '2026-01-31', jour: 'SAM.', ville: 'SF', artiste: 'ZHU', details: 'Blacklizt Warehouse Session (Deep/Dark House - $90)' },
 
-    // Dimanche 25 Janvier
-    { date: '2026-01-25', jour: 'DIM.', ville: 'LA', artiste: 'RIHANNA', details: 'Fenty After Dark (Rare Exclusive Club Appearance - Accès sur liste uniquement)' },
-    { date: '2026-01-25', jour: 'DIM.', ville: 'MIAMI', artiste: 'SZA', details: 'SOS Club Tour (Exclusive R&B Showcase - $150)' },
-    { date: '2026-01-25', jour: 'DIM.', ville: 'NYC', artiste: 'FRANK OCEAN (DJ SET)', details: 'Blonded Club Radio (Exclusivité Mondiale - Accès restreint)' },
-    { date: '2026-01-25', jour: 'DIM.', ville: 'SF', artiste: 'ALESSO', details: 'Progressive House Renaissance (EDM Peak Energy - $95)' },
+    // Dimanche 1 Février
+    { date: '2026-02-01', jour: 'DIM.', ville: 'LA', artiste: 'MILEY CYRUS', details: 'Endless Summer Vacation (Rare Club Performance - Accès restreint)' },
+    { date: '2026-02-01', jour: 'DIM.', ville: 'MIAMI', artiste: 'MELLODEATH', details: 'Marshmello B2B Svdden Death (Heavy Dubstep Set - $90)' },
+    { date: '2026-02-01', jour: 'DIM.', ville: 'NYC', artiste: 'WIZKID', details: 'Afro-Kings Night (Exclusive Showcase  - Accès sur liste VIP)' },
+    { date: '2026-02-01', jour: 'DIM.', ville: 'SF', artiste: 'ARTBAT', details: 'Upperground SF (Melodic Techno Journey - $75)' },
 ];
 
 
