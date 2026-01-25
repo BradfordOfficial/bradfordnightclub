@@ -1,0 +1,54 @@
+{
+  "venue": {
+    "name": "Bradford Nightclub",
+    "locations": ["Miami", "Los Angeles", "New York", "San Francisco"],
+    "operational_capacity": 6000,
+    "vip_capacity": 800,
+    "table_max_seats": 8
+  },
+  "pricing_rules": {
+    "table_min_spend": {"thu_sun": 3000, "fri_sat": 5000},
+    "service_charge_pct": 0.20,
+    "min_bottles_per_guests": 4,
+    "deposit_amount": 200
+  },
+  "menus": {
+    "Champagne": [
+      {"name":"Veuve Clicquot Yellow Label","size":"0.75L","price":550, "rarity": "Premium"},
+      {"name":"Dom Pérignon Brut","size":"0.75L","price":950, "rarity": "Exclusive"},
+      {"name":"Cristal Louis Roederer","size":"0.75L","price":1600, "rarity": "Ultra-Luxe"},
+      {"name":"Dom Pérignon Luminous Edition","size":"0.75L","price":1500, "rarity": "Showcase"},
+      {"name":"Armand de Brignac Brut Magnum","size":"1.5L","price":3800, "rarity": "Magnum"}
+    ],
+    "Vodka": [
+      {"name":"Grey Goose Original","size":"1L","price":750, "rarity": "Premium"},
+      {"name":"Belvedere","size":"1L","price":700, "rarity": "Standard"},
+      {"name":"Beluga Gold Line","size":"0.75L","price":1200, "rarity": "High-End"}
+    ],
+    "Tequila": [
+      {"name":"Patrón Silver","size":"1L","price":750, "rarity": "Premium"},
+      {"name":"Don Julio 1942","size":"0.75L","price":1250, "rarity": "Iconic"},
+      {"name":"Clase Azul Reposado","size":"0.75L","price":1600, "rarity": "Luxury"},
+      {"name":"Clase Azul Ultra","size":"0.75L","price":6500, "rarity": "Prestige"}
+    ],
+    "Cognac": [
+      {"name":"Hennessy VSOP","size":"0.75L","price":850, "rarity": "Standard"},
+      {"name":"Hennessy XO","size":"0.75L","price":1300, "rarity": "Premium"},
+      {"name":"Rémy Martin Louis XIII","size":"0.7L","price":9500, "rarity": "Legendary"}
+    ],
+    "Whiskey & Bourbon": [
+      {"name":"Johnnie Walker Blue Label","size":"0.75L","price":1300, "rarity": "Exclusive"},
+      {"name":"Macallan 18 Years","size":"0.75L","price":1900, "rarity": "Ultra-Luxe"}
+    ],
+    "Add-Ons & Shows": [
+      {"name":"Sparkler Show","price":60, "description": "L'incontournable show de bouteille"},
+      {"name":"Dry Ice Smoke","price":35, "description": "Effet de glace sèche sur le plateau"},
+      {"name":"Ice Carving Display","price":600, "description": "Sculpture de glace personnalisée (Event Only)"}
+    ],
+    "Limited Edition": [
+      {"name":"Armand de Brignac Midas","size":"30L","price":210000, "note":"collector_not_for_regular_sale", "isLimited": true},
+      {"name":"Hennessy Beauté du Siècle","size":"0.7L","price":265000, "note":"collector_not_for_regular_sale", "isLimited": true}
+
+    ]
+  }
+}

@@ -1,0 +1,3027 @@
+/* Palette Bradford */
+:root {
+    --navy: #07112B;
+    --gold: #D4AF37;
+    --teal: #0AA6A6;
+    --ivory: #FDFCF0;
+}
+
+/* Polices élégantes */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Inter:wght@300;400;700&display=swap');
+
+/* --- STYLES GLOBAUX --- */
+
+body {
+    background-color: var(--navy);
+    color: var(--ivory);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.app-content {
+    /* TON padding latéral (5%) + TA marge auto + TON max-width */
+    max-width: 1400px;
+    margin: 0 auto;
+    
+    /* MODIFICATION : On garde tes 2rem de padding, mais on ajoute l'espace du header (45vh) 
+       On met 48vh pour avoir un petit écart élégant sous le trait doré */
+    padding: 48vh 5% 2rem; 
+    
+    display: block;
+    width: 100%;
+    box-sizing: border-box; /* Pour que le padding ne fasse pas déborder l'iPhone */
+}
+
+/* LE HEADER RESTE EN FIXED POUR LA FLUIDITÉ */
+.header {
+    background: #000;
+    width: 100%;
+    height: 45vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 2000;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.logo {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    color: var(--gold);
+    letter-spacing: 12px;
+    margin-bottom: 45px;
+    text-align: center;
+}
+
+/* CETTE SECTION NE TOUCHE QUE LE HEADER (TES BOUTONS ET TON LOGO) */
+.header .logo-wrapper {
+    position: relative;
+    display: inline-block;
+    /* On met l'espace ici : tes boutons descendent, mais le loader ne voit rien */
+    padding-bottom: 40px; 
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* CETTE SECTION EST COMMUNE MAIS NE DOIT PAS AVOIR DE PADDING */
+.logo-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 7px; /* Position par défaut (Loader) */
+}
+
+/* Le mot BRADFORD - On remet EXACTEMENT tes valeurs d'origine pour l'espace */
+.brd-main {
+    font-family: 'Cinzel', serif;
+    font-size: 2.0rem; /* Taille originale du code .logo */
+    letter-spacing: 12px; /* Espacement original */
+    color: var(--gold); /* Couleur originale */
+    font-weight: bold;
+    display: block;
+    text-transform: uppercase;
+}
+
+/* LE NIGHTCLUB : Il vient se superposer sans pousser le reste */
+.brd-night {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem; 
+    color: #FFFFFF;
+    
+    /* POSITIONNEMENT CALCULÉ POUR LA SUPERPOSITION */
+    position: absolute;
+    top: 50%;   /* On le centre sur le Bradford */
+    left: 50%;
+    transform: translate(-50%, -70%) rotate(-5deg); /* Le translate(-50%) le centre parfaitement */
+    
+    z-index: 10; /* Passe devant le Bradford */
+    text-shadow: 0px 0px 15px rgba(0,0,0,1); /* Ombre pour la lisibilité sur le doré */
+    pointer-events: none; /* Le clic passe au travers */
+    white-space: nowrap;
+}
+
+/* ÉTAT AU SCROLL */
+header.reduced .brd-main {
+    font-size: 0.7rem;
+}
+header.reduced .brd-night {
+    font-size: 0.4rem;
+}
+
+
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 95%;
+}
+
+.nav-links button {
+    background: none; border: none;
+    color: var(--ivory);
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.btn-reserve {
+    border: 1px solid var(--gold) !important;
+    border-radius: 40px !important;
+    color: var(--gold) !important;
+    margin-top: 5px;
+    padding: 8px 20px !important;
+    font-weight: 600;
+}
+
+/* ÉTAT AU SCROLL */
+.header.scrolled {
+    height: 100px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 35px !important;
+    background: rgba(0, 0, 0, 0.98);
+}
+
+
+.header.scrolled .logo {
+    font-size: 0.7rem;
+    margin-bottom: 0;
+    letter-spacing: 4px;
+    width: auto;
+}
+
+/* LE GROS TEXTE (BRADFORD) */
+.header.scrolled .brd-main {
+    font-size: 1.5rem;
+    letter-spacing: 4px;
+    
+    /* LES RÉGLAGES ICI : */
+    margin-top: 40px;   /* Augmente pour descendre */
+    margin-left: 10px;  /* Augmente pour aller à droite */
+    
+    display: block;
+}
+
+/* LE PETIT TEXTE (NIGHTCLUB) */
+.header.scrolled .brd-night {
+    font-size: 1.3rem;
+    
+    /* POSITIONNEMENT PRÉCIS : transform: translate(DROITE, BAS) */
+    /* Le 1er chiffre : -50% est le centre. Si tu mets -30%, il va à DROITE. */
+    /* Le 2ème chiffre : plus il est proche de 0 (ou positif), plus il va en BAS. */
+    transform: translate(30%, -20%) rotate(-5deg); 
+}
+
+
+.header.scrolled .nav-links { display: none; }
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 7px;           /* On espace un peu plus à cause de l'épaisseur */
+    cursor: pointer;
+    padding: 10px;
+}
+
+
+.header.scrolled .menu-toggle { display: flex; }
+
+.menu-toggle span {
+    width: 30px;         /* Un chouïa plus large */
+    height: 2px;         /* Épaisseur doublée pour plus de présence */
+    background: var(--gold);
+    border-radius: 4px;  /* Bords arrondis pour le style */
+    transition: all 0.3s ease;
+}
+
+/* --- OVERLAY MENU (TON DESIGN ORIGINAL + ANIMATION) --- */
+#navOverlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: #000; /* Ton noir pur original */
+    z-index: 4000;
+    display: none; /* Toujours géré par le JS */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    
+    /* Le moteur de l'animation */
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* Quand le menu est activé */
+#navOverlay.active {
+    display: flex; /* On force le flex pour l'alignement */
+    opacity: 1;
+}
+
+.overlay-link {
+    font-family: 'Cinzel';
+    font-size: 1.5rem; /* Ta taille originale */
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    
+    /* Animation de montée légère (optionnelle, mais rend le truc pro) */
+    transform: translateY(10px);
+    transition: transform 0.4s ease;
+}
+
+#navOverlay.active .overlay-link {
+    transform: translateY(0);
+}
+
+
+
+/* Titres et Accents */
+.title-page {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    text-align: center;
+    color: var(--gold);
+    margin: 2rem 0 1rem;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    opacity: 0; 
+    animation: fadeIn 1s forwards;
+}
+.subtitle-page {
+    text-align: center;
+    color: var(--teal);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+.section-header {
+    font-family: 'Cinzel', serif;
+    color: var(--teal);
+    font-size: 2.5rem;
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+    padding-bottom: 0.5rem;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+/* --- ANIMATIONS GLOBALES --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Styles pour les pages de Règles/Politiques --- */
+.policy-section {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-left: 5px solid var(--gold); 
+    border-radius: 4px;
+    padding: 30px;
+    margin-bottom: 30px;
+    animation: fadeIn 1s ease-out;
+}
+
+.policy-section h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--teal);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.policy-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+/* --- STYLE DES CONTENEURS DE LA GALERIE --- */
+
+.galerie-conteneur {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-around; 
+    padding: 10px;
+}
+
+/* --- STYLE DE CHACUNE DES IMAGES/VIGNETTES --- */
+
+.photo-vignette {
+    width: 45%; 
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    object-fit: cover; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Style des titres */
+.galerie-titre {
+    text-align: center;
+    color: #FFD700; 
+    margin: 30px 0 15px;
+    font-size: 1.5em;
+}
+
+/* Séparateur */
+.separateur {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #FFD700, rgba(0, 0, 0, 0));
+    margin: 20px 0;
+}
+
+/* --- Composants: Cartes Menu --- */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.menu-item-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    animation: fadeIn 1.2s ease-out; /* Animation pour les cartes */
+}
+
+.menu-item-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--teal);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.item-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--ivory);
+    margin-bottom: 0.2rem;
+}
+
+.item-price {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--gold);
+}
+
+.item-size, .item-rarity {
+    font-size: 0.9rem;
+    color: #999;
+    text-transform: uppercase;
+}
+
+/* Bouton CTA */
+.cta-button {
+    width: 100%;
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--gold);
+    color: var(--navy);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 25px rgba(212, 175, 55, 0.6);
+}
+.cta-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* --- BOUTON CONCIERGE FLOTTANT (VERSION FINALE PUZZLE) --- */
+.floating-concierge-btn {
+    position: fixed;
+    bottom: 48px; /* Ajusté pour frôler le bandeau de 45px */
+    right: 5%;
+    background-color: var(--teal); 
+    color: var(--navy);
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 50px; 
+    cursor: pointer;
+    
+    /* Ombre portée pour détacher le bouton du bandeau noir */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 10px var(--teal);
+    
+    /* AJOUTS CRUCIALS POUR LE LOADER */
+    opacity: 0;             /* Invisible au chargement total */
+    pointer-events: none;   /* In-cliquable tant qu'il est invisible */
+    transform: scale(0.8);  /* Un peu plus petit pour l'animation d'apparition */
+    
+    /* TRANSITION : On ajoute opacity pour le fondu au scroll */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+    
+    z-index: 9999;          /* Sous le loader mais au-dessus du bandeau (9998) */
+    letter-spacing: 1px;
+    animation: pulseGlow 2s infinite;
+}
+
+.floating-concierge-btn:hover {
+    background-color: #0dcccc;
+    transform: scale(1.05) translateY(-3px); /* Petit saut élégant */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 15px var(--gold);
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 10px var(--teal); }
+    50% { box-shadow: 0 0 15px var(--teal), 0 0 20px rgba(10, 166, 166, 0.3); }
+    100% { box-shadow: 0 0 10px var(--teal); }
+}
+
+/* --- STYLES SPÉCIFIQUES À LA PAGE CONCIERGE --- */
+
+.concierge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 4rem;
+}
+
+.concierge-card { 
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* Styles de base pour toutes les cartes */
+}
+
+.concierge-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.concierge-gold {
+    background-color: rgba(212, 175, 55, 0.15); /* Fond Gold translucide */
+    border: 2px solid var(--gold);
+}
+
+.concierge-teal {
+    background-color: rgba(10, 166, 166, 0.1); /* Fond Teal translucide */
+    border: 2px solid var(--teal);
+    text-align: left;
+}
+
+.contact-number {
+    color: var(--ivory);
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.contact-email {
+    color: var(--teal);
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+.concierge-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.concierge-list li {
+    margin-bottom: 10px;
+    color: var(--ivory);
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.1);
+    padding-bottom: 5px;
+}
+
+.concierge-discretion {
+    background-color: rgba(7, 17, 43, 0.7); /* Navy plus foncé */
+    border-left: 5px solid var(--teal);
+    margin-top: 4rem;
+}
+
+
+/* --- BOUTON SCROLL TO TOP DISCRET --- */
+.scroll-to-top-btn {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    bottom: 30px;
+    left: 5%; /* Positionné à gauche, loin du Concierge */
+    z-index: 9998; /* Juste en dessous du Concierge (z-index: 9999) */
+    
+    background-color: var(--teal); 
+    color: var(--navy);
+    font-size: 1.5rem; /* Taille de la flèche */
+    font-weight: 900;
+    
+    width: 50px; /* Petit et rond */
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    
+    border: none;
+    border-radius: 50%; /* Forme circulaire */
+    cursor: pointer;
+    
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.scroll-to-top-btn.show {
+    display: block;
+    opacity: 1;
+}
+
+.scroll-to-top-btn:hover {
+    background-color: var(--gold); /* Devient Gold au survol */
+    color: var(--navy);
+    transform: scale(1.1);
+}
+/* --- AMÉLIORATION DE LA CARTE DE MENU AVEC CALCULATEUR TTC --- */
+
+/* Rend toute la carte cliquable et ajoute un effet de survol */
+.menu-item-card {
+    cursor: pointer; 
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.menu-item-card:hover {
+    /* Léger effet 3D ou bordure dorée subtile au survol */
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Style le prix pour indiquer qu'il est interactif */
+.item-price-clickable {
+    text-decoration: underline dashed var(--gold); /* Souligné en pointillé doré */
+    text-underline-offset: 4px; /* Décalage pour l'élégance */
+    font-weight: 700;
+}
+/* Le conteneur (fixé en haut) - Ultra-mince et discret */
+#premium-scroll-indicator-v2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px; /* Reste à 2px pour la discrétion */
+    
+    /* Couleur du fond du conteneur : Le bleu marine du site (ou très proche) */
+    background-color: rgba(0, 20, 40, 0.5); /* Bleu très foncé, légèrement transparent */
+    
+    z-index: 99999; 
+}
+
+/* La barre de progression elle-même - Le rendu Tonalité */
+#premium-progress-bar-v2 {
+    height: 100%;
+    width: 0%; /* Commence à zéro */
+    
+    /* Couleur de base : Bleu foncé, mais LÉGÈREMENT plus claire que le fond. */
+    background-color: #053D6C; /* Un bleu plus profond mais visible */
+    
+    /* La transparence est la clé pour un rendu non agressif */
+    opacity: 0.8; 
+    
+    /* On enlève l'ombre pour la discrétion maximale. Juste la couleur. */
+    box-shadow: none; 
+        
+    /* Transition pour une touche d'élégance */
+    transition: width 0s, background-color 0.5s ease; 
+}
+/* --- Couleurs & Typographie --- */
+:root {
+    /* Fond très sombre (proche du Bleu Indigo/Prussien) */
+    --couleur-fond-widget: #0A1938; 
+    /* Bleu un peu plus clair pour les éléments (style card) */
+    --couleur-item-fond: #12224A; 
+    /* Texte principal - Or pour les accents, Gris clair pour le reste */
+    --couleur-texte-clair: #E0E0E0; 
+    /* Couleur d'accentuation #1 : Or/Jaune (comme le logo) */
+    --couleur-accent-or: #FFD700; 
+    /* Couleur d'accentuation #2 : Turquoise/Cyan (comme le bouton Concierge) */
+    --couleur-accent-cyan: #00BCD4; 
+}
+
+/* --- Styles du Conteneur Principal (Widget) --- */
+#evenement-widget {
+    /* Rendre le widget un peu plus petit et plus compact */
+    max-width: 350px; 
+    
+    border: 1px solid var(--couleur-item-fond); 
+    border-radius: 12px;
+    padding: 20px 15px; 
+    
+    background-color: var(--couleur-fond-widget); 
+    color: var(--couleur-texte-clair); 
+    
+    /* Ombre subtile et néon (Jaune/Or) pour un effet lumineux sur le fond sombre */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 215, 0, 0.2);
+    
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+}
+
+/* --- Titre du Widget --- */
+#widget-title {
+    color: var(--couleur-accent-or); /* Titre en Or */
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.6em; 
+    font-weight: 700;
+    text-transform: uppercase;
+    
+    /* Séparateur en couleur Turquoise */
+    border-bottom: 2px solid var(--couleur-accent-cyan); 
+    padding-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+/* --- Liste Défilante --- */
+#evenement-liste {
+    max-height: 220px; 
+    overflow-y: auto; 
+    padding-right: 8px; 
+    
+    /* Stylisation de la barre de défilement */
+    scrollbar-color: var(--couleur-item-fond) var(--couleur-fond-widget);
+    scrollbar-width: thin;
+}
+
+/* --- Item Événement --- */
+.evenement-item {
+    background-color: var(--couleur-item-fond); /* Fond de l'item un peu moins sombre */
+    margin-bottom: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    
+    /* Bordure subtile en Turquoise pour l'impact */
+    border: 1px solid rgba(0, 188, 212, 0.3);
+    
+    /* Ombre intérieure */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+    
+    transition: all 0.3s ease;
+}
+
+/* Effet au survol : met en évidence l'item avec l'Or */
+.evenement-item:hover {
+    background-color: #1A237E; /* Fond au survol, légèrement plus clair que l'item */
+    transform: translateY(-2px); /* Léger déplacement vers le haut */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8), 0 0 5px var(--couleur-accent-or); /* Lueur Or */
+}
+
+/* --- Détails de l'Événement --- */
+.evenement-ville {
+    font-weight: bold;
+    color: var(--couleur-accent-cyan); /* Ville en Turquoise/Cyan */
+    font-size: 1em;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.evenement-item strong {
+    /* Nom de l'artiste en Or pour un impact maximal (comme le logo) */
+    color: var(--couleur-accent-or); 
+    font-size: 1.1em;
+    display: block; 
+    margin-bottom: 3px;
+}
+
+.evenement-details {
+    font-size: 0.85em;
+    color: var(--couleur-texte-clair); 
+    opacity: 0.7; /* Légèrement estompé */
+}
+
+/* --- Note du Bas --- */
+.widget-note {
+    text-align: center;
+    font-style: italic;
+    margin-top: 15px;
+    font-size: 0.75em; 
+    color: var(--couleur-texte-clair);
+    opacity: 0.5;
+}
+
+/* --- VARIABLES DE COULEURS PREMIUM (Ajoutez-les au début de votre fichier CSS si elles n'existent pas) --- */
+:root {
+    /* Couleurs Primaires */
+    --couleur-fond-primaire: #121212; /* Noir Profond/Anthracite */
+    --couleur-texte-clair: #E0E0E0; /* Blanc cassé */
+    
+    /* Couleur d'Accent Premium (Or/Cuivre) */
+    --couleur-accent-gold: #D4AF37; /* Or Mat/Satiné */
+    --couleur-accent-hover: #FFD700; /* Or Vif au survol */
+    --couleur-ombre: 0 5px 15px rgba(0, 0, 0, 0.7); /* Ombre profonde */
+
+    /* Police de style pour les titres (Assurez-vous qu'elle est importée) */
+    --font-titre-luxe: 'Cinzel', serif; 
+    --font-texte-principal: 'Montserrat', sans-serif;
+}
+
+/* ---------------------------------------------------------------------- */
+/* --- STYLES OBLIGATOIRES POUR LA PAGE DE DÉTAILS DE L'ARTISTE (MODIFIÉ) --- */
+/* ---------------------------------------------------------------------- */
+
+.detail-page {
+    /* Fond pour simuler une nouvelle page */
+    background-color: var(--couleur-fond-primaire);
+    color: var(--couleur-texte-clair); 
+    padding: 30px 5%;
+    
+    /* Le plus important : garantir qu'elle prend TOUT l'écran */
+    min-height: 100vh;
+    width: 100%;
+    
+    box-sizing: border-box; 
+    font-family: var(--font-texte-principal);
+    
+    /* Animation douce à l'apparition si tu le souhaites */
+    animation: fadeIn 0.5s ease-out;
+}
+
+.detail-header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    /* Ligne de séparation accentuée en Or */
+    border-bottom: 2px solid var(--couleur-accent-gold); 
+    cursor: pointer;
+}
+
+.back-link {
+    font-size: 0.9rem;
+    color: var(--couleur-accent-gold); /* Changement de couleur vers l'Or */
+    text-transform: uppercase;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 10px;
+    transition: color 0.2s;
+    letter-spacing: 1px;
+}
+
+.back-link:hover {
+    color: var(--couleur-accent-hover); /* Or Vif au survol */
+}
+
+.artist-name {
+    font-family: var(--font-titre-luxe); /* Police Luxe pour les noms d'artistes */
+    font-size: 2.8rem; /* Légèrement plus grand */
+    font-weight: 900;
+    margin: 0;
+    color: var(--couleur-accent-gold); /* Nom de l'artiste en Or ! */
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Plus d'espace pour le côté Premium */
+    text-shadow: 0 0 5px rgba(212, 175, 55, 0.4); /* Petit effet de lueur subtil */
+}
+
+.artist-location {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.6); /* Gris doux */
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.detail-body {
+    padding: 20px 0;
+}
+
+.detail-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 40px; /* Plus d'espace */
+    margin-bottom: 18px;
+    color: var(--couleur-texte-clair);
+    /* Ligne verticale Or, plus marquée */
+    border-left: 5px solid var(--couleur-accent-gold); 
+    padding-left: 15px;
+    font-family: var(--font-titre-luxe);
+}
+
+.artist-bio-text, .event-details-text {
+    line-height: 1.8; /* Augmenter l'interligne pour une meilleure lisibilité */
+    margin-bottom: 25px;
+    font-size: 1rem;
+}
+
+.pricing-info {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 20px;
+    /* Fond sombre subtil avec bordure Or légère */
+    background-color: #1a1a1a; 
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 4px;
+    margin-top: 30px;
+    box-shadow: var(--ombre-legere);
+}
+
+/* --- Style du Bouton d'Action (RÉSERVER UNE TABLE VIP MAINTENANT) --- */
+
+.reservation-cta {
+    text-align: center;
+    margin-top: 60px; /* Espace au-dessus */
+}
+
+/* --- Boutons et CTA --- */
+.cta-button {
+    /* 1. Changer le fond pour le turquoise */
+    background-color: var(--teal); 
+    
+    /* Le texte reste en navy pour le contraste, c'est bien */
+    color: var(--navy); 
+    
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    
+    /* 2. Supprimer ou changer l'ombre */
+    box-shadow: none; /* <-- Ajoutez ceci pour supprimer toute ombre */
+    /* OU : box-shadow: 0 0 10px rgba(10, 166, 166, 0.5); pour une lueur bleue */
+}
+
+/* Vous devez également corriger le survol (hover) */
+.cta-button:hover:not(:disabled) {
+    /* Mettre une couleur de survol pour le teal */
+    background-color: #0dcccc; /* Teal plus clair */ 
+    transform: translateY(-2px);
+}
+
+
+/* Style lorsque le bouton est actif (clic) */
+.cta-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Règle pour l'adaptation mobile */
+@media (max-width: 600px) {
+    .artist-name {
+        font-size: 2rem; /* Légèrement réduit pour les mobiles */
+        letter-spacing: 2px;
+    }
+    .detail-page {
+        padding: 20px 3%;
+    }
+}
+/* --- NOUVEAU STYLE : Bouton Spécifique "Pré-commande" --- */
+
+/* 1. Assurez-vous qu'il est bien turquoise et supprimez l'ombre dorée */
+.cta-precommande {
+    /* Écrase le box-shadow dorée hérité de .cta-button */
+    box-shadow: none !important; 
+    
+    /* On force la couleur de fond en Teal (Turquoise) pour la clarté */
+    background-color: var(--teal) !important; 
+    
+    /* On force la couleur de texte en Navy (Bleu Marine) */
+    color: var(--navy) !important;
+}
+
+/* 2. Assurez-vous que le survol (hover) n'affiche pas l'ombre dorée non plus */
+.cta-precommande:hover:not(:disabled) {
+    box-shadow: none !important; 
+    /* Met un turquoise légèrement plus clair au survol pour un bon effet */
+    background-color: #0dcccc !important; 
+}
+
+a {
+    color: inherit; /* Utilise la couleur du texte parent (donc blanc si le fond est noir) */
+    text-decoration: none; /* Supprime le soulignement par défaut */
+    cursor: pointer; /* Garantit que le curseur change pour indiquer que c'est cliquable */
+}
+
+/* Vous pouvez ajouter un effet au survol si vous voulez que l'utilisateur sache que c'est un lien */
+a:hover {
+    text-decoration: underline; /* Réajoute un soulignement au survol, par exemple */
+    color: #FFD700; /* Ou change la couleur, par exemple en or */
+}
+/* --- Bloc de Statistiques VIP --- */
+.stat-bar-luxe {
+    display: flex;
+    /* ... styles de conteneur, fond noir, bordure or ... */
+}
+.stat-value {
+    /* ... taille, couleur OR pour les chiffres (6,000, 30, LUXE) ... */
+}
+.stat-label {
+    /* ... taille, couleur grise pour les descriptions ... */
+}
+/* ... le reste des styles pour les séparateurs et le responsive ... */
+
+/* --- NOUVEAU STYLE : BARRE DE STATISTIQUES LUXE (HomePage) --- */
+
+.hero-stats-bar {
+    /* Conteneur principal */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    
+    /* Encadrement et fond sombre pour l'effet de carte */
+    background-color: rgba(7, 17, 43, 0.7); /* Navy foncé transparent */
+    border: 1px solid var(--gold); /* Bordure Or autour */
+    border-radius: 8px;
+    padding: 25px 30px;
+    margin: 4rem auto; /* Grand espace en haut et en bas */
+    max-width: 900px;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); /* Lueur subtile */
+}
+
+.stat-item {
+    /* Conteneur pour chaque statistique */
+    flex-grow: 1;
+    padding: 0 15px;
+}
+
+.stat-label {
+    /* Le texte descriptif (Capacité Opérationnelle, VIP Nightlife) */
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    color: var(--teal); /* Bleu vert pour le label */
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    /* Le chiffre clé (6,000 ou 30 Tables) */
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--ivory); /* Blanc/Ivoire pour la lisibilité */
+}
+
+/* On réapplique la classe pour le GROS CHIFFRE (6,000) */
+.luxury-figure {
+    font-size: 2.5rem; /* On augmente encore la taille ! */
+    font-family: 'Cinzel', serif; 
+    color: var(--gold) !important; /* On force le Gold */
+    font-weight: 900; 
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8); /* Lueur plus intense */
+}
+
+/* Séparateur vertical élégant */
+.stat-divider {
+    width: 2px;
+    height: 60px; /* Hauteur de la ligne de séparation */
+    background-color: var(--gold);
+    opacity: 0.5;
+    border-radius: 1px;
+}
+/* ========================================================= */
+/* I. RESET & FOND DE SCÈNE IMMERSIVE */
+/* ========================================================= */
+
+:root {
+    /* Variables de base (doivent être définies) */
+    --navy-dark: #050A18; 
+    --gold: #D4AF37;
+    --teal: #30D5C8;
+    --ivory: #F0F0F0;
+    --duration-base: 0.3s;
+    --shadow-color: rgba(0, 0, 0, 0.9);
+}
+
+body {
+    transition: background-color var(--duration-base) ease-in-out;
+}
+
+/* ========================================================= */
+/* II. CONTENEUR : LE COFFRE-FORT GÉOMÉTRIQUE */
+/* ========================================================= */
+
+.protocol-container {
+    /* Taille et Positionnement */
+    max-width: 420px;
+    margin: 40px auto; 
+    padding: 35px 30px 25px; 
+    
+    /* Design Tranchant et Réfléchissant */
+    background: linear-gradient(145deg, rgba(15, 25, 45, 0.95), rgba(5, 10, 20, 0.98)); /* Gradient de fond subtil */
+    backdrop-filter: blur(15px) saturate(150%); /* Blur extrême pour le luxe */
+    border: 1px solid rgba(212, 175, 55, 0.15); /* Bordure Gold subtile */
+    border-radius: 0; /* AUCUN ARRONDISSEMENT (Tranchant) */
+    
+    /* Ombre Complexe (Simule la lévitation et l'éclairage) */
+    box-shadow: 
+        -10px -10px 30px var(--shadow-color), /* Ombre gauche/haut */
+        10px 10px 30px var(--shadow-color), /* Ombre droite/bas */
+        0 0 80px rgba(48, 213, 200, 0.08); /* Halo Teal large et très diffus */
+    
+    perspective: 1000px; /* Base pour les effets 3D futurs */
+    transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1); /* Transition élastique sophistiquée */
+}
+
+/* Effet de Lumière Subtil au Survol du Conteneur */
+.protocol-container:hover {
+    transform: translateY(-3px); /* Se soulève légèrement */
+    box-shadow: 
+        -15px -15px 40px var(--shadow-color),
+        15px 15px 40px var(--shadow-color),
+        0 0 100px rgba(212, 175, 55, 0.15); /* Halo Gold plus prononcé */
+}
+
+/* Titres H2 : Autorité et Clarté */
+.protocol-container h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+    text-align: left;
+    margin-bottom: 30px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.8); /* Lueur très forte */
+}
+
+
+/* ========================================================= */
+/* III. INPUTS/CHAMPS : SIMULATION DE LECTURE NUMÉRIQUE */
+/* ========================================================= */
+
+.protocol-container label {
+    font-family: 'Cinzel', serif;
+    color: var(--teal);
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    opacity: 0.9;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.protocol-container input,
+.protocol-container textarea {
+    width: 100%;
+    padding: 12px 10px;
+    margin-bottom: 25px;
+    background: transparent; /* Transparent pour révéler le fond blur */
+    border: none;
+    border-bottom: 2px solid rgba(48, 213, 200, 0.5); /* Ligne de lecture plus épaisse */
+    color: var(--ivory);
+    font-size: 1rem;
+    transition: border-bottom-color var(--duration-base), box-shadow var(--duration-base);
+    border-radius: 0;
+}
+
+/* Effet Focus (Le champ entier devient l'attention) */
+.protocol-container input:focus,
+.protocol-container textarea:focus {
+    border-bottom-color: var(--gold);
+    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.4); /* Ombre interne pour la mise au point */
+    background: rgba(212, 175, 55, 0.03); /* Lueur de fond discrète */
+    outline: none;
+}
+
+
+/* ========================================================= */
+/* IV. BOUTONS : LE "BLOC D'ACTIVATION" (PERFECTION GÉOMÉTRIQUE) */
+/* ========================================================= */
+
+.protocol-container button[type="submit"] {
+    width: auto;
+    min-width: 150px;
+    padding: 10px 25px;
+    float: right; 
+    margin-top: 15px;
+    
+    /* Design GÉOMÉTRIQUE & TRANCHANT */
+    background: linear-gradient(45deg, var(--gold) 50%, #f7d58a 100%); /* Gradient Gold riche */
+    color: var(--navy-dark);
+    font-size: 1rem;
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    border: 1px solid var(--gold);
+    border-radius: 0; /* TRANCHANT ABSOLU */
+    
+    /* Micro-Animations 3D */
+    transform-style: preserve-3d;
+    transform: rotateX(0deg);
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Transition rebondissante */
+}
+
+.protocol-container button[type="submit"]:hover {
+    box-shadow: 0 0 20px var(--gold);
+    background-color: #f7d58a;
+    transform: rotateX(5deg); /* Petit effet 3D au survol */
+}
+
+/* L'effet de clic ultime (Activation du Protocole) */
+.protocol-container button[type="submit"]:active {
+    background-color: #c79f32; /* Gold plus sombre au clic */
+    transform: translateY(2px) rotateX(0deg); /* S'enfonce parfaitement */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
+}
+
+
+/* ========================================================= */
+/* V. SYSTÈME DE NOTATION : L'ÉTOILE LIQUIDE ANIMÉE */
+/* ========================================================= */
+
+.rating {
+    margin-bottom: 25px;
+    text-align: left;
+    padding-top: 5px;
+}
+
+.rating label {
+    display: block; /* FORCE LE LABEL À PRENDRE TOUTE LA LARGEUR */
+    line-height: 1.2rem;
+    margin-right: 10px;
+    font-size: 0.8rem;
+    color: var(--gold);
+    margin-bottom: 5px; /* Petit espacement entre le texte et les étoiles */
+}
+
+.rating .star {
+    font-size: 1.5rem; /* Étoiles plus grandes */
+    cursor: pointer;
+    color: rgba(48, 213, 200, 0.15); /* Couleur Teal sombre non sélectionnée */
+    text-shadow: 0 0 5px rgba(48, 213, 200, 0.1);
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1); /* Mouvement organique */
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.8));
+}
+
+.rating .star.selected {
+    color: var(--gold);
+    text-shadow: 0 0 20px var(--gold), 0 0 5px var(--ivory); /* Gold + Lueur Blanche Centrale */
+    animation: pulseGlow 1.8s infinite alternate; /* Animation raffinée */
+}
+
+.rating .star:hover {
+    color: var(--teal); /* L'étoile survolée devient Teal avant la sélection Gold */
+    transform: scale(1.15) rotate(5deg);
+}
+
+/* Keyframes pour la pulsation d'excellence */
+@keyframes pulseGlow {
+    0% {
+        text-shadow: 0 0 15px var(--gold), 0 0 3px rgba(255, 255, 255, 0.7);
+    }
+    100% {
+        text-shadow: 0 0 25px var(--gold), 0 0 10px rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* ========================================================= */
+/* VI. BOUTON CTA D'ADHÉSION (DISCRET MAIS PUISSANT) */
+/* ========================================================= */
+
+.accreditation-cta {
+    width: auto;
+    min-width: 250px;
+    padding: 12px 30px;
+    
+    /* Design Gold Tranchant */
+    background: transparent; /* Commence transparent */
+    color: var(--gold);
+    font-size: 0.9rem;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border: 1px solid var(--gold); /* Bordure fine Gold */
+    border-radius: 0; 
+    cursor: pointer;
+    text-transform: uppercase;
+
+    /* Micro-Animations Élégantes */
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center;
+}
+
+.accreditation-cta:hover {
+    background: var(--gold); /* Le bouton se remplit de Gold au survol */
+    color: var(--navy-dark);
+    box-shadow: 0 0 15px var(--gold);
+    transform: scale(1.05); /* Grossissement léger pour attirer l'œil */
+}
+
+.accreditation-cta:active {
+    transform: scale(0.98);
+}
+/* ========================================================= */
+/* VII. MODALE D'ADHÉSION (EXCLUSIVITÉ EN PLEIN ÉCRAN) */
+/* ========================================================= */
+
+.vip-modal-backdrop {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    z-index: 1000; /* Assure d'être au-dessus de tout */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* Fond sombre semi-transparent (effet de rideau de velours) */
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(5px);
+    overflow: auto;
+    padding-top: 50px;
+}
+
+.vip-modal-content {
+    /* Réutilise le style protocol-container pour l'effet Gold/Glassmorphism */
+    margin: 5% auto; /* Centrage */
+    max-width: 500px; /* Taille parfaite pour l'info */
+    position: relative;
+    animation: fadeIn 0.4s ease-out;
+}
+
+.close-btn-accreditation {
+    color: var(--gold);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.close-btn-accreditation:hover,
+.close-btn-accreditation:focus {
+    color: var(--teal);
+    transform: scale(1.1);
+}
+
+.membership-fee-display {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: 3px;
+}
+
+.fee-label {
+    font-family: 'Cinzel', serif;
+    color: var(--teal);
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+.fee-value {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 2.5rem; /* Très grand pour le choc du prix */
+    font-weight: 900;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* ========================================================== */
+/* SECTION 1: VARIABLES ET RESET MOBILE-FIRST       */
+/* ========================================================== */
+
+:root {
+    --color-bg-deep: #0A0E2B;
+    --color-bg-module: #0A0A18; /* Plus sombre pour le contraste mobile */
+    --color-primary-gold: #FFC700;
+    --color-accent-cyan: #00FFFF;
+    --color-text-light: #E0E0E0;
+    --neon-shadow-cyan: 0 0 4px var(--color-accent-cyan);
+    --neon-shadow-gold: 0 0 3px var(--color-primary-gold);
+    --font-primary: 'Rajdhani', sans-serif;
+}
+
+/* Assurer un fond de contraste pour le test mobile */
+body {
+    background-color: var(--color-bg-deep);
+    font-family: var(--font-primary);
+    color: var(--color-text-light);
+    margin: 0;
+    padding: 0;
+}
+
+/* CONTENEUR PRINCIPAL (Optimisé Mobile) */
+.module-container {
+    width: 100%;
+    max-width: 400px; /* Taille iPhone */
+    margin: 20px auto; /* Centré sur page */
+    background-color: var(--color-bg-module);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 15px; /* Moins d'espace pour être compact */
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 10;
+}
+
+/* ========================================================== */
+/* SECTION 2: HEADER (Compact)                      */
+/* ========================================================== */
+
+.module-header {
+    text-align: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo-placeholder {
+    font-weight: 700;
+    font-size: 1.2em;
+    color: #FFFFFF;
+    background-color: #000000;
+    padding: 5px;
+    display: inline-block;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    border: 1px solid var(--color-accent-cyan);
+}
+
+.header-title {
+    font-size: 1.4em; /* Réduit pour mobile */
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--color-primary-gold);
+    text-shadow: var(--neon-shadow-gold);
+    margin: 5px 0 0 0;
+}
+
+.header-subtitle {
+    font-size: 0.8em;
+    color: var(--color-accent-cyan);
+    margin-top: 3px;
+}
+
+/* ========================================================== */
+/* SECTION 3: CONTRÔLES ET ÉTATS (Fonctionnel)      */
+/* ========================================================== */
+
+.dynamic-control-zone {
+    padding: 10px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 15px;
+}
+
+.input-group, .status-panel {
+    margin-bottom: 10px;
+}
+
+.input-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--color-primary-gold);
+    font-size: 0.9em;
+}
+
+.lux-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-accent-cyan);
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--color-text-light);
+    font-size: 1em;
+    font-family: var(--font-primary);
+}
+
+.status-panel {
+    padding: 8px 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+}
+
+.status-label {
+    color: var(--color-accent-cyan);
+    font-weight: 700;
+    font-size: 0.9em;
+}
+
+.status-indicator {
+    color: var(--color-primary-gold);
+    font-size: 0.9em;
+}
+
+/* ========================================================== */
+/* SECTION 4: AFFICHAGE DES INDICATEURS (Grille simple) */
+/* ========================================================== */
+
+.dynamic-section {
+    padding: 10px 0;
+}
+
+.key-metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.metric-card {
+    background-color: rgba(255, 255, 255, 0.03);
+    padding: 10px;
+    border-radius: 4px;
+    border-left: 2px solid var(--color-accent-cyan);
+}
+
+.metric-label {
+    font-size: 0.75em;
+    color: var(--color-accent-cyan);
+    margin: 0 0 5px 0;
+}
+
+.data-value {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--color-primary-gold);
+    text-shadow: var(--neon-shadow-gold);
+}
+
+.data-unit {
+    font-size: 0.8em;
+    color: var(--color-text-light);
+    margin-left: 3px;
+}
+
+.data-value-small {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--color-primary-gold);
+    text-shadow: var(--neon-shadow-gold);
+    display: block;
+}
+
+/* LISTE DES PRIX */
+.price-title {
+    font-size: 1em;
+    font-weight: 500;
+    color: var(--color-primary-gold);
+    border-left: 3px solid var(--color-accent-cyan);
+    padding-left: 8px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.price-list {
+    list-style: none;
+    padding: 0;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 0.9em;
+    border-bottom: 1px dotted rgba(255, 255, 255, 0.05);
+}
+
+/* ========================================================== */
+/* SECTION 5: ACTION ET BOUTON (Compact)            */
+/* ========================================================== */
+
+.action-section {
+    padding-top: 15px;
+    text-align: center;
+}
+
+.promo-code-box {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-primary-gold);
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8em;
+}
+
+.code-value {
+    font-weight: 700;
+    color: var(--color-accent-cyan);
+    letter-spacing: 2px;
+}
+
+.copy-btn {
+    background-color: var(--color-primary-gold);
+    color: var(--color-bg-deep);
+    border: none;
+    padding: 6px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.9em;
+}
+
+.main-action-button {
+    display: block;
+    text-decoration: none;
+    background: linear-gradient(45deg, #FFC700, #FFD700);
+    border: 2px solid var(--color-primary-gold);
+    border-radius: 50px;
+    padding: 12px 20px; /* Réduit pour mobile */
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-text {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: var(--color-bg-deep);
+    letter-spacing: 2px;
+}
+/* Container de paiement */
+.checkout-box {
+    background: #0a1a3a;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.payment-input {
+    width: 100%;
+    background: rgba(255,255,255,0.03);
+    border: none;
+    border-bottom: 1px solid #333;
+    color: #fff;
+    padding: 12px 0;
+    margin-bottom: 20px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.payment-input:focus {
+    border-bottom: 1px solid var(--gold);
+}
+
+/* Le Ticket Final (Blanc) */
+.vip-ticket {
+    background: #fff;
+    color: #000;
+    padding: 25px;
+    border-radius: 2px;
+    max-width: 350px;
+    margin: 20px auto;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+    position: relative;
+    animation: slideUp 0.5s ease-out;
+}
+
+.qr-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2px;
+    width: 120px;
+    height: 120px;
+    background: #000;
+    margin: 20px auto;
+    padding: 8px;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+/* Checkout Global */
+.checkout-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    animation: fadeIn 0.6s ease;
+}
+
+/* Sélecteur de Paiement */
+.payment-methods {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.method-card {
+    border: 1px solid #333;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: rgba(255,255,255,0.02);
+}
+
+.method-card.active {
+    border-color: var(--gold);
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.method-card i {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+/* Détails du Panier Luxe */
+.luxe-summary {
+    background: linear-gradient(145deg, #0d1b35, #07112b);
+    border: 1px solid var(--gold);
+    padding: 25px;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.luxe-summary::after {
+    content: "OFFICIAL BRADFORD DOCUMENT";
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 0.5rem;
+    opacity: 0.2;
+    letter-spacing: 2px;
+}
+.bottle-checkout-badge {
+    background: var(--gold);
+    color: #000;
+    padding: 2px 8px;
+    font-size: 0.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+/* Le conteneur qui couvre tout l'écran */
+.policy-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 11, 26, 0.98); /* Noir Bradford */
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.policy-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Les liens dans le menu */
+.policy-link {
+    font-family: 'Cinzel', serif;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    margin: 15px 0;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+
+.policy-link:hover {
+    color: var(--gold);
+}
+
+/* La croix de fermeture */
+.close-policy {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-family: 'Cinzel';
+    color: var(--gold);
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 1px solid var(--gold);
+    padding: 5px 15px;
+}
+#bradford-cinematic-loader {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, #0a1a3a 0%, #050b1a 100%);
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: all 1s cubic-bezier(0.9, 0, 0.1, 1);
+}
+
+.stars-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+}
+
+.loader-content {
+    width: 100%;
+    text-align: center;
+    padding: 0 20px; /* Sécurité pour iPhone */
+}
+
+/* LA POLICE DU DÉBUT MAIS AFFINÉE */
+.main-title {
+    font-family: 'Cinzel', serif;
+    color: #fff;
+    /* Taille ajustée pour iPhone 13 (pas trop gros, pas trop petit) */
+    font-size: 1.8rem; 
+    letter-spacing: 8px;
+    margin: 0;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0;
+    animation: revealTitle 1.5s ease-out forwards;
+}
+
+.sub-title {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 6px;
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeIn 1.2s 0.6s ease-out forwards;
+}
+
+/* BARRE DE CHARGEMENT DISCRÈTE 
+/* --- ESPACEMENTS CORRIGÉS POUR PLUS DE CLARTÉ --- */
+
+.loading-bar-container {
+    width: 150px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    /* Espace de 50px au-dessus de la barre (sous le logo) */
+    margin-top: 50px; 
+    /* Espace de 50px en-dessous de la barre (avant la phrase) */
+    margin-bottom: 50px; 
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.loading-bar-fill {
+    height: 100%;
+    width: 0;
+    background: var(--gold);
+    box-shadow: 0 0 8px var(--gold);
+    animation: loadingWidth 2.5s ease-in-out forwards;
+}
+
+.excellence-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.5rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0;
+    /* On s'assure qu'il n'y a pas de marge parasite */
+    margin: 0; 
+    animation: fadeIn 1.5s 1.2s ease-out forwards;
+}
+
+
+
+/* ANIMATIONS PROPRES */
+@keyframes revealTitle {
+    from { opacity: 0; transform: scale(0.95); filter: blur(10px); }
+    to { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+@keyframes loadingWidth {
+    to { width: 100%; }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* SORTIE IMMERSIVE */
+.loader-exit {
+    opacity: 0;
+    transform: scale(1.5);
+    filter: blur(15px);
+}
+
+/* Global & Aération du Header */
+.bradford-elite-hub { 
+    background: var(--bg); 
+    color: #fff; 
+    padding: 60px 20px; /* Plus d'espace en haut et en bas */
+    font-family: 'Inter', sans-serif; 
+}
+
+.title-gold { 
+    font-family: 'Cinzel', serif; 
+    color: var(--gold); 
+    letter-spacing: 5px; /* Plus d'air entre les lettres */
+    font-size: 1.2rem; 
+    margin-bottom: 30px !important; 
+}
+
+.hub-dashboard { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    margin-bottom: 50px; /* Espace massif avant les barres de stats */
+}
+
+#live-avg { 
+    font-size: 4.5rem; /* Plus gros et aéré */
+    font-family: 'Cinzel'; 
+    color: var(--gold); 
+    display: block; 
+    line-height: 1; 
+    margin-bottom: 10px;
+}
+
+.stars-wrap { 
+    color: var(--gold); 
+    font-size: 1rem; 
+    letter-spacing: 8px; /* Étoiles bien espacées */
+}
+
+.count-label { 
+    font-size: 0.7rem; 
+    letter-spacing: 3px; 
+    color: #666; 
+    margin-top: 25px !important; 
+}
+
+/* Stats Bars - Plus d'espace */
+.stats-bars { margin-bottom: 60px; }
+.bar-row { display: flex; align-items: center; gap: 15px; margin-bottom: 12px; font-size: 0.65rem; color: #555; }
+.bar-fill-bg { flex: 1; height: 1px; background: #1a1a1a; }
+.bar-fill { height: 100%; background: var(--gold); box-shadow: 0 0 10px var(--gold); transition: width 0.8s ease; }
+
+/* Wall - Cartes plus élégantes */
+.reviews-wall { display: grid; gap: 25px; margin-bottom: 50px; }
+.rev-card { 
+    background: var(--card); 
+    border: 1px solid #161a20; 
+    padding: 30px; 
+    animation: fadeIn 0.5s ease forwards; 
+}
+.rev-meta { display: flex; justify-content: space-between; font-size: 0.65rem; color: var(--gold); margin-bottom: 18px; opacity: 0.7; }
+.rev-u { font-family: 'Cinzel'; font-size: 1rem; color: #fff; margin-bottom: 10px; letter-spacing: 1px; }
+.rev-t { font-size: 0.9rem; color: #bbb; line-height: 1.8; font-style: italic; font-weight: 300; }
+
+/* Boutons */
+.btn-refine { 
+    background: transparent; 
+    border: 1px solid var(--gold); 
+    color: var(--gold); 
+    padding: 12px 20px; 
+    font-size: 0.75rem; 
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-refine:hover { background: var(--gold); color: #000; }
+
+.static-action-area { padding: 80px 0; border-top: 1px solid #111; text-align: center; }
+.btn-sign-static { 
+    background: transparent; border: 1px solid var(--gold); color: var(--gold); 
+    padding: 20px 50px; font-family: 'Cinzel'; letter-spacing: 4px; font-size: 0.9rem;
+    cursor: pointer;
+}
+
+/* Sidenavs (Menus) */
+.sidenav, .write-panel { position: fixed; top:0; right:-100%; width:100%; height:100%; background: rgba(0,0,0,0.98); z-index: 99999; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.sidenav-inner, .write-inner { width: 85%; background: #05070a; height: 100%; float: right; padding: 60px 30px; border-left: none; }
+.nav-header { display: flex; justify-content: space-between; border-bottom: 1px solid #222; margin-bottom: 40px; padding-bottom: 15px; }
+.nav-header h3 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1.2rem; letter-spacing: 3px; }
+
+.f-box { margin-bottom: 30px; }
+.f-box label { display: block; font-size: 0.6rem; color: #444; margin-bottom: 12px; letter-spacing: 2px; }
+.f-box select, .b-input { width: 100%; background: #000; border: 1px solid #222; color: #fff; padding: 18px; font-size: 0.9rem; outline: none; border-radius: 0; }
+.btn-apply { width: 100%; background: var(--gold); color: #000; border: none; padding: 20px; font-weight: bold; letter-spacing: 3px; cursor: pointer; }
+.close-btn { color: var(--gold); font-size: 1.5rem; cursor: pointer; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+
+/* AJUSTEMENTS POUR LE CHARGEMENT ET LE COMPTEUR */
+#live-counter {
+    font-weight: bold;
+    color: var(--gold);
+    transition: all 0.5s ease;
+}
+
+.pagination-area {
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+}
+
+/* On réutilise ton style de bouton pour le LOAD MORE */
+#loadMoreBtn {
+    cursor: pointer;
+    transition: 0.3s;
+    background: rgba(197, 160, 89, 0.05);
+}
+
+#loadMoreBtn:hover {
+    background: var(--gold);
+    color: #000;
+}
+
+/* Animation pour l'apparition des nouveaux messages */
+.rev-card {
+    animation: fadeIn 0.4s ease-out;
+}
+
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    background-color: #000000 !important; /* Force le noir total */
+}
+
+body {
+    background-color: #000000;
+    margin: 0;
+}
+
+#bradford-nerve-center {
+    position: fixed;
+    bottom: 0; left: 0; width: 100%;
+    height: 45px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    z-index: 9998; /* Plus bas que le bouton concierge et le loader */
+    display: flex;
+    overflow: hidden;
+    /* On s'assure qu'il est bien caché au départ */
+    transform: translateY(100%); 
+    transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+
+.nerve-content {
+    display: flex; width: 100%; height: 100%;
+    justify-content: space-between; align-items: center;
+    padding: 0 15px;
+}
+
+.nerve-section {
+    display: flex; flex-direction: column; justify-content: center;
+}
+
+.nerve-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 6px;
+    color: rgba(212, 175, 55, 0.6);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+#audio-wave-canvas { width: 80px; height: 15px; margin-top: 2px; }
+
+.central { align-items: center; }
+#bpm-counter { color: #fff; font-family: 'Inter'; font-size: 10px; font-weight: bold; }
+
+.status-dot {
+    width: 4px; height: 4px; background: #D4AF37;
+    border-radius: 50%; box-shadow: 0 0 10px #D4AF37;
+    margin-bottom: 2px; animation: blink 1s infinite;
+}
+
+.action {
+    cursor: pointer; align-items: flex-end;
+}
+
+.ascend-icon-wrap {
+    width: 20px; height: 10px; margin-top: 2px;
+    transition: transform 0.3s ease;
+}
+
+.action:hover .ascend-icon-wrap { transform: translateY(-5px); }
+
+@keyframes blink { 50% { opacity: 0.3; } }
+
+
+#quantum-nav-container {
+    /* On garde la boîte serrée sur l'orbite */
+    height: 300px !important; 
+    
+    /* HAUT : On grappille encore (On passe de -180 à -210) */
+    /* C'est le réglage limite avant de toucher au texte du haut */
+    margin-top: -210px !important; 
+    
+    /* BAS : On rajoute le petit chouïa de vide (On passe de 60 à 80) */
+    /* Pour une délimitation bien nette avec la section suivante */
+    margin-bottom: 80px !important; 
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    perspective: 1000px;
+    touch-action: none;
+    position: relative;
+}
+
+
+
+
+#quantum-orbit {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 1px dashed rgba(10, 166, 166, 0.2);
+    transform-style: preserve-3d;
+}
+
+.nav-node {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #0AA6A6;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0AA6A6;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+.nav-node:hover, .nav-node:active {
+    background: #0AA6A6;
+    color: #000;
+    box-shadow: 0 0 20px #0AA6A6;
+    transform: scale(1.2);
+}
+
+.nav-node::after {
+    content: attr(data-label);
+    position: absolute;
+    top: 60px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    opacity: 0.7;
+}
+
+.quantum-core {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+}
+
+.core-ring {
+    width: 120px; height: 120px;
+    border: 2px solid #D4AF37;
+    border-radius: 50%;
+    animation: pulse 2s infinite alternate;
+}
+
+#neural-event-engine {
+    position: fixed; inset: 0; z-index: 10000;
+    background: radial-gradient(circle at center, rgba(15, 12, 5, 0.98) 0%, #000 100%);
+    display: none; opacity: 0; transition: opacity 1.5s ease;
+}
+
+#event-hud-ultra {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px; text-align: center; color: white;
+}
+
+#neural-artist-name {
+    font-family: 'Cinzel', serif; font-size: 2.5rem;
+    letter-spacing: 8px; margin: 20px 0;
+    background: linear-gradient(to bottom, #fff 0%, #D4AF37 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.neural-details {
+    display: flex; justify-content: space-around;
+    margin: 25px 0; border-top: 1px solid rgba(212, 175, 55, 0.2);
+    padding-top: 20px;
+}
+
+.n-label { display: block; font-size: 7px; color: #D4AF37; letter-spacing: 3px; }
+.n-val { font-size: 11px; font-weight: bold; letter-spacing: 1px; }
+
+#neural-bio-text {
+    font-size: 12px; color: rgba(255,255,255,0.7);
+    line-height: 1.6; font-style: italic; margin: 20px 0;
+}
+
+.btn-neural-gold {
+    background: #D4AF37; border: none; padding: 18px 40px;
+    font-weight: 900; font-size: 10px; letter-spacing: 4px;
+    cursor: pointer; box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+/* ... (garder le reste du CSS précédent) ... */
+
+.hud-top-bar {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 6px;
+    color: rgba(212, 175, 55, 0.6);
+    margin-bottom: 10px;
+}
+
+/* LE BOUTON : Forme biseautée ultra-stylée */
+.btn-premium-gold {
+    position: relative;
+    background: #D4AF37;
+    color: #000;
+    border: none;
+    padding: 20px 50px;
+    font-weight: 900;
+    font-size: 11px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    text-transform: uppercase;
+    /* Coupe les coins pour un look unique */
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.btn-premium-gold:hover {
+    background: #fff;
+    transform: scale(1.05) skewX(-2deg);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+}
+
+/* IGNORE : Discret et sans parenthèses moches */
+.ignore-command {
+    margin-top: 25px;
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: color 0.3s;
+    text-transform: uppercase;
+}
+
+.ignore-command:hover {
+    color: #D4AF37;
+}
+
+#neural-artist-name {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 12px;
+    margin: 15px 0;
+    /* Reflet métallique sur le nom */
+    background: linear-gradient(to bottom, #fff 20%, #D4AF37 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+}
+
+.digital-pass-card {
+    background: linear-gradient(135deg, #111 0%, #000 100%);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    padding: 0;
+    max-width: 350px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    overflow: hidden;
+}
+
+.pass-header {
+    background: rgba(212, 175, 55, 0.1);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.pass-body {
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.pass-info label {
+    display: block;
+    font-size: 0.5rem;
+    color: var(--gold);
+    margin-bottom: 5px;
+    letter-spacing: 3px;
+}
+
+.pass-info .val {
+    font-family: 'Cinzel';
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+.qr-code {
+    border: 5px solid #fff;
+    padding: 5px;
+    background: #fff;
+    width: 150px;
+    height: 150px;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.pass-footer {
+    display: flex;
+    border-top: 1px dashed rgba(212, 175, 55, 0.3);
+    padding: 15px;
+    justify-content: space-around;
+}
+
+.f-item label {
+    display: block;
+    font-size: 0.5rem;
+    opacity: 0.5;
+}
+
+.f-item span {
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.inst-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+    text-align: left;
+    max-width: 350px;
+    margin: 15px auto;
+}
+
+.inst-block .num {
+    color: var(--gold);
+    font-weight: bold;
+    border: 1px solid var(--gold);
+    padding: 2px 6px;
+    font-size: 0.6rem;
+}
+
+.inst-block p {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    line-height: 1.4;
+}
+
+/* Animation de chargement */
+.loader-gold {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(212, 175, 55, 0.1);
+    border-top: 2px solid var(--gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 100px auto 20px;
+}
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+
+.vip-filter-bar {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 4rem;
+    padding: 20px;
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-item label {
+    font-size: 0.55rem;
+    color: var(--gold);
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.filter-item select {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 12px;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    font-family: 'Cinzel', serif;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-item select:focus {
+    border-color: var(--gold);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.filter-item select option {
+    background: #0a0a0a; /* Fond des options pour rester dans le thème noir */
+    color: #fff;
+}
+
+/* Container principal */
+.event-page-wrapper { 
+    background: #000; 
+    color: #fff; 
+    padding: 20px; 
+    animation: fadeIn 0.8s ease;
+}
+
+/* Le titre redevient standard à ton site */
+.event-page-wrapper .title-page {
+    margin-bottom: 10px;
+}
+
+/* PRICING TABLE LUXE (L'ANCIENNE VERSION QUE TU ADORES) */
+.gold-pricing-grid {
+    display: flex;
+    gap: 20px;
+    margin: 40px auto;
+    max-width: 900px;
+    justify-content: center;
+}
+.price-item-premium {
+    flex: 1;
+    background: linear-gradient(145deg, #111, #000);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    transition: 0.5s;
+}
+.price-item-premium:hover { border-color: var(--gold); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1); }
+.price-item-premium::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--gold); transform: scaleX(0); transition: 0.5s; }
+.price-item-premium:hover::before { transform: scaleX(1); }
+
+/* Barre de filtres - POSITION FIXE EN HAUT */
+.smart-filter-bar {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    padding: 20px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filter-group {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-filter {
+    background: transparent;
+    border: 1px solid #222;
+    color: #666;
+    padding: 8px 15px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    cursor: pointer;
+    transition: 0.3s;
+    letter-spacing: 1px;
+}
+
+.btn-filter.active {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+/* Cartes Artistes Elite */
+.artist-card-exclusive {
+    display: grid;
+    grid-template-columns: 80px 1fr 150px;
+    align-items: center;
+    background: linear-gradient(145deg, #0a0a0a, #000);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 20px;
+    padding: 25px;
+    border-left: 3px solid var(--gold);
+}
+
+.city-badge-vertical {
+    font-size: 0.5rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+    font-weight: bold;
+    writing-mode: vertical-lr;
+    text-transform: uppercase;
+    opacity: 0.5;
+}
+
+.artist-content { padding: 0 30px; }
+
+.artist-artist-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    color: #fff;
+    margin: 5px 0;
+}
+
+@media (max-width: 700px) {
+    .gold-pricing-grid { flex-direction: column; }
+    .artist-card-exclusive { 
+        grid-template-columns: 1fr; 
+        text-align: center; 
+        gap: 15px;
+    }
+    .city-badge-vertical { writing-mode: horizontal-tb; border-right: none; border-bottom: 1px solid #222; padding-bottom: 10px; }
+    .artist-content { padding: 0; }
+}
+
+/* --- ALERTE OFFICIELLE BRADFORD --- */
+#official-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(15px);
+    z-index: 9999;
+    display: none; /* Lancé par JS */
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    overflow-y: auto;
+    font-family: 'Cinzel', serif;
+}
+
+.alert-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    position: relative;
+    background: linear-gradient(180deg, rgba(20, 20, 20, 1) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+
+.alert-header {
+    text-align: center;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.alert-badge {
+    color: #ff4d4d;
+    letter-spacing: 5px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border: 1px solid #ff4d4d;
+    padding: 5px 15px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.cancelled-artist {
+    font-size: 2.5rem;
+    color: #fff;
+    margin: 10px 0;
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+/* Section Accordéon Juridique */
+.legal-accordion {
+    margin-top: 30px;
+    border-top: 1px solid #222;
+}
+
+.legal-item {
+    border-bottom: 1px solid #222;
+}
+
+.legal-trigger {
+    width: 100%;
+    padding: 15px 0;
+    background: transparent;
+    border: none;
+    color: var(--gold);
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.legal-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    color: #888;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    line-height: 1.6;
+}
+
+.btn-close-alert {
+    margin-top: 40px;
+    width: 100%;
+    padding: 15px;
+    background: var(--gold);
+    color: #000;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+
+/* --- BRADFORD CONTACT : FINAL ARCHITECTURE --- */
+.brdf-contact-portal {
+    background: #000;
+    min-height: 100vh;
+    color: #fff;
+    padding-bottom: 100px;
+}
+
+/* BANDEAU LIVE (TON CODE) */
+.live-data-hub {
+    display: flex;
+    overflow-x: auto;
+    gap: 25px;
+    padding: 18px 20px;
+    background: #050505;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    position: relative;
+    z-index: 50;
+}
+.data-node { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 2px; color: #444; }
+.data-node b { color: #D4AF37; }
+
+
+
+/* FILTRAGE PRO (REDIMENSIONNÉ & EMBELLI) */
+.contact-filter-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 20px 60px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid #1a1a1a;
+    color: #444;
+    padding: 8px 16px; /* Taille réduite pour plus de finesse */
+    font-family: 'Cinzel';
+    font-size: 0.55rem; /* Typo plus petite = plus luxe */
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+}
+
+.filter-btn:hover {
+    color: #888;
+    border-color: #333;
+}
+
+.filter-btn.active {
+    border-color: #D4AF37;
+    color: #D4AF37;
+    background: rgba(212, 175, 55, 0.02);
+}
+
+/* GRID & CARTES (V8) */
+.contact-grid {
+    padding: 0 20px;
+    display: grid;
+    gap: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-card-v8 {
+    background: linear-gradient(145deg, #0a0a0a 0%, #020202 100%);
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    padding: 40px 30px;
+    position: relative;
+}
+
+.dept-name {
+    font-family: 'Cinzel';
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.dept-desc {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 30px;
+}
+
+/* ACTIONS DE CONTACT */
+.contact-action-btn {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid #111;
+    padding: 15px 20px;
+    transition: 0.3s;
+}
+
+.contact-action-btn:active { border-color: #D4AF37; }
+
+.action-label {
+    font-family: 'Cinzel';
+    font-size: 0.55rem;
+    color: #D4AF37;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.action-value {
+    font-family: 'Courier New';
+    font-size: 0.85rem;
+    color: #fff;
+    word-break: break-all;
+}
+
+/* FORMULAIRE SÉCURISÉ */
+.secure-form-container {
+    margin-top: 100px;
+    padding: 80px 20px;
+    background: #030303;
+    border-top: 1px solid #111;
+}
+
+.form-input-box {
+    border-bottom: 1px solid #222;
+    padding: 10px 0;
+    transition: 0.3s;
+}
+
+.form-input-box:focus-within {
+    border-color: #D4AF37;
+}
+
+/* --- SECTION 1 : ESTHÉTIQUE BRADFORD ELITE --- */
+.main-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Deux colonnes pour un look pro */
+    gap: 1px; /* Crée les séparateurs via le background */
+    background: rgba(212, 175, 55, 0.1); /* Couleur des lignes de séparation */
+    max-width: 600px;
+    margin: 40px auto 80px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.info-node {
+    background: #000; /* Fond noir pour chaque cellule */
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* On fait prendre toute la largeur à l'adresse */
+.info-node.full-width {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.label-discret {
+    font-family: 'Cinzel';
+    font-size: 0.5rem;
+    color: #D4AF37;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0.6;
+}
+
+.info-value {
+    font-family: 'Inter';
+    font-size: 0.9rem;
+    color: #fff;
+    letter-spacing: 1px;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+.btn-location-luxury {
+    display: inline-block;
+    margin-top: 15px;
+    font-family: 'Cinzel';
+    font-size: 0.55rem;
+    color: #fff;
+    letter-spacing: 2px;
+    text-decoration: none;
+    border-bottom: 1px solid #D4AF37;
+    padding-bottom: 4px;
+    width: fit-content;
+    transition: 0.3s;
+}
+
+.btn-location-luxury:active {
+    opacity: 0.5;
+    letter-spacing: 4px;
+}
+
+.dress-code-wrapper { background: #000; color: #fff; min-height: 100vh; padding: 30px 20px; font-family: 'Inter', sans-serif; }
+
+.style-category { border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding: 30px 0; cursor: pointer; }
+.category-title { font-family: 'Cinzel'; font-size: 0.9rem; letter-spacing: 3px; color: #D4AF37; }
+.category-content { max-height: 0; overflow: hidden; transition: max-height 0.6s ease-out; color: #888; font-size: 0.85rem; line-height: 1.8; }
+.category-content.active { max-height: 1000px; padding-top: 25px; }
+
+/* La Machine Colossale */
+.analyzer-unit { margin: 50px 0; padding: 30px; background: #050505; border: 1px solid #111; position: relative; }
+.analyzer-label { font-family: 'Cinzel'; font-size: 0.65rem; color: #D4AF37; letter-spacing: 3px; display: block; margin-bottom: 20px; }
+.brdf-select { width: 100%; background: #000; border: 1px solid #222; color: #fff; padding: 15px; font-size: 0.75rem; margin-bottom: 12px; outline: none; appearance: none; }
+.brdf-select:focus { border-color: #D4AF37; }
+.analyzer-input { width: 100%; background: #000; border: 1px solid #222; color: #fff; padding: 15px; font-size: 0.8rem; height: 100px; resize: none; outline: none; margin-top: 20px; }
+.ban-zone {
+    margin-top: 50px;
+    background: #050505;
+    padding: 30px;
+    border: 1px solid #111;
+}
+
+.visual-item {
+    display: inline-block;
+    padding: 5px 12px;
+    border: 1px solid #222;
+    margin: 5px 3px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.splitter-wrapper {
+    background: #000;
+    padding: 25px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+.financial-module {
+    border: 1px solid #1a1a1a;
+    background: rgba(5, 5, 5, 0.9);
+    padding: 20px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.module-header {
+    font-family: 'Cinzel';
+    font-size: 0.6rem;
+    color: #D4AF37;
+    letter-spacing: 3px;
+    border-bottom: 1px solid #111;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.55rem;
+    color: #444;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.brdf-field {
+    width: 100%;
+    background: #000;
+    border: 1px solid #222;
+    color: #D4AF37;
+    padding: 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.equity-slider {
+    width: 100%;
+    accent-color: #D4AF37;
+    margin: 10px 0;
+}
+
+.live-output {
+    margin-top: 30px;
+    border-top: 2px double #1a1a1a;
+    padding-top: 20px;
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    margin-bottom: 8px;
+    font-family: 'Courier New';
+}
+
+
+
+
+.floating-prestige-bar {
+    position: sticky;
+    /* On la remonte un chouïa en position initiale (48 au lieu de 52) */
+    top: 48vh; 
+    z-index: 998;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 100px;
+    margin: 0 auto;
+    width: 70%;
+    height: 60px;
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+    /* Transition un peu plus douce pour le "chouïa" */
+    transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+
+
+/* BOUTONS RONDS & CHECKMARK (RETOUR À LA PERFECTION) */
+.check-circle {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    border-radius: 50%;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-selected .check-circle {
+    background: var(--gold);
+    border-color: var(--gold);
+}
+
+.check-circle::after {
+    content: '';
+    width: 5px;
+    height: 10px;
+    border: solid #000;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(0);
+    transition: 0.2s;
+}
+
+.is-selected .check-circle::after {
+    transform: rotate(45deg) scale(1);
+}
+
+/* ACCORDÉON DÉTAILLÉ */
+.addon-card-refined {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 5px 0;
+}
+
+.trigger-zone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    cursor: pointer;
+}
+
+.description-drawer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+    padding-left: 48px; /* Alignement parfait sous le texte */
+}
+
+.description-drawer.expanded {
+    max-height: 300px;
+    padding-bottom: 25px;
+}
+
+/* TERMINAL DE PAIEMENT SÉRIEUX */
+.input-card-pro {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #222;
+    color: #fff;
+    padding: 15px 0;
+    margin-bottom: 25px;
+    outline: none;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    font-family: 'Inter', sans-serif;
+}
+
+.input-card-pro:focus {
+    border-color: var(--gold);
+}
+
+.official-menu-section {
+    margin-bottom: 70px;
+    animation: fadeIn 0.8s ease;
+}
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+@media (max-width: 768px) {
+    .menu-grid { grid-template-columns: 1fr; }
+}
+.dot-leader {
+    flex-grow: 1;
+    border-bottom: 1px dotted rgba(212, 175, 55, 0.2);
+    margin: 0 10px;
+    position: relative;
+    top: -4px;
+}
+
+
+/* --- Footer --- */
+.footer {
+    background-color: var(--navy);
+    border-top: 1px solid var(--gold);
+    padding: 30px 5%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 50px;
+}
+
+.footer-links a {
+    color: var(--ivory);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+}

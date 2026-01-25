@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bradford Nightclub - L'Expérience Ultra-Luxe</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div id="bradford-cinematic-loader">
+    <div class="stars-overlay"></div>
+    <div class="loader-content">
+        <div class="logo-wrapper">
+            <h1 class="main-title">THE BRADFORD</h1>
+            <h2 class="sub-title">NIGHTCLUB</h2>
+        </div>
+        <div class="status-container">
+            <div class="loading-bar-container">
+                <div class="loading-bar-fill"></div>
+            </div>
+            <p class="excellence-tag">PRIVATE ACCESS ONLY • ELITE PROTOCOL</p>
+        </div>
+    </div>
+</div>
+
+
+
+<header class="header" id="mainHeader">
+
+
+<div class="logo-wrapper" onclick="navigate('home'); window.scrollTo(0, 0);" style="cursor: pointer;">
+    <span class="brd-main">BRADFORD</span>
+    <span class="brd-night">Nightclub</span>
+</div>
+
+    
+    <nav class="nav-links">
+        <button onclick="navigate('home')">HOME</button>
+        <button onclick="navigate('menu')">BOTTLE MENU</button>
+        <button onclick="openPolicyMenu()">POLICY & GUIDES</button>
+        <button onclick="navigate('events')">EVENTS</button>
+        <button onclick="navigate('gallery')">GALLERY</button>
+        <button onclick="navigate('contact')">CONTACT</button>
+        <button onclick="navigate('reservations')" class="btn-reserve">RESERVE</button>
+    </nav>
+
+    <div class="menu-toggle" onclick="toggleEliteMenu(true)">
+        <span></span><span></span><span></span>
+    </div>
+</header>
+
+<div id="navOverlay">
+    <div onclick="toggleEliteMenu(false)" style="position:absolute; top:30px; right:35px; color:var(--gold); font-size:2.5rem; cursor:pointer;">×</div>
+    
+    <a href="#" class="overlay-link" onclick="closeAndNav('home')">HOME</a>
+    <a href="#" class="overlay-link" onclick="closeAndNav('menu')">BOTTLES</a>
+    
+<a href="javascript:void(0)" class="overlay-link" onclick="triggerPolicyFromMenu(event)">POLICY</a>
+
+
+
+    
+    <a href="#" class="overlay-link" onclick="closeAndNav('events')">EVENTS</a>
+    <a href="#" class="overlay-link" onclick="closeAndNav('gallery')">GALLERY</a>
+    <a href="#" class="overlay-link" onclick="closeAndNav('contact')">CONTACT</a>
+    <a href="#" class="overlay-link" onclick="closeAndNav('reservations')" style="color:var(--gold); border:1px solid var(--gold); padding:10px 30px; border-radius:40px; margin-top:10px;">RESERVE</a>
+</div>
+
+
+
+
+
+
+
+<div id="official-alert-overlay"></div>
+
+<div id="gallery-content-container">
+    </div>
+<canvas id="particle-canvas"></canvas>
+
+<div id="neural-event-engine">
+    <canvas id="event-canvas"></canvas>
+
+
+
+    
+    <div id="event-hud-ultra">
+        <div class="hud-top-bar">BRADFORD EXCLUSIVE</div>
+        
+        <h1 id="neural-artist-name">---</h1>
+        
+        <div class="neural-details">
+            <div class="n-block">
+                <span class="n-label">LOCATION</span>
+                <span id="n-location" class="n-val">---</span>
+            </div>
+            <div class="n-block">
+                <span class="n-label">PRÉVENTE</span>
+                <span id="n-price" class="n-val">---</span>
+            </div>
+        </div>
+
+        <div id="neural-bio-container">
+            <p id="neural-bio-text">---</p>
+        </div>
+
+        <div class="neural-actions">
+            <button class="btn-premium-gold" onclick="teleportToBooking()">
+                RÉSERVER L'ACCÈS VIP
+            </button>
+            <div class="ignore-command" onclick="window.scrollTo(0,0); shutdownEngine();">
+                Passer l'introduction
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+     <div id="app-content" class="app-content">
+    </div>
+<div id="evenement-widget">
+            <h2 id="widget-title">Chargement des événements...</h2>
+            <div id="evenement-liste">
+                </div>
+            <p class="widget-note">Faites défiler pour voir toutes les villes.</p>
+        </div>
+
+      <div id="app-content" class="app-content">
+    </div>
+
+
+<section id="quantum-nav-container">
+    <div id="quantum-orbit">
+        <div class="nav-node" onclick="navigate('menu'); window.scrollTo(0,0);" data-label="BOTTLES"><span>01</span></div>
+        <div class="nav-node" onclick="navigate('reservations'); window.scrollTo(0,0);" data-label="RESERVE"><span>02</span></div>
+        <div class="nav-node" onclick="navigate('events'); window.scrollTo(0,0);" data-label="EVENTS"><span>03</span></div>
+        <div class="nav-node" onclick="navigate('gallery'); window.scrollTo(0,0);" data-label="GALLERY"><span>04</span></div>
+        <div class="nav-node" onclick="navigate('contact'); window.scrollTo(0,0);" data-label="CONTACT"><span>05</span></div>
+        
+        <div class="quantum-core">
+            <div class="core-ring"></div>
+            <div class="core-text">BRADFORD</div>
+        </div>
+    </div>
+</section>
+
+
+    <div id="artist-detail-page" class="detail-page" style="display: none;">
+        </div>
+    <section class="bradford-elite-hub">
+    <div class="hub-dashboard">
+        <div class="dashboard-left">
+            <h2 class="title-gold" style="margin-bottom: 20px;">THE RECORDS</h2>
+            <div class="main-rating" style="margin-bottom: 10px;">
+                <span id="live-avg">4.82</span>
+                <div class="stars-wrap" style="letter-spacing: 5px;">★★★★★</div>
+            </div>
+            <p class="count-label" style="margin-top: 15px;"><span id="live-counter">56715</span> VERIFIED ENTRIES</p>
+        </div>
+        <div class="dashboard-right">
+            <button class="btn-refine" onclick="openNav()">REFINE SEARCH</button>
+        </div>
+    </div>
+
+    <div class="stats-bars" id="statsBars" style="margin-top: 40px; margin-bottom: 50px;"></div>
+
+    <div class="reviews-wall" id="masterWall"></div>
+    
+
+
+    <div class="static-action-area">
+        <button class="btn-sign-static" onclick="openWriteForm()">SIGN THE GUESTBOOK</button>
+    </div>
+</section>
+
+<div id="filterNav" class="sidenav">
+    <div class="sidenav-inner">
+        <div class="nav-header"><h3>FILTERS</h3><span class="close-btn" onclick="closeNav()">✕</span></div>
+        <div class="nav-body">
+            <div class="f-box"><label>LOCATION</label>
+                <select id="f-city">
+                    <option value="all">GLOBAL ARCHIVES</option>
+                    <option value="NY">NEW YORK CITY</option>
+                    <option value="LA">LOS ANGELES</option>
+                    <option value="SF">SAN FRANCISCO</option>
+                    <option value="MIA">MIAMI</option>
+                </select>
+            </div>
+            <div class="f-box"><label>EXPERIENCE LEVEL</label>
+                <select id="f-stars">
+                    <option value="all">ALL RATINGS</option>
+                    <option value="5">5★ PINNACLE</option>
+                    <option value="4">4★ EXCELLENT</option>
+                    <option value="3">3★ AVERAGE</option>
+                    <option value="2">2★ CRITICAL</option>
+                    <option value="1">1★ POOR</option>
+                </select>
+            </div>
+            <div class="f-box"><label>SORTING</label>
+                <select id="f-order">
+                    <option value="new">MOST RECENT</option>
+                    <option value="old">ARCHIVES</option>
+                </select>
+            </div>
+            <button class="btn-apply" onclick="applyFilters()">APPLY SETTINGS</button>
+        </div>
+    </div>
+</div>
+
+<div id="writePanel" class="write-panel">
+    <div class="write-inner">
+        <div class="nav-header"><h3>NEW LEGACY</h3><span class="close-btn" onclick="closeWriteForm()">✕</span></div>
+        <input type="text" id="g-name" placeholder="IDENTIFICATION" class="b-input">
+        <select id="g-city" class="b-input">
+            <option>NEW YORK</option><option>LOS ANGELES</option>
+            <option>SAN FRANCISCO</option><option>MIAMI</option>
+        </select>
+        <select id="g-stars" class="b-input" style="color: var(--gold);">
+            <option value="5">★★★★★ (5 Stars)</option>
+            <option value="4">★★★★☆ (4 Stars)</option>
+            <option value="3">★★★☆☆ (3 Stars)</option>
+            <option value="2">★★☆☆☆ (2 Stars)</option>
+            <option value="1">★☆☆☆☆ (1 Star)</option>
+        </select>
+        <textarea id="g-msg" placeholder="YOUR TESTIMONY..." class="b-input" style="height:120px"></textarea>
+        <button class="btn-apply" onclick="pushReview()">TRANSMIT</button>
+    </div>
+</div>
+
+    <main> 
+    <div id="protocol-forms">
+        
+        <section id="feedback-protocol" class="protocol-container">
+            <h2>Protocole de Service</h2>
+            <form id="commentForm">
+                <label for="commentText">Vos observations :</label>
+                <textarea id="commentText" rows="3" required></textarea>
+                
+                <div class="rating">
+                    <label>Évaluation d'Excellence :</label>
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                    <input type="hidden" id="ratingValue" value="0" />
+                </div>
+                
+                <button type="submit">Soumettre le Rapport</button>
+                <div style="clear: both;"></div>
+            </form>
+        </section>
+
+        <section id="contact-concierge" class="protocol-container">
+            <h2>Requête Concierge</h2>
+            <form id="contactForm">
+                <label for="email">Email Privé :</label>
+                <input type="email" id="email" required>
+                <label for="message">Sujet de la Requête :</label>
+                <textarea id="message" rows="2" required></textarea>
+                <button type="submit">Transmettre au Host</button>
+                <div style="clear: both;"></div>
+            </form>
+        </section>
+
+        <section id="login-dashboard" class="protocol-container">
+            <h2>Accès Membre</h2>
+            <form id="loginForm">
+                <label for="emailLogin">Identifiant :</label>
+                <input type="email" id="emailLogin" required>
+                <label for="passwordLogin">Code d'Accès :</label>
+                <input type="password" id="passwordLogin" required>
+                <button type="submit">Connexion</button>
+                <div style="clear: both;"></div>
+            </form>
+        </section>
+        
+        <p style="text-align: center; margin-top: -15px;">
+                <div style="text-align: center; margin-top: 25px; margin-bottom: 60px;">
+          <button class="accreditation-cta" onclick="openMembershipModal()">
+    Demander le Statut Membre
+</button>
+        </div>
+
+<div id="membershipModal" class="vip-modal-backdrop">
+    <div class="vip-modal-content protocol-container">
+        
+        <span class="close-btn-accreditation" onclick="closeMembershipModal()">&times;</span>
+        
+        <header style="text-align: center; margin-bottom: 30px;">
+            <h2 style="font-size: 1.8rem;">Protocole d'Adhésion</h2>
+            <p style="color: var(--teal); font-family: 'Cinzel', serif; letter-spacing: 3px; font-size: 0.9rem;">
+                Accès Restreint. Statut Élite.
+            </p>
+        </header>
+
+        <p style="color: var(--ivory); font-size: 1rem; line-height: 1.5; margin-bottom: 30px;">
+            Devenir membre du Bradford Nightclub n'est pas une simple adhésion ; c'est une accréditation à un cercle ultra-privilégié. Ce statut garantit un accès instantané aux soirées sur liste, des privilèges de réservation exclusifs et un service de conciergerie de niveau supérieur.
+        </p>
+
+        <div class="membership-fee-display">
+            <span class="fee-label">Cotisation Annuelle :</span>
+            <span class="fee-value">$25,000 USD</span>
+            <span class="fee-note" style="color: var(--teal); font-size: 0.8rem; display: block; margin-top: 5px;">
+                (Frais de dossier inclus. Soumis à approbation du comité.)
+            </span>
+        </div>
+        
+        <form id="adhesionForm" style="margin-top: 30px;">
+            <label for="referenceCode">Code de Référence (Obligatoire) :</label>
+            <input type="text" id="referenceCode" required>
+            
+            <button type="submit" style="width: 100%; float: none;">Démarrer la Procédure d'Accréditation</button>
+        </form>
+
+ </form>
+<span class="close-btn-accreditation" onclick="closeMembershipModal()">&times;</span>
+    </div>
+</div>
+
+    </div>
+</main>
+
+        </p>
+    </div>
+</main>
+    
+<div id="bradford-nerve-center">
+    <div class="nerve-blur"></div>
+    <div class="nerve-content">
+        <div class="nerve-section">
+            <span class="nerve-label">AUDIO FREQUENCY</span>
+            <canvas id="audio-wave-canvas"></canvas>
+        </div>
+
+        <div class="nerve-section central">
+            <div class="status-dot"></div>
+            <span class="nerve-label">SYSTEM : OPTIMAL</span>
+            <span id="bpm-counter">124 BPM</span>
+        </div>
+
+        <div class="nerve-section action" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+            <span class="nerve-label">ASCEND PROTOCOL</span>
+            <div class="ascend-icon-wrap">
+                <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h16l-8-8z" fill="#D4AF37"/></svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <footer id="app-footer" class="footer">
+    </footer>
+ <button class="floating-concierge-btn" onclick="navigate('concierge');window.scrollTo(0,0);">
+    Concierge Privé
+</button>
+<button id="scrollToTopBtn" class="scroll-to-top-btn" title="Retour en haut">^</button>
+<div id="premium-scroll-indicator-v2">
+  <div id="premium-progress-bar-v2"></div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
