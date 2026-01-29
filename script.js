@@ -1017,8 +1017,11 @@ function mettreAJourWidget() {
     // 1. Trouver le premier jour de programmation
     const datesUniques = [...new Set(donneesEvenements.map(e => e.date))].sort();
     
-    let prochainJourDeProg = null;
-    const dateActuelleEnMillis = dateActuelle.getTime();
+        let prochainJourDeProg = null;
+    // On récupère l'heure de Miami et on la force à minuit pile pour ne plus avoir le décalage
+    const heureMiami = new Date(new Date().toLocaleString("en-US", {timeZone: "America/New_York"}));
+    const dateActuelleEnMillis = heureMiami.setHours(0, 0, 0, 0);
+
     
     for (const dateStr of datesUniques) {
         // Crée une date à minuit pour une comparaison juste
