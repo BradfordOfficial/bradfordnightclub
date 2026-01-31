@@ -3240,7 +3240,13 @@ function renderContactPage() {
                     <label style="font-family:'Cinzel'; font-size:0.6rem; color:#D4AF37; letter-spacing:2px;">MESSAGE</label>
                     <textarea placeholder="DESCRIBE YOUR REQUEST..." style="background:none; border:none; color:#fff; width:100%; height:80px; padding-top:10px; outline:none; resize:none; font-family:'Inter';"></textarea>
                 </div>
-                <button style="background:transparent; border:1px solid #D4AF37; color:#D4AF37; padding:20px; font-family:'Cinzel'; letter-spacing:5px; font-size: 0.7rem; cursor: pointer;">TRANSMIT DATA</button>
+                    <button 
+    onclick="renderSecureInquiry()" 
+    style="background:transparent; border:1px solid #D4AF37; color:#D4AF37; padding:20px; font-family:'Cinzel'; letter-spacing:5px; font-size: 0.7rem; cursor: pointer; transition: 0.3s;"
+    onmouseover="this.style.background='rgba(212,175,55,0.1)'" 
+    onmouseout="this.style.background='transparent'">
+    TRANSMIT DATA
+</button>
             </div>
         </section>
 
@@ -3970,6 +3976,242 @@ function renderBradfordGallery() {
     updateView('ALL');
     window.scrollTo(0, 0);
 }
+
+
+// GARDE BIEN CE NOM DE FONCTION
+function renderSecureInquiry() {
+    const style = `
+    <style>
+        /* Overlay de chargement haute technologie */
+        #protocol-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #000; z-index: 10000; display: none;
+            align-items: center; justify-content: center; flex-direction: column;
+        }
+        
+        .pulse-loader {
+            width: 80px; height: 80px; border: 1px solid var(--gold);
+            border-radius: 50%; position: relative;
+            animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.33); opacity: 1; }
+            80%, 100% { opacity: 0; }
+        }
+
+        /* La Page de Succès Royale */
+        #bradford-success-page {
+            background: #000; min-height: 100vh; width: 100%;
+            display: flex; flex-direction: column; align-items: center;
+            justify-content: center; padding: 20px; box-sizing: border-box;
+            font-family: 'Cinzel', serif; overflow: hidden;
+        }
+
+        .success-content {
+            max-width: 800px; width: 100%; text-align: center;
+            position: relative; padding: 4rem 2rem;
+            border-left: 1px solid rgba(212,175,55,0.3);
+            border-right: 1px solid rgba(212,175,55,0.3);
+            background: linear-gradient(180deg, rgba(5,5,5,0) 0%, rgba(10,10,10,0.8) 50%, rgba(5,5,5,0) 100%);
+        }
+
+        .protocol-title {
+            font-size: clamp(1.2rem, 5vw, 2.5rem); color: var(--gold);
+            letter-spacing: 15px; text-transform: uppercase; margin-bottom: 30px;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+            opacity: 0; transform: translateY(20px);
+        }
+
+        .status-confirmed {
+            color: var(--teal); font-size: 0.7rem; letter-spacing: 5px;
+            margin-bottom: 50px; display: flex; align-items: center; justify-content: center; gap: 10px;
+        }
+
+        .protocol-body {
+            font-family: 'Inter', sans-serif; color: #888; line-height: 2.2;
+            font-size: 0.85rem; letter-spacing: 1px; max-width: 500px; margin: 0 auto 60px;
+            opacity: 0;
+        }
+
+        /* Bouton Retour Premium */
+        .btn-home {
+            background: transparent; border: 1px solid var(--gold); color: var(--gold);
+            padding: 20px 50px; font-family: 'Cinzel'; font-size: 0.7rem;
+            letter-spacing: 6px; cursor: pointer; transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            position: relative; overflow: hidden;
+        }
+
+        .btn-home:hover {
+            background: var(--gold); color: #000; box-shadow: 0 0 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Animations de texte type Matrix/Terminal */
+        .reveal-text { animation: revealText 1.5s ease forwards; }
+        @keyframes revealText { to { opacity: 1; transform: translateY(0); } }
+        
+        .grid-bg {
+            position: absolute; width: 100%; height: 100%; top: 0; left: 0;
+            background-image: linear-gradient(rgba(212,175,55,0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(212,175,55,0.05) 1px, transparent 1px);
+            background-size: 50px 50px; pointer-events: none; opacity: 0.3;
+        }
+    </style>
+    <div id="protocol-overlay"><div class="pulse-loader"></div><p id="overlay-status" style="font-family:'Cinzel'; color:var(--gold); margin-top:20px; font-size:0.6rem; letter-spacing:4px;"></p></div>
+    `;
+
+    // 1. ANIMATION DU BOUTON (L'effet que tu kiffes)
+    const btn = document.querySelector('.transmit-btn') || event.target;
+    btn.disabled = true;
+    btn.innerHTML = "ENCRYPTING...";
+    btn.style.borderColor = "var(--gold)";
+
+    setTimeout(() => {
+        btn.innerHTML = "DATA TRANSMITTED";
+        btn.style.color = "var(--teal)";
+        btn.style.borderColor = "var(--teal)";
+
+        // 2. LATENCE ET CHARGEMENT DE LA PAGE
+        setTimeout(() => {
+            const overlay = document.getElementById('protocol-overlay');
+            if(!overlay) { // Si l'overlay n'est pas dans le DOM, on l'ajoute
+                document.body.insertAdjacentHTML('afterbegin', style);
+            }
+            const activeOverlay = document.getElementById('protocol-overlay');
+            activeOverlay.style.display = 'flex';
+            
+            // Simulation de séquence de boot
+            const status = document.getElementById('overlay-status');
+            const sequences = ["ESTABLISHING UPLINK...", "SECURING DATA PACKETS...", "BRADFORD SERVERS REACHED"];
+            let seqIndex = 0;
+            
+            const seqInterval = setInterval(() => {
+                status.innerText = sequences[seqIndex];
+                seqIndex++;
+                if(seqIndex >= sequences.length) {
+                    clearInterval(seqInterval);
+                    setTimeout(() => renderOfficialSuccess(), 800);
+                }
+            }, 600);
+
+        }, 1200);
+    }, 2000);
+}
+
+function renderOfficialSuccess() {
+    // 1. Nettoyage et Reset Position
+    const overlay = document.getElementById('protocol-overlay');
+    if(overlay) overlay.remove();
+    window.scrollTo(0, 0);
+
+    // 2. Génération des données dynamiques
+    const now = new Date();
+    const timestamp = now.getHours() + ":" + (now.getMinutes()<10?'0':'') + now.getMinutes();
+    const dateStr = now.toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
+
+    const style = `
+    <style>
+        #bradford-success-page {
+            background: #000; min-height: 100vh; width: 100%; position: relative;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 20px; box-sizing: border-box; color: #fff;
+        }
+
+        .interface-frame {
+            width: 100%; max-width: 450px; border: 1px solid rgba(212,175,55,0.15);
+            background: #050505;
+            padding: 50px 25px; position: relative; box-shadow: 0 0 40px rgba(0,0,0,1);
+            animation: frameEntry 0.8s ease-out;
+        }
+
+        @keyframes frameEntry { from { opacity: 0; } to { opacity: 1; } }
+
+        .metrics-bar {
+            display: flex; justify-content: space-between; border-bottom: 1px solid rgba(212,175,55,0.1);
+            padding-bottom: 12px; margin-bottom: 35px; font-family: 'Inter', sans-serif; font-size: 0.55rem;
+            color: #555; letter-spacing: 2px;
+        }
+
+        .main-title-luxury {
+            font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--gold);
+            letter-spacing: 6px; text-transform: uppercase; margin: 25px 0;
+            line-height: 1.4;
+        }
+
+        .data-viz {
+            width: 100%; height: 1px; background: #1a1a1a; margin: 35px 0; position: relative;
+        }
+        .data-progress {
+            position: absolute; left: 0; top: 0; height: 100%; width: 0%;
+            background: var(--gold);
+            animation: progressFill 2s ease-in-out forwards;
+        }
+        @keyframes progressFill { to { width: 100%; } }
+
+        .info-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 25px; text-align: left;
+            margin: 40px 0; font-family: 'Inter', sans-serif;
+        }
+        .info-item label { display: block; font-size: 0.5rem; color: #444; letter-spacing: 2px; margin-bottom: 5px; text-transform: uppercase; }
+        .info-item span { font-size: 0.65rem; color: #aaa; letter-spacing: 1px; }
+
+        .btn-home-secure {
+            width: 100%; background: transparent; border: 1px solid var(--gold);
+            color: var(--gold); padding: 22px; font-family: 'Cinzel';
+            font-size: 0.7rem; letter-spacing: 5px; cursor: pointer;
+            transition: 0.4s; margin-top: 10px; text-transform: uppercase;
+        }
+        .btn-home-secure:active { background: var(--gold); color: #000; }
+    </style>`;
+
+    APP_CONTENT.innerHTML = style + `
+    <div id="bradford-success-page">
+        <div class="interface-frame">
+            
+            <div class="metrics-bar">
+                <span>INQUIRY ID: #${Math.floor(1000 + Math.random() * 9000)}</span>
+                <span>STATUS: ARCHIVED</span>
+            </div>
+
+            <div style="color:#aaa; font-family:'Cinzel'; font-size:0.6rem; letter-spacing:3px;">CONFIRMATION PRÉFECTORALE</div>
+            <h1 class="main-title-luxury">REQUÊTE<br>ENREGISTRÉE</h1>
+
+            <div class="data-viz"><div class="data-progress"></div></div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <label>HEURE D'ENVOI</label>
+                    <span>${timestamp} LMT</span>
+                </div>
+                <div class="info-item">
+                    <label>DATE DE RÉCEPTION</label>
+                    <span>${dateStr}</span>
+                </div>
+                <div class="info-item">
+                    <label>BUREAU</label>
+                    <span>BRADFORD HEADQUARTERS</span>
+                </div>
+                <div class="info-item">
+                    <label>DOSSIER</label>
+                    <span>#${Math.floor(Math.random() * 1000)}/VIP</span>
+                </div>
+            </div>
+
+            <p style="font-size:0.7rem; color:#555; line-height:2; margin-bottom:45px; font-family:'Inter'; font-style: italic;">
+                Votre demande a été transmise avec succès aux archives privées du Bradford. Un responsable de la conciergerie traitera votre dossier dans les plus brefs délais.
+            </p>
+
+            <button class="btn-home-secure" onclick="window.scrollTo(0,0); navigate('home')">
+                RETURN TO HOME
+            </button>
+        </div>
+
+        <div style="margin-top:40px; font-family:'Cinzel'; font-size:0.5rem; color:#333; letter-spacing:4px;">
+            THE BRADFORD — OFFICIAL CONCIERGERIE 2026
+        </div>
+    </div>`;
+}
+
 
 
 
