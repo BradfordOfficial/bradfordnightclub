@@ -3885,133 +3885,110 @@ window.addEventListener('scroll', function() {
 });
 
 function renderBradfordGallery() {
-    // 1. DATA (Tes fichiers bruts)
-    const rawFiles = [
-        'Los Angeles/LA_Bradford_inside_02.jpeg', 'Los Angeles/LA_Bradford_inside_03.jpeg',
-        'Los Angeles/LA_Bradford_inside_04.jpeg', 'Los Angeles/LA_Bradford_inside_05.jpeg',
-        'Los Angeles/LA_Bradford_inside_06.jpeg', 'Los Angeles/LA_Bradford_inside_07.jpeg',
-        'Los Angeles/LA_Bradford_inside_08.jpeg', 'Los Angeles/LA_Bradford_deventure_01.jpeg',
-        'Los Angeles/LA_Bradford_deventure_02.jpeg', 'Los Angeles/LA_Bradford_deventure_03.jpeg',
-        'Los Angeles/LA_Bradford_deventure_foule_01.jpeg', 'Los Angeles/LA_Bradford_deventure_foule_02.jpeg',
-        'Miami/Miami_Bradford_deventure_01.jpeg', 'Miami/Miami_Bradford_deventure_02.jpeg',
-        'Miami/Miami_Bradford_deventure_03.jpeg', 'Miami/Miami_Bradford_deventure_04.jpeg',
-        'Miami/Miami_Bradford_deventure_05.jpeg', 'Miami/Miami_Bradford_deventure_06.jpeg',
-        'Miami/Miami_Bradford_deventure_07.jpeg', 'Miami/Miami_Bradford_deventure_foule_01.jpeg',
-        'Miami/Miami_Bradford_deventure_foule_02.jpeg', 'Miami/Miami_Bradford_deventure_foule_03.jpeg',
-        'New York/NY_Bradford_deventure_01.jpeg', 'New York/NY_Bradford_deventure_02.jpeg',
-        'New York/NY_Bradford_deventure_03.jpeg', 'New York/NY_Bradford_deventure_04.jpeg',
-        'New York/NY_Bradford_deventure_foule_01.jpeg', 'San Francisco/SF_Bradford_deventure_01.jpeg',
-        'San Francisco/SF_Bradford_deventure_02.jpeg', 'San Francisco/SF_Bradford_deventure_03.jpeg',
-        'San Francisco/SF_Bradford_deventure_foule_01.jpeg', 'San Francisco/SF_Bradford_deventure_foule_02.jpeg'
-    ];
+    // --- 1. CONFIGURATION AUTOMATIQUE (À MODIFIER ICI) ---
+    // Remplace UNIQUEMENT 'TON_NOM_USER' par ton pseudo GitHub et 'TON_REPO' par le nom de ton projet
+    const GITHUB_ROOT = "https://raw.githubusercontent.com/BradfordOfficial/bradfordnightclub/main/"; 
+
+    const galleryDatabase = {
+        "INSIDE": [
+            'Los Angeles/LA_Bradford_inside_02.jpeg', 'Los Angeles/LA_Bradford_inside_03.jpeg',
+            'Los Angeles/LA_Bradford_inside_04.jpeg', 'Los Angeles/LA_Bradford_inside_05.jpeg',
+            'Los Angeles/LA_Bradford_inside_06.jpeg', 'Los Angeles/LA_Bradford_inside_07.jpeg',
+            'Los Angeles/LA_Bradford_inside_08.jpeg'
+        ],
+        "ARCHITECTURE": [
+            'Los Angeles/LA_Bradford_deventure_01.jpeg', 'Los Angeles/LA_Bradford_deventure_02.jpeg',
+            'Los Angeles/LA_Bradford_deventure_03.jpeg', 'Miami/Miami_Bradford_deventure_01.jpeg',
+            'Miami/Miami_Bradford_deventure_02.jpeg', 'Miami/Miami_Bradford_deventure_03.jpeg',
+            'Miami/Miami_Bradford_deventure_04.jpeg', 'Miami/Miami_Bradford_deventure_05.jpeg',
+            'Miami/Miami_Bradford_deventure_06.jpeg', 'Miami/Miami_Bradford_deventure_07.jpeg',
+            'New York/NY_Bradford_deventure_01.jpeg', 'New York/NY_Bradford_deventure_02.jpeg',
+            'New York/NY_Bradford_deventure_03.jpeg', 'New York/NY_Bradford_deventure_04.jpeg',
+            'San Francisco/SF_Bradford_deventure_01.jpeg', 'San Francisco/SF_Bradford_deventure_02.jpeg',
+            'San Francisco/SF_Bradford_deventure_03.jpeg'
+        ],
+        "ATMOSPHERE": [
+            'Los Angeles/LA_Bradford_deventure_foule_01.jpeg', 'Los Angeles/LA_Bradford_deventure_foule_02.jpeg',
+            'Miami/Miami_Bradford_deventure_foule_01.jpeg', 'Miami/Miami_Bradford_deventure_foule_02.jpeg',
+            'Miami/Miami_Bradford_deventure_foule_03.jpeg', 'New York/NY_Bradford_deventure_foule_01.jpeg',
+            'San Francisco/SF_Bradford_deventure_foule_01.jpeg', 'San Francisco/SF_Bradford_deventure_foule_02.jpeg'
+        ]
+    };
 
     const style = `
     <style>
         #b-gal-root { background: #000; min-height: 100vh; padding-bottom: 50px; }
         .g-description { 
             max-width: 600px; margin: 0 auto 3rem; text-align: center; 
-            padding: 2rem 20px 0; color: #ccc; font-size: 0.9rem; 
-            line-height: 1.8; font-family: 'Inter', sans-serif; font-style: italic; 
-            border-top: 1px solid rgba(212,175,55,0.15);
+            padding: 2rem 20px 0; color: #ccc; font-size: 0.9rem; line-height: 1.8; 
+            font-family: 'Inter', sans-serif; font-style: italic; border-top: 1px solid rgba(212,175,55,0.2);
         }
-        
-        /* Navigation de filtrage */
-        .filter-section { margin-bottom: 2rem; display: flex; flex-direction: column; align-items: center; gap: 15px; }
-        .filter-group { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; padding: 0 10px; }
-        
+        .filter-wrapper { display: flex; justify-content: center; gap: 20px; margin-bottom: 3rem; flex-wrap: wrap; }
         .b-nav-btn {
-            background: rgba(255,255,255,0.03); border: 1px solid #222; color: #666;
-            font-family: 'Cinzel', serif; font-size: 0.65rem; padding: 8px 16px;
-            letter-spacing: 2px; cursor: pointer; transition: 0.4s; border-radius: 2px;
+            background: none; border: none; color: #555; font-family: 'Cinzel', serif; font-size: 0.8rem;
+            letter-spacing: 3px; cursor: pointer; transition: 0.5s; padding: 10px 0; border-bottom: 1px solid transparent;
         }
-        .b-nav-btn.active { color: var(--gold); border-color: var(--gold); background: rgba(212,175,55,0.05); box-shadow: 0 0 10px rgba(212,175,55,0.1); }
-
+        .b-nav-btn.active { color: var(--gold); border-bottom: 1px solid var(--gold); text-shadow: 0 0 8px rgba(212,175,55,0.3); }
         .g-main-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 0 15px; max-width: 1200px; margin: 0 auto; }
-        .g-card { position: relative; aspect-ratio: 1/1; overflow: hidden; background: #050505; border: 1px solid rgba(255,255,255,0.03); opacity: 0; }
+        .g-card { position: relative; aspect-ratio: 1/1; overflow: hidden; background: #0a0a0a; opacity: 0; }
         .g-card.revealed { animation: gReveal 0.6s ease forwards; }
         @keyframes gReveal { to { opacity: 1; } }
-        
         .g-card img { width: 100%; height: 100%; object-fit: cover; transition: 1s; filter: brightness(0.8); }
-        .g-card:hover img { transform: scale(1.08); filter: brightness(1.1); }
-        
-        .g-meta { position: absolute; bottom: 8px; left: 8px; font-size: 0.45rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; background: rgba(0,0,0,0.6); padding: 2px 5px; }
-        
-        .b-footer { text-align: center; padding: 60px 20px; border-top: 1px solid #111; margin-top: 50px; }
-        .b-footer p { font-size: 0.6rem; color: #444; letter-spacing: 2px; line-height: 2; }
+        .g-card:hover img { transform: scale(1.05); filter: brightness(1.1); }
+        .g-footer { text-align: center; padding: 60px 20px; margin-top: 60px; border-top: 1px solid #111; color: #444; font-size: 0.6rem; letter-spacing: 2px; line-height: 2; }
     </style>`;
 
     let html = style + `
     <div id="b-gal-root">
         <h1 class="title-page">THE BRADFORD VISUAL EXPERIENCE</h1>
         <p class="subtitle-page">Immortaliser l'éphémère du luxe.</p>
-
         <div class="g-description">
-            "Chaque détail du Bradford, de nos lustres en cristal noir à nos banquettes en velours sur mesure, est conçu pour stimuler l'opulence. Cette archive dévoile l'architecture et l'énergie qui définissent notre héritage."
+            "Chaque détail du Bradford, de nos lustres en cristal noir à nos banquettes en velours sur mesure, est conçu pour stimuler l'opulence."
         </div>
-
-        <div class="filter-section">
-            <div class="filter-group" id="city-filters">
-                <button class="b-nav-btn active" onclick="setCity('ALL')">ALL CITIES</button>
-                <button class="b-nav-btn" onclick="setCity('LA')">LOS ANGELES</button>
-                <button class="b-nav-btn" onclick="setCity('Miami')">MIAMI</button>
-                <button class="b-nav-btn" onclick="setCity('NY')">NEW YORK</button>
-                <button class="b-nav-btn" onclick="setCity('SF')">SAN FRANCISCO</button>
-            </div>
-            <div class="filter-group" id="type-filters">
-                <button class="b-nav-btn active" onclick="setType('ALL')">ALL TYPES</button>
-                <button class="b-nav-btn" onclick="setType('inside')">INTERIOR</button>
-                <button class="b-nav-btn" onclick="setType('deventure')">ARCHITECTURE</button>
-                <button class="b-nav-btn" onclick="setType('foule')">ATMOSPHERE</button>
-            </div>
+        <div class="filter-wrapper">
+            <button class="b-nav-btn active" onclick="updateView('ALL')">ALL ARCHIVES</button>
+            <button class="b-nav-btn" onclick="updateView('INSIDE')">INTERIOR</button>
+            <button class="b-nav-btn" onclick="updateView('ARCHITECTURE')">ARCHITECTURE</button>
+            <button class="b-nav-btn" onclick="updateView('ATMOSPHERE')">ATMOSPHERE</button>
         </div>
-
         <div class="g-main-grid" id="bradfordGrid"></div>
-
-        <div class="b-footer">
-            <p>PHOTOGRAPHED BY OFFICIAL BRADFORD PHOTOGRAPHER ONLY<br>
-            © 2026 THE BRADFORD - ALL RIGHTS RESERVED</p>
+        <div class="g-footer">
+            PHOTOGRAPHED BY OFFICIAL BRADFORD PHOTOGRAPHER ONLY<br>
+            © 2026 THE BRADFORD - PRIVATE ACCESS
         </div>
     </div>`;
 
     APP_CONTENT.innerHTML = html;
 
-    // État du filtrage
-    let currentCity = 'ALL';
-    let currentType = 'ALL';
-
-    window.setCity = (city) => { currentCity = city; updateGallery(); };
-    window.setType = (type) => { currentType = type; updateGallery(); };
-
-    window.updateGallery = () => {
+    window.updateView = (filter) => {
         const grid = document.getElementById('bradfordGrid');
-        
-        // Update Buttons UI
-        document.querySelectorAll('#city-filters .b-nav-btn').forEach(btn => 
-            btn.classList.toggle('active', btn.innerText.includes(currentCity) || (currentCity === 'ALL' && btn.innerText === 'ALL CITIES')));
-        document.querySelectorAll('#type-filters .b-nav-btn').forEach(btn => 
-            btn.classList.toggle('active', btn.getAttribute('onclick').includes(currentType)));
-
+        const btns = document.querySelectorAll('.b-nav-btn');
+        btns.forEach(b => {
+            const label = b.innerText.replace('ALL ARCHIVES', 'ALL');
+            b.classList.toggle('active', label.includes(filter) || (filter === 'ALL' && label === 'ALL'));
+        });
         grid.innerHTML = "";
-        
-        const filtered = rawFiles.filter(path => {
-            const cityMatch = currentCity === 'ALL' || path.includes(currentCity);
-            const typeMatch = currentType === 'ALL' || path.toLowerCase().includes(currentType);
-            return cityMatch && typeMatch;
-        });
-
-        filtered.forEach((url, i) => {
-            const card = document.createElement('div');
-            card.className = 'g-card';
-            card.style.animationDelay = `${i * 30}ms`;
-            card.innerHTML = `<img src="${url}" loading="lazy" onerror="this.parentElement.style.display='none'"><div class="g-meta">${url.split('/')[0]}</div>`;
-            grid.appendChild(card);
-            setTimeout(() => card.classList.add('revealed'), 10);
-        });
+        let i = 0;
+        for (const cat in galleryDatabase) {
+            if (filter === 'ALL' || filter === cat) {
+                galleryDatabase[cat].forEach(url => {
+                    const card = document.createElement('div');
+                    card.className = 'g-card';
+                    card.style.animationDelay = `${i * 30}ms`;
+                    // Correction automatique des espaces pour les URL GitHub
+                    const cleanUrl = GITHUB_ROOT + url.replace(/ /g, '%20');
+                    card.innerHTML = `<img src="${cleanUrl}" loading="lazy" onerror="this.parentElement.style.display='none'">`;
+                    grid.appendChild(card);
+                    setTimeout(() => card.classList.add('revealed'), 10);
+                    i++;
+                });
+            }
+        }
     };
-
-    updateGallery();
+    updateView('ALL');
     window.scrollTo(0, 0);
 }
+
 
 
 /** Charge le JSON et démarre l'application */
