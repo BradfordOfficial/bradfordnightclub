@@ -622,70 +622,112 @@ header.reduced .brd-night {
 
 /* --- Styles du Conteneur Principal (Widget) --- */
 #evenement-widget {
-    /* Rendre le widget un peu plus petit et plus compact */
-    max-width: 350px; 
+    max-width: 380px; 
+    padding: 25px;
+    border-radius: 20px;
+    background: linear-gradient(165deg, #0a0a0a 0%, #151515 100%);
+    color: #fff;
     
-    border: 1px solid var(--couleur-item-fond); 
-    border-radius: 12px;
-    padding: 20px 15px; 
+    /* Double bordure pour l'effet luxe */
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.9), inset 0 0 20px rgba(212, 175, 55, 0.05);
     
-    background-color: var(--couleur-fond-widget); 
-    color: var(--couleur-texte-clair); 
-    
-    /* Ombre subtile et néon (Jaune/Or) pour un effet lumineux sur le fond sombre */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 215, 0, 0.2);
-    
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+    font-family: 'Inter', 'Cinzel', serif;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ajout d'un reflet de lumière sur le widget */
+#evenement-widget::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 /* --- Titre du Widget --- */
 #widget-title {
-    color: var(--couleur-accent-or); /* Titre en Or */
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.6em; 
+    color: var(--couleur-accent-or, #D4AF37);
+    text-align: left; /* Alignement à gauche pour plus de modernité */
+    margin-bottom: 25px;
+    font-size: 1.2rem; 
+    font-family: 'Cinzel', serif; /* Police noble */
     font-weight: 700;
     text-transform: uppercase;
-    
-    /* Séparateur en couleur Turquoise */
-    border-bottom: 2px solid var(--couleur-accent-cyan); 
-    padding-bottom: 12px;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#widget-title::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--couleur-accent-or, #D4AF37), transparent);
+    opacity: 0.5;
 }
 
 /* --- Liste Défilante --- */
 #evenement-liste {
-    max-height: 220px; 
+    max-height: 350px; 
     overflow-y: auto; 
-    padding-right: 8px; 
-    
-    /* Stylisation de la barre de défilement */
-    scrollbar-color: var(--couleur-item-fond) var(--couleur-fond-widget);
-    scrollbar-width: thin;
+    padding-right: 10px; 
 }
 
-/* --- Item Événement --- */
+/* Stylisation de la barre de défilement discrète */
+#evenement-liste::-webkit-scrollbar { width: 3px; }
+#evenement-liste::-webkit-scrollbar-thumb { background: var(--couleur-accent-or, #D4AF37); border-radius: 10px; }
+
+/* --- Item Événement (Le Coeur de l'esthétique) --- */
 .evenement-item {
-    background-color: var(--couleur-item-fond); /* Fond de l'item un peu moins sombre */
-    margin-bottom: 12px;
-    padding: 12px;
-    border-radius: 8px;
-    
-    /* Bordure subtile en Turquoise pour l'impact */
-    border: 1px solid rgba(0, 188, 212, 0.3);
-    
-    /* Ombre intérieure */
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
-    
-    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.03);
+    margin-bottom: 15px;
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
 }
 
-/* Effet au survol : met en évidence l'item avec l'Or */
+/* Effet au survol : Dorure et lueur */
 .evenement-item:hover {
-    background-color: #1A237E; /* Fond au survol, légèrement plus clair que l'item */
-    transform: translateY(-2px); /* Léger déplacement vers le haut */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8), 0 0 5px var(--couleur-accent-or); /* Lueur Or */
+    background: rgba(255, 255, 255, 0.07);
+    transform: translateX(5px); /* Glissement latéral élégant */
+    border-color: var(--couleur-accent-or, #D4AF37);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
+
+/* Styling des textes internes (en gardant tes noms) */
+.evenement-ville {
+    font-size: 0.65rem;
+    color: var(--couleur-accent-cyan, #00BCD4);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.evenement-item strong {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: #fff;
+    margin: 5px 0;
+    letter-spacing: 1px;
+}
+
+.evenement-details {
+    font-size: 0.75rem;
+    color: #888;
+    line-height: 1.4;
+    font-family: 'Inter', sans-serif;
+}
+
 
 /* --- Détails de l'Événement --- */
 .evenement-ville {
