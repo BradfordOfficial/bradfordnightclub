@@ -3885,66 +3885,54 @@ window.addEventListener('scroll', function() {
 });
 
 function renderBradfordGallery() {
-    // --- 1. CONFIGURATION AUTOMATIQUE (À MODIFIER ICI) ---
-    // Remplace UNIQUEMENT 'TON_NOM_USER' par ton pseudo GitHub et 'TON_REPO' par le nom de ton projet
-    const GITHUB_ROOT = "https://raw.githubusercontent.com/BradfordOfficial/bradfordnightclub/main/"; 
+    // L'adresse directe vers ton dossier GitHub
+    const BASE_URL = "https://raw.githubusercontent.com/BradfordOfficial/bradfordnightclub/main/";
 
     const galleryDatabase = {
         "INSIDE": [
-            'Los Angeles/LA_Bradford_inside_02.jpeg', 'Los Angeles/LA_Bradford_inside_03.jpeg',
-            'Los Angeles/LA_Bradford_inside_04.jpeg', 'Los Angeles/LA_Bradford_inside_05.jpeg',
-            'Los Angeles/LA_Bradford_inside_06.jpeg', 'Los Angeles/LA_Bradford_inside_07.jpeg',
-            'Los Angeles/LA_Bradford_inside_08.jpeg'
+            'LA_Bradford_inside_01.png', 'LA_Bradford_inside_02.jpeg',
+            'LA_Bradford_inside_03.jpeg', 'LA_Bradford_inside_04.jpeg',
+            'LA_Bradford_inside_05.jpeg', 'LA_Bradford_inside_06.jpeg',
+            'LA_Bradford_inside_07.jpeg', 'LA_Bradford_inside_08.jpeg'
         ],
         "ARCHITECTURE": [
-            'Los Angeles/LA_Bradford_deventure_01.jpeg', 'Los Angeles/LA_Bradford_deventure_02.jpeg',
-            'Los Angeles/LA_Bradford_deventure_03.jpeg', 'Miami/Miami_Bradford_deventure_01.jpeg',
-            'Miami/Miami_Bradford_deventure_02.jpeg', 'Miami/Miami_Bradford_deventure_03.jpeg',
-            'Miami/Miami_Bradford_deventure_04.jpeg', 'Miami/Miami_Bradford_deventure_05.jpeg',
-            'Miami/Miami_Bradford_deventure_06.jpeg', 'Miami/Miami_Bradford_deventure_07.jpeg',
-            'New York/NY_Bradford_deventure_01.jpeg', 'New York/NY_Bradford_deventure_02.jpeg',
-            'New York/NY_Bradford_deventure_03.jpeg', 'New York/NY_Bradford_deventure_04.jpeg',
-            'San Francisco/SF_Bradford_deventure_01.jpeg', 'San Francisco/SF_Bradford_deventure_02.jpeg',
-            'San Francisco/SF_Bradford_deventure_03.jpeg'
+            'LA_Bradford_devanture_01.jpeg', 'LA_Bradford_devanture_02.jpeg',
+            'LA_Bradford_devanture_03.jpeg', 'Miami_Bradford_devanture_01.jpeg',
+            'Miami_Bradford_devanture_02.jpeg', 'Miami_Bradford_devanture_03.jpeg',
+            'Miami_Bradford_devanture_04.jpeg', 'Miami_Bradford_devanture_05.jpeg',
+            'Miami_Bradford_devanture_06.jpeg', 'Miami_Bradford_devanture_07.jpeg',
+            'NY_Bradford_devanture_01.jpeg', 'NY_Bradford_devanture_02.jpeg',
+            'NY_Bradford_devanture_03.jpeg', 'NY_Bradford_devanture_04.jpeg',
+            'SF_Bradford_devanture_01.jpeg', 'SF_Bradford_devanture_02.jpeg',
+            'SF_Bradford_devanture_03.jpeg'
         ],
         "ATMOSPHERE": [
-            'Los Angeles/LA_Bradford_deventure_foule_01.jpeg', 'Los Angeles/LA_Bradford_deventure_foule_02.jpeg',
-            'Miami/Miami_Bradford_deventure_foule_01.jpeg', 'Miami/Miami_Bradford_deventure_foule_02.jpeg',
-            'Miami/Miami_Bradford_deventure_foule_03.jpeg', 'New York/NY_Bradford_deventure_foule_01.jpeg',
-            'San Francisco/SF_Bradford_deventure_foule_01.jpeg', 'San Francisco/SF_Bradford_deventure_foule_02.jpeg'
+            'LA_Bradford_devanture_foule_01.jpeg', 'LA_Bradford_devanture_foule_02.jpeg',
+            'Miami_Bradford_devanture_foule_01.jpeg', 'Miami_Bradford_devanture_foule_02.jpeg',
+            'Miami_Bradford_devanture_foule_03.jpeg', 'NY_Bradford_devanture_foule_01.jpeg',
+            'SF_Bradford_devanture_foule_01.jpeg', 'SF_Bradford_devanture_foule_02.jpeg'
         ]
     };
 
     const style = `
     <style>
         #b-gal-root { background: #000; min-height: 100vh; padding-bottom: 50px; }
-        .g-description { 
-            max-width: 600px; margin: 0 auto 3rem; text-align: center; 
-            padding: 2rem 20px 0; color: #ccc; font-size: 0.9rem; line-height: 1.8; 
-            font-family: 'Inter', sans-serif; font-style: italic; border-top: 1px solid rgba(212,175,55,0.2);
-        }
+        .g-description { max-width: 600px; margin: 0 auto 3rem; text-align: center; padding: 2rem 20px 0; color: #ccc; font-size: 0.9rem; font-family: 'Inter', sans-serif; font-style: italic; border-top: 1px solid rgba(212,175,55,0.2); }
         .filter-wrapper { display: flex; justify-content: center; gap: 20px; margin-bottom: 3rem; flex-wrap: wrap; }
-        .b-nav-btn {
-            background: none; border: none; color: #555; font-family: 'Cinzel', serif; font-size: 0.8rem;
-            letter-spacing: 3px; cursor: pointer; transition: 0.5s; padding: 10px 0; border-bottom: 1px solid transparent;
-        }
+        .b-nav-btn { background: none; border: none; color: #555; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 3px; cursor: pointer; padding: 10px 0; border-bottom: 1px solid transparent; transition: 0.4s; }
         .b-nav-btn.active { color: var(--gold); border-bottom: 1px solid var(--gold); text-shadow: 0 0 8px rgba(212,175,55,0.3); }
         .g-main-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 0 15px; max-width: 1200px; margin: 0 auto; }
-        .g-card { position: relative; aspect-ratio: 1/1; overflow: hidden; background: #0a0a0a; opacity: 0; }
-        .g-card.revealed { animation: gReveal 0.6s ease forwards; }
-        @keyframes gReveal { to { opacity: 1; } }
-        .g-card img { width: 100%; height: 100%; object-fit: cover; transition: 1s; filter: brightness(0.8); }
+        .g-card { aspect-ratio: 1/1; overflow: hidden; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.03); }
+        .g-card img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); transition: 1s; }
         .g-card:hover img { transform: scale(1.05); filter: brightness(1.1); }
-        .g-footer { text-align: center; padding: 60px 20px; margin-top: 60px; border-top: 1px solid #111; color: #444; font-size: 0.6rem; letter-spacing: 2px; line-height: 2; }
+        .g-footer { text-align: center; padding: 60px 20px; color: #444; font-size: 0.6rem; letter-spacing: 2px; border-top: 1px solid #111; margin-top: 40px; }
     </style>`;
 
-    let html = style + `
+    APP_CONTENT.innerHTML = style + `
     <div id="b-gal-root">
         <h1 class="title-page">THE BRADFORD VISUAL EXPERIENCE</h1>
         <p class="subtitle-page">Immortaliser l'éphémère du luxe.</p>
-        <div class="g-description">
-            "Chaque détail du Bradford, de nos lustres en cristal noir à nos banquettes en velours sur mesure, est conçu pour stimuler l'opulence."
-        </div>
+        <div class="g-description">"Chaque détail du Bradford, de nos lustres en cristal noir à nos banquettes en velours sur mesure, est conçu pour stimuler l'opulence."</div>
         <div class="filter-wrapper">
             <button class="b-nav-btn active" onclick="updateView('ALL')">ALL ARCHIVES</button>
             <button class="b-nav-btn" onclick="updateView('INSIDE')">INTERIOR</button>
@@ -3958,36 +3946,31 @@ function renderBradfordGallery() {
         </div>
     </div>`;
 
-    APP_CONTENT.innerHTML = html;
-
     window.updateView = (filter) => {
         const grid = document.getElementById('bradfordGrid');
         const btns = document.querySelectorAll('.b-nav-btn');
-        btns.forEach(b => {
-            const label = b.innerText.replace('ALL ARCHIVES', 'ALL');
-            b.classList.toggle('active', label.includes(filter) || (filter === 'ALL' && label === 'ALL'));
-        });
+
+        btns.forEach(b => b.classList.toggle('active', b.innerText.includes(filter) || (filter === 'ALL' && b.innerText === 'ALL ARCHIVES')));
+
         grid.innerHTML = "";
-        let i = 0;
+        
         for (const cat in galleryDatabase) {
             if (filter === 'ALL' || filter === cat) {
-                galleryDatabase[cat].forEach(url => {
+                galleryDatabase[cat].forEach(fileName => {
                     const card = document.createElement('div');
                     card.className = 'g-card';
-                    card.style.animationDelay = `${i * 30}ms`;
-                    // Correction automatique des espaces pour les URL GitHub
-                    const cleanUrl = GITHUB_ROOT + url.replace(/ /g, '%20');
-                    card.innerHTML = `<img src="${cleanUrl}" loading="lazy" onerror="this.parentElement.style.display='none'">`;
+                    // Ici on utilise l'URL GitHub directe combinée au nom du fichier
+                    card.innerHTML = `<img src="${BASE_URL + fileName}" loading="lazy" onerror="this.parentElement.style.display='none'">`;
                     grid.appendChild(card);
-                    setTimeout(() => card.classList.add('revealed'), 10);
-                    i++;
                 });
             }
         }
     };
+
     updateView('ALL');
     window.scrollTo(0, 0);
 }
+
 
 
 
