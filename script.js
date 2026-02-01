@@ -1134,59 +1134,116 @@ const biosArtistes = {
 // 2. GESTION DE L'INTERFACE (BIOS & RETOUR)
 // ==========================================
 
-function afficherDetailsArtiste(artiste, ville, details) {
-    const data = biosArtistes[artiste] || { bio: "Biographie non disponible.", genre: "Inconnu", prix: "Information sur demande" };
-    
+async function afficherDetailsArtiste(artiste, ville, details) {
+    let bioWiki = "Biographie en cours de chargement...";
+    let genreWiki = "Artiste";
+    let prixTrouve = "Information sur demande";
+
+    // 1. EXTRACTION DU PRIX (Après le tiret et sans la parenthèse de fin)
+    if (details.includes('-') || details.includes('–')) {
+        const parties = details.split(/[–-]/);
+        let brut = parties[parties.length - 1].trim();
+        prixTrouve = brut.replace(/\)$/, ''); // Enlève la parenthèse si elle est à la fin
+    }
+
+    // 2. PRÉPARATION DU NOM POUR WIKIPÉDIA
+    const nomFormate = artiste.toLowerCase()
+        .split(' ')
+        .map(mot => mot.charAt(0).toUpperCase() + mot.slice(1))
+        .join('_');
+
+    // 3. RECHERCHE WIKIPÉDIA
+    try {
+        const response = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(nomFormate)}`);
+        if (response.ok) {
+            const data = await response.json();
+            bioWiki = data.extract || "Biographie non disponible.";
+            genreWiki = data.description || "Artiste";
+        } else {
+            const responseEn = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(nomFormate)}`);
+            if (responseEn.ok) {
+                const dataEn = await responseEn.json();
+                bioWiki = dataEn.extract;
+                genreWiki = dataEn.description || "Artist";
+            } else {
+                bioWiki = `Rejoignez-nous pour une performance exclusive de ${artiste} au Bradford.`;
+            }
+        }
+    } catch (e) {
+        bioWiki = "Biographie non disponible.";
+    }
+
     const detailPage = document.getElementById('artist-detail-page');
     const appContent = document.getElementById('app-content');
     const evenementWidget = document.getElementById('evenement-widget');
     
-    // ON CACHE L'ORBITE 4D POUR PAS QU'ELLE GENE
+    // ON CACHE LES ÉLÉMENTS ET ON ACTIVE LA PAGE DE DÉTAILS
     const orbitContainer = document.getElementById('bradford-universe') || document.getElementById('quantum-nav-container');
     if (orbitContainer) orbitContainer.style.display = 'none';
-
+    
     appContent.style.display = 'none';
     if (evenementWidget) evenementWidget.style.display = 'none'; 
+    
+    // On rend la page de détails cliquable et visible
+    detailPage.style.display = 'block';
+    detailPage.style.pointerEvents = 'auto'; 
     
     detailPage.innerHTML = `
         <div class="detail-header" onclick="retourAccueil()">
             <span class="back-link">← Retour à l'accueil</span>
             <h1 class="artist-name">${artiste}</h1>
-            <p class="artist-location">${ville} - ${data.genre}</p>
+            <p class="artist-location">${ville} - ${genreWiki}</p>
         </div>
         <div class="detail-body">
             <h2 class="detail-title">L'événement Bradford</h2>
             <p class="event-details-text">${details}</p>
             <h2 class="detail-title">L'Artiste</h2>
-            <p class="artist-bio-text">${data.bio}</p>
-            <div class="pricing-info"><p><strong>Prix d'entrée:</strong> ${data.prix}</p></div>
-<div class="reservation-cta">
-    <button class="cta-button" onclick="retourAccueil(); navigate('reservations'); window.scrollTo(0,0);">
-        RÉSERVER UNE TABLE VIP MAINTENANT
-    </button>
+            <p class="artist-bio-text">${bioWiki}</p>
+          <div class="pricing-container">
+    <span class="pricing-label">Prix d'entrée:</span>
+    <div class="pricing-value">${prixTrouve}</div>
 </div>
 
+            <div class="reservation-cta">
+                <button class="cta-button" onclick="allerReservations()">
+                    RÉSERVER UNE TABLE VIP MAINTENANT
+                </button>
+            </div>
+        </div>
     `;
-
-    detailPage.style.display = 'block';
     window.scrollTo(0, 0); 
 }
 
+// FONCTION POUR ALLER AUX RÉSERVATIONS
+function allerReservations() {
+    retourAccueil(); // On nettoie d'abord la vue artiste
+    if (typeof navigate === "function") {
+        navigate('reservations');
+    }
+}
+
+// FONCTION RETOUR CORRIGÉE (LIBÈRE LES BOUTONS DU HEADER)
 function retourAccueil() {
     const detailPage = document.getElementById('artist-detail-page');
     const appContent = document.getElementById('app-content');
     const evenementWidget = document.getElementById('evenement-widget');
     
-    // ON RE-AFFICHE L'ORBITE 4D
     const orbitContainer = document.getElementById('bradford-universe') || document.getElementById('quantum-nav-container');
     if (orbitContainer) orbitContainer.style.display = 'flex';
 
+    // IMPORTANT : On rend la page de détails invisible ET non-cliquable
     detailPage.style.display = 'none';
+    detailPage.style.pointerEvents = 'none'; 
+    
     appContent.style.display = 'block';
     if (evenementWidget) evenementWidget.style.display = 'block';
 
+    if (typeof navigate === "function") navigate('home');
+    window.scrollTo(0, 0);
+    
     if (typeof mettreAJourWidget === "function") mettreAJourWidget();
 }
+
 
 // ==========================================
 // 3. MOTEUR ORBITAL 4D (LE CODE COMPLEXE)
