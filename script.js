@@ -3468,7 +3468,6 @@ let score = 0;
             approved = false;
         }
 
-        }
     }
 
     // --- L'ESTHÉTIQUE DU VERDICT ---
