@@ -1000,20 +1000,20 @@ const donneesEvenements = [
 
     // Vendredi 6 Février
     { date: '2026-02-06', jour: 'VEN.', ville: 'LA', artiste: 'LIL BABY', details: 'It’s Only Us Club Takeover (Exclusive Showcase - $185)' },
-    { date: '2026-02-06', jour: 'VEN.', ville: 'MIAMI', artiste: 'RAUW ALEJANDRO', details: 'Saturno Club Mix (Reggaeton Futuriste - $90)' },
+    { date: '2026-02-06', jour: 'VEN.', ville: 'MIAMI', artiste: 'RAUW ALEJANDRO', details: 'Saturno Club Mix (Reggaeton Futuriste - Accès restreint)' },
     { date: '2026-02-06', jour: 'VEN.', ville: 'NYC', artiste: '999999999', details: 'Hard Techno Awakening (Acid/Industrial Set - $90)' },
     { date: '2026-02-06', jour: 'VEN.', ville: 'SF', artiste: 'PINKPANTHERESS', details: 'Nice To Meet You (Drum & Bass Pop Showcase - $90)' },
 
     // Samedi 7 Février
     { date: '2026-02-07', jour: 'SAM.', ville: 'LA', artiste: 'TY DOLLA $IGN', details: 'Vultures After Dark (Exclusive Performance - $110)' },
     { date: '2026-02-07', jour: 'SAM.', ville: 'MIAMI', artiste: 'MALUMA', details: 'Don Juan Midnight (Latin Pop Superstar - VIP Full - $280)' },
-    { date: '2026-02-07', jour: 'SAM.', ville: 'NYC', artiste: 'BRYSON TILLER', details: 'Trapsoul Legacy (R&B/Hip-Hop Showcase - $90)' },
+    { date: '2026-02-07', jour: 'SAM.', ville: 'NYC', artiste: 'BRYSON TILLER', details: 'Trapsoul Legacy (R&B/Hip-Hop Showcase - Accès sur liste VIP)' },
     { date: '2026-02-07', jour: 'SAM.', ville: 'SF', artiste: 'REZZ', details: 'Spiral Audio-Visual Set (Mid-Tempo Bass - $90)' },
 
     // Dimanche 8 Février
     { date: '2026-02-08', jour: 'DIM.', ville: 'LA', artiste: 'POST MALONE (DJ SET)', details: 'Austin’s Vinyl Collection (Exclusivité Mondiale - $165)' },
-    { date: '2026-02-08', jour: 'DIM.', ville: 'MIAMI', artiste: 'JORJA SMITH', details: 'Blue Lights Session (R&B/Soul Exclusive - Accès restreint)' },
-    { date: '2026-02-08', jour: 'DIM.', ville: 'NYC', artiste: 'AP HEX TWIN', details: 'Rare Club Appearance (Experimental Techno - Accès sur liste VIP)' },
+    { date: '2026-02-08', jour: 'DIM.', ville: 'MIAMI', artiste: 'JORJA SMITH', details: 'Blue Lights Session (R&B/Soul Exclusive - $90)' },
+    { date: '2026-02-08', jour: 'DIM.', ville: 'NYC', artiste: 'AP HEX TWIN', details: 'Rare Club Appearance (Experimental Techno - $75)' },
     { date: '2026-02-08', jour: 'DIM.', ville: 'SF', artiste: 'KAYTRANADA', details: '99.9% Funky House Set (Closing Night - $90)' },
 ];
 
