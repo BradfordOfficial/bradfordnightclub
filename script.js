@@ -992,29 +992,29 @@ const dateActuelle = new Date();
 
 // --- BASE DE DONNÉES COMPLÈTE DES ÉVÉNEMENTS ---
 const donneesEvenements = [
-// Jeudi 29 Janvier
-    { date: '2026-01-29', jour: 'JEU.', ville: 'LA', artiste: 'ICE SPICE', details: 'Munch NYC Takeover (Showcase Drill/Pop - $110)' },
-    { date: '2026-01-29', jour: 'JEU.', ville: 'MIAMI', artiste: 'REMA', details: 'Calm Down Finale (Afrobeats Global Star - $90)' },
-    { date: '2026-01-29', jour: 'JEU.', ville: 'NYC', artiste: 'CHASE & STATUS', details: 'UK Jungle/DnB Invasion (Rare US Club Set - $90)' },
-    { date: '2026-01-29', jour: 'JEU.', ville: 'SF', artiste: 'UNCLE WAFFLES', details: 'Amapiano Queen Tour (Exclusive Set - $75)' },
+// Jeudi 5 Février
+    { date: '2026-02-05', jour: 'JEU.', ville: 'LA', artiste: 'DON TOLIVER', details: 'Hardstone Psycho Tour (Showcase R&B/Rap - $135)' },
+    { date: '2026-02-05', jour: 'JEU.', ville: 'MIAMI', artiste: 'TEMS', details: 'Born in the Wild (Exclusive R&B/Alté Showcase - $145)' },
+    { date: '2026-02-05', jour: 'JEU.', ville: 'NYC', artiste: 'BARRY CAN’T SWIM', details: 'When Will We Land? (Jazz-House Live - $95)' },
+    { date: '2026-02-05', jour: 'JEU.', ville: 'SF', artiste: 'TEEZO TOUCHDOWN', details: 'Alt-Rap Showcase (Exclusive Appearance - $85)' },
 
-    // Vendredi 30 Janvier
-    { date: '2026-01-30', jour: 'VEN.', ville: 'LA', artiste: 'LIL UZI VERT', details: 'Pink Tape Club Edition (Showcase Explosif - $180)' },
-    { date: '2026-01-30', jour: 'VEN.', ville: 'MIAMI', artiste: 'METRO BOOMIN', details: 'Heroes & Villains Mix (Showcase Producteur - Accès restreint)' },
-    { date: '2026-01-30', jour: 'VEN.', ville: 'NYC', artiste: 'PAWSA', details: 'Extended Tech House Set (Groovy Monday - $90)' },
-    { date: '2026-01-30', jour: 'VEN.', ville: 'SF', artiste: 'I HATE MODELS', details: 'Raw Techno Energy (Industrial Set - $90)' },
+    // Vendredi 6 Février
+    { date: '2026-02-06', jour: 'VEN.', ville: 'LA', artiste: 'LIL BABY', details: 'It’s Only Us Club Takeover (Exclusive Showcase - $185)' },
+    { date: '2026-02-06', jour: 'VEN.', ville: 'MIAMI', artiste: 'RAUW ALEJANDRO', details: 'Saturno Club Mix (Reggaeton Futuriste - $165)' },
+    { date: '2026-02-06', jour: 'VEN.', ville: 'NYC', artiste: '999999999', details: 'Hard Techno Awakening (Acid/Industrial Set - $115)' },
+    { date: '2026-02-06', jour: 'VEN.', ville: 'SF', artiste: 'PINKPANTHERESS', details: 'Nice To Meet You (Drum & Bass Pop Showcase - $120)' },
 
-    // Samedi 31 Janvier
-    { date: '2026-01-31', jour: 'SAM.', ville: 'LA', artiste: 'PLAYBOI CARTI', details: 'Opium Night (Vamp Aesthetic - Sur liste VIP uniquement)' },
-    { date: '2026-01-31', jour: 'SAM.', ville: 'MIAMI', artiste: 'HARDWELL', details: 'Rebels Never Die 2026 (Big Room Techno - $90)' },
-    { date: '2026-01-31', jour: 'SAM.', ville: 'NYC', artiste: 'DOJA CAT', details: 'Scarlet Club Performance (Exclusive Showcase - $220)' },
-    { date: '2026-01-31', jour: 'SAM.', ville: 'SF', artiste: 'ZHU', details: 'Blacklizt Warehouse Session (Deep/Dark House - $90)' },
+    // Samedi 7 Février
+    { date: '2026-02-07', jour: 'SAM.', ville: 'LA', artiste: 'TY DOLLA $IGN', details: 'Vultures After Dark (Exclusive Performance - $160)' },
+    { date: '2026-02-07', jour: 'SAM.', ville: 'MIAMI', artiste: 'MALUMA', details: 'Don Juan Midnight (Latin Pop Superstar - VIP Full - $280)' },
+    { date: '2026-02-07', jour: 'SAM.', ville: 'NYC', artiste: 'BRYSON TILLER', details: 'Trapsoul Legacy (R&B/Hip-Hop Showcase - $170)' },
+    { date: '2026-02-07', jour: 'SAM.', ville: 'SF', artiste: 'REZZ', details: 'Spiral Audio-Visual Set (Mid-Tempo Bass - $110)' },
 
-    // Dimanche 1 Février
-    { date: '2026-02-01', jour: 'DIM.', ville: 'LA', artiste: 'MILEY CYRUS', details: 'Endless Summer Vacation (Rare Club Performance - Accès restreint)' },
-    { date: '2026-02-01', jour: 'DIM.', ville: 'MIAMI', artiste: 'MELLODEATH', details: 'Marshmello B2B Svdden Death (Heavy Dubstep Set - $90)' },
-    { date: '2026-02-01', jour: 'DIM.', ville: 'NYC', artiste: 'WIZKID', details: 'Afro-Kings Night (Exclusive Showcase  - Accès sur liste VIP)' },
-    { date: '2026-02-01', jour: 'DIM.', ville: 'SF', artiste: 'ARTBAT', details: 'Upperground SF (Melodic Techno Journey - $75)' },
+    // Dimanche 8 Février
+    { date: '2026-02-08', jour: 'DIM.', ville: 'LA', artiste: 'POST MALONE (DJ SET)', details: 'Austin’s Vinyl Collection (Exclusivité Mondiale - $215)' },
+    { date: '2026-02-08', jour: 'DIM.', ville: 'MIAMI', artiste: 'JORJA SMITH', details: 'Blue Lights Session (R&B/Soul Exclusive - Accès restreint)' },
+    { date: '2026-02-08', jour: 'DIM.', ville: 'NYC', artiste: 'AP HEX TWIN', details: 'Rare Club Appearance (Experimental Techno - Accès sur liste VIP)' },
+    { date: '2026-02-08', jour: 'DIM.', ville: 'SF', artiste: 'KAYTRANADA', details: '99.9% Funky House Set (Closing Night - $130)' },
 ];
 
 
