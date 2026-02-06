@@ -2396,16 +2396,19 @@ body {
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 8px 12px;
-    font-size: 0.7rem;
+    font-size: 0.7rem; /* Garde ton style, mais si ça bug encore, passe à 16px (1rem) */
     letter-spacing: 1px;
     font-family: 'Cinzel', serif;
     outline: none;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease; /* On ne transitionne que la bordure pour éviter les bugs de rendu */
     border-radius: 0;
     -webkit-appearance: none;
     appearance: none;
+    touch-action: manipulation; /* Empêche le double-tap zoom qui peut fermer le menu */
+    min-width: 160px; /* Évite que la case change de taille selon le texte choisi */
 }
+
 
 
 .filter-item select:focus {
