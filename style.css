@@ -2402,7 +2402,11 @@ body {
     outline: none;
     cursor: pointer;
     transition: all 0.3s ease;
+    border-radius: 0;
+    -webkit-appearance: none;
+    appearance: none;
 }
+
 
 .filter-item select:focus {
     border-color: var(--gold);
