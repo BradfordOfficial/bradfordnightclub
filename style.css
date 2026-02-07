@@ -3109,6 +3109,77 @@ margin-right: auto;
     100% { transform: translateX(100%) rotate(45deg); }
 }
 
+/* --- CASE PRESTIGE (SANS TOUCHER AUX DIMENSIONS) --- */
+.premium-limited-card {
+    position: relative;
+    overflow: hidden;
+    /* Fond : Effet cristal doré transparent */
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(0, 0, 0, 0.95) 100%) !important;
+    /* Bordure : Or brossé avec lueur */
+    border: 1px solid rgba(212, 175, 55, 0.6) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(212, 175, 55, 0.1) !important;
+}
+
+/* Texte Premium : On garde tes tailles, on change juste la "matière" du texte */
+.premium-limited-card .item-name {
+    background: linear-gradient(135deg, #ffffff 0%, #d4af37 50%, #ffffff 100%);
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold; /* On assure juste le caractère premium */
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+/* Le Tag : On dégage l'étoile gamin, on garde juste le texte pro */
+.premium-limited-card .prestige-tag {
+    color: var(--gold);
+    font-weight: 800;
+    font-size: 0.5rem; /* On reste petit pour pas décaler le reste */
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Animation : Le reflet "Luxe" qui traverse la case sans la bouger */
+.premium-limited-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        to right, 
+        transparent, 
+        rgba(255, 255, 255, 0.1), /* Flash blanc très fin */
+        rgba(212, 175, 55, 0.2),  /* Halo doré */
+        transparent
+    );
+    transform: skewX(-20deg);
+    animation: luxury-swipe 7s infinite ease-in-out;
+}
+
+@keyframes luxury-swipe {
+    0% { left: -150%; }
+    20% { left: 150%; }
+    100% { left: 150%; }
+}
+
+/* Effet de grain / texture pour faire "matière précieuse" */
+.premium-limited-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+    opacity: 0.03; /* Très subtil, juste pour la texture */
+    pointer-events: none;
+}
+
+/* On garde le prix en blanc/or uniforme avec tes autres cases */
+.premium-limited-card .item-price {
+    color: var(--gold) !important;
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
 
 
 /* --- Footer --- */
