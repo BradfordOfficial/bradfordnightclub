@@ -627,14 +627,24 @@ function renderBottleMenuPage(filterCategory = 'all', sortBy = 'default') {
                 const finalPrice = calculateFinalPrice(basePrice);
                 const priceText = formatPrice(basePrice);
                 
-                html += `
-                    <div class="menu-item-card" onclick="showFinalPriceAlert('${item.name}', ${basePrice}, ${finalPrice})">
-                        ${isLimited ? `<span style="color: var(--gold);">⭐ Prestige Edition</span>` : ''}
-                        <h3 class="item-name">${item.name}</h3>
-                        <p class="item-size">${item.size || item.description || ''}</p>
-                        
-                        <div class="item-details">
-                            <p class="item-rarity" style="color: ${isLimited ? 'var(--gold)' : 'var(--teal)'};">${item.rarity || item.type || ''}</p>
+                
+html += `
+    <div class="menu-item-card ${isLimited ? 'premium-limited-card' : ''}" 
+         onclick="showFinalPriceAlert('${item.name}', ${basePrice}, ${finalPrice})">
+        
+        ${isLimited ? `
+            <div class="prestige-tag">
+                <span style="letter-spacing: 2px;">PRESTIGE EDITION</span>
+            </div>
+        ` : ''}
+
+        <h3 class="item-name">${item.name}</h3>
+        <p class="item-size">${item.size || item.description || ''}</p>
+        
+        <div class="item-details">
+            <p class="item-rarity" style="color: ${isLimited ? 'var(--gold)' : 'var(--teal)'};">
+                ${item.rarity || item.type || ''}
+            </p>
                             
                             <span class="item-price item-price-clickable" title="Cliquez pour voir le prix total TTC">
                                 ${priceText}
