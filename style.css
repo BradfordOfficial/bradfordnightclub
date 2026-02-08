@@ -1812,7 +1812,7 @@ body {
     color: var(--gold);
     font-size: 0.7rem;
     letter-spacing: 6px;
-    margin-top: 10px;
+    margin-top: 15px;
     opacity: 0;
     animation: fadeIn 1.2s 0.6s ease-out forwards;
 }
