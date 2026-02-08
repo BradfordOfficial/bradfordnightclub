@@ -32,6 +32,41 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'fr',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<div id="google_translate_element" style="display:none;"></div>
+
+<div class="luxury-lang-switcher">
+    <div class="current-lang" onclick="toggleLangList()">
+        <span id="active-lang">FR</span>
+        <span class="gold-arrow">▼</span>
+    </div>
+    <ul class="lang-list" id="lang-list">
+        <li onclick="changeLanguage('fr')">FRANÇAIS</li>
+        <li onclick="changeLanguage('en')">ENGLISH</li>
+        <li onclick="changeLanguage('es')">ESPAÑOL</li>
+        <li onclick="changeLanguage('de')">DEUTSCH</li>
+        <li onclick="changeLanguage('it')">ITALIANO</li>
+        <li onclick="changeLanguage('pt')">PORTUGUÊS</li>
+        <li onclick="changeLanguage('ru')">PУССКИЙ</li>
+        <li onclick="changeLanguage('zh-CN')">中文</li>
+        <li onclick="changeLanguage('ja')">日本語</li>
+        <li onclick="changeLanguage('ar')">العربية</li>
+        <li onclick="changeLanguage('hi')">हिन्दी</li>
+        <li onclick="changeLanguage('tr')">TÜRKÇE</li>
+        <li onclick="changeLanguage('nl')">NEDERLANDS</li>
+        <li onclick="changeLanguage('ko')">한국어</li>
+    </ul>
+</div>
 
 
 <header class="header" id="mainHeader">
