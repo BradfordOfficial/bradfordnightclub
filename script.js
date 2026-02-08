@@ -1021,7 +1021,7 @@ const donneesEvenements = [
     { date: '2026-02-07', jour: 'SAM.', ville: 'SF', artiste: 'REZZ', details: 'Spiral Audio-Visual Set (Mid-Tempo Bass - $90)' },
 
     // Dimanche 8 Février
-    { date: '2026-02-08', jour: 'DIM.', ville: 'LA', artiste: 'POST MALONE (DJ SET)', details: 'Austin’s Vinyl Collection (Exclusivité Mondiale - $165)' },
+    { date: '2026-02-08', jour: 'DIM.', ville: 'LA', artiste: 'POST MALONE', details: 'Austin’s Vinyl Collection (DJ Set - Exclusivité Mondiale - $165)' },
     { date: '2026-02-08', jour: 'DIM.', ville: 'MIAMI', artiste: 'JORJA SMITH', details: 'Blue Lights Session (R&B/Soul Exclusive - $90)' },
     { date: '2026-02-08', jour: 'DIM.', ville: 'NYC', artiste: 'AP HEX TWIN', details: 'Rare Club Appearance (Experimental Techno - $75)' },
     { date: '2026-02-08', jour: 'DIM.', ville: 'SF', artiste: 'KAYTRANADA', details: '99.9% Funky House Set (Closing Night - $90)' },
