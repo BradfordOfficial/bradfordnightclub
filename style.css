@@ -3181,6 +3181,107 @@ margin-right: auto;
     text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
 }
 
+body { top: 0 !important; position: static !important; }
+.goog-te-banner-frame, .goog-te-balloon-frame, .skiptranslate, #goog-gt-tt { display: none !important; }
+font { background-color: transparent !important; box-shadow: none !important; vertical-align: inherit !important; }
+
+.luxury-lang-switcher {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    z-index: 99999;
+    font-family: 'Cinzel', serif; /* Garde l'esprit luxe */
+    color: #fff;
+}
+
+/* Le bouton principal : Juste du texte qui flotte */
+.current-lang {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px;
+    transition: all 0.4s ease;
+    opacity: 0.6; /* Discret par défaut */
+}
+
+.current-lang:hover {
+    opacity: 1;
+    color: var(--gold);
+}
+
+.gold-arrow {
+    font-size: 0.5rem;
+    color: var(--gold);
+    transition: transform 0.4s ease;
+}
+
+/* La liste : Effet de flou artistique sans bordure lourde */
+.lang-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    list-style: none;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px); /* Flou ultra-classe derrière la liste */
+    margin-top: 15px;
+    padding: 10px 0;
+    min-width: 140px;
+    max-height: 350px;
+    overflow-y: auto;
+    /* Ombre diffuse pour décoller du fond sans cadre */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+}
+
+/* Custom scrollbar pour la liste (discrète) */
+.lang-list::-webkit-scrollbar { width: 2px; }
+.lang-list::-webkit-scrollbar-thumb { background: var(--gold); }
+
+.lang-list li {
+    padding: 10px 20px;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+/* L'effet de génie : le soulignement au survol */
+.lang-list li::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 20px;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.lang-list li:hover {
+    color: var(--gold);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.lang-list li:hover::after {
+    width: 30px; /* Petit trait doré élégant */
+}
+
+/* État quand ouvert */
+.lang-list.show {
+    display: block;
+    animation: fadeInSlide 0.4s ease forwards;
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 /* --- Footer --- */
 .footer {
