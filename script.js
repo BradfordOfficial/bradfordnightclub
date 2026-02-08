@@ -4175,7 +4175,35 @@ function renderOfficialSuccess() {
 }
 
 
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+        pageLanguage: 'fr',
+        autoDisplay: false
+    }, 'google_translate_element');
+}
 
+// Fonction pour changer de langue
+function changeLanguage(langCode) {
+    const select = document.querySelector('.goog-te-combo');
+    if (select) {
+        select.value = langCode;
+        select.dispatchEvent(new Event('change'));
+        document.getElementById('active-lang').innerText = langCode.toUpperCase().split('-')[0];
+        toggleLangList();
+    }
+}
+
+function toggleLangList() {
+    const list = document.getElementById('lang-list');
+    list.classList.toggle('show');
+}
+
+// Fermeture au clic extérieur
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.luxury-lang-switcher')) {
+        document.getElementById('lang-list').classList.remove('show');
+    }
+});
 
 
 /** Charge le JSON et démarre l'application */
