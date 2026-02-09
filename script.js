@@ -969,7 +969,7 @@ function renderHomePage() {
             </div>
         </div>
         
-         <div class="hero-section" style="background-image: url('placeholder-video-or-photo.jpg'); height: 500px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; margin-bottom: 3rem;">
+         <div class="hero-section" style="background-image: url('placeholder-video-or-photo.jpg'); height: 500px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; margin-bottom: 0;">
             <div style="text-align: center; background: rgba(0,0,0,0.6); padding: 20px; border-radius: 10px;">
                 <h2 style="color: var(--ivory); font-family: 'Cinzel', serif; font-size: 2.5rem;">L'Exclusivité Redéfinie.</h2>
       <button class="cta-button" onclick="window.scrollTo(0,0); navigate('reservations')">Réserver une Table VIP</button>
