@@ -975,64 +975,97 @@ a:hover {
 
 /* --- NOUVEAU STYLE : BARRE DE STATISTIQUES LUXE (HomePage) --- */
 
-.hero-stats-bar {
-    /* Conteneur principal */
+.bradford-prestige-stats {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    text-align: center;
-    
-    /* Encadrement et fond sombre pour l'effet de carte */
-    background-color: rgba(7, 17, 43, 0.7); /* Navy foncé transparent */
-    border: 1px solid var(--gold); /* Bordure Or autour */
-    border-radius: 8px;
-    padding: 25px 30px;
-    margin: 4rem auto; /* Grand espace en haut et en bas */
-    max-width: 900px;
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); /* Lueur subtile */
+    padding: 80px 0;
+    margin: 3rem auto;
+    max-width: 1000px;
+    background: transparent; /* FOND SUPPRIMÉ */
+    border-top: 1px solid rgba(212, 175, 55, 0.15); /* Lignes de démarcation fines */
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
 }
 
-.stat-item {
-    /* Conteneur pour chaque statistique */
-    flex-grow: 1;
-    padding: 0 15px;
+.stat-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.4s ease;
 }
 
-.stat-label {
-    /* Le texte descriptif (Capacité Opérationnelle, VIP Nightlife) */
-    display: block;
+.stat-number {
+    font-family: 'Cinzel', serif;
+    font-size: 4.5rem;
+    color: #d4af37;
+    font-weight: 300;
+    letter-spacing: -2px;
+    line-height: 1;
+    text-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+}
+
+.stat-gold-line {
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    margin: 20px 0;
+}
+
+.stat-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 6px;
+    color: rgba(255,255,255,0.4);
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.9rem;
-    color: var(--teal); /* Bleu vert pour le label */
-    margin-bottom: 5px;
 }
 
-.stat-value {
-    /* Le chiffre clé (6,000 ou 30 Tables) */
-    display: block;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--ivory); /* Blanc/Ivoire pour la lisibilité */
+/* L'EMBLÈME CENTRAL QUI FAIT TOUT LE DESIGN */
+.stat-emblem {
+    position: relative;
+    width: 90px;
+    height: 90px;
 }
 
-/* On réapplique la classe pour le GROS CHIFFRE (6,000) */
-.luxury-figure {
-    font-size: 2.5rem; /* On augmente encore la taille ! */
-    font-family: 'Cinzel', serif; 
-    color: var(--gold) !important; /* On force le Gold */
-    font-weight: 900; 
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8); /* Lueur plus intense */
+.emblem-circle {
+    width: 100%; height: 100%;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
 }
 
-/* Séparateur vertical élégant */
-.stat-divider {
-    width: 2px;
-    height: 60px; /* Hauteur de la ligne de séparation */
-    background-color: var(--gold);
-    opacity: 0.5;
-    border-radius: 1px;
+.emblem-letter {
+    font-family: 'Cinzel', serif;
+    color: #d4af37;
+    font-size: 1.6rem;
+    z-index: 2;
 }
+
+.emblem-spin {
+    position: absolute;
+    inset: -6px;
+    border: 1px solid transparent;
+    border-top: 1px solid #d4af37; /* La ligne dorée qui tourne */
+    border-radius: 50%;
+    animation: spinEmblem 10s linear infinite; /* LA ROTATION */
+    opacity: 0.6;
+}
+
+@keyframes spinEmblem {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* RESPONSIVE IPHONE 13 PRO */
+@media (max-width: 768px) {
+    .bradford-prestige-stats {
+        flex-direction: column;
+        gap: 60px;
+        border: none; /* On épure sur mobile */
+    }
+    .stat-number { font-size: 3.5rem; }
+}
+
 /* ========================================================= */
 /* I. RESET & FOND DE SCÈNE IMMERSIVE */
 /* ========================================================= */
