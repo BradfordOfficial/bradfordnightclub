@@ -977,17 +977,28 @@ function renderHomePage() {
             </div>
         </div>
 
-<div class="hero-stats-bar">
-    <div class="stat-item">
-        <span class="stat-label">CAPACITÉ OPÉRATIONNELLE</span>
-        <span class="stat-value luxury-figure">${APP_DATA.venue.operational_capacity.toLocaleString()}</span>
+<div class="bradford-prestige-stats">
+    <div class="stat-container left" data-aos="fade-right">
+        <div class="stat-wrapper">
+            <span class="stat-number">6,000</span>
+            <div class="stat-gold-line"></div>
+            <span class="stat-desc">CAPACITÉ MAXIMALE</span>
+        </div>
     </div>
-    
-    <div class="stat-divider"></div>
-    
-    <div class="stat-item">
-        <span class="stat-label">VIP NIGHTLIFE</span>
-        <span class="stat-value">30 TABLES | SERVICE BOUTEILLE LUXE</span>
+
+    <div class="stat-emblem" data-aos="zoom-in">
+        <div class="emblem-circle">
+            <span class="emblem-letter">B</span>
+            <div class="emblem-spin"></div>
+        </div>
+    </div>
+
+    <div class="stat-container right" data-aos="fade-left">
+        <div class="stat-wrapper">
+            <span class="stat-number">30</span>
+            <div class="stat-gold-line"></div>
+            <span class="stat-desc">TABLES VIP PRIVÉES</span>
+        </div>
     </div>
 </div>
 
