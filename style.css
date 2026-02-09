@@ -123,6 +123,7 @@ header.reduced .brd-night {
     justify-content: center;
     gap: 15px;
     max-width: 95%;
+    transform: translateY(5px);
 }
 
 .nav-links button {
