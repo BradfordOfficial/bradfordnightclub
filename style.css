@@ -622,7 +622,8 @@ header.reduced .brd-night {
 
 /* --- Styles du Conteneur Principal (Widget) --- */
 #evenement-widget {
-    max-width: 380px; 
+    max-width: 380px;
+    margin: 3rem auto;
     padding: 25px;
     border-radius: 20px;
     background: linear-gradient(165deg, #0a0a0a 0%, #151515 100%);
