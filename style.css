@@ -979,12 +979,15 @@ a:hover {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 80px 0;
-    margin: 3rem auto;
+    padding: 40px 0 !important; /* On force un padding égal partout */
+    margin: 0 auto !important;
     max-width: 1000px;
-    background: transparent; /* FOND SUPPRIMÉ */
-    border-top: 1px solid rgba(212, 175, 55, 0.15); /* Lignes de démarcation fines */
+    background: transparent;
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
     border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    
+    /* AJOUTE ÇA POUR ÉQUILIBRER */
+    line-height: 1; 
 }
 
 .stat-wrapper {
