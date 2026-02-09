@@ -1026,9 +1026,9 @@ const donneesEvenements = [
     { date: '2026-02-13', jour: 'VEN.', ville: 'SF', artiste: 'KENYA GRACE', details: 'Strangers Night (Liquid DnB Live - $90)' },
 
     // Samedi 14 Février (Valentine's Special)
-    { date: '2026-02-14', jour: 'SAM.', ville: 'LA', artiste: 'GIVEON', details: 'Valentine’s Serenade (Accès sur liste VIP uniquement)' },
+    { date: '2026-02-14', jour: 'SAM.', ville: 'LA', artiste: 'GIVEON', details: 'Valentine’s Serenade (Showcase R&B de Prestige - Accès sur liste VIP uniquement)' },
     { date: '2026-02-14', jour: 'SAM.', ville: 'MIAMI', artiste: 'ROSALÍA', details: 'Motomami Love (Special Acoustic/Club Set - Accès restreint)' },
-    { date: '2026-02-14', jour: 'SAM.', ville: 'NYC', artiste: 'PARTYNEXTDOOR', details: 'P4 Valentine Showcase (Accès sur liste VIP uniquement)' },
+    { date: '2026-02-14', jour: 'SAM.', ville: 'NYC', artiste: 'PARTYNEXTDOOR', details: 'P4 Valentine Showcase (Performance R&B Exclusive - Accès sur liste VIP uniquement)' },
     { date: '2026-02-14', jour: 'SAM.', ville: 'SF', artiste: 'VICTORIA MONÉT', details: 'Jaguar Valentine (Funk/Soul Showcase - $90)' },
 
     // Dimanche 15 Février
