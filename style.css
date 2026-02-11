@@ -2881,11 +2881,56 @@ body {
 .category-content.active { max-height: 1000px; padding-top: 25px; }
 
 /* La Machine Colossale */
-.analyzer-unit { margin: 50px 0; padding: 30px; background: #050505; border: 1px solid #111; position: relative; }
-.analyzer-label { font-family: 'Cinzel'; font-size: 0.65rem; color: #D4AF37; letter-spacing: 3px; display: block; margin-bottom: 20px; }
-.brdf-select { width: 100%; background: #000; border: 1px solid #222; color: #fff; padding: 15px; font-size: 0.75rem; margin-bottom: 12px; outline: none; appearance: none; }
-.brdf-select:focus { border-color: #D4AF37; }
-.analyzer-input { width: 100%; background: #000; border: 1px solid #222; color: #fff; padding: 15px; font-size: 0.8rem; height: 100px; resize: none; outline: none; margin-top: 20px; }
+.analyzer-unit { 
+    margin: 50px 0; 
+    padding: 30px; 
+    background: #050505; 
+    border: 1px solid #111; 
+    position: relative; 
+    box-sizing: border-box; /* INDISPENSABLE pour que le padding ne casse pas la largeur */
+}
+
+.analyzer-label { 
+    font-family: 'Cinzel'; 
+    font-size: 0.65rem; 
+    color: #D4AF37; 
+    letter-spacing: 3px; 
+    display: block; 
+    margin-bottom: 20px; 
+}
+
+.brdf-select { 
+    width: 100%; 
+    background: #000; 
+    border: 1px solid #222; 
+    color: #fff; 
+    padding: 15px; 
+    font-size: 0.75rem; 
+    margin-bottom: 12px; 
+    outline: none; 
+    appearance: none; 
+    box-sizing: border-box; /* Pour que ça reste bien aligné sur ordi */
+}
+
+.brdf-select:focus { 
+    border-color: #D4AF37; 
+}
+
+.analyzer-input { 
+    width: 100%; 
+    background: #000; 
+    border: 1px solid #222; 
+    color: #fff; 
+    padding: 15px; 
+    font-size: 0.8rem; 
+    height: 100px; 
+    resize: none; 
+    outline: none; 
+    margin-top: 20px; 
+    display: block; /* Sécurité pour l'ordi */
+    box-sizing: border-box; /* Vital ici */
+}
+
 .ban-zone {
     margin-top: 50px;
     background: #050505;
