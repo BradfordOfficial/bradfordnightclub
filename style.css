@@ -826,28 +826,28 @@ header.reduced .brd-night {
 }
 
 .artist-name {
-         /* POLICE ET TAILLE AJUSTÉE */
     font-family: 'Cinzel', serif !important;
-    font-size: 2.2rem !important; 
+    font-size: 2.4rem !important; 
     font-weight: 900 !important;
-    
-    /* COULEUR ET LUEUR SUBTILE */
     color: var(--couleur-accent-gold) !important;
     text-transform: uppercase !important;
     letter-spacing: 0;
     text-shadow: 0 0 6px rgba(212, 175, 55, 0.35) !important;
-
-    /* POSITIONNEMENT RADICAL À GAUCHE */
     text-align: left !important;
     display: block !important;
     width: 100% !important;
+
+    /* LE SECRET POUR COLLER LE BORD GAUCHE */
+    margin-left: -5px !important; 
+    padding-left: 5px !important; 
     
-    /* ESPACEMENT ET REMONTÉE (MAX GAUCHE) */
-    margin: 0.1rem 0 0.8rem 0 !important;
-    padding-left: 5px !important; /* On est passé de 10px à 5px pour être encore plus à gauche */
-    
+    /* ESPACE BAS SUPPRIMÉ */
+    margin-top: 0.1rem !important;
+    margin-bottom: 0 !important;
+
     opacity: 1 !important;
 }
+
 
 
 
