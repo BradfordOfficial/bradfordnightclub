@@ -4216,6 +4216,45 @@ document.addEventListener('click', (e) => {
     }
 });
 
+function launchEliteOverlay() {
+    if(document.getElementById('elite-sas')) return;
+
+    const sas = document.createElement('div');
+    sas.id = 'elite-sas';
+    sas.innerHTML = `
+        <div class="sas-content">
+            <p class="sas-label">VERIFICATION D'ACCÈS</p>
+            <h1 class="sas-title">MEMBRE MAJEUR</h1>
+            <div class="sas-body">
+                <p>Pour accéder à la carte des spiritueux, veuillez confirmer que vous avez l'âge légal de consommation dans votre pays.</p>
+            </div>
+            <button class="sas-confirm" onclick="confirmEliteAccess()">CONFIRMER</button>
+            <p class="sas-exit" onclick="window.location.href='https://google.com'">QUITTER</p>
+        </div>
+    `;
+    document.body.appendChild(sas);
+}
+
+function confirmEliteAccess() {
+    sessionStorage.setItem('vip_auth_confirmed', 'true');
+    const sas = document.getElementById('elite-sas');
+    
+    // Animation de disparition
+    sas.style.opacity = '0';
+    
+    setTimeout(() => {
+        sas.remove();
+        
+        // --- LA LIGNE MAGIQUE POUR FIXER LE BUG ---
+        document.body.style.overflow = ''; 
+        document.body.style.position = '';
+        window.scrollTo(0, 0); // Remet la page bien en haut proprement
+        
+        renderBottleMenuPage(); 
+    }, 500);
+}
+
+
 
 /** Charge le JSON et démarre l'application */
 async function initApp() {
