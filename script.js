@@ -4147,7 +4147,7 @@ function renderOfficialSuccess() {
             </div>
 
             <div style="color:#aaa; font-family:'Cinzel'; font-size:0.6rem; letter-spacing:3px;">CONFIRMATION PRÉFECTORALE</div>
-            <h1 class="main-title-luxury">REQUÊTE<br>ENREGISTRÉE</h1>
+            <h1 class="tit-page">REQUÊTE<br>ENREGISTRÉE</h1>
 
             <div class="data-viz"><div class="data-progress"></div></div>
 
