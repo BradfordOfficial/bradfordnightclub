@@ -2008,7 +2008,7 @@ const eventInfo = donneesEvenements.find(e =>
 // 4. TON VISUEL (Inchangé)
 APP_CONTENT.innerHTML = `
     <div class="checkout-container">
-        <h1 class="title-page" style="text-align:left; font-size: 2rem;">FINALISATION</h1>
+        <h1 class="tp-alt" style="text-align:left; font-size: 2rem;">FINALISATION</h1>
         <p style="color:var(--gold); margin-top:-20px; font-size:0.8rem; letter-spacing:2px;">SECURE PAYMENT GATEWAY</p>
 
         <div class="luxe-summary">
