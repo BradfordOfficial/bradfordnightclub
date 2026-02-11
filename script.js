@@ -4221,6 +4221,9 @@ function launchEliteOverlay() {
 
     const sas = document.createElement('div');
     sas.id = 'elite-sas';
+    // On bloque le scroll quand l'overlay est là
+    document.body.style.overflow = 'hidden'; 
+
     sas.innerHTML = `
         <div class="sas-content">
             <p class="sas-label">VERIFICATION D'ACCÈS</p>
@@ -4229,30 +4232,48 @@ function launchEliteOverlay() {
                 <p>Pour accéder à la carte des spiritueux, veuillez confirmer que vous avez l'âge légal de consommation dans votre pays.</p>
             </div>
             <button class="sas-confirm" onclick="confirmEliteAccess()">CONFIRMER</button>
-   <p class="sas-exit" onclick="window.scrollTo(0,0); navigate('home'); document.getElementById('elite-sas').remove(); document.body.style.overflow='';">QUITTER</p>
-
-
+            <p class="sas-exit" onclick="handleEliteExit()">QUITTER</p>
         </div>
     `;
     document.body.appendChild(sas);
+}
+
+// Nouvelle fonction dédiée pour le bouton QUITTER (plus propre et sans bug)
+function handleEliteExit() {
+    window.scrollTo(0, 0);
+    if (typeof navigate === 'function') {
+        navigate('home');
+    }
+    const sas = document.getElementById('elite-sas');
+    if (sas) {
+        sas.remove();
+    }
+    document.body.style.overflow = '';
+    document.body.style.position = '';
 }
 
 function confirmEliteAccess() {
     sessionStorage.setItem('vip_auth_confirmed', 'true');
     const sas = document.getElementById('elite-sas');
     
-    sas.style.opacity = '0';
+    if (sas) {
+        sas.style.opacity = '0';
+        sas.style.transition = 'opacity 0.5s ease';
+    }
     
     setTimeout(() => {
-        sas.remove();
+        if (sas) sas.remove();
         document.body.style.overflow = ''; 
         document.body.style.position = '';
         window.scrollTo(0, 0);
         
-        // C'est cette ligne qui décide où on va après avoir confirmé :
-        renderBottleMenuPage(); 
+        // On vérifie si la fonction existe avant de l'appeler
+        if (typeof renderBottleMenuPage === 'function') {
+            renderBottleMenuPage(); 
+        }
     }, 500);
 }
+
 
 
 
