@@ -826,22 +826,30 @@ header.reduced .brd-night {
 }
 
 .artist-name {
-        /* Police et Style */
+          /* POLICE ET EFFET BRILLANT */
     font-family: 'Cinzel', serif !important;
-    font-size: 3rem;
-    font-weight: 900; /* On utilise le poids fort du lien Google Fonts */
-    color: var(--gold);
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--gold); /* Ou #D4AF37 */
+    text-transform: uppercase;
+    letter-spacing: 2px;
     
-    /* Positionnement SANS animation */
-    text-align: left; /* Bien à gauche */
+    /* L'ANCIEN EFFET "BRILLANT" (Double lueur) */
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.6), 
+                 0 0 15px rgba(212, 175, 55, 0.2);
+
+    /* POSITIONNEMENT : BIEN À GAUCHE ET REMONTÉ */
+    text-align: left;
     display: block;
     width: 100%;
-    opacity: 1; /* Visible immédiatement */
     
-    /* Espacement */
-    margin: 2rem 0 1rem 0; 
-    padding-left: 5%; /* Optionnel : petit retrait pour ne pas coller l'écran */
+    /* On diminue le margin-top pour le faire remonter */
+    margin: 0.5rem 0 1rem 0; 
+    
+    /* Un léger retrait à gauche pour l'élégance (à ajuster selon ton tel) */
+    padding-left: 2%; 
+    
+    opacity: 1; /* Bien visible */
 }
 
 
