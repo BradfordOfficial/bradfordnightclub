@@ -2121,16 +2121,15 @@ body {
 
 
 #quantum-nav-container {
-    /* On garde la boîte serrée sur l'orbite */
-    height: 300px !important; 
+    /* On garde la hauteur compacte pour éviter le vide inutile */
+    height: 250px !important; 
     
-    /* HAUT : On grappille encore (On passe de -180 à -210) */
-    /* C'est le réglage limite avant de toucher au texte du haut */
-    margin-top: -210px !important; 
+    /* HAUT : On reste sur ton réglage qui colle bien à la section du haut */
+    margin-top: -260px !important; 
     
-    /* BAS : On rajoute le petit chouïa de vide (On passe de 60 à 80) */
-    /* Pour une délimitation bien nette avec la section suivante */
-    margin-bottom: 80px !important; 
+    /* BAS : On décolle un peu pour éviter la superposition */
+    /* On passe de 40px à 70px pour que la section d'après respire enfin */
+    margin-bottom: 70px !important; 
 
     display: flex;
     justify-content: center;
@@ -2139,7 +2138,11 @@ body {
     perspective: 1000px;
     touch-action: none;
     position: relative;
+    
+    /* SECURITÉ : Toujours à 0 pour maîtriser l'espace au pixel près */
+    padding: 0 !important;
 }
+
 
 
 
