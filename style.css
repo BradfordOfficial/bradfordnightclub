@@ -834,7 +834,7 @@ header.reduced .brd-night {
     /* COULEUR ET LUEUR SUBTILE */
     color: var(--couleur-accent-gold) !important;
     text-transform: uppercase !important;
-    letter-spacing: 2px !important;
+    letter-spacing: 0;
     text-shadow: 0 0 6px rgba(212, 175, 55, 0.35) !important;
 
     /* POSITIONNEMENT RADICAL À GAUCHE */
