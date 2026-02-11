@@ -3324,6 +3324,75 @@ font { background-color: transparent !important; box-shadow: none !important; ve
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* --- 1. LE LOADER (BLANC - 2.4rem) --- */
+.main-title {
+    font-family: 'Shojumaru', cursive !important; /* On garde la Shojumaru */
+    color: #ffffff !important; /* BLANC PUR */
+    font-size: 2.2rem !important; /* Taille demandée */
+    letter-spacing: 2px; /* Un peu moins d'espace pour que ça tienne */
+    text-transform: uppercase;
+    font-weight: 500;
+    text-shadow: none !important;
+    
+    /* On garde ton animation d'origine */
+    opacity: 0;
+    animation: revealTitle 1.5s ease-out forwards;
+}
+
+h1 {
+    font-family: 'Shojumaru', cursive !important;
+    
+    /* TA TAILLE FIXE */
+    font-size: 2.8rem !important;
+    
+    color: #d4af37 !important;
+    text-shadow: none !important;
+    text-transform: uppercase;
+    text-align: center;
+
+    /* --- LA MAGIE POUR QUE RIEN NE DÉPASSE --- */
+    
+    /* 1. Force le navigateur à ne JAMAIS couper un mot au milieu */
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    white-space: normal !important; /* Autorise le retour à la ligne entre les mots */
+
+    /* 2. Réduit l'espace entre les lettres pour faire gagner la place manquante */
+    /* C'est ce qui va permettre au mot "EXPERIENCE" de tenir sur la largeur */
+    letter-spacing: -2.5px !important; 
+
+    /* 3. Structure pour iPhone 13 */
+    display: block;
+    width: 100%;
+    max-width: 100vw; /* Interdiction de dépasser de l'écran */
+    margin: 20px auto;
+    line-height: 1.1;
+    padding: 0 10px; /* Petite marge de sécurité sur les côtés */
+    box-sizing: border-box;
+}
+
+/* 1. ON ISOLE LE TITRE PRINCIPAL (LE TOUT PREMIER) */
+h1.title-page:first-of-type {
+    font-family: 'Shojumaru', cursive !important;
+    font-size: 2.7rem !important;
+    line-height: 1.3 !important; /* On écarte bien ici pour l'accueil */
+    letter-spacing: -2px !important;
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
+    text-align: center;
+    display: block;
+}
+
+
+
+
+/* --- 3. SÉCURITÉ LOADER CONTENT --- */
+.loader-content {
+    width: 100%;
+    text-align: center;
+    padding: 0 20px;
+}
+
 /* --- Footer --- */
 .footer {
     background-color: var(--navy);
