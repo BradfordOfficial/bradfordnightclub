@@ -827,14 +827,21 @@ header.reduced .brd-night {
 
 .artist-name {
     font-family: 'Cinzel', serif !important;
-    font-size: 2.8rem; /* Légèrement plus grand */
-    font-weight: 900;
-    margin: 0;
-    color: var(--couleur-accent-gold); /* Nom de l'artiste en Or ! */
-    text-transform: uppercase;
-    letter-spacing: 3px; /* Plus d'espace pour le côté Premium */
-    text-shadow: 0 0 5px rgba(212, 175, 55, 0.4); /* Petit effet de lueur subtil */
+    font-size: 3rem;
+    text-align: left; /* Aligné à gauche comme demandé */
+    color: var(--gold);
+    margin: 2rem 0 1rem 0; /* Haut, Droite, Bas, Gauche */
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    
+    /* Animation et visibilité */
+    opacity: 0; 
+    display: block;
+    width: 100%;
+    
+    /* Note : si ton titre ne s'affiche pas, c'est à cause de l'opacity: 0. 
+       Assure-toi que ton JavaScript passe l'opacité à 1 au chargement ! */
 }
+
 
 .artist-location {
     font-size: 1.1rem;
