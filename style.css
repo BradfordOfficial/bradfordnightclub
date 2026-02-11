@@ -826,21 +826,24 @@ header.reduced .brd-night {
 }
 
 .artist-name {
+        /* Police et Style */
     font-family: 'Cinzel', serif !important;
     font-size: 3rem;
-    text-align: left; /* Aligné à gauche comme demandé */
+    font-weight: 900; /* On utilise le poids fort du lien Google Fonts */
     color: var(--gold);
-    margin: 2rem 0 1rem 0; /* Haut, Droite, Bas, Gauche */
     text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
     
-    /* Animation et visibilité */
-    opacity: 0; 
+    /* Positionnement SANS animation */
+    text-align: left; /* Bien à gauche */
     display: block;
     width: 100%;
+    opacity: 1; /* Visible immédiatement */
     
-    /* Note : si ton titre ne s'affiche pas, c'est à cause de l'opacity: 0. 
-       Assure-toi que ton JavaScript passe l'opacité à 1 au chargement ! */
+    /* Espacement */
+    margin: 2rem 0 1rem 0; 
+    padding-left: 5%; /* Optionnel : petit retrait pour ne pas coller l'écran */
 }
+
 
 
 .artist-location {
