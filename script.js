@@ -4229,7 +4229,9 @@ function launchEliteOverlay() {
                 <p>Pour accéder à la carte des spiritueux, veuillez confirmer que vous avez l'âge légal de consommation dans votre pays.</p>
             </div>
             <button class="sas-confirm" onclick="confirmEliteAccess()">CONFIRMER</button>
-            <p class="sas-exit" onclick="window.location.href='https://google.com'">QUITTER</p>
+   <p class="sas-exit" onclick="window.scrollTo(0,0); navigate('home'); document.getElementById('elite-sas').remove(); document.body.style.overflow='';">QUITTER</p>
+
+
         </div>
     `;
     document.body.appendChild(sas);
@@ -4239,17 +4241,15 @@ function confirmEliteAccess() {
     sessionStorage.setItem('vip_auth_confirmed', 'true');
     const sas = document.getElementById('elite-sas');
     
-    // Animation de disparition
     sas.style.opacity = '0';
     
     setTimeout(() => {
         sas.remove();
-        
-        // --- LA LIGNE MAGIQUE POUR FIXER LE BUG ---
         document.body.style.overflow = ''; 
         document.body.style.position = '';
-        window.scrollTo(0, 0); // Remet la page bien en haut proprement
+        window.scrollTo(0, 0);
         
+        // C'est cette ligne qui décide où on va après avoir confirmé :
         renderBottleMenuPage(); 
     }, 500);
 }
