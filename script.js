@@ -3370,7 +3370,7 @@ function renderDressCodePage() {
     APP_CONTENT.innerHTML = `
     <div class="dress-code-wrapper fadeIn">
         
-        <h1 class="title-page">THE GOLDEN RULES OF ELEGANCE</h1>
+        <h1 class="title-page">THE RULES OF ELEGANCE</h1>
         <p class="subtitle-page">L'ÉLÉGANCE EST NOTRE UNIQUE PASSE D'ENTRÉE.</p>
 
         <div class="style-category" onclick="toggleStyle(this)">
