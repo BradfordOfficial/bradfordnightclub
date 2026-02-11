@@ -3532,7 +3532,22 @@ h1.title-page:first-of-type {
     letter-spacing: 1px;
 }
 
+/* VERSION ALTERNATIVE PLUS PETITE */
+h1.tp-alt:first-of-type {
+    font-family: 'Shojumaru', cursive !important;
+    font-size: 2.2rem !important;
+    line-height: 1.3 !important;
+    letter-spacing: -2px !important;
 
+    margin-top: 50px !important;   /* Descend un peu plus */
+    margin-bottom: 20px !important;
+
+    text-align: left !important;
+    margin-left: 0 !important;     /* Collé à gauche */
+    padding-left: 0 !important;    /* Aucun espace interne */
+
+    display: block;
+}
 
 /* --- Footer --- */
 .footer {
