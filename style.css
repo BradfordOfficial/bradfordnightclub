@@ -3393,6 +3393,84 @@ h1.title-page:first-of-type {
     padding: 0 20px;
 }
 
+/* --- SAS DE SÉCURITÉ MINIMALISTE LUXE --- */
+#elite-sas {
+    position: fixed;
+    inset: 0;
+    z-index: 9999999;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+}
+
+.sas-content {
+    width: 80vw;
+    max-width: 300px;
+    text-align: center;
+    animation: sasEntrance 0.8s ease-out;
+}
+
+@keyframes sasEntrance {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.sas-label {
+    font-size: 0.55rem;
+    color: #d4af37;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.sas-title {
+    font-family: 'Cinzel', serif;
+    color: #fff;
+    font-size: 1.2rem;
+    letter-spacing: 6px;
+    margin-bottom: 25px;
+}
+
+.sas-body p {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.75rem;
+    line-height: 1.7;
+    margin-bottom: 35px;
+}
+
+/* BOUTON ÉLÉGANT SANS BORDURES LOURDES */
+.sas-confirm {
+    width: 100%;
+    padding: 18px;
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: #fff;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sas-confirm:active {
+    background: #d4af37;
+    color: #000;
+    transform: scale(0.96);
+}
+
+.sas-exit {
+    margin-top: 25px;
+    font-size: 0.5rem;
+    color: #333;
+    text-decoration: underline;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+
+
+
 /* --- Footer --- */
 .footer {
     background-color: var(--navy);
