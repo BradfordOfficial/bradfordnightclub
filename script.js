@@ -2115,7 +2115,7 @@ const mappingVilles = { 'Los Angeles': 'LA', 'San Francisco': 'SF', 'New York': 
                 <div style="position:absolute; top:0; left:0; width:100%; height:100%; background:linear-gradient(125deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 50%); pointer-events:none;"></div>
 
                 <div style="padding:30px 20px; text-align:center; border-bottom:1px solid rgba(212,175,55,0.1);">
-                    <h1 style="font-family:'Cinzel'; color:var(--gold); margin:0; font-size:1.8rem; letter-spacing:5px;">BRADFORD</h1>
+                 <h1 style="font-family:'Cinzel'; color:var(--gold); margin:0; font-size:2.2rem !important; letter-spacing:5px;">BRADFORD</h1>
                     <p style="font-size:0.5rem; color:#666; letter-spacing:4px; margin-top:5px; text-transform:uppercase;">Private Establishment Pass</p>
                 </div>
 
