@@ -826,31 +826,30 @@ header.reduced .brd-night {
 }
 
 .artist-name {
-          /* POLICE ET EFFET BRILLANT */
+         /* STYLE DE LA POLICE */
     font-family: 'Cinzel', serif !important;
-    font-size: 2.2rem;
+    font-size: 2.2rem; /* Taille réduite pour plus de finesse */
     font-weight: 900;
-    color: var(--gold); /* Ou #D4AF37 */
+    color: var(--gold);
     text-transform: uppercase;
     letter-spacing: 2px;
     
-    /* L'ANCIEN EFFET "BRILLANT" (Double lueur) */
-    text-shadow: 0 0 8px rgba(212, 175, 55, 0.6), 
-                 0 0 15px rgba(212, 175, 55, 0.2);
+    /* EFFET BRILLANT / GLOW GOLD */
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.7), 
+                 0 0 20px rgba(212, 175, 55, 0.3);
 
-    /* POSITIONNEMENT : BIEN À GAUCHE ET REMONTÉ */
-    text-align: left;
+    /* ALIGNEMENT ET POSITION */
+    text-align: left !important;
     display: block;
     width: 100%;
     
-    /* On diminue le margin-top pour le faire remonter */
+    /* ESPACEMENT (Remonté) */
     margin: 0.5rem 0 1rem 0; 
+    padding-left: 15px; /* Pour qu'il soit bien calé à gauche mais pas collé au bord */
     
-    /* Un léger retrait à gauche pour l'élégance (à ajuster selon ton tel) */
-    padding-left: 2%; 
-    
-    opacity: 1; /* Bien visible */
+    opacity: 1;
 }
+
 
 
 
