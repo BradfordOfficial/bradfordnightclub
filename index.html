@@ -132,23 +132,23 @@
     </div>
   </div>
 </div>
-    <div id="heroSpacer" style="height: 100vh;"></div>
 
+<div id="heroSpacer" style="height: 100vh;"></div>
 
 <style>
 /* ========================= */
 /* HERO SECTION */
 /* ========================= */
 .hero-video-container {
-  position: fixed;   /* Change 'relative' par 'fixed' */
-  top: 0;            /* Ajoute ça */
-  left: 0;           /* Ajoute ça */
+  position: fixed;   /* Changé en fixed pour éviter le saut */
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 1;        /* Assure-toi qu'il est à 1 */
+  z-index: 1;        
   overflow: hidden;
+  transition: opacity 0.4s ease;
 }
-
 
 .hero-video {
   position: absolute;
@@ -182,7 +182,6 @@
   justify-content: center;
   text-align: center;
   padding: 0 20px;
-  margin-top: 0; /* <-- supprime le margin pour pas de vide */
 }
 
 .hero-slogan {
@@ -222,15 +221,12 @@
   transform: translateY(-5px);
 }
 
-/* HEADER TRANSPARENT */
 header.transparent-header {
   background: transparent !important;
   box-shadow: none !important;
+  z-index: 1000 !important; /* Pour rester au dessus de la vidéo fixed */
 }
 
-/* ========================= */
-/* RESPONSIVE IPHONE */
-/* ========================= */
 @media (max-width: 390px) {
   .hero-video-content {
     padding-top: 40vh;
@@ -239,42 +235,40 @@ header.transparent-header {
     align-items: center;
     justify-content: flex-start;
   }
-
   .hero-slogan {
     font-size: 1.6rem;
     margin-bottom: 35px;
-    text-align: center;
-    transform: translateX(0);
   }
-
-  .hero-buttons {
-    gap: 15px;
-    margin-top: 12px;
-  }
-
-  .hero-buttons button {
-    padding: 10px 25px;
-    font-size: 0.82rem;
-  }
+  .hero-buttons { gap: 15px; margin-top: 12px; }
+  .hero-buttons button { padding: 10px 25px; font-size: 0.82rem; }
 }
 </style>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const hero = document.getElementById("heroVideo");
+  const spacer = document.getElementById("heroSpacer");
   const video = document.getElementById("heroVid");
   const header = document.querySelector("header");
 
   let heroHidden = false;
 
-  // Lecture automatique vidéo
+  // Fonction de nettoyage radical pour éviter les trous
+  function destroyHero() {
+    if (heroHidden) return;
+    if (hero) hero.style.display = "none";
+    if (spacer) spacer.style.display = "none";
+    if (header) header.classList.remove("transparent-header");
+    heroHidden = true;
+  }
+
   if (video) {
     video.play().catch(() => console.log("Lecture échouée"));
   }
 
-  // Header transparent au départ
   if (header) header.classList.add("transparent-header");
 
+  // Gestion du Scroll
   window.addEventListener("scroll", function () {
     if (heroHidden) return;
 
@@ -282,37 +276,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const vh = window.innerHeight;
 
     if (scrollPos < vh) {
-      // 1. FAIT DISPARAITRE LA VIDÉO TOUT DOUCEMENT
       hero.style.opacity = 1 - (scrollPos / vh);
     } else {
-      // 2. TUE LE TROU ET LA VIDÉO DÈS QU'ON A SCROLLÉ 100vh
-      hero.style.display = "none";
-      document.getElementById("heroSpacer").style.display = "none"; 
-      heroHidden = true;
-      if (header) header.classList.remove("transparent-header");
-      
-      // 3. RECOLLE LE SITE TOUT EN HAUT SANS SAUT VISUEL
+      destroyHero();
       window.scrollTo(0, 0); 
     }
-});
+  });
 
-  // ===== Fonctions pour naviguer
+  // Appliquer destroyHero sur tous les clics du header
+  document.querySelectorAll('header a, header button').forEach(el => {
+    el.addEventListener('click', destroyHero);
+  });
+
+  // ===== Fonctions pour naviguer (Modifiées pour inclure destroyHero)
   window.navigateToSection = function(sectionName) {
-    if (hero && hero.style.display !== "none") {
-      hero.style.display = "none";
-      heroHidden = true;
-      if (header) header.classList.remove("transparent-header");
-    }
+    destroyHero();
     if (typeof navigate === "function") navigate(sectionName);
   };
 
   window.navigateFromHero = function(pageFunction) {
+    destroyHero();
     if (typeof pageFunction === "function") pageFunction();
-    if (hero && !heroHidden) {
-      hero.style.display = "none";
-      heroHidden = true;
-      if (header) header.classList.remove("transparent-header");
-    }
+    window.scrollTo(0, 0);
   };
 
   // ===== Google Translate
@@ -327,6 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 });
 </script>
+
 
 <div id="official-alert-overlay"></div>
 
