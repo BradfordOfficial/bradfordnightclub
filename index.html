@@ -328,6 +328,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+    function scrollToPage(header) {
+  const headerHeight = header ? header.offsetHeight : 0;
+  const offset = headerHeight + 15; // le petit décalage pour que le titre ne soit pas caché
+  window.scrollTo({
+    top: offset,
+    behavior: "smooth"
+  });
+}
+
 
 /* ========================== */
 /* NAVIGATION DEPUIS HERO */
