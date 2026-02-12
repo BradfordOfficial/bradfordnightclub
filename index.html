@@ -367,15 +367,11 @@ function navigateFromHero(pageFunction) {
   const header = document.querySelector("header");
   const headerHeight = header ? header.offsetHeight : 0;
 
-  /* Si la vidéo est encore visible */
-  if (hero && hero.style.display !== "none") {
-
+if (hero && hero.style.display !== "none") {
     hero.style.display = "none";
-
-    if (header) {
-      header.classList.remove("transparent-header");
-    }
-  }
+    heroHidden = true; // <- à ajouter
+    if (header) header.classList.remove("transparent-header");
+}
 
   /* Fonction originale */
   if (typeof navigate === "function") {
