@@ -384,13 +384,10 @@ if (hero && hero.style.display !== "none") {
     navigate(sectionName);
   }
 
-  setTimeout(function() {
-  const scrollOffset = headerHeight + window.innerHeight * 0.15;
-  window.scrollTo({
-    top: scrollOffset,
-    behavior: "smooth"
-  });
-}, 80);
+  setTimeout(() => {
+    scrollToPage(header);
+  }, 100);
+}
 
 }
 
