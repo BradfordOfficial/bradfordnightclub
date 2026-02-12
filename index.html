@@ -277,46 +277,49 @@ header.transparent-header {
 </style>
 
 <script>
-const heroContainer = document.getElementById('heroVideo');
+document.addEventListener("DOMContentLoaded", function () {
 
-window.addEventListener('scroll', () => {
-  const rect = heroContainer.getBoundingClientRect();
+  const heroContainer = document.getElementById("heroVideo");
+  const header = document.querySelector("header");
 
-  const header = document.querySelector('header');
+  if (!heroContainer) return;
 
-  if (rect.bottom <= 0) {
-    if (header) header.classList.remove('transparent-header');
-  } else {
-    if (header) header.classList.add('transparent-header');
+  // Header transparent au chargement
+  if (header) {
+    header.classList.add("transparent-header");
   }
+
+  // Gestion scroll
+  window.addEventListener("scroll", function () {
+    const rect = heroContainer.getBoundingClientRect();
+
+    if (rect.bottom <= 0) {
+      if (header) header.classList.remove("transparent-header");
+    } else {
+      if (header) header.classList.add("transparent-header");
+    }
+  });
+
 });
 
-    function navigateToPage(pageFunction) {
+// Navigation + scroll fluide
+function navigateToPage(pageFunction) {
 
-  // 1. Charger la page
   if (typeof pageFunction === "function") {
     pageFunction();
   }
 
-  // 2. Attendre que le contenu soit injecté
-  setTimeout(() => {
-
-    // 3. Scroll automatique fluide vers le bas
-    const heroHeight = document.getElementById("heroVideo").offsetHeight;
+  setTimeout(function () {
+    const hero = document.getElementById("heroVideo");
+    if (!hero) return;
 
     window.scrollTo({
-      top: heroHeight,
+      top: hero.offsetHeight,
       behavior: "smooth"
     });
 
-  }, 100); // petit délai pour laisser le DOM charger
+  }, 120);
 }
-
-// Header transparent au chargement
-document.addEventListener('DOMContentLoaded', () => {
-  const header = document.querySelector('header');
-  if (header) header.classList.add('transparent-header');
-});
 </script>
 
 <style>
