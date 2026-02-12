@@ -281,17 +281,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Header transparent au départ
   if (header) header.classList.add("transparent-header");
 
-  // ===== Scroll naturel pour cacher la vidéo
-  window.addEventListener("scroll", function () {
-    if (!hero || heroHidden) return;
-    const rect = hero.getBoundingClientRect();
-    if (rect.bottom <= 0) {
-  hero.classList.add("hidden");
-  heroHidden = true;
-  if (header) header.classList.remove("transparent-header");
-}
-  });
-
+    window.addEventListener("scroll", function () {
+  if (!hero || heroHidden) return;
+  const rect = hero.getBoundingClientRect();
+  if (rect.bottom <= 50) { // un petit offset pour que ça ne disparaisse pas trop tôt
+    hero.classList.add("faded");
+    heroHidden = true;
+    if (header) header.classList.remove("transparent-header");
+  }
+});
+  
   // ===== Fonctions pour naviguer
   window.navigateToSection = function(sectionName) {
     if (hero && hero.style.display !== "none") {
