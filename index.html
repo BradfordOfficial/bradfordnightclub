@@ -121,19 +121,21 @@
 
 <!-- HERO VIDEO VIP -->
 <div class="hero-video-container" id="heroVideo">
-  <video autoplay muted loop playsinline class="hero-video">
+  <video autoplay muted loop playsinline class="hero-video" id="heroVid">
     <source src="https://bradfordofficial.github.io/bradfordnightclub/2022395-hd_1920_1080_30fps.mp4" type="video/mp4">
   </video>
+
   <div class="hero-video-overlay"></div>
+
   <div class="hero-video-content">
     <h1 class="hero-slogan">Experience the Ultimate VIP Night</h1>
     <div class="hero-buttons">
-   <button onclick="navigateToPage(renderReservationPage)">Réserver</button>
-<button onclick="navigateToPage(renderEventPage)">Événements</button>
+      <button onclick="navigateFromHero(renderReservationPage)">Réserver</button>
+      <button onclick="navigateFromHero(renderEventPage)">Événements</button>
     </div>
   </div>
 </div>
-
+    
 <style>
 
 
