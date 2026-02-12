@@ -366,20 +366,20 @@ function navigateToSection(sectionName) {
   const hero = document.getElementById("heroVideo");
   const header = document.querySelector("header");
 
-  /* Supprime la vidéo si visible */
+  // Supprime la vidéo si elle est encore visible
   if (hero && hero.style.display !== "none") {
     hero.style.display = "none";
     heroHidden = true;
     if (header) header.classList.remove("transparent-header");
   }
 
-  /* Charge la page cible */
+  // Charge la page cible
   if (typeof navigate === "function") navigate(sectionName);
 
-  /* Scroll vers la page cible avec offset */
-  setTimeout(() => {
-    scrollToPage(header);
-  }, 100);
+  // Scroll vers la page cible uniquement sur desktop
+  if (window.innerWidth > 768) {
+    setTimeout(() => scrollToPage(header), 100);
+  }
 }
 
 function googleTranslateElementInit() {
