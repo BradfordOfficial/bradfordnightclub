@@ -351,15 +351,14 @@ function navigateFromHero(pageFunction) {
       behavior: "auto"
     });
   }, 80);
-
-  /* Supprime définitivement la vidéo */
-  if (hero) {
+    
+    if (hero && !heroHidden) {
     hero.style.display = "none";
-  }
+    heroHidden = true; // <- ça manquait
+    if (header) header.classList.remove("transparent-header");
+}
 
-  if (header) {
-    header.classList.remove("transparent-header");
-  }
+
 
 }
     function navigateToSection(sectionName) {
