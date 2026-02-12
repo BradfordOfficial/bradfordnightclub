@@ -256,6 +256,27 @@ window.addEventListener('scroll', () => {
   }
 });
 
+    function navigateToPage(pageFunction) {
+
+  // 1. Charger la page
+  if (typeof pageFunction === "function") {
+    pageFunction();
+  }
+
+  // 2. Attendre que le contenu soit injecté
+  setTimeout(() => {
+
+    // 3. Scroll automatique fluide vers le bas
+    const heroHeight = document.getElementById("heroVideo").offsetHeight;
+
+    window.scrollTo({
+      top: heroHeight,
+      behavior: "smooth"
+    });
+
+  }, 100); // petit délai pour laisser le DOM charger
+}
+
 // Header transparent au chargement
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('header');
