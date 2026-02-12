@@ -287,12 +287,17 @@ document.addEventListener("DOMContentLoaded", function () {
   // Header transparent au départ
   if (header) header.classList.add("transparent-header");
 
-    window.addEventListener("scroll", function () {
+    // Scroll naturel et disparition fluide
+window.addEventListener("scroll", function () {
   if (!hero || heroHidden) return;
+
   const rect = hero.getBoundingClientRect();
-  if (rect.bottom <= 50) { // un petit offset pour que ça ne disparaisse pas trop tôt
+
+  // Dès que la vidéo est presque hors écran
+  if (rect.bottom <= 50) {
     hero.classList.add("faded");
     heroHidden = true;
+
     if (header) header.classList.remove("transparent-header");
   }
 });
