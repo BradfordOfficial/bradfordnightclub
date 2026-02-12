@@ -242,22 +242,21 @@
 </style>
 
 <script>
-// --- Disparition de la vidéo uniquement quand elle sort de l'écran ---
 const heroContainer = document.getElementById('heroVideo');
-const heroVideo = heroContainer.querySelector('.hero-video');
+
 window.addEventListener('scroll', () => {
   const rect = heroContainer.getBoundingClientRect();
+
+  const header = document.querySelector('header');
+
   if (rect.bottom <= 0) {
-    heroContainer.style.display = 'none'; // la vidéo disparaît complètement
-    // Eventuellement, on remet le header normal ici
-    document.querySelector('header').classList.remove('transparent-header');
+    if (header) header.classList.remove('transparent-header');
   } else {
-    heroContainer.style.display = 'block';
-    document.querySelector('header').classList.add('transparent-header');
+    if (header) header.classList.add('transparent-header');
   }
 });
 
-// --- Header transparent initial ---
+// Header transparent au chargement
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('header');
   if (header) header.classList.add('transparent-header');
