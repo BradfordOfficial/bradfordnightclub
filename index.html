@@ -366,13 +366,12 @@ function navigateFromHero(pageFunction) {
     navigate(sectionName);
   }
 
-  /* Force affichage en haut */
   setTimeout(function () {
-    window.scrollTo({
-      top: headerHeight,
-      behavior: "auto"
-    });
-  }, 60);
+  window.scrollTo({
+    top: headerHeight - 10, // micro décalage pour que le titre ne colle pas trop au header
+    behavior: "smooth"       // animation fluide
+  });
+}, 60);
 
 }
 
