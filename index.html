@@ -147,9 +147,9 @@
   overflow: hidden;
 }
  .hero-video-container.hidden {
-  visibility: hidden; /* disparaît visuellement */
-  position: absolute; /* ne prend plus de place dans le flux */
-  height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
 }
 
 .hero-video {
