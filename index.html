@@ -291,10 +291,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!hero || heroHidden) return;
     const rect = hero.getBoundingClientRect();
     if (rect.bottom <= 0) {
-      hero.style.display = "none";
-      heroHidden = true;
-      if (header) header.classList.remove("transparent-header");
-    }
+  hero.classList.add("hidden");
+  heroHidden = true;
+  if (header) header.classList.remove("transparent-header");
+}
   });
 
   // ===== Fonctions pour naviguer
