@@ -135,7 +135,10 @@
 </div>
 
 <style>
-/* --- Container --- */
+/* ============================= */
+/* HERO VIDEO SECTION PREMIUM   */
+/* ============================= */
+
 .hero-video-container {
   position: relative;
   width: 100%;
@@ -143,7 +146,7 @@
   overflow: hidden;
 }
 
-/* --- Vidéo en arrière-plan NON bloquante --- */
+/* ----- VIDEO ARRIÈRE PLAN ----- */
 .hero-video {
   position: absolute;
   top: 50%;
@@ -155,19 +158,23 @@
   transform: translate(-50%, -50%);
   object-fit: cover;
   z-index: 1;
-  pointer-events: none; /* IMPORTANT */
+  pointer-events: none; /* Empêche de bloquer les clics */
 }
 
-/* --- Overlay NON bloquant --- */
+/* ----- OVERLAY LUXE SOMBRE ----- */
 .hero-video-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(255,0,150,0.15), rgba(0,0,0,0.6));
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.65)
+  );
   z-index: 2;
-  pointer-events: none; /* IMPORTANT */
+  pointer-events: none;
 }
 
-/* --- Contenu --- */
+/* ----- CONTENU CENTRAL ----- */
 .hero-video-content {
   position: relative;
   z-index: 5;
@@ -179,49 +186,54 @@
   justify-content: center;
   text-align: center;
   padding: 0 20px;
-  color: white;
+  margin-top: 90px; /* descend légèrement sous le header */
 }
 
+/* ----- TITRE ----- */
 .hero-slogan {
-  font-size: 3.2rem;
-  margin-bottom: 40px;
-  letter-spacing: 2px;
+  font-family: 'Cinzel', serif;
+  font-size: 3.5rem;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  background: linear-gradient(90deg, #ff00cc, #ff66ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ffffff;
+  text-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+  margin-bottom: 50px;
   animation: fadeSlide 1.2s ease forwards;
 }
 
-/* --- Boutons ultra premium --- */
+/* ----- BOUTONS CONTAINER ----- */
 .hero-buttons {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
   justify-content: center;
 }
 
+/* ----- BOUTONS PREMIUM ----- */
 .hero-buttons button {
-  padding: 15px 40px;
-  font-size: 1rem;
+  padding: 16px 50px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   border-radius: 999px;
-  border: 2px solid rgba(255,255,255,0.5);
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
   color: white;
   cursor: pointer;
   transition: all 0.35s ease;
-  letter-spacing: 1px;
 }
 
+/* ----- HOVER LUXE ----- */
 .hero-buttons button:hover {
-  background: linear-gradient(90deg, #ff00cc, #ff1493);
-  border-color: transparent;
-  box-shadow: 0 0 25px rgba(255,0,150,0.6);
-  transform: translateY(-4px);
+  background: white;
+  color: black;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 255, 255, 0.35);
 }
 
-/* --- Animation texte --- */
+/* ----- ANIMATION TITRE ----- */
 @keyframes fadeSlide {
   from {
     opacity: 0;
@@ -233,10 +245,33 @@
   }
 }
 
-/* --- Responsive --- */
+/* ============================= */
+/* HEADER TRANSPARENT */
+/* ============================= */
+
+header.transparent-header {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
 @media (max-width: 768px) {
+
+  .hero-video-content {
+    margin-top: 60px;
+  }
+
   .hero-slogan {
-    font-size: 2rem;
+    font-size: 2.1rem;
+    letter-spacing: 2px;
+  }
+
+  .hero-buttons button {
+    padding: 14px 35px;
+    font-size: 0.85rem;
   }
 }
 </style>
