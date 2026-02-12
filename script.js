@@ -969,9 +969,32 @@ function renderHomePage() {
             </div>
         </div>
         
-         <div class="hero-section" style="background-image: url('placeholder-video-or-photo.jpg'); height: 500px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; margin-bottom: 0;">
-            <div style="text-align: center; background: rgba(0,0,0,0.6); padding: 20px; border-radius: 10px;">
-                <h2 style="color: var(--ivory); font-family: 'Cinzel', serif; font-size: 2.5rem;">L'Exclusivité Redéfinie.</h2>
+         <div class="hero-section"
+style="
+background-image:
+linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.65)),
+url('https://images.pexels.com/photos/14275473/pexels-photo-14275473.jpeg');
+height: 360px;
+background-size: cover; /* léger dézoom pour voir plus de contexte */
+background-position: center 40%; /* garde la verticalité originale */
+background-repeat: no-repeat;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 50px 0;
+border-radius: 30px 30px 90px 90px;
+box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+overflow: hidden;
+position: relative;
+">
+      <div style="text-align: center; padding: 20px;">
+             <h2 style="
+color: #f8f5e6;
+font-family: 'Cinzel', serif;
+font-size: 2.3rem;
+text-align: center;
+text-shadow: 0 10px 40px rgba(0,0,0,0.8);
+">L'Exclusivité Redéfinie.</h2>
       <button class="cta-button" onclick="window.scrollTo(0,0); navigate('reservations')">Réserver une Table VIP</button>
 
             </div>
