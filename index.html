@@ -133,52 +133,57 @@
 <div id="heroSpacer" style="height: 100vh;"></div>
 
 <style>
-/* On baisse le z-index de la vidéo pour qu'elle passe SOUS le header */
+/* GARDER EXACTEMENT TON STYLE ORIGINAL */
 .hero-video-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 10; /* Assez bas pour être sous le header (souvent à 1000) */
-  transition: opacity 0.3s ease-out;
-  pointer-events: none; /* Permet de cliquer à travers si besoin */
+  position: fixed; /* Indispensable pour l'effet de recouvrement */
+  top: 0; left: 0; width: 100%; height: 100vh;
+  overflow: hidden; z-index: 10;
+  transition: opacity 0.4s ease;
 }
-
-/* On rend les boutons cliquables malgré le pointer-events: none du parent */
-.hero-video-content button {
-  pointer-events: auto;
-}
-
 .hero-video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
+  position: absolute; top: 50%; left: 50%;
+  min-width: 100%; min-height: 100%;
   transform: translate(-50%, -50%);
-  object-fit: cover;
+  object-fit: cover; z-index: 1;
 }
-
+.hero-video-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.65));
+  z-index: 2;
+}
 .hero-video-content {
-  position: relative;
-  z-index: 15;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* Centrage vertical parfait */
-  text-align: center;
+  position: relative; z-index: 5;
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 0 20px;
 }
+.hero-slogan {
+  font-family: 'Cinzel', serif; font-size: 3.5rem;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: white; text-shadow: 0 15px 40px rgba(0,0,0,0.9);
+  margin-bottom: 50px;
+}
+.hero-buttons { display: flex; gap: 25px; justify-content: center; }
+.hero-buttons button {
+  padding: 16px 50px; font-family: 'Cinzel', serif;
+  font-size: 0.95rem; letter-spacing: 2px;
+  text-transform: uppercase; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.07); backdrop-filter: blur(12px);
+  color: white; cursor: pointer; transition: 0.3s ease;
+}
+.hero-buttons button:hover { background: white; color: black; transform: translateY(-5px); }
 
-/* Ton style de bouton et slogan reste identique */
-.hero-slogan { font-family: 'Cinzel', serif; font-size: 3.5rem; color: white; text-transform: uppercase; text-shadow: 0 10px 30px #000; }
+/* HEADER TRANSPARENT LOGIC */
+header.transparent-header { background: transparent !important; box-shadow: none !important; z-index: 2000 !important; }
 
-header.transparent-header {
-  background: transparent !important;
-  box-shadow: none !important;
-  z-index: 2000 !important; /* Le header doit TOUJOURS être au-dessus */
+/* IPHONE RESPONSIVE (TON CODE) */
+@media (max-width: 390px) {
+  .hero-video-content { padding-top: 20vh; justify-content: flex-start; }
+  .hero-slogan { font-size: 1.6rem; margin-bottom: 35px; }
+  .hero-buttons { gap: 15px; }
+  .hero-buttons button { padding: 10px 25px; font-size: 0.82rem; }
 }
 </style>
 
@@ -188,43 +193,49 @@ document.addEventListener("DOMContentLoaded", function () {
   const spacer = document.getElementById("heroSpacer");
   const header = document.querySelector("header");
 
-  function resetHeroLayout() {
+  // La fonction qui tue la vidéo proprement
+  function killHero() {
     if (hero) hero.style.display = "none";
     if (spacer) spacer.style.display = "none";
     if (header) header.classList.remove("transparent-header");
   }
 
-  // 1. GESTION DU SCROLL PROGRESSIF
+  // 1. Logique du Scroll
   window.addEventListener("scroll", function () {
     const scrollPos = window.scrollY;
     const vh = window.innerHeight;
 
-    if (scrollPos < vh) {
-      if (hero) {
-        hero.style.display = "block";
-        hero.style.opacity = 1 - (scrollPos / vh);
-      }
+    if (scrollPos > 0 && scrollPos < vh) {
+      hero.style.opacity = 1 - (scrollPos / vh);
       if (header) header.classList.add("transparent-header");
-    } else {
-      if (hero) hero.style.display = "none";
-      if (header) header.classList.remove("transparent-header");
+    } else if (scrollPos >= vh) {
+      killHero();
+    } else if (scrollPos === 0) {
+      // On ne la remonte que si on est VRAIMENT sur la home
+      // (Si ton app change d'URL ou de state, adapte ici)
+      hero.style.opacity = 1;
+      hero.style.display = "block";
+      if (header) header.classList.add("transparent-header");
     }
   });
 
-  // 2. SÉCURITÉ : SI ON CLIQUE SUR UN BOUTON DU HEADER
-  // On intercepte les clics sur le menu pour tuer la vidéo proprement
-  document.querySelectorAll('header a, header button').forEach(link => {
-    link.addEventListener('click', () => {
-      resetHeroLayout();
-    });
+  // 2. Logique Header : Si on clique sur Bottle Menu, Events, etc.
+  // On surveille tous les clics sur les liens du site
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('header a') || e.target.closest('header button') || e.target.closest('.hero-buttons button')) {
+      // Dès qu'on clique sur un truc de navigation -> on dégage la vidéo
+      setTimeout(killHero, 50); // Petit délai pour laisser la navigation se faire
+    }
   });
 
-  // 3. TES FONCTIONS DE NAVIGATION DEPUIS LA VIDÉO
+  // 3. Ta fonction pour les boutons sur la vidéo
   window.navigateFromHero = function(pageFunction) {
-    resetHeroLayout();
+    killHero();
     if (typeof pageFunction === "function") pageFunction();
     window.scrollTo(0, 0);
   };
+
+
 
   // ===== Google Translate
   window.googleTranslateElementInit = function() {
