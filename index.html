@@ -279,47 +279,46 @@ header.transparent-header {
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  const heroContainer = document.getElementById("heroVideo");
+  const hero = document.getElementById("heroVideo");
   const header = document.querySelector("header");
 
-  if (!heroContainer) return;
-
-  // Header transparent au chargement
-  if (header) {
-    header.classList.add("transparent-header");
+  function getHeaderHeight() {
+    return header ? header.offsetHeight : 0;
   }
 
-  // Gestion scroll
-  window.addEventListener("scroll", function () {
-    const rect = heroContainer.getBoundingClientRect();
-
-    if (rect.bottom <= 0) {
-      if (header) header.classList.remove("transparent-header");
-    } else {
-      if (header) header.classList.add("transparent-header");
-    }
-  });
-
-});
-
-// Navigation + scroll fluide
-function navigateToPage(pageFunction) {
-
-  if (typeof pageFunction === "function") {
-    pageFunction();
-  }
-
-  setTimeout(function () {
-    const hero = document.getElementById("heroVideo");
+  function scrollBelowHero() {
     if (!hero) return;
 
+    const offset = hero.offsetHeight - getHeaderHeight();
+
     window.scrollTo({
-      top: hero.offsetHeight,
+      top: offset,
       behavior: "smooth"
     });
+  }
 
-  }, 120);
-}
+  window.navigateToSection = function(sectionName) {
+
+    // appel de ta logique existante
+    if (typeof navigate === "function") {
+      navigate(sectionName);
+    }
+
+    setTimeout(() => {
+      scrollBelowHero();
+    }, 120);
+  };
+
+  window.navigateFromHero = function(pageFunction) {
+    if (typeof pageFunction === "function") {
+      pageFunction();
+    }
+    setTimeout(() => {
+      scrollBelowHero();
+    }, 120);
+  };
+
+});
 </script>
 
 <style>
