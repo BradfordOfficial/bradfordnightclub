@@ -4297,7 +4297,22 @@ function confirmEliteAccess() {
     }, 500);
 }
 
+function goToReservationsDirect() {
+    // cache la vidéo si elle est encore visible
+    const hero = document.getElementById("heroVideo");
+    const header = document.querySelector("header");
+    if (hero && hero.style.display !== "none") {
+        hero.style.display = "none";
+        if (header) header.classList.remove("transparent-header");
+    }
 
+    // appelle navigate normalement
+    if (typeof navigate === "function") {
+        navigate('reservations');
+    } else {
+        console.warn("La fonction navigate() n'existe pas encore !");
+    }
+}
 
 
 /** Charge le JSON et démarre l'application */
