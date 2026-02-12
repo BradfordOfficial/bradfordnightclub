@@ -337,68 +337,59 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 }
 
-
 /* ========================== */
 /* NAVIGATION DEPUIS HERO */
 /* ========================== */
-
 function navigateFromHero(pageFunction) {
-
   const hero = document.getElementById("heroVideo");
   const header = document.querySelector("header");
-  const headerHeight = header ? header.offsetHeight : 0;
 
   /* Charge la page */
   if (typeof pageFunction === "function") {
     pageFunction();
   }
 
- setTimeout(() => {
-    scrollToPage(header);
-  }, 100);
-}
-    
-    if (hero && !heroHidden) {
+  /* Supprime la vidéo si elle est visible */
+  if (hero && !heroHidden) {
     hero.style.display = "none";
-    heroHidden = true; // <- ça manquait
+    heroHidden = true;
     if (header) header.classList.remove("transparent-header");
-}
-
-
-
-}
-    function navigateToSection(sectionName) {
-
-  const hero = document.getElementById("heroVideo");
-  const header = document.querySelector("header");
-  const headerHeight = header ? header.offsetHeight : 0;
-
-if (hero && hero.style.display !== "none") {
-    hero.style.display = "none";
-    heroHidden = true; // <- à ajouter
-    if (header) header.classList.remove("transparent-header");
-}
-
-  /* Fonction originale */
-  if (typeof navigate === "function") {
-    navigate(sectionName);
   }
 
+  /* Scroll vers la page cible avec offset */
   setTimeout(() => {
     scrollToPage(header);
   }, 100);
 }
 
+function navigateToSection(sectionName) {
+  const hero = document.getElementById("heroVideo");
+  const header = document.querySelector("header");
+
+  /* Supprime la vidéo si visible */
+  if (hero && hero.style.display !== "none") {
+    hero.style.display = "none";
+    heroHidden = true;
+    if (header) header.classList.remove("transparent-header");
+  }
+
+  /* Charge la page cible */
+  if (typeof navigate === "function") navigate(sectionName);
+
+  /* Scroll vers la page cible avec offset */
+  setTimeout(() => {
+    scrollToPage(header);
+  }, 100);
 }
 
-    function googleTranslateElementInit() {
-    setTimeout(() => {
-        new google.translate.TranslateElement({
-            pageLanguage: 'fr',
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false
-        }, 'google_translate_element');
-    }, 500); // délai de 500ms pour laisser la vidéo et le DOM se charger
+function googleTranslateElementInit() {
+  setTimeout(() => {
+    new google.translate.TranslateElement({
+      pageLanguage: 'fr',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      autoDisplay: false
+    }, 'google_translate_element');
+  }, 500); // délai de 500ms pour laisser la vidéo et le DOM se charger
 }
 
 </script>
