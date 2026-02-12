@@ -119,7 +119,6 @@
 
 
 
-<!-- HERO VIDEO VIP -->
 <div class="hero-video-container" id="heroVideo">
   <video autoplay muted loop playsinline preload="auto" class="hero-video" id="heroVid">
     <source src="https://bradfordofficial.github.io/bradfordnightclub/2022395-hd_1920_1080_30fps.mp4" type="video/mp4">
@@ -136,15 +135,28 @@
   </div>
 </div>
 
+<div id="heroSpacer" style="height: 100vh;"></div>
+
 <style>
 /* ========================= */
-/* HERO SECTION */
+/* HERO SECTION - ADAPTÉE FIXED */
 /* ========================= */
 .hero-video-container {
-  position: relative;
+  position: fixed; /* Reste en place au scroll */
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  z-index: 1; /* Derrière le header mais devant le fond de base */
+  transition: opacity 0.4s ease; /* Transition fluide */
+}
+
+/* On s'assure que le contenu qui suit a un z-index plus haut pour recouvrir la vidéo */
+#main-content, section, .page-content {
+  position: relative;
+  z-index: 10;
+  background: #000; /* Fond noir pour couvrir proprement la vidéo */
 }
 
 .hero-video {
@@ -154,7 +166,7 @@
   min-width: 100%;
   min-height: 100%;
   width: auto;
-  height: 100%;
+  height: auto;
   transform: translate(-50%, -50%);
   object-fit: cover;
   z-index: 1;
@@ -179,7 +191,6 @@
   justify-content: center;
   text-align: center;
   padding: 0 20px;
-  margin-top: 0; /* <-- supprime le margin pour pas de vide */
 }
 
 .hero-slogan {
@@ -219,36 +230,23 @@
   transform: translateY(-5px);
 }
 
-/* HEADER TRANSPARENT */
 header.transparent-header {
   background: transparent !important;
   box-shadow: none !important;
 }
 
-/* ========================= */
-/* RESPONSIVE IPHONE */
-/* ========================= */
 @media (max-width: 390px) {
   .hero-video-content {
-    padding-top: 40vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding-top: 20vh;
     justify-content: flex-start;
   }
-
   .hero-slogan {
     font-size: 1.6rem;
     margin-bottom: 35px;
-    text-align: center;
-    transform: translateX(0);
   }
-
   .hero-buttons {
     gap: 15px;
-    margin-top: 12px;
   }
-
   .hero-buttons button {
     padding: 10px 25px;
     font-size: 0.82rem;
@@ -259,50 +257,56 @@ header.transparent-header {
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const hero = document.getElementById("heroVideo");
+  const spacer = document.getElementById("heroSpacer");
   const video = document.getElementById("heroVid");
   const header = document.querySelector("header");
 
   let heroHidden = false;
 
-  // Lecture automatique vidéo
   if (video) {
     video.play().catch(() => console.log("Lecture échouée"));
   }
 
-  // Header transparent au départ
   if (header) header.classList.add("transparent-header");
 
-  // ===== Scroll naturel comme l'ancien code
   window.addEventListener("scroll", function () {
-    if (!hero || heroHidden) return;
+    const scrollPos = window.scrollY;
+    const windowHeight = window.innerHeight;
 
-    const rect = hero.getBoundingClientRect();
+    if (scrollPos > 0) {
+      // Effet d'opacité fluide pendant le scroll
+      let opacity = 1 - (scrollPos / (windowHeight * 0.8));
+      hero.style.opacity = opacity > 0 ? opacity : 0;
+    } else {
+      hero.style.opacity = 1;
+    }
 
-    if (rect.bottom <= 0) {
-      hero.style.display = "none"; // <-- on supprime complètement le container
-      heroHidden = true;
-      if (header) header.classList.remove("transparent-header");
+    // Switch Header et Display None quand on a dépassé la vidéo
+    if (scrollPos >= windowHeight) {
+      if (!heroHidden) {
+        hero.style.display = "none";
+        heroHidden = true;
+        if (header) header.classList.remove("transparent-header");
+      }
+    } else {
+      if (heroHidden) {
+        hero.style.display = "block";
+        heroHidden = false;
+        if (header) header.classList.add("transparent-header");
+      }
     }
   });
 
-  // ===== Fonctions pour naviguer
-  window.navigateToSection = function(sectionName) {
-    if (hero && hero.style.display !== "none") {
-      hero.style.display = "none";
-      heroHidden = true;
-      if (header) header.classList.remove("transparent-header");
-    }
-    if (typeof navigate === "function") navigate(sectionName);
-  };
-
   window.navigateFromHero = function(pageFunction) {
     if (typeof pageFunction === "function") pageFunction();
-    if (hero && !heroHidden) {
-      hero.style.display = "none";
-      heroHidden = true;
-      if (header) header.classList.remove("transparent-header");
-    }
+    hero.style.display = "none";
+    if (spacer) spacer.style.display = "none";
+    heroHidden = true;
+    if (header) header.classList.remove("transparent-header");
+    window.scrollTo(0, 0);
   };
+
+
 
   // ===== Google Translate
   window.googleTranslateElementInit = function() {
