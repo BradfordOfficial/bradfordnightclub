@@ -3389,7 +3389,7 @@ font { background-color: transparent !important; box-shadow: none !important; ve
 
 /* --- 1. LE LOADER (BLANC - 2.4rem) --- */
 .main-title {
-    font-family: 'Namdhinggo', cursive !important; /* On garde la Shojumaru */
+    font-family: 'Shojumaru', cursive !important; /* On garde la Shojumaru */
     color: #ffffff !important; /* BLANC PUR */
     font-size: 3.2rem !important; /* Taille demandée */
     letter-spacing: 2px; /* Un peu moins d'espace pour que ça tienne */
