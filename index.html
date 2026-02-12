@@ -349,13 +349,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ===== Assignation des boutons header + hero
   navButtons.forEach(btn => {
-    const text = btn.innerText.toLowerCase();
-    if (text.includes("home")) btn.onclick = () => navigateToSection('home');
-    else if (text.includes("menu")) btn.onclick = () => navigateToSection('menu');
-    else if (text.includes("events")) btn.onclick = () => navigateToSection('events');
-    else if (text.includes("gallery")) btn.onclick = () => navigateToSection('gallery');
-    else if (text.includes("contact")) btn.onclick = () => navigateToSection('contact');
-    else if (text.includes("reserve")) btn.onclick = () => navigateToSection('reservations');
+        const text = btn.innerText.toLowerCase();
+        if (text.includes("home")) btn.setAttribute("onclick", "navigate('home')");
+        if (text.includes("menu")) btn.setAttribute("onclick", "navigate('menu')");
+        if (text.includes("events")) btn.setAttribute("onclick", "navigate('events')");
+        if (text.includes("gallery")) btn.setAttribute("onclick", "navigate('gallery')");
+        if (text.includes("contact")) btn.setAttribute("onclick", "navigate('contact')");
+        if (text.includes("reserve")) btn.setAttribute("onclick", "navigate('reservations')");
   });
 
   // ===== Google Translate
