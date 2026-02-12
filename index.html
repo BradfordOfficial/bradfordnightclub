@@ -345,6 +345,36 @@ function navigateFromHero(pageFunction) {
   }
 
 }
+    function navigateToSection(sectionName) {
+
+  const hero = document.getElementById("heroVideo");
+  const header = document.querySelector("header");
+  const headerHeight = header ? header.offsetHeight : 0;
+
+  /* Si la vidéo est encore visible */
+  if (hero && hero.style.display !== "none") {
+
+    hero.style.display = "none";
+
+    if (header) {
+      header.classList.remove("transparent-header");
+    }
+  }
+
+  /* Fonction originale */
+  if (typeof navigate === "function") {
+    navigate(sectionName);
+  }
+
+  /* Force affichage en haut */
+  setTimeout(function () {
+    window.scrollTo({
+      top: headerHeight,
+      behavior: "auto"
+    });
+  }, 60);
+
+}
 
 </script>
 
