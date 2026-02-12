@@ -678,7 +678,7 @@ function openBottleCheckout(bottleName, priceHT, priceTTC) {
     // Utilisation de APP_CONTENT comme tu l'as défini
     APP_CONTENT.innerHTML = `
         <div class="checkout-container" style="padding: 20px; animation: fadeIn 0.8s ease;">
-            <h1 class="title-page" style="font-size: 1.8rem;">BOTTLE SERVICE</h1>
+            <h1 class="tit-page" style="font-size: 1.8rem;">BOTTLE SERVICE</h1>
             <p style="color:var(--gold); text-align:center; font-size:0.7rem; letter-spacing:2px; margin-bottom:30px;">PRE-ORDER PROTOCOL</p>
 
             <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--gold); padding: 25px; margin-bottom: 30px; position: relative;">
