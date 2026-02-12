@@ -378,12 +378,13 @@ if (hero && hero.style.display !== "none") {
     navigate(sectionName);
   }
 
-  setTimeout(function () {
+  setTimeout(function() {
+  const scrollOffset = headerHeight + window.innerHeight * 0.15;
   window.scrollTo({
-    top: headerHeight + 10, // micro décalage pour que le titre ne colle pas trop au header
-    behavior: "smooth"       // animation fluide
+    top: scrollOffset,
+    behavior: "smooth"
   });
-}, 60);
+}, 80);
 
 }
 
