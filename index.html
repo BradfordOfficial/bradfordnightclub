@@ -210,16 +210,17 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   border-radius: 999px;
-  border: 1px solid white; /* bordure blanche */
-  background: white;        /* fond blanc opaque */
-  color: black;             /* texte noir */
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(12px);
+  color: white;
   cursor: pointer;
-  transition: all 0.35s ease;
+  transition: 0.3s ease;
 }
 
 .hero-buttons button:hover {
-  background: black;       /* inverse fond / texte au hover */
-  color: white;
+  background: white;
+  color: black;
   transform: translateY(-5px);
 }
 /* HEADER TRANSPARENT */
