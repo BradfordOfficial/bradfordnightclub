@@ -3389,9 +3389,9 @@ font { background-color: transparent !important; box-shadow: none !important; ve
 
 /* --- 1. LE LOADER (BLANC - 2.4rem) --- */
 .main-title {
-    font-family: 'Shojumaru', cursive !important; /* On garde la Shojumaru */
+    font-family: 'Namdhinggo', cursive !important; /* On garde la Shojumaru */
     color: #ffffff !important; /* BLANC PUR */
-    font-size: 2.2rem !important; /* Taille demandée */
+    font-size: 3.2rem !important; /* Taille demandée */
     letter-spacing: 2px; /* Un peu moins d'espace pour que ça tienne */
     text-transform: uppercase;
     font-weight: 500;
@@ -3403,10 +3403,10 @@ font { background-color: transparent !important; box-shadow: none !important; ve
 }
 
 h1 {
-    font-family: 'Shojumaru', cursive !important;
+    font-family: 'Namdhinggo', cursive !important;
     
     /* TA TAILLE FIXE */
-    font-size: 2.8rem !important;
+    font-size: 3.4rem !important;
     
     color: #d4af37 !important;
     text-shadow: none !important;
@@ -3436,8 +3436,8 @@ h1 {
 
 /* 1. ON ISOLE LE TITRE PRINCIPAL (LE TOUT PREMIER) */
 h1.title-page:first-of-type {
-    font-family: 'Shojumaru', cursive !important;
-    font-size: 2.7rem !important;
+    font-family: 'Namdhinggo', cursive !important;
+    font-size: 3.4rem !important;
     line-height: 1.3 !important; /* On écarte bien ici pour l'accueil */
     letter-spacing: -2px !important;
     margin-top: 40px !important;
@@ -3534,8 +3534,8 @@ h1.title-page:first-of-type {
 
 /* VERSION ALTERNATIVE PLUS PETITE */
 h1.tp-alt:first-of-type {
-    font-family: 'Shojumaru', cursive !important;
-    font-size: 2.2rem !important;
+    font-family: 'Namdhinggo', cursive !important;
+    font-size: 3.2rem !important;
     line-height: 1.3 !important;
     letter-spacing: -2px !important;
 
@@ -3549,8 +3549,8 @@ h1.tp-alt:first-of-type {
     display: block;
 }
 h1.tit-page:first-of-type {
-    font-family: 'Shojumaru', cursive !important;
-    font-size: 2.3rem !important;
+    font-family: 'Namdhinggo', cursive !important;
+    font-size: 3.1rem !important;
     line-height: 1.3 !important; /* On écarte bien ici pour l'accueil */
     letter-spacing: -2px !important;
     margin-top: 40px !important;
