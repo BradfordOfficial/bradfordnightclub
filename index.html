@@ -272,11 +272,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const video = document.getElementById("heroVid"); // <-- ajoute ça pour la vidéo
   const header = document.querySelector("header");
   const navButtons = document.querySelectorAll(".nav-links button");
-    /* ===== INITIALISATION GOOGLE TRANSLATE ===== */
-if (typeof googleTranslateElementInit === "function") {
-    googleTranslateElementInit();
-}
-
+  
   let heroHidden = false;
 
   /* ===== FORCER LECTURE VIDÉO ===== */
@@ -393,6 +389,16 @@ function navigateFromHero(pageFunction) {
   });
 }, 60);
 
+}
+
+    function googleTranslateElementInit() {
+    setTimeout(() => {
+        new google.translate.TranslateElement({
+            pageLanguage: 'fr',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+        }, 'google_translate_element');
+    }, 500); // délai de 500ms pour laisser la vidéo et le DOM se charger
 }
 
 </script>
