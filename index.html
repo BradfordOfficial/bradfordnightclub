@@ -258,57 +258,95 @@ header.transparent-header {
 
 </style>
 <script>
+
 document.addEventListener("DOMContentLoaded", function () {
 
   const hero = document.getElementById("heroVideo");
   const header = document.querySelector("header");
+  const navButtons = document.querySelectorAll(".nav-links button");
 
-  function getHeaderHeight() {
-    return header ? header.offsetHeight : 0;
-  }
+  let heroHidden = false;
 
-  function scrollBelowHero() {
-    if (!hero) return;
+  /* Header transparent au début */
+  if (header) header.classList.add("transparent-header");
 
-    const offset = hero.offsetHeight - getHeaderHeight();
+  /* ===== GESTION SCROLL ===== */
+  window.addEventListener("scroll", function () {
 
-    window.scrollTo({
-      top: offset,
-      behavior: "smooth"
-    });
-  }
+    if (!hero || heroHidden) return;
 
-  window.navigateToSection = function(sectionName) {
+    const rect = hero.getBoundingClientRect();
 
-    // appel de ta logique existante
-    if (typeof navigate === "function") {
-      navigate(sectionName);
+    if (rect.bottom <= 0) {
+
+      /* Supprime définitivement la vidéo */
+      hero.style.display = "none";
+      heroHidden = true;
+
+      if (header) header.classList.remove("transparent-header");
+
+      /* Restaure les anciens boutons header */
+      navButtons.forEach(btn => {
+
+        const text = btn.innerText.toLowerCase();
+
+        if (text.includes("home"))
+          btn.setAttribute("onclick", "navigate('home')");
+        if (text.includes("menu"))
+          btn.setAttribute("onclick", "navigate('menu')");
+        if (text.includes("events"))
+          btn.setAttribute("onclick", "navigate('events')");
+        if (text.includes("gallery"))
+          btn.setAttribute("onclick", "navigate('gallery')");
+        if (text.includes("contact"))
+          btn.setAttribute("onclick", "navigate('contact')");
+        if (text.includes("reserve"))
+          btn.setAttribute("onclick", "navigate('reservations')");
+
+      });
+
     }
 
-    setTimeout(() => {
-      scrollBelowHero();
-    }, 120);
-  };
-
-  window.navigateFromHero = function(pageFunction) {
-    if (typeof pageFunction === "function") {
-      pageFunction();
-    }
-    setTimeout(() => {
-      scrollBelowHero();
-    }, 120);
-  };
+  });
 
 });
-</script>
 
-<style>
-/* --- Header transparent --- */
-header.transparent-header {
-  background: transparent !important;
-  box-shadow: none !important;
+
+/* ========================== */
+/* NAVIGATION DEPUIS HERO */
+/* ========================== */
+
+function navigateFromHero(pageFunction) {
+
+  const hero = document.getElementById("heroVideo");
+  const header = document.querySelector("header");
+  const headerHeight = header ? header.offsetHeight : 0;
+
+  /* Charge la page */
+  if (typeof pageFunction === "function") {
+    pageFunction();
+  }
+
+  /* Scroll DIRECT en haut (pas milieu) */
+  setTimeout(function() {
+    window.scrollTo({
+      top: headerHeight,
+      behavior: "auto"
+    });
+  }, 80);
+
+  /* Supprime définitivement la vidéo */
+  if (hero) {
+    hero.style.display = "none";
+  }
+
+  if (header) {
+    header.classList.remove("transparent-header");
+  }
+
 }
-</style>
+
+</script>
 
 
 <div id="official-alert-overlay"></div>
