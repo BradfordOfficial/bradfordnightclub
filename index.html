@@ -264,38 +264,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let heroHidden = false;
 
-  // ===== Lecture automatique vidéo
+  // Lecture automatique vidéo
   if (video) {
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => console.log("Vidéo démarrée avec succès"))
-        .catch(() => {
-          setTimeout(() => {
-            video.play().catch(() => console.log("Lecture échouée"));
-          }, 300);
-        });
-    }
+    video.play().catch(() => console.log("Lecture échouée"));
   }
 
   // Header transparent au départ
   if (header) header.classList.add("transparent-header");
 
-    // Scroll naturel et disparition fluide
-window.addEventListener("scroll", function () {
-  if (!hero || heroHidden) return;
+  // ===== Scroll naturel comme l'ancien code
+  window.addEventListener("scroll", function () {
+    if (!hero || heroHidden) return;
 
-  const rect = hero.getBoundingClientRect();
+    const rect = hero.getBoundingClientRect();
 
-  // Dès que la vidéo est presque hors écran
-  if (rect.bottom <= 50) {
-    hero.classList.add("faded");
-    heroHidden = true;
+    if (rect.bottom <= 0) {
+      hero.style.display = "none"; // <-- on supprime complètement le container
+      heroHidden = true;
+      if (header) header.classList.remove("transparent-header");
+    }
+  });
 
-    if (header) header.classList.remove("transparent-header");
-  }
-});
-  
   // ===== Fonctions pour naviguer
   window.navigateToSection = function(sectionName) {
     if (hero && hero.style.display !== "none") {
@@ -304,7 +293,6 @@ window.addEventListener("scroll", function () {
       if (header) header.classList.remove("transparent-header");
     }
     if (typeof navigate === "function") navigate(sectionName);
-    // Pas de scroll forcé, scroll normal sur mobile et desktop
   };
 
   window.navigateFromHero = function(pageFunction) {
@@ -314,7 +302,6 @@ window.addEventListener("scroll", function () {
       heroHidden = true;
       if (header) header.classList.remove("transparent-header");
     }
-    // Pas de scroll forcé, scroll normal
   };
 
   // ===== Google Translate
