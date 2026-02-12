@@ -272,6 +272,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const video = document.getElementById("heroVid"); // <-- ajoute ça pour la vidéo
   const header = document.querySelector("header");
   const navButtons = document.querySelectorAll(".nav-links button");
+    /* ===== INITIALISATION GOOGLE TRANSLATE ===== */
+if (typeof googleTranslateElementInit === "function") {
+    googleTranslateElementInit();
+}
 
   let heroHidden = false;
 
