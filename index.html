@@ -235,26 +235,30 @@ header.transparent-header {
 /* RESPONSIVE IPHONE */
 /* ========================= */
 
-@media (max-width: 768px) {
+@media (max-width: 390px) {
 
   .hero-video-content {
     margin-top: 65px;
   }
 
   .hero-slogan {
-    font-size: 1.9rem; /* -0.2 rem */
-    letter-spacing: 1.5px;
-    transform: translateX(-2px) translateY(3px);
+    font-size: 2rem; /* taille légèrement réduite */
+    margin-bottom: 45px; /* descend un peu le titre */
+    transform: translateX(-5px); /* décalage très léger vers la gauche */
   }
 
+  /* Ajuste les boutons */
   .hero-buttons {
-    margin-left: 6px;
+    justify-content: center; /* assure centré horizontal */
+    margin-top: 10px; /* descendre légèrement sous le titre */
+    transform: translateX(-3px); /* léger décalage vers la gauche */
   }
 
   .hero-buttons button {
-    padding: 13px 30px;
-    font-size: 0.8rem;
+    padding: 12px 30px; /* adapte un peu le padding pour mobile */
+    font-size: 0.82rem; /* taille plus petite */
   }
+
 }
 
 </style>
