@@ -261,16 +261,25 @@ header.transparent-header {
 @media (max-width: 768px) {
 
   .hero-video-content {
-    margin-top: 60px;
+    margin-top: 50px; /* moins décalé sur mobile */
+    padding: 0 25px;
   }
 
   .hero-slogan {
-    font-size: 2.1rem;
+    font-size: 2rem; /* légèrement réduit */
     letter-spacing: 2px;
   }
 
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
   .hero-buttons button {
-    padding: 14px 35px;
+    width: 85%;
+    max-width: 280px;
+    padding: 14px 0;
     font-size: 0.85rem;
   }
 }
