@@ -267,135 +267,110 @@ header.transparent-header {
 }
 
 </style>
-<script>
 
+<script>
 document.addEventListener("DOMContentLoaded", function () {
 
   const hero = document.getElementById("heroVideo");
-  const video = document.getElementById("heroVid"); // <-- ajoute ça pour la vidéo
+  const video = document.getElementById("heroVid");
   const header = document.querySelector("header");
-  const navButtons = document.querySelectorAll(".nav-links button");
+  const navButtons = document.querySelectorAll(".nav-links button, .hero-buttons button");
   
   let heroHidden = false;
 
-  /* ===== FORCER LECTURE VIDÉO ===== */
+  // ===== Lecture automatique vidéo
   if (video) {
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise
-        .then(() => {
-          console.log("Vidéo démarrée avec succès");
-        })
+        .then(() => console.log("Vidéo démarrée avec succès"))
         .catch(() => {
-          // Si autoplay bloqué sur mobile, relance après petit délai
           setTimeout(() => {
-            video.play().catch(() => console.log("Tentative de lecture échouée"));
+            video.play().catch(() => console.log("Lecture échouée"));
           }, 300);
         });
     }
   }
 
-  /* Header transparent au début */
+  // Header transparent au départ
   if (header) header.classList.add("transparent-header");
 
-  /* ===== GESTION SCROLL ===== */
+  // ===== Scroll naturel / suppression vidéo
   window.addEventListener("scroll", function () {
-
     if (!hero || heroHidden) return;
 
     const rect = hero.getBoundingClientRect();
-
     if (rect.bottom <= 0) {
-
-      /* Supprime définitivement la vidéo */
       hero.style.display = "none";
       heroHidden = true;
-
       if (header) header.classList.remove("transparent-header");
+    }
+  });
 
-      /* Restaure les anciens boutons header */
-      navButtons.forEach(btn => {
-        const text = btn.innerText.toLowerCase();
-        if (text.includes("home")) btn.setAttribute("onclick", "navigate('home')");
-        if (text.includes("menu")) btn.setAttribute("onclick", "navigate('menu')");
-        if (text.includes("events")) btn.setAttribute("onclick", "navigate('events')");
-        if (text.includes("gallery")) btn.setAttribute("onclick", "navigate('gallery')");
-        if (text.includes("contact")) btn.setAttribute("onclick", "navigate('contact')");
-        if (text.includes("reserve")) btn.setAttribute("onclick", "navigate('reservations')");
-      });
+  // ===== Fonction pour scroll avec offset
+  function scrollToPage(header) {
+    const headerHeight = header ? header.offsetHeight : 0;
+    const offset = headerHeight + 15;
+    window.scrollTo({
+      top: offset,
+      behavior: "smooth"
+    });
+  }
 
+  // ===== Navigation depuis hero ou boutons
+  function navigateToSection(sectionName) {
+    if (hero && hero.style.display !== "none") {
+      hero.style.display = "none";
+      heroHidden = true;
+      if (header) header.classList.remove("transparent-header");
     }
 
+    if (typeof navigate === "function") navigate(sectionName);
+
+    // Scroll avec offset seulement sur desktop
+    if (window.innerWidth > 768) {
+      setTimeout(() => scrollToPage(header), 100);
+    }
+  }
+
+  function navigateFromHero(pageFunction) {
+    if (typeof pageFunction === "function") pageFunction();
+
+    if (hero && !heroHidden) {
+      hero.style.display = "none";
+      heroHidden = true;
+      if (header) header.classList.remove("transparent-header");
+    }
+
+    if (window.innerWidth > 768) {
+      setTimeout(() => scrollToPage(header), 100);
+    }
+  }
+
+  // ===== Assignation des boutons header + hero
+  navButtons.forEach(btn => {
+    const text = btn.innerText.toLowerCase();
+    if (text.includes("home")) btn.onclick = () => navigateToSection('home');
+    else if (text.includes("menu")) btn.onclick = () => navigateToSection('menu');
+    else if (text.includes("events")) btn.onclick = () => navigateToSection('events');
+    else if (text.includes("gallery")) btn.onclick = () => navigateToSection('gallery');
+    else if (text.includes("contact")) btn.onclick = () => navigateToSection('contact');
+    else if (text.includes("reserve")) btn.onclick = () => navigateToSection('reservations');
   });
+
+  // ===== Google Translate
+  window.googleTranslateElementInit = function() {
+    setTimeout(() => {
+      new google.translate.TranslateElement({
+        pageLanguage: 'fr',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }, 500);
+  };
 
 });
-
-    function scrollToPage(header) {
-  const headerHeight = header ? header.offsetHeight : 0;
-  const offset = headerHeight + 15; // le petit décalage pour que le titre ne soit pas caché
-  window.scrollTo({
-    top: offset,
-    behavior: "smooth"
-  });
-}
-
-/* ========================== */
-/* NAVIGATION DEPUIS HERO */
-/* ========================== */
-function navigateFromHero(pageFunction) {
-  const hero = document.getElementById("heroVideo");
-  const header = document.querySelector("header");
-
-  /* Charge la page */
-  if (typeof pageFunction === "function") {
-    pageFunction();
-  }
-
-  /* Supprime la vidéo si elle est visible */
-  if (hero && !heroHidden) {
-    hero.style.display = "none";
-    heroHidden = true;
-    if (header) header.classList.remove("transparent-header");
-  }
-
-  /* Scroll vers la page cible avec offset */
-  setTimeout(() => {
-    scrollToPage(header);
-  }, 100);
-}
-
-function navigateToSection(sectionName) {
-  const hero = document.getElementById("heroVideo");
-  const header = document.querySelector("header");
-
-  // Supprime la vidéo si elle est encore visible
-  if (hero && hero.style.display !== "none") {
-    hero.style.display = "none";
-    heroHidden = true;
-    if (header) header.classList.remove("transparent-header");
-  }
-
-  // Charge la page cible
-  if (typeof navigate === "function") navigate(sectionName);
-
-  // Scroll vers la page cible uniquement sur desktop
-  if (window.innerWidth > 768) {
-    setTimeout(() => scrollToPage(header), 100);
-  }
-}
-
-function googleTranslateElementInit() {
-  setTimeout(() => {
-    new google.translate.TranslateElement({
-      pageLanguage: 'fr',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-      autoDisplay: false
-    }, 'google_translate_element');
-  }, 500); // délai de 500ms pour laisser la vidéo et le DOM se charger
-}
-
 </script>
-
 
 <div id="official-alert-overlay"></div>
 
