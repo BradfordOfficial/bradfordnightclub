@@ -271,11 +271,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ===== Scroll naturel comme l'ancien code
   window.addEventListener("scroll", function () {
-      const scrollPos = window.scrollY;
-    const vh = window.innerHeight;
-
-    if (scrollPos <= vh) {
-      hero.style.opacity = 1 - (scrollPos / (vh * 0.8)); 
+      
     if (!hero || heroHidden) return;
 
     const rect = hero.getBoundingClientRect();
