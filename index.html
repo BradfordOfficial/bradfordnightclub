@@ -275,19 +275,26 @@ document.addEventListener("DOMContentLoaded", function () {
   // Header transparent au départ
   if (header) header.classList.add("transparent-header");
 
-  // ===== Scroll naturel comme l'ancien code
   window.addEventListener("scroll", function () {
-      
-    if (!hero || heroHidden) return;
+    if (heroHidden) return;
 
-    const rect = hero.getBoundingClientRect();
+    const scrollPos = window.scrollY;
+    const vh = window.innerHeight;
 
-    if (rect.bottom <= 0) {
-      hero.style.display = "none"; // <-- on supprime complètement le container
+    if (scrollPos < vh) {
+      // 1. FAIT DISPARAITRE LA VIDÉO TOUT DOUCEMENT
+      hero.style.opacity = 1 - (scrollPos / vh);
+    } else {
+      // 2. TUE LE TROU ET LA VIDÉO DÈS QU'ON A SCROLLÉ 100vh
+      hero.style.display = "none";
+      document.getElementById("heroSpacer").style.display = "none"; 
       heroHidden = true;
       if (header) header.classList.remove("transparent-header");
+      
+      // 3. RECOLLE LE SITE TOUT EN HAUT SANS SAUT VISUEL
+      window.scrollTo(0, 0); 
     }
-  });
+});
 
   // ===== Fonctions pour naviguer
   window.navigateToSection = function(sectionName) {
