@@ -121,29 +121,25 @@
 
 <!-- HERO VIDEO VIP -->
 <div class="hero-video-container" id="heroVideo">
- <video autoplay muted loop playsinline preload="auto" class="hero-video" id="heroVid">
-  <source src="https://bradfordofficial.github.io/bradfordnightclub/2022395-hd_1920_1080_30fps.mp4" type="video/mp4">
-</video> 
+  <video autoplay muted loop playsinline preload="auto" class="hero-video" id="heroVid">
+    <source src="https://bradfordofficial.github.io/bradfordnightclub/2022395-hd_1920_1080_30fps.mp4" type="video/mp4">
+  </video>
 
   <div class="hero-video-overlay"></div>
 
   <div class="hero-video-content">
     <h1 class="hero-slogan">Experience the Ultimate VIP Night</h1>
     <div class="hero-buttons">
-<div class="hero-buttons">
- <button onclick="navigateToSection('events')">EVENTS</button>
-<button onclick="navigateToSection('reservations')" class="btn-reserve">RESERVE</button>
-</div>
+      <button onclick="navigateFromHero(renderReservationPage)" class="btn-reserve">RESERVE</button>
+      <button onclick="navigateFromHero(renderEventPage)">EVENTS</button>
     </div>
   </div>
 </div>
-    
-<style>
 
+<style>
 /* ========================= */
 /* HERO SECTION */
 /* ========================= */
-
 .hero-video-container {
   position: relative;
   width: 100%;
@@ -168,11 +164,7 @@
 .hero-video-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.25),
-    rgba(0,0,0,0.65)
-  );
+  background: linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.65));
   z-index: 2;
 }
 
@@ -236,28 +228,25 @@ header.transparent-header {
 /* ========================= */
 /* RESPONSIVE IPHONE */
 /* ========================= */
-
 @media (max-width: 390px) {
   .hero-video-content {
-    padding-top: 40vh; /* titre vraiment centré verticalement entre haut et milieu */
+    padding-top: 40vh;
     display: flex;
     flex-direction: column;
-    align-items: center; /* centre horizontalement */
+    align-items: center;
     justify-content: flex-start;
   }
 
   .hero-slogan {
-    font-size: 1.6rem;  /* réduit de fou comme tu voulais */
-    margin-bottom: 35px; /* espace entre titre et boutons */
+    font-size: 1.6rem;
+    margin-bottom: 35px;
     text-align: center;
-    transform: translateX(0); /* bien centré horizontalement */
+    transform: translateX(0);
   }
 
   .hero-buttons {
-    display: flex;
-    justify-content: center; /* boutons centrés */
     gap: 15px;
-    margin-top: 12px; 
+    margin-top: 12px;
   }
 
   .hero-buttons button {
@@ -265,17 +254,14 @@ header.transparent-header {
     font-size: 0.82rem;
   }
 }
-
 </style>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-
   const hero = document.getElementById("heroVideo");
   const video = document.getElementById("heroVid");
   const header = document.querySelector("header");
-  const navButtons = document.querySelectorAll(".nav-links button, .hero-buttons button");
-  
+
   let heroHidden = false;
 
   // ===== Lecture automatique vidéo
@@ -284,21 +270,16 @@ document.addEventListener("DOMContentLoaded", function () {
     if (playPromise !== undefined) {
       playPromise
         .then(() => console.log("Vidéo démarrée avec succès"))
-        .catch(() => {
-          setTimeout(() => {
-            video.play().catch(() => console.log("Lecture échouée"));
-          }, 300);
-        });
+        .catch(() => setTimeout(() => video.play().catch(() => console.log("Lecture échouée")), 300));
     }
   }
 
   // Header transparent au départ
   if (header) header.classList.add("transparent-header");
 
-  // ===== Scroll naturel / suppression vidéo
+  // ===== Scroll naturel pour cacher la vidéo
   window.addEventListener("scroll", function () {
     if (!hero || heroHidden) return;
-
     const rect = hero.getBoundingClientRect();
     if (rect.bottom <= 0) {
       hero.style.display = "none";
@@ -307,56 +288,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // ===== Fonction pour scroll avec offset
-  function scrollToPage(header) {
-    const headerHeight = header ? header.offsetHeight : 0;
-    const offset = headerHeight + 15;
-    window.scrollTo({
-      top: offset,
-      behavior: "smooth"
-    });
-  }
-
-  // ===== Navigation depuis hero ou boutons
-  function navigateToSection(sectionName) {
+  // ===== Fonctions pour naviguer
+  window.navigateToSection = function(sectionName) {
     if (hero && hero.style.display !== "none") {
       hero.style.display = "none";
       heroHidden = true;
       if (header) header.classList.remove("transparent-header");
     }
-
     if (typeof navigate === "function") navigate(sectionName);
+  };
 
-    // Scroll avec offset seulement sur desktop
-    if (window.innerWidth > 768) {
-      setTimeout(() => scrollToPage(header), 100);
-    }
-  }
-
-  function navigateFromHero(pageFunction) {
+  window.navigateFromHero = function(pageFunction) {
     if (typeof pageFunction === "function") pageFunction();
-
     if (hero && !heroHidden) {
       hero.style.display = "none";
       heroHidden = true;
       if (header) header.classList.remove("transparent-header");
     }
-
-    if (window.innerWidth > 768) {
-      setTimeout(() => scrollToPage(header), 100);
-    }
-  }
-
-  // ===== Assignation des boutons header + hero
-  navButtons.forEach(btn => {
-        const text = btn.innerText.toLowerCase();
-        if (text.includes("home")) btn.setAttribute("onclick", "navigate('home')");
-        if (text.includes("menu")) btn.setAttribute("onclick", "navigate('menu')");
-        if (text.includes("events")) btn.setAttribute("onclick", "navigate('events')");
-        if (text.includes("gallery")) btn.setAttribute("onclick", "navigate('gallery')");
-        if (text.includes("contact")) btn.setAttribute("onclick", "navigate('contact')");
-        if (text.includes("reserve")) btn.setAttribute("onclick", "navigate('reservations')");
-  });
+  };
 
   // ===== Google Translate
   window.googleTranslateElementInit = function() {
@@ -368,7 +317,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 'google_translate_element');
     }, 500);
   };
-
 });
 </script>
 
