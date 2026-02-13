@@ -375,11 +375,14 @@ document.addEventListener("DOMContentLoaded", function () {
     window.scrollTo(0, 0);
   };
     function changeLanguage(lang) {
-  const select = document.querySelector(".goog-te-combo");
-  if (!select) return;
-
-  select.value = lang;
-  select.dispatchEvent(new Event("change"));
+  const interval = setInterval(() => {
+    const select = document.querySelector(".goog-te-combo");
+    if (select) {
+      select.value = lang;
+      select.dispatchEvent(new Event("change"));
+      clearInterval(interval);
+    }
+  }, 200);
 }
 
  
