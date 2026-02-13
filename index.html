@@ -337,6 +337,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 500);
   };
 });
+
+   // 1. Fonction pour ouvrir/fermer ton menu de luxe
+window.toggleLangList = function() {
+    const list = document.getElementById('lang-list');
+    list.style.display = (list.style.display === 'block') ? 'none' : 'block';
+};
+
+// 2. La fonction MAGIQUE pour piloter Google avec tes boutons
+window.changeLanguage = function(langCode) {
+    // On cherche le menu déroulant caché que Google a créé
+    const selectEl = document.querySelector('#google_translate_element select');
+    if (!selectEl) {
+        console.error("Le moteur Google Translate n'est pas encore chargé.");
+        return;
+    }
+    
+    // On change la valeur et on simule un clic/changement
+    selectEl.value = langCode;
+    selectEl.dispatchEvent(new Event('change'));
+    
+    // On met à jour le texte affiché dans ton menu de luxe
+    document.getElementById('active-lang').innerText = langCode.toUpperCase();
+    
+    // On ferme la liste
+    document.getElementById('lang-list').style.display = 'none';
+};
+
+// 3. Fermer le menu si on clique ailleurs
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.luxury-lang-switcher')) {
+        document.getElementById('lang-list').style.display = 'none';
+    }
+});
+ 
 </script>
 
 
