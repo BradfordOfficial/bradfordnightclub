@@ -355,6 +355,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (typeof pageFunction === "function") pageFunction();
     window.scrollTo(0, 0);
   };
+    function changeLanguage(lang) {
+  const select = document.querySelector(".goog-te-combo");
+  if (!select) return;
+
+  select.value = lang;
+  select.dispatchEvent(new Event("change"));
+}
 
  
 });
