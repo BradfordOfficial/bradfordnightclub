@@ -281,19 +281,13 @@ document.addEventListener("DOMContentLoaded", function () {
   let heroHidden = false;
 
   // Fonction de nettoyage radical pour éviter les trous
-    function destroyHero(keepSpacer = false) {
+    function destroyHero() {
     if (heroHidden) return;
     if (hero) hero.style.display = "none";
-    
-    // Si keepSpacer est vrai, on ne touche pas au spacer (pas de saut de texte)
-    if (spacer && !keepSpacer) {
-      spacer.style.display = "none";
-    }
-    
+    if (spacer) spacer.style.display = "none";
     if (header) header.classList.remove("transparent-header");
     heroHidden = true;
   }
-
 
   if (video) {
     video.play().catch(() => console.log("Lecture échouée"));
@@ -320,12 +314,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!heroHidden) {
       if (scrollPos <= vh) {
         hero.style.opacity = 1 - (scrollPos / vh);
-          } else {
-        // On passe "true" pour dire : "Détruis la vidéo mais laisse le vide (spacer)"
-        destroyHero(true); 
+      } else {
+        destroyHero();
+        // On ne fait pas de scrollTo(0,0) ici sinon ça va bloquer le scroll naturel
       }
     }
   });
+
 
 
 
