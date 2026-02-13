@@ -4298,21 +4298,31 @@ function confirmEliteAccess() {
 }
 
 function goToReservationsDirect() {
-    // cache la vidéo si elle est encore visible
-    const hero = document.getElementById("heroVideo");
-    const header = document.querySelector("header");
-    if (hero && hero.style.display !== "none") {
-        hero.style.display = "none";
+    // 1. On utilise la fonction de nettoyage complète qu'on a déjà créée
+    // Cela va cacher la vidéo ET supprimer le spacer (le trou de 100vh)
+    if (typeof destroyHero === "function") {
+        destroyHero();
+    } else {
+        // Sécurité si destroyHero n'est pas accessible
+        const hero = document.getElementById("heroVideo");
+        const spacer = document.getElementById("heroSpacer");
+        if (hero) hero.style.display = "none";
+        if (spacer) spacer.style.display = "none";
+        const header = document.querySelector("header");
         if (header) header.classList.remove("transparent-header");
     }
 
-    // appelle navigate normalement
+    // 2. On lance la navigation vers les réservations
     if (typeof navigate === "function") {
         navigate('reservations');
     } else {
         console.warn("La fonction navigate() n'existe pas encore !");
     }
+
+    // 3. IMPORTANT : On remonte tout en haut de la page de réservation
+    window.scrollTo(0, 0);
 }
+
 
 
 /** Charge le JSON et démarre l'application */
