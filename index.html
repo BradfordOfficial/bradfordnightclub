@@ -213,13 +213,20 @@ overflow: hidden;
 
 
 .hero-buttons button {
-  /* GARANTIE DE SYMÉTRIE */
+  /* 1. LE FIX ULTIME : Force la bordure à rester à l'INTERIEUR des 50px */
   box-sizing: border-box; 
   
+  /* 2. On stabilise les dimensions */
   min-width: 160px; 
   height: 50px;
   padding: 0 20px;
   
+  /* 3. On force l'alignement du texte au centre mort */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1; /* Empêche le texte de pousser les bords */
+
   font-family: 'Cinzel', serif;
   font-size: 0.85rem;
   letter-spacing: 2px;
@@ -228,19 +235,25 @@ overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
   
+  /* Bordure de base pour EVENTS */
   border: 1px solid rgba(255,255,255,0.4);
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  
+  /* Supprime les effets par défaut des navigateurs */
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
+/* On gère la bordure dorée de RESERVE ici */
 .hero-buttons button.btn-reserve {
-  background: rgba(255,255,255,0.15);
-  border: 1px solid rgba(255,255,255,0.4);
+  /* Utilise ta couleur dorée exacte ici */
+  border: 1px solid #D4AF37; 
+  background: rgba(255,255,255,0.05);
+  color: #D4AF37; /* Texte doré aussi pour le luxe */
 }
+
 
 
 .hero-buttons button:hover {
