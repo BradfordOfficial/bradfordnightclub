@@ -281,28 +281,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let heroHidden = false;
 
- function destroyHero(isScrolling = false) {
+ function destroyHero() {
   if (heroHidden) return;
 
   if (hero) {
-    hero.style.display = "none";
+    hero.style.opacity = 0;             // invisible
+    hero.style.pointerEvents = "none";  // pas de clics
   }
-
   if (spacer) {
-    if (isScrolling) {
-      // AU SCROLL : On ne met pas 0px tout de suite pour éviter le saut violent
-      // On le réduit d'abord à la taille de ton header réduit (100px)
-      spacer.style.height = "100px"; 
-    } else {
-      // AU CLIC (Bouton) : On supprime tout direct
-      spacer.style.display = "none";
-      spacer.style.height = "0px";
-    }
+    spacer.style.height = "0px";        // réduit à zéro → plus de trou
   }
-
   if (header) header.classList.remove("transparent-header");
+  
   heroHidden = true;
 }
+
 
 
 
