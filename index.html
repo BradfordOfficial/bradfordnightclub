@@ -140,14 +140,13 @@
 /* HERO SECTION */
 /* ========================= */
 .hero-video-container {
-  position: fixed;   /* Changé en fixed pour éviter le saut */
+  position: absolute; /* Change fixed par absolute */
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 1;        
+  z-index: 1; /* La vidéo reste au fond */
   overflow: hidden;
-  transition: opacity 0.4s ease;
 }
 
 .hero-video {
