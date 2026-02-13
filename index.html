@@ -247,19 +247,27 @@ header.transparent-header {
 
 @media (max-width: 390px) {
   .hero-video-content {
-    padding-top: 40vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    padding-bottom: 12vh; /* Un peu plus bas sur petit écran */
   }
+
   .hero-slogan {
-    font-size: 1.6rem;
-    margin-bottom: 35px;
+    font-size: 1.8rem; /* Taille lisible sans manger tout l'écran */
+    margin-bottom: 30px;
+    line-height: 1.2;
+    width: 90%; /* Évite que le texte touche les bords */
   }
-  .hero-buttons { gap: 15px; margin-top: 12px; }
-  .hero-buttons button { padding: 10px 25px; font-size: 0.82rem; }
+
+  .hero-buttons {
+    flex-direction: row; /* On les garde côte à côte si possible */
+    gap: 10px;
+  }
+
+  .hero-buttons button {
+    min-width: 140px; /* Légèrement plus petits pour tenir à deux */
+    font-size: 0.75rem;
+  }
 }
+
 </style>
 
 <script>
