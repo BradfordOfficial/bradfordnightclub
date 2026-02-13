@@ -291,8 +291,27 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (video) {
-    video.play().catch(() => console.log("Lecture échouée"));
-  }
+
+  // Forcer le preload
+  video.load();
+
+  // Quand la vidéo est prête à être lue
+  video.addEventListener("canplaythrough", function () {
+    video.play().catch(() => {
+      console.log("Lecture bloquée, tentative...");
+    });
+  });
+
+  // Si erreur → on recharge
+  video.addEventListener("error", function () {
+    console.log("Erreur vidéo, rechargement...");
+    setTimeout(() => {
+      video.load();
+      video.play().catch(() => {});
+    }, 1000);
+  });
+
+}
 
   if (header) header.classList.add("transparent-header");
 
