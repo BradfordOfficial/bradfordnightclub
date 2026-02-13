@@ -213,7 +213,9 @@ overflow: hidden;
 
 
 .hero-buttons button {
-  /* On force la taille pour qu'ils soient jumeaux */
+  /* GARANTIE DE SYMÉTRIE */
+  box-sizing: border-box; 
+  
   min-width: 160px; 
   height: 50px;
   padding: 0 20px;
@@ -226,7 +228,6 @@ overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
   
-  /* Style commun */
   border: 1px solid rgba(255,255,255,0.4);
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
@@ -236,11 +237,11 @@ overflow: hidden;
   justify-content: center;
 }
 
-/* On gère le bouton RESERVE spécifiquement pour qu'il ne bug plus */
 .hero-buttons button.btn-reserve {
-  background: rgba(255,255,255,0.15); /* Légèrement plus brillant */
+  background: rgba(255,255,255,0.15);
   border: 1px solid rgba(255,255,255,0.6);
 }
+
 
 .hero-buttons button:hover {
   background: white;
