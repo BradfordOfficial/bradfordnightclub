@@ -173,16 +173,22 @@ overflow: hidden;
 }
 
 .hero-video-content {
-  position: relative;
-  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100vh; /* Prend toute la hauteur */
+  height: 100vh; 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end; /* Pousse tout vers le bas */
+  
+  /* On remplace justify-content: flex-end par un padding-top */
+  /* pour verrouiller la position depuis le haut */
+  justify-content: flex-start; 
+  padding-top: 55vh; 
+  
+  z-index: 5;
   text-align: center;
-  padding: 0 20px 15vh 20px; /* 15vh de marge en bas pour remonter juste ce qu'il faut */
   box-sizing: border-box;
 }
 
@@ -193,7 +199,7 @@ overflow: hidden;
   text-transform: uppercase;
   color: white;
   text-shadow: 0 15px 40px rgba(0,0,0,0.9);
-  margin-bottom: 50px;
+  margin-bottom: 50px; /* Tes 50px exacts comme avant */
 }
 
 .hero-buttons {
@@ -201,9 +207,10 @@ overflow: hidden;
   flex-direction: row;
   gap: 15px;
   justify-content: center;
-  align-items: center; /* ALIGNEMENT VERTICAL PARFAIT */
+  align-items: center;
   width: 100%;
 }
+
 
 .hero-buttons button {
   /* On force la taille pour qu'ils soient jumeaux */
