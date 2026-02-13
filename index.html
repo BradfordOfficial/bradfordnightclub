@@ -302,31 +302,31 @@ document.addEventListener("DOMContentLoaded", function () {
   if (header) header.classList.add("transparent-header");
 
 
-window.addEventListener("scroll", function () {
-  const scrollPos = window.scrollY;
-  const vh = window.innerHeight;
+  // Remplace ton bloc de scroll par celui-ci :
+  window.addEventListener("scroll", function () {
+    const scrollPos = window.scrollY;
+    const vh = window.innerHeight;
 
-  // Header : Transparent au début, Noir quand le site arrive
-  if (scrollPos > (vh - 100)) { 
-    header.classList.remove("transparent-header");
-  } else {
-    header.classList.add("transparent-header");
-  }
-
-  if (!heroHidden) {
-    if (scrollPos > vh) {
-      // DÈS QU'ON A PASSÉ LA VIDÉO : ON LA TUE
-      destroyHero(); 
-      // On supprime le spacer pour que le site soit "collé" en haut
-      if (spacer) spacer.style.display = "none";
-      // On remonte d'un coup pour compenser la suppression du spacer
-      window.scrollTo(0, 0);
+    // --- MODIFICATION ICI ---
+    // Le header devient noir SEULEMENT quand on a dépassé la vidéo (vh)
+    if (scrollPos > (vh - 100)) { 
+      if (header) header.classList.remove("transparent-header");
     } else {
-      // Effet de fondu pendant qu'on scroll
-      hero.style.opacity = 1 - (scrollPos / vh);
+      // Tant qu'on est sur la vidéo, on force la transparence
+      if (header && !heroHidden) header.classList.add("transparent-header");
     }
-  }
-});
+    // --------------------------
+
+    if (!heroHidden) {
+      if (scrollPos <= vh) {
+        hero.style.opacity = 1 - (scrollPos / vh);
+      } else {
+        destroyHero();
+        // On ne fait pas de scrollTo(0,0) ici sinon ça va bloquer le scroll naturel
+      }
+    }
+  });
+
 
 
 
