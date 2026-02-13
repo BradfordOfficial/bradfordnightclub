@@ -297,8 +297,6 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 
-
-
   if (video) {
 
   // Forcer le preload
@@ -329,33 +327,25 @@ document.addEventListener("DOMContentLoaded", function () {
     const scrollPos = window.scrollY;
     const vh = window.innerHeight;
 
-    // Gestion du Header élastique
-    if (scrollPos > 50) { // Dès qu'on commence à descendre
-        header.classList.add("scrolled");
-        header.classList.remove("transparent-header");
+    // --- MODIFICATION ICI ---
+    // Le header devient noir SEULEMENT quand on a dépassé la vidéo (vh)
+    if (scrollPos > (vh - 100)) { 
+      if (header) header.classList.remove("transparent-header");
     } else {
-        if (!heroHidden) {
-            header.classList.remove("scrolled");
-            header.classList.add("transparent-header");
-        }
+      // Tant qu'on est sur la vidéo, on force la transparence
+      if (header && !heroHidden) header.classList.add("transparent-header");
     }
+    // --------------------------
 
-    // Gestion de la vidéo
     if (!heroHidden) {
-        if (scrollPos <= vh) {
-            hero.style.opacity = 1 - (scrollPos / vh);
-        } else {
-            // Ici, on appelle destroyHero(true)
-            // Le spacer devient 100px (la taille de ton header réduit)
-            // Résultat : Ton contenu se colle parfaitement sous le petit header noir
-            destroyHero(true);
-        }
+      if (scrollPos <= vh) {
+        hero.style.opacity = 1 - (scrollPos / vh);
+      } else {
+        destroyHero(); 
+        // On ne fait pas de scrollTo(0,0) ici sinon ça va bloquer le scroll naturel
+      }
     }
-});
-
-
-
-
+  });
 
 
 
