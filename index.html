@@ -342,7 +342,7 @@ function destroyHero(keepSpacer = false) {
       if (scrollPos <= vh) {
         hero.style.opacity = 1 - (scrollPos / vh);
       } else {
-        destroyHero();
+        destroyHero(true); 
         // On ne fait pas de scrollTo(0,0) ici sinon ça va bloquer le scroll naturel
       }
     }
