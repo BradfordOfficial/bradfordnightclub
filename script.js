@@ -4297,13 +4297,12 @@ function confirmEliteAccess() {
     }, 500);
 }
 
+
 function goToReservationsDirect() {
-    // 1. On utilise la fonction de nettoyage complète qu'on a déjà créée
-    // Cela va cacher la vidéo ET supprimer le spacer (le trou de 100vh)
+    // 1. On nettoie la vidéo et le spacer
     if (typeof destroyHero === "function") {
         destroyHero();
     } else {
-        // Sécurité si destroyHero n'est pas accessible
         const hero = document.getElementById("heroVideo");
         const spacer = document.getElementById("heroSpacer");
         if (hero) hero.style.display = "none";
@@ -4312,14 +4311,21 @@ function goToReservationsDirect() {
         if (header) header.classList.remove("transparent-header");
     }
 
-    // 2. On lance la navigation vers les réservations
-    if (typeof navigate === "function") {
-        navigate('reservations');
-    } else {
-        console.warn("La fonction navigate() n'existe pas encore !");
+    // 2. LA LIGNE MAGIQUE : On cache l'interface de l'introduction (le HUD)
+    // On cherche l'élément qui contient ton interface "Elite/Ultra"
+    const hud = document.getElementById("event-hud-ultra") || document.querySelector(".hud-elite-container");
+    if (hud) {
+        hud.style.display = "none";
+        // Si tu as un moteur d'animation (shutdownEngine), on l'arrête aussi
+        if (typeof shutdownEngine === "function") shutdownEngine();
     }
 
-    // 3. IMPORTANT : On remonte tout en haut de la page de réservation
+    // 3. On lance la navigation
+    if (typeof navigate === "function") {
+        navigate('reservations');
+    }
+
+    // 4. On remonte tout en haut
     window.scrollTo(0, 0);
 }
 
