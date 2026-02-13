@@ -140,14 +140,20 @@
 /* HERO SECTION */
 /* ========================= */
 .hero-video-container {
-  position: absolute; /* Change fixed par absolute */
+  position: fixed; /* La vidéo ne bouge pas du fond */
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  z-index: 1; /* La vidéo reste au fond */
+  z-index: -1; /* Indispensable : elle reste DERRIÈRE */
   overflow: hidden;
 }
+
+#heroSpacer {
+  height: 100vh; /* Ce vide permet de voir la vidéo au début */
+  background: transparent;
+}
+
 
 .hero-video {
   position: absolute;
