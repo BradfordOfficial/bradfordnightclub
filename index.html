@@ -281,20 +281,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let heroHidden = false;
 
- function destroyHero() {
+ function destroyHero(isScrolling = false) {
   if (heroHidden) return;
 
   if (hero) {
-    hero.style.opacity = 0;             // invisible
-    hero.style.pointerEvents = "none";  // pas de clics
+    hero.style.display = "none";
   }
+
   if (spacer) {
-    spacer.style.height = "0px";        // réduit à zéro → plus de trou
+    if (isScrolling) {
+      // AU SCROLL : On ne met pas 0px tout de suite pour éviter le saut violent
+      // On le réduit d'abord à la taille de ton header réduit (100px)
+      spacer.style.height = "100px"; 
+    } else {
+      // AU CLIC (Bouton) : On supprime tout direct
+      spacer.style.display = "none";
+      spacer.style.height = "0px";
+    }
   }
+
   if (header) header.classList.remove("transparent-header");
-  
   heroHidden = true;
 }
+
 
 
   if (video) {
