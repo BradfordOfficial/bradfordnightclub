@@ -300,25 +300,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const scrollPos = window.scrollY;
     const vh = window.innerHeight;
 
-    // 1. Gestion du Header (Transition Transparent -> Noir)
-    if (scrollPos > 50) {
+    // --- MODIFICATION ICI ---
+    // Le header devient noir SEULEMENT quand on a dépassé la vidéo (vh)
+    if (scrollPos > (vh - 100)) { 
       if (header) header.classList.remove("transparent-header");
     } else {
+      // Tant qu'on est sur la vidéo, on force la transparence
       if (header && !heroHidden) header.classList.add("transparent-header");
     }
+    // --------------------------
 
-    // 2. Gestion de la vidéo et du titre
     if (!heroHidden) {
       if (scrollPos <= vh) {
-        // La vidéo s'efface au scroll mais RESTE à sa place (pas de saut)
         hero.style.opacity = 1 - (scrollPos / vh);
       } else {
-        // Une fois qu'on a dépassé la hauteur de l'écran, on liquide tout proprement
         destroyHero();
-       
+        // On ne fait pas de scrollTo(0,0) ici sinon ça va bloquer le scroll naturel
       }
     }
   });
+
 
   // Remplace ta fonction navigateFromHero par celle-ci :
   window.navigateFromHero = function(pageFunction) {
