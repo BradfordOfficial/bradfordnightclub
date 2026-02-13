@@ -300,25 +300,29 @@ document.addEventListener("DOMContentLoaded", function () {
     const scrollPos = window.scrollY;
     const vh = window.innerHeight;
 
-    // --- MODIFICATION ICI ---
-    // Le header devient noir SEULEMENT quand on a dépassé la vidéo (vh)
+    // GESTION DU HEADER TRANSPARENT
     if (scrollPos > (vh - 100)) { 
       if (header) header.classList.remove("transparent-header");
     } else {
-      // Tant qu'on est sur la vidéo, on force la transparence
       if (header && !heroHidden) header.classList.add("transparent-header");
     }
-    // --------------------------
 
+    // GESTION DE LA VIDÉO SANS TÉLÉPORTATION
     if (!heroHidden) {
       if (scrollPos <= vh) {
+        // Au lieu de supprimer, on joue sur l'opacité et le mouvement
         hero.style.opacity = 1 - (scrollPos / vh);
+        hero.style.visibility = "visible";
       } else {
-        destroyHero();
-        // On ne fait pas de scrollTo(0,0) ici sinon ça va bloquer le scroll naturel
+        // Au lieu de display:none qui casse tout, on met en hidden
+        // L'élément est invisible mais ne fait pas sauter le reste du site
+        hero.style.opacity = 0;
+        hero.style.visibility = "hidden";
+        hero.style.pointerEvents = "none"; // Pour pouvoir cliquer sur ce qu'il y a dessous
       }
     }
-  });
+});
+
 
 
   // Remplace ta fonction navigateFromHero par celle-ci :
