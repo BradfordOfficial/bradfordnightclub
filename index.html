@@ -281,20 +281,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let heroHidden = false;
 
- function destroyHero() {
+ // Remplace ton ancienne fonction par celle-ci
+function destroyHero(keepSpacer = false) {
   if (heroHidden) return;
 
-  if (hero) {
-    hero.style.opacity = 0;             // invisible
-    hero.style.pointerEvents = "none";  // pas de clics
+  if (hero) hero.style.display = "none";
+
+  // Si keepSpacer est vrai, on ne touche pas au spacer (évite le saut)
+  if (spacer && !keepSpacer) {
+    spacer.style.display = "none";
+    spacer.style.height = "0px";
   }
-  if (spacer) {
-    spacer.style.height = "0px";        // réduit à zéro → plus de trou
-  }
-  if (header) header.classList.remove("transparent-header");
   
+  if (header) header.classList.remove("transparent-header");
   heroHidden = true;
 }
+
 
   if (video) {
 
