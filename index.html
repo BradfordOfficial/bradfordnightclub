@@ -322,29 +322,30 @@ document.addEventListener("DOMContentLoaded", function () {
   if (header) header.classList.add("transparent-header");
 
 
-window.addEventListener("scroll", function () {
+  window.addEventListener("scroll", function () {
     const scrollPos = window.scrollY;
     const vh = window.innerHeight;
 
-    // 1. Header (Reste transparent sur la vidéo, devient noir après)
-    if (scrollPos > (vh - 80)) {
-        header.classList.remove("transparent-header");
+    // --- MODIFICATION ICI ---
+    // Le header devient noir SEULEMENT quand on a dépassé la vidéo (vh)
+    if (scrollPos > (vh - 100)) { 
+      if (header) header.classList.remove("transparent-header");
     } else {
-        if (!heroHidden) header.classList.add("transparent-header");
+      // Tant qu'on est sur la vidéo, on force la transparence
+      if (header && !heroHidden) header.classList.add("transparent-header");
     }
+    // --------------------------
 
-    // 2. Animation fluide
-    if (!heroHidden && hero && spacer) {
-        if (scrollPos <= vh) {
-            // La vidéo devient transparente
-            hero.style.opacity = 1 - (scrollPos / vh);
-            // La vidéo RESTE à sa place, on ne touche pas à la hauteur du spacer !
-        } else {
-            // Une fois qu'on a dépassé 100vh, on liquide tout proprement
-            destroyHero();
-        }
+    if (!heroHidden) {
+      if (scrollPos <= vh) {
+        hero.style.opacity = 1 - (scrollPos / vh);
+      } else {
+        destroyHero();
+        // On ne fait pas de scrollTo(0,0) ici sinon ça va bloquer le scroll naturel
+      }
     }
-});
+  });
+
 
 
 
