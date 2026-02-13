@@ -295,20 +295,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (header) header.classList.add("transparent-header");
 
-  // Gestion du Scroll
+  // Remplace ton bloc de scroll par celui-ci :
   window.addEventListener("scroll", function () {
-    if (heroHidden) return;
-
     const scrollPos = window.scrollY;
     const vh = window.innerHeight;
 
-    if (scrollPos < vh) {
-      hero.style.opacity = 1 - (scrollPos / vh);
+    // 1. Gestion du Header (Transition Transparent -> Noir)
+    if (scrollPos > 50) {
+      if (header) header.classList.remove("transparent-header");
     } else {
-      destroyHero();
-      
+      if (header && !heroHidden) header.classList.add("transparent-header");
+    }
+
+    // 2. Gestion de la vidéo et du titre
+    if (!heroHidden) {
+      if (scrollPos <= vh) {
+        // La vidéo s'efface au scroll mais RESTE à sa place (pas de saut)
+        hero.style.opacity = 1 - (scrollPos / vh);
+      } else {
+        // Une fois qu'on a dépassé la hauteur de l'écran, on liquide tout proprement
+        destroyHero();
+        window.scrollTo(0, 0); 
+      }
     }
   });
+
+  // Remplace ta fonction navigateFromHero par celle-ci :
+  window.navigateFromHero = function(pageFunction) {
+    // 1. On exécute la fonction de rendu (Reservation ou Events)
+    if (typeof pageFunction === "function") pageFunction();
+    
+    // 2. On tue la vidéo et le spacer pour que la page commence tout en haut
+    destroyHero();
+    
+    // 3. On remonte au sommet pour éviter de se retrouver au milieu de la nouvelle page
+    window.scrollTo(0, 0);
+  };
+
 
   // Appliquer destroyHero sur tous les clics du header
   document.querySelectorAll('header a, header button').forEach(el => {
