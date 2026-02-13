@@ -281,13 +281,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let heroHidden = false;
 
-  // Fonction de nettoyage radical pour éviter les trous
-    function destroyHero() {
-    if (heroHidden) return;
-    if (hero) hero.style.display = "none";
-    if (header) header.classList.remove("transparent-header");
-    heroHidden = true;
+ function destroyHero() {
+  if (heroHidden) return;
+
+  if (hero) {
+    hero.style.opacity = 0;             // invisible
+    hero.style.pointerEvents = "none";  // pas de clics
   }
+  if (spacer) {
+    spacer.style.height = "0px";        // réduit à zéro → plus de trou
+  }
+  if (header) header.classList.remove("transparent-header");
+  
+  heroHidden = true;
+}
 
   if (video) {
 
