@@ -281,13 +281,19 @@ document.addEventListener("DOMContentLoaded", function () {
   let heroHidden = false;
 
   // Fonction de nettoyage radical pour éviter les trous
-  function destroyHero() {
+    function destroyHero(keepSpacer = false) {
     if (heroHidden) return;
     if (hero) hero.style.display = "none";
-    if (spacer) spacer.style.display = "none";
+    
+    // Si keepSpacer est vrai, on ne touche pas au spacer (pas de saut de texte)
+    if (spacer && !keepSpacer) {
+      spacer.style.display = "none";
+    }
+    
     if (header) header.classList.remove("transparent-header");
     heroHidden = true;
   }
+
 
   if (video) {
     video.play().catch(() => console.log("Lecture échouée"));
