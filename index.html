@@ -320,9 +320,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!heroHidden) {
       if (scrollPos <= vh) {
         hero.style.opacity = 1 - (scrollPos / vh);
-      } else {
-        destroyHero();
-        // On ne fait pas de scrollTo(0,0) ici sinon ça va bloquer le scroll naturel
+          } else {
+        // On passe "true" pour dire : "Détruis la vidéo mais laisse le vide (spacer)"
+        destroyHero(true); 
       }
     }
   });
