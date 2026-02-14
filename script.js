@@ -896,9 +896,61 @@ function renderReservationPage() {
             </div>
         </div>
     `;
-    // Initialisation
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('res-date').value = today;
+   const elCity = document.getElementById('res-city');
+    const elDate = document.getElementById('res-date');
+
+    // 2. Si on vient d'un clic sur un artiste
+    if (selectionPreremplie.artiste !== '') {
+        
+        // --- LE DICTIONNAIRE COMPLET ---
+        const traducteur = {
+            'LA': 'Los Angeles',
+            'NYC': 'New York',
+            'SF': 'San Francisco',
+            'MIAMI': 'Miami'
+        };
+
+        // On récupère le nom complet propre (ex: "NYC" -> "New York")
+        const villeCible = traducteur[selectionPreremplie.lieu] || selectionPreremplie.lieu;
+
+        if (elCity) {
+            let trouve = false;
+            const cibleNettoyee = villeCible.toLowerCase().trim();
+
+            // On scanne tout le menu déroulant
+            for (let i = 0; i < elCity.options.length; i++) {
+                const texteOption = elCity.options[i].text.toLowerCase().trim();
+                
+                // Si l'option du menu correspond à notre ville traduite
+                if (texteOption === cibleNettoyee || texteOption.includes(cibleNettoyee)) {
+                    elCity.selectedIndex = i;
+                    elCity.dispatchEvent(new Event('change')); // On force le site à se mettre à jour
+                    trouve = true;
+                    break;
+                }
+            }
+            
+            if (!trouve) console.warn("La ville '" + villeCible + "' n'est pas dans ton menu.");
+        }
+
+        // On remplit la date
+        if (elDate) elDate.value = selectionPreremplie.date;
+
+        // On affiche le nom de l'artiste dans le titre (Confirmation visuelle)
+        const subtitle = document.querySelector('.subtitle-page');
+        if (subtitle) {
+            subtitle.innerHTML = `TABLE VIP: <span style="color:var(--gold)">${selectionPreremplie.artiste}</span>`;
+        }
+
+        // On vide la mémoire
+        selectionPreremplie = { lieu: '', date: '', artiste: '' };
+
+    } else {
+        // Mode manuel (date du jour par défaut)
+        if (elDate && !elDate.value) {
+            elDate.value = new Date().toISOString().split('T')[0];
+        }
+    }
     calculateRequirements();
 }
 
