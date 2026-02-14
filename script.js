@@ -1,3 +1,11 @@
+let selectionPreremplie = { lieu: '', date: '', artiste: '' };
+
+window.reserverEvenement = function(lieu, date, artiste) {
+    selectionPreremplie = { lieu: lieu, date: date, artiste: artiste };
+    window.scrollTo(0,0);
+    navigate('reservations');
+};
+
 // --- CONFIGURATION & DONNÉES GLOBALES ---
 let APP_DATA = {};
 const APP_CONTENT = document.getElementById('app-content');
