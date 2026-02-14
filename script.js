@@ -3190,10 +3190,11 @@ function renderEventPage() {
                             <p style="color:#555; font-size:0.75rem; margin-top:5px;">${ev.details}</p>
                         </div>
                         <div>
-                            <button class="cta-button" onclick="window.scrollTo(0,0); navigate('reservations')" 
-                                    style="width:100%; padding:12px; font-size:0.65rem;">
-                                BOOK TABLE
-                            </button>
+                          <button class="cta-button" 
+        onclick="reserverEvenement('${ev.ville}', '${ev.date}', '${ev.artiste}')" 
+        style="width:100%; padding:12px; font-size:0.65rem;">
+    BOOK TABLE
+</button>
                         </div>
                     </div>
                 `).join('') : `
