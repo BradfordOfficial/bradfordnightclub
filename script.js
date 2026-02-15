@@ -4360,7 +4360,7 @@ function confirmEliteAccess() {
 
 
 
-Function goToReservationsDirect() {
+function goToReservationsDirect() {
     // 1. On nettoie la vidéo et le spacer
     if (typeof destroyHero === "function") {
         destroyHero();
