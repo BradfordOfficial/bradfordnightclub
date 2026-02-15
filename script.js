@@ -4359,8 +4359,14 @@ function confirmEliteAccess() {
 }
 
 
-function goToReservationsDirect() {
-    // 1. On nettoie la vidéo et le spacer
+function goToReservationsDirect(ville, date, artiste) {
+    // --- AJOUT : SYNC DES DONNÉES ARTISTE ---
+    // Si la fonction est appelée avec des infos, on les stocke
+    if (artiste) {
+        selectionPreremplie = { lieu: ville, date: date, artiste: artiste };
+    }
+
+    // 1. On nettoie la vidéo et le spacer (TON CODE ORIGINAL)
     if (typeof destroyHero === "function") {
         destroyHero();
     } else {
@@ -4372,21 +4378,19 @@ function goToReservationsDirect() {
         if (header) header.classList.remove("transparent-header");
     }
 
-    // 2. LA LIGNE MAGIQUE : On cache l'interface de l'introduction (le HUD)
-    // On cherche l'élément qui contient ton interface "Elite/Ultra"
+    // 2. LA LIGNE MAGIQUE : On cache l'interface (TON CODE ORIGINAL)
     const hud = document.getElementById("event-hud-ultra") || document.querySelector(".hud-elite-container");
     if (hud) {
         hud.style.display = "none";
-        // Si tu as un moteur d'animation (shutdownEngine), on l'arrête aussi
         if (typeof shutdownEngine === "function") shutdownEngine();
     }
 
-    // 3. On lance la navigation
+    // 3. On lance la navigation (TON CODE ORIGINAL)
     if (typeof navigate === "function") {
         navigate('reservations');
     }
 
-    // 4. On remonte tout en haut
+    // 4. On remonte tout en haut (TON CODE ORIGINAL)
     window.scrollTo(0, 0);
 }
 
