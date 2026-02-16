@@ -1112,7 +1112,7 @@ const donneesEvenements = [
     { date: '2026-02-21', jour: 'SAM.', ville: 'LA', artiste: 'YOUNG THUG', details: 'Performance Rap de Prestige - Accès sur liste VIP uniquement' },
     { date: '2026-02-21', jour: 'SAM.', ville: 'MIAMI', artiste: 'KAROL G', details: 'Mañana Será Bonito Set (Latin Queen - Accès restreint)' },
     { date: '2026-02-21', jour: 'SAM.', ville: 'NYC', artiste: 'DANIEL CAESAR', details: 'Performance Soul de Prestige - Accès sur liste VIP uniquement' },
-    { date: '2026-02-21', jour: 'SAM.', ville: 'SF', artiste: 'VINTAGE CULTURE', details: 'Promised Land (Brazilian House Night - $90)' },
+    { date: '2026-02-21', jour: 'SAM.', ville: 'SF', artiste: 'THE MARTINEZ BROTHERS', details: 'Exclusive House Set (Bronx to Bay - $90)' },
 
     // Dimanche 22 Février
     { date: '2026-02-22', jour: 'DIM.', ville: 'LA', artiste: 'KODAK BLACK', details: 'Florida Boy in LA (Street Anthem Night - $90)' },
