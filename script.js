@@ -4410,7 +4410,7 @@ function renderFAQPage() {
             { q: "L'adhésion garantit-elle une table ?", a: "Les Members ont la priorité absolue sur les réservations de la Main Room, mais une réservation préalable reste fortement conseillée via reservations@bradfordnightclub.com." },
             { q: "Comment renouveler mon statut de Member ?", a: "Le renouvellement est annuel et dépend de la validation du comité. Contactez la ligne privée au +1 305 VIP BRAD pour les modalités." },
             { q: "Puis-je parrainer un nouveau Member ?", a: "Le parrainage par un Member actif est un atout majeur lors de l'examen d'une candidature par le comité, mais ne garantit pas l'admission." },
-            { q: "Existe-t-il des accès temporaires pour les non-membres ?", a: "L'accès standard est possible selon l'affluence, mais les zones privées et soirées spéciales sont strictement réservées aux Members." }
+            { q: "Existe-t-il des accès temporaires pour les non-membres ?", a: "L'accès standard est possible selon l'affluence, mais certaines soirées spéciales sont réservées aux Members." }
         ]
     },
     {
@@ -4433,7 +4433,7 @@ function renderFAQPage() {
             { q: "Combien d'invités par bouteille ?", a: "La règle standard est d'une bouteille minimum pour 4 invités. Pour les groupes de prestige, contactez le concierge." },
             { q: "Quelle est la politique d'annulation pour les tables ?", a: "Annulation gratuite jusqu'à 7 jours avant. Moins de 48h avant l'événement, le dépôt est intégralement conservé." },
             { q: "Puis-je choisir mon emplacement sur le plan ?", a: "Les demandes spécifiques (Main Room, Backstage) sont traitées en priorité pour les Members et les réservations à haut spend." },
-            { q: "Que se passe-t-il si j'arrive en retard à ma table ?", a: "Les tables sont maintenues jusqu'à 01:30. Au-delà, la réservation peut être annulée sans remboursement du dépôt." }
+            { q: "Que se passe-t-il si j'arrive en retard à ma table ?", a: "Les tables sont maintenues jusqu'à 02:30. Au-delà, la réservation peut être annulée sans remboursement du dépôt." }
         ]
     },
     {
@@ -4466,14 +4466,14 @@ function renderFAQPage() {
             { q: "Pourquoi les photos sont-elles limitées ?", a: "Pour préserver la vie privée de nos clients et Members. L'usage du flash est strictement prohibé." },
             { q: "Puis-je venir en tenue décontractée chic ?", a: "Le Bradford impose un standard élevé. Le management se réserve le droit de refuser l'entrée en cas de tenue jugée inadéquate." },
             { q: "Les lunettes de soleil sont-elles autorisées ?", a: "Uniquement en extérieur. Elles doivent être retirées à l'intérieur pour des raisons de sécurité." },
-            { q: "Quelle est la règle concernant les célébrités ?", a: "Toute demande de selfie ou harcèlement envers un autre client entraîne une expulsion immédiate sans remboursement et un bannissement de nos clubs." }
+            { q: "Quelle est la règle concernant les célébrités ?", a: "Toute demande de selfie ou harcèlement envers un autre client entraîne une expulsion immédiate sans remboursement." }
         ]
     },
     {
         category: "LOGISTIQUE & SERVICES VIP",
         questions: [
             { q: "Comment fonctionne le partenariat Uber Black ?", a: "Nous offrons un service 'Premium Arrival Concierge'. Votre chauffeur Uber Black vous dépose directement au point d'accès prioritaire." },
-            { q: "Proposez-vous un service de voiturier ?", a: "Oui, un service de voiturier sécurisé est disponible à l'entrée officielle (1234 Collins Ave)." },
+            { q: "Proposez-vous un service de voiturier ?", a: "Oui, un service de voiturier sécurisé est disponible à l'entrée officielle." },
             { q: "Peut-on privatiser le club ?", a: "Oui, pour des événements corporate ou tournages. Contactez events@bradfordnightclub.com." },
             { q: "J'ai oublié un objet au club, que faire ?", a: "Appelez le +1 305 VIP BRAD. Les objets sont stockés 30 jours dans notre coffre-fort avant d'être traités." },
             { q: "Où se trouve le prochain Bradford ?", a: "Notre expansion majeure est prévue à Las Vegas pour l'horizon 2027-2028." },
@@ -4498,7 +4498,7 @@ function renderFAQPage() {
         category: "PROTOCOLES DE SÉCURITÉ & DISCRÉTION",
         questions: [
             { q: "Qu'est-ce que l'engagement de discrétion Bradford ?", a: "Chaque interaction est traitée avec une confidentialité diplomatique. Nous garantissons la protection totale de l'identité de nos clients de prestige." },
-            { q: "Le Bradford Inscribed System conserve-t-il mes données ?", a: "Le système crypte les données pour la validation immédiate mais ne stocke aucune information sensible après votre passage, conformément aux normes de haute sécurité." },
+            { q: "Le Bradford Encrypted System conserve-t-il mes données ?", a: "Le système crypte les données pour la validation immédiate mais ne stocke aucune information sensible après votre passage, conformément aux normes de haute sécurité." },
             { q: "Puis-je venir avec ma propre équipe de sécurité ?", a: "Les gardes du corps personnels sont autorisés mais doivent impérativement se coordonner avec notre chef de sécurité 48h avant l'arrivée." },
             { q: "Le club est-il équipé de caméras ?", a: "Pour la sécurité de tous, le club est sous vidéo-protection 24/7, mais les flux sont strictement confidentiels et protégés par le Bradford Encrypted System." },
             { q: "Comment sont gérés les groupes de célébrités ?", a: "Nous disposons d'entrées et de sorties privées sécurisées pour garantir une arrivée et un départ sans exposition publique." }
