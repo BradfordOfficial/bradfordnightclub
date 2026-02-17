@@ -4611,6 +4611,73 @@ function filterFAQ() {
     });
 }
 
+function renderCareersPage() {
+    if (!APP_CONTENT) return;
+
+    const positions = [
+        { title: 'GUEST RELATIONS & VIP HOST', icon: 'M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z', desc: 'Maîtrise absolue de l\'étiquette et gestion des clients VVIP.' },
+        { title: 'CRAFT MIXOLOGY SPECIALIST', icon: 'M21 5V3H3v2l8 9v5H6v2h12v-2h-5v-5l8-9z', desc: 'Expertise millésimes rares et création de signatures sensorielles.' },
+        { title: 'SHADOW UNIT (SECURITY)', icon: 'M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z', desc: 'Protection périmétrale. Profil militaire ou tactique exigé.' },
+        { title: 'ENTERTAINMENT ELITE', icon: 'M12 3v9.28c-.47-.17-.97-.28-1.5-.28C8.01 12 6 14.01 6 16.5S8.01 21 10.5 21 15 18.99 15 16.5V6h4V3h-7z', desc: 'Artistes et performeurs à l\'esthétique avant-gardiste.' }
+    ];
+
+    APP_CONTENT.innerHTML = `
+        <div class="career-container fade-in">
+            <h1 class="title-page">CAREERS: GLOBAL EXCELLENCE</h1>
+            <p class="subtitle-page">Intégrez la légende Bradford. Là où le luxe rencontre l'invisible.</p>
+
+            <div class="career-intro">
+                <p>Travailler au sein de l'écosystème Bradford n'est pas un emploi conventionnel ; c'est une immersion dans les standards les plus exigeants de l'hôtellerie de nuit internationale. Nous recherchons des gardiens de notre promesse.</p>
+            </div>
+
+            <h2 class="career-section-title">OPEN POSITIONS</h2>
+            <div class="positions-grid">
+                ${positions.map(post => `
+                    <div class="position-card">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24"><path d="${post.icon}" fill="currentColor"/></svg>
+                        </div>
+                        <h3>${post.title}</h3>
+                        <p>${post.desc}</p>
+                    </div>
+                `).join('')}
+            </div>
+
+            <div class="perks-section">
+                <h2 class="career-section-title">PRÉROGATIVES DU GROUPE</h2>
+                <div class="perks-list">
+                    <div class="perk-item"><span>🌐</span> RÉSEAU GLOBAL (MIAMI, LA, NYC)</div>
+                    <div class="perk-item"><span>💎</span> RÉMUNÉRATION PRESTIGE & BONUS</div>
+                    <div class="perk-item"><span>🖋️</span> PROTOCOLES CONCIERGERIE DE LUXE</div>
+                    <div class="perk-item"><span>🎩</span> DOTATIONS COUTURE SUR-MESURE</div>
+                </div>
+            </div>
+
+            <div class="recruitment-protocol">
+                <h3>PROTOCOLE DE RECRUTEMENT</h3>
+                <p>The Bradford traite chaque demande avec la plus stricte confidentialité. Références ultra-luxe vérifiables obligatoires.</p>
+                
+                <div class="contact-box">
+                    <div class="contact-row" onclick="window.location.href='mailto:careers@bradfordnightclub.com'">
+                        <span class="label">EMAIL</span>
+                        <span class="value">careers@bradfordnightclub.com</span>
+                    </div>
+                    <div class="contact-row">
+                        <span class="label">TALENT LINE</span>
+                        <span class="value">+1 305-VIP-BRAD (Ext. Talent)</span>
+                    </div>
+                </div>
+
+                <button class="btn-apply-ultra" onclick="window.location.href='mailto:careers@bradfordnightclub.com?subject=Application: Global Excellence'">
+                    POSTULER MAINTENANT
+                </button>
+                
+                <p class="note-security">⚠️ Enquête de moralité approfondie systématique.</p>
+            </div>
+        </div>
+    `;
+    window.scrollTo(0, 0);
+}
 
 /** Charge le JSON et démarre l'application */
 async function initApp() {
