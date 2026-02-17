@@ -3766,6 +3766,126 @@ h1.tit-page:first-of-type {
     box-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
 
+.career-container {
+    max-width: 390px; /* Taille exacte iPhone 13 */
+    margin: 0 auto;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+.career-intro {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #888;
+    margin: 30px 0;
+    font-weight: 300;
+}
+
+.career-section-title {
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    color: #d4af37;
+    margin: 50px 0 25px;
+    text-transform: uppercase;
+}
+
+/* Grille de postes */
+.positions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.position-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 20px 10px;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.card-icon svg {
+    width: 24px;
+    height: 24px;
+    color: #d4af37;
+    margin-bottom: 15px;
+}
+
+.position-card h3 {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.position-card p {
+    font-size: 0.6rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Perks list */
+.perks-list {
+    text-align: left;
+    background: #0a0a0a;
+    padding: 20px;
+    border-left: 1px solid #d4af37;
+}
+
+.perk-item {
+    font-size: 0.75rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    color: #999;
+}
+
+.perk-item span { margin-right: 10px; }
+
+/* Contact & Apply */
+.recruitment-protocol {
+    margin-top: 60px;
+    padding-bottom: 50px;
+}
+
+.contact-box {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 25px 0;
+}
+
+.contact-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-row:last-child { border: none; }
+
+.contact-row .label { font-size: 0.6rem; color: #555; letter-spacing: 2px; }
+.contact-row .value { font-size: 0.7rem; color: #d4af37; font-weight: bold; }
+
+.btn-apply-ultra {
+    width: 100%;
+    background: #d4af37;
+    color: #000;
+    border: none;
+    padding: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+    border-radius: 50px; /* Arrondi moderne */
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.note-security {
+    font-size: 0.55rem;
+    color: #444;
+    letter-spacing: 1px;
+}
+
 /* --- Footer --- */
 .footer {
     background-color: var(--navy);
