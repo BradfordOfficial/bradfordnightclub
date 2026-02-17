@@ -4081,6 +4081,143 @@ h1.tit-page:first-of-type {
     font-weight: bold;
 }
 
+/* CONTAINER PRINCIPAL */
+.location-container {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.location-header {
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.location-title {
+    font-size: 1.8rem;
+    letter-spacing: 5px;
+    color: #fff;
+    margin: 0;
+}
+
+.location-subtitle {
+    font-size: 0.7rem;
+    color: #d4af37;
+    letter-spacing: 2px;
+    margin-top: 10px;
+}
+
+.gold-separator {
+    width: 50px;
+    height: 1px;
+    background: #d4af37;
+    margin: 20px auto;
+}
+
+/* GRILLE ADAPTATIVE */
+.location-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 colonne sur iPhone 13 */
+    gap: 20px;
+}
+
+/* CARTE DE LOCATION */
+.location-card {
+    background: linear-gradient(145deg, #0a0a0a 0%, #050505 100%);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.location-card:hover {
+    border-color: #d4af37;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(214, 175, 55, 0.05);
+}
+
+.card-status {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.5rem;
+    color: #d4af37;
+    border: 1px solid #d4af37;
+    padding: 2px 8px;
+    letter-spacing: 1px;
+}
+
+.card-city {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.card-address, .card-area {
+    font-size: 0.8rem;
+    color: #a0a0a0;
+    margin: 2px 0;
+}
+
+.card-divider {
+    width: 30px;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 15px auto;
+}
+
+.card-hours {
+    font-size: 0.7rem;
+    color: #d4af37;
+    font-weight: bold;
+}
+
+.card-btn {
+    margin-top: 20px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+.location-footer {
+    margin-top: 50px;
+    font-size: 0.6rem;
+    color: #444;
+    letter-spacing: 1px;
+}
+
+/* ADAPTATION TABLETTE & PC */
+@media (min-width: 768px) {
+    .location-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur tablette */
+    }
+}
+
+@media (min-width: 1024px) {
+    .location-container {
+        max-width: 1000px !important; /* On s'élargit sur PC pour voir les 4 villes */
+    }
+    .location-grid {
+        grid-template-columns: repeat(2, 1fr); /* On reste sur 2x2 c'est plus massif */
+        gap: 30px;
+    }
+    .location-title { font-size: 2.5rem; }
+}
+
+
 /* --- Footer --- */
 .footer {
     background-color: var(--navy);
