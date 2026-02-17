@@ -78,6 +78,10 @@ if (pageId === 'faq') {
     renderLegalPage(); 
     return; 
 }
+    if (pageId === 'press') {
+    renderPressPage(); 
+    return; 
+}
 
 
  
