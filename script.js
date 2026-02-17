@@ -4950,7 +4950,7 @@ function renderLocationPage() {
             </div>
 
             <footer class="location-footer">
-                <p>PRIVATE EVENTS & WORLDWIDE INQUIRIES: events@bradfordnightclub.com</p>
+                <p>PRIVATE EVENTS & WORLDWIDE INQUIRIES: +1-305-VIP-BRAD | events@bradfordnightclub.com</p>
             </footer>
         </div>
     `;
