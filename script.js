@@ -4838,6 +4838,100 @@ function renderLegalPage() {
     window.scrollTo(0, 0);
 }
 
+function renderPressPage() {
+    if (!APP_CONTENT) return;
+
+    const pressSections = [
+    {
+        ref: "PROTOCOL I",
+        title: "STRATEGIC MEDIA ACCREDITATION, GLOBAL CREDENTIALING STANDARDS & ACCESS HIERARCHY",
+        content: "Access to the Bradford Group’s global ecosystem—including our flagship venues in Miami, NYC, Los Angeles, and the upcoming Las Vegas hub—is governed by a sovereign selection mandate administered by the Global Communications Bureau. Media professionals, encompassing traditional Tier-1 journalism, international broadcast syndicates, and ultra-high-tier digital architects, must undergo a rigorous vetting process. All accreditation petitions must be formally lodged via media@bradfordnightclub.com no later than twenty-one (21) business days prior to any requested deployment. We strictly prohibit 'guerrilla journalism', unvetted freelance coverage, or unauthorized walk-in media attempts. Credentials, once issued, are strictly site-specific, non-transferable, and subject to instantaneous revocation by the Chief Communications Officer (CCO) for any perceived breach of decorum. Furthermore, an approved media credential does not grant entry to 'Sanctum' zones, VVIP enclaves, or Shadow Unit operational sectors, which remain under a permanent, non-negotiable media blackout to ensure the total anonymity of our global elite clientele."
+    },
+    {
+        ref: "PROTOCOL II",
+        title: "CORPORATE IDENTITY, VISUAL INTEGRITY STATUTES & TRADEMARK ENFORCEMENT",
+        content: "The Bradford crest, the proprietary 'Inscribed' typography, and all associated brand signatures are protected as federally registered intellectual property under the USPTO and international WIPO treaties. Any utilization of these assets for print, digital, cinematic, or broadcast distribution is strictly subject to a restrictive Brand Licensing Agreement (BLA). Media partners are categorically forbidden from modifying, distorting, or recoloring hex codes (Bradford Gold #D4AF37 / Obsidian #050505). The Group reserves the unilateral right to audit any digital or physical environment in which our trademarks appear to prevent brand dilution or unauthorized association with mass-market entities. High-resolution style guides, raw vectors, and 8K cinematic B-roll assets are sequestered in our secure servers and only released upon the execution of a notarized Brand Integrity Agreement (BIA) and a verified proof of intended use."
+    },
+    {
+        ref: "PROTOCOL III",
+        title: "MANDATORY EDITORIAL VETTING, FORENSIC FACT-CHECKING & PRE-PUBLICATION CLEARANCE",
+        content: "To uphold the 'Global Excellence' benchmark, The Bradford Group enforces a mandatory pre-publication review for any editorial piece, broadcast segment, or visual essay featuring our properties, executive staff, or internal economic data. This protocol is not designed to impede editorial independence but to ensure absolute forensic accuracy regarding our inventory valuations (e.g., the historical verification of the Macallan 1926 Fine & Rare) and our sophisticated security architecture. Media outlets must submit final drafts or 'locked' edits to the Communications Bureau for factual verification 48 hours prior to public distribution. Any entity found disseminating speculative financial data, unauthorized guest list leaks, or 'paparazzi-style' candid content will face immediate permanent de-listing from the Global Media Pool, immediate revocation of all existing licenses, and potential litigation for tortious interference with business relations and breach of confidentiality."
+    },
+    {
+        ref: "PROTOCOL IV",
+        title: "VVIP PRIVACY SHIELD, ANTI-PAPARAZZI MANDATE & SURVEILLANCE NEUTRALIZATION",
+        content: "The Bradford is a sovereign sanctuary. We maintain a 'Zero-Visibility' policy for all celebrity and high-profile guests. Media representatives caught utilizing long-range telephoto lenses, infrared capture technology, parabolic microphones, or unauthorized drone-based aerial surveillance directed at our patrons or premises will be intercepted by the Shadow Unit. Under the 'Sanctuary Protocol', all captured media will be seized as forensic evidence for privacy violation lawsuits and trespass charges. Any media partner that publishes 'candid', intrusive, or non-consensual imagery of a Guest within our security perimeter—regardless of the source—will have their corporate credentials permanently terminated across all global hubs. The Bradford Group maintains an active litigation fund specifically dedicated to the prosecution of unauthorized media intrusion to protect the peace and privacy of our Members."
+    },
+    {
+        ref: "PROTOCOL V",
+        title: "GLOBAL INFLUENCER SYNDICATION, AESTHETIC ALIGNMENT & PERFORMANCE AUDITS",
+        content: "The Bradford does not engage in mass-market influencer marketing. We partner exclusively with digital architects whose aesthetic footprint, audience demographics, and personal brand equity align with the Group’s ultra-luxury ethos. Influencer access is managed through a 'Performance & Discretion Contract' (PDC) which outlines strictly defined deliverables, ironclad Non-Disclosure Agreements (NDA), and behavioral expectations. We categorically reject 'comp-for-post' solicitations from unverified or low-engagement accounts. Prospective partners must submit an audited media kit, verified 12-month audience analytics (specifically targeting the 0.1% wealth bracket), and three professional references from Tier-1 luxury hospitality or high-jewelry sectors. Failure to meet the PDC deliverables or any public conduct deemed detrimental to the Bradford brand will result in immediate termination of the partnership and potential clawback of provided services."
+    },
+    {
+        ref: "PROTOCOL VI",
+        title: "CINEMATIC PRODUCTIONS, COMMERCIAL SITE LEASING & SECURE PRODUCTION LOGISTICS",
+        content: "The utilization of Bradford architecture for feature-length films, high-budget music videos, or global commercial campaigns is governed by a formal 'Venue Master Lease' and Production Rider. Production companies must provide a comprehensive storyboard for Board review, a security bond of no less than $500,000.00 USD, and a certificate of liability insurance with a minimum coverage of $10,000,000.00 USD per occurrence. All filming must be conducted during 'Closed-Set' hours under the continuous supervision of a Bradford Site Liaison and Shadow Unit liaison. We reserve the right of 'Final Aesthetic Approval' for any scene where the Bradford brand, staff, or logos are visible, ensuring the portrayal remains consistent with our prestige global positioning. Unauthorized use of the venue’s likeness in any cinematic medium will be met with immediate cease-and-desist orders and copyright infringement litigation."
+    },
+    {
+        ref: "PROTOCOL VII",
+        title: "RED CARPET MANAGEMENT, SPECIAL EVENTS & TALENT LOGISTICS",
+        content: "During high-profile events, artist residencies, or global launches, The Bradford operates a 'Controlled Media Line'. Photographers and videographers assigned to the press line must adhere to strict positioning and lighting requirements to maintain visual consistency. Individual interviews (junkets) with resident artists or executive leadership must be pre-arranged and are limited to three (3) vetted questions. Media personnel are prohibited from breaking the line or approaching guests outside of the designated press zone. Breach of this protocol results in immediate expulsion and forfeiture of equipment until the event’s conclusion to prevent unauthorized data transmission."
+    },
+    {
+        ref: "PROTOCOL VIII",
+        title: "CRISIS COMMUNICATIONS BUREAU & EMERGENCY REPUTATIONAL MANAGEMENT",
+        content: "In the event of an operational anomaly, security incident, or force majeure, all media inquiries must be channeled through the 'Rapid Response PR' desk. No staff member, including C-suite executives, is authorized to provide 'on-the-record' statements, 'off-the-record' background, or deep-background commentary without a signed directive from the Bradford Legal Department. Unauthorized statements are considered a fundamental breach of employment and non-disclosure contracts. The Bradford Group maintains a 24/7 litigation-ready posture against any outlet publishing defamatory, libelous, or 'click-bait' headlines intended to damage our brand equity or stock valuation. We utilize global monitoring tools to detect and neutralize misinformation in real-time."
+    },
+    {
+        ref: "PROTOCOL IX",
+        title: "DIGITAL ASSET PROTECTION, STEGANOGRAPHY & BLOCKCHAIN MEDIA TRACKING",
+        content: "To combat digital piracy, unauthorized 're-posting', and the AI-generated manipulation of our signature event footage, The Bradford utilizes advanced steganographic watermarking and blockchain-recorded metadata for all press assets. All officially released videos and images are digitally signed and tracked globally. Any unauthorized commercial use, AI-training utilization, or social media re-distribution of Bradford-owned content detected by our automated crawlers will trigger an immediate DMCA takedown notice and an invoice for 'Unauthorized Commercial Licensing' starting at a minimum of $25,000.00 USD per asset, per day of use. We do not negotiate on intellectual property theft."
+    },
+    {
+        ref: "PROTOCOL X",
+        title: "INTERNATIONAL JURISDICTION & COMMUNICATIONS GOVERNANCE",
+        content: "All media relations and communications protocols are governed by the laws of the State of Florida for global headquarters operations, with local jurisdiction applied in New York, California, and Nevada for regional specificities. By accepting Bradford credentials, media organizations irrevocably consent to the jurisdiction of the courts in Miami-Dade County for any disputes arising from brand use or privacy breaches. These protocols are subject to change without notice to reflect evolving global security standards and digital rights management technologies. All formal legal notices regarding media must be served via certified mail to the Bradford Legal Bureau, Attn: Communications Division."
+    }
+];
+
+
+    APP_CONTENT.innerHTML = `
+        <div class="legal-container fade-in">
+            <div class="legal-header">
+                <h1 class="legal-title">PRESS & MEDIA RELATIONS</h1>
+                <p class="legal-date">GLOBAL COMMUNICATIONS BUREAU</p>
+                <div class="legal-line"></div>
+            </div>
+
+            <div class="legal-scroll-area">
+                ${pressSections.map(section => `
+                    <section class="legal-section">
+                        <span class="legal-ref">${section.ref}</span>
+                        <h2 class="legal-sub">${section.title}</h2>
+                        <p class="legal-text">${section.content}</p>
+                    </section>
+                `).join('')}
+                
+                <div class="press-contact-grid">
+                    <div class="press-card">
+                        <h3>GLOBAL INQUIRIES</h3>
+                        <p>media@bradfordnightclub.com</p>
+                    </div>
+                    <div class="press-card">
+                        <h3>URGENT PRESS</h3>
+                        <p>+1 305-VIP-BRAD (Ext. Media)</p>
+                    </div>
+                </div>
+
+                <div class="legal-full-disclosure">
+                    <p>The Bradford Media Relations department operates 24/7 across Miami, New York, and London time zones to support international news cycles.</p>
+                </div>
+            </div>
+        </div>
+    `;
+    window.scrollTo(0, 0);
+}
+
 /** Charge le JSON et démarre l'application */
 async function initApp() {
     try {
