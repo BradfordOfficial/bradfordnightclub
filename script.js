@@ -562,6 +562,7 @@ if (pageId === 'faq') {
          case 'careers': // AJOUTE ÇA
             renderCareersPage();
             break; 
+         case 'legal': renderLegalPage(); break;
  
         case 'location': renderLocationPage(); break; // Utilisation de la fonction spécifique
 case 'concierge': renderConciergePage(); break; 
