@@ -70,6 +70,11 @@ if (pageId === 'faq') {
     renderFAQPage();
     return; // INDISPENSABLE pour ne pas tomber dans le switch plus bas
 }
+    if (pageId === 'careers') {
+    renderCareersPage(); 
+    return; 
+}
+
 
  
     // --- Contenu Riche et étendu ---
