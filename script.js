@@ -65,6 +65,11 @@ if (pageId === 'dress_code') {
     renderBradfordGallery(); 
     return; 
 }
+    // LA FAQ DOIT ÊTRE ICI ET STOPPER TOUT LE RESTE
+if (pageId === 'faq') {
+    renderFAQPage();
+    return; // INDISPENSABLE pour ne pas tomber dans le switch plus bas
+}
 
  
     // --- Contenu Riche et étendu ---
