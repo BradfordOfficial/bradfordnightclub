@@ -4928,7 +4928,7 @@ function renderLocationPage() {
     APP_CONTENT.innerHTML = `
         <div class="location-container fade-in">
             <header class="location-header">
-                <h1 class="location-title">GLOBAL LOCATIONS</h1>
+                <h1 class="title-page">GLOBAL LOCATIONS</h1>
                 <p class="subtitle-page">LES CAPITALES DU LUXE, NOTRE MAISON.</p>
                 <div class="gold-separator"></div>
             </header>
