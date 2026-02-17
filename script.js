@@ -4397,7 +4397,211 @@ function goToReservationsDirect() {
     // 4. On remonte tout en haut
     window.scrollTo(0, 0);
 }
+function renderFAQPage() {
+    if (!APP_CONTENT) return;
 
+    const faqData = [
+    {
+        category: "MEMBERS & ADHÉSION",
+        questions: [
+            { q: "Comment devenir Member au Bradford ?", a: "L'adhésion est fixée à $25,000 par an. Elle est strictement soumise à l'approbation du comité. Chaque demande est traitée avec une discrétion absolue." },
+            { q: "Quels sont les avantages exclusifs des Members ?", a: "Accès prioritaire mondial (Miami, LA, NYC, SF), invitations aux soirées privées à accès restreint, et ligne directe 24/7 avec le concierge VIP." },
+            { q: "L'adhésion garantit-elle une table ?", a: "Les Members ont la priorité absolue sur les réservations de la Main Room, mais une réservation préalable reste fortement conseillée via reservations@bradfordnightclub.com." },
+            { q: "Comment renouveler mon statut de Member ?", a: "Le renouvellement est annuel et dépend de la validation du comité. Contactez la ligne privée au +1 305 VIP BRAD pour les modalités." },
+            { q: "Puis-je parrainer un nouveau Member ?", a: "Le parrainage par un Member actif est un atout majeur lors de l'examen d'une candidature par le comité, mais ne garantit pas l'admission." },
+            { q: "Existe-t-il des accès temporaires pour les non-membres ?", a: "L'accès standard est possible selon l'affluence, mais les zones privées et soirées spéciales sont strictement réservées aux Members." }
+        ]
+    },
+    {
+        category: "ACCÈS & IDENTITÉ",
+        questions: [
+            { q: "Quel est l'âge minimum requis ?", a: "L'accès est strictement réservé aux personnes de 21 ans et plus. Aucune exception n'est tolérée." },
+            { q: "Quels documents d'identité sont acceptés ?", a: "Seule une pièce d'identité gouvernementale originale est acceptée (Passeport, Carte d'Identité ou Permis de conduire). Les copies et photos sont refusées." },
+            { q: "Puis-je entrer après 2h du matin ?", a: "Les portes ouvrent à 00:00. L'entrée peut être limitée ou refusée après 02:00, même avec une réservation, si la capacité maximale est atteinte." },
+            { q: "Pourquoi la file d'attente commence-t-elle à 23h30 ?", a: "Pour garantir un contrôle de sécurité fluide et permettre une ouverture des portes précise à minuit." },
+            { q: "Le club est-il accessible aux personnes à mobilité réduite ?", a: "Absolument. Nos établissements sont conçus pour offrir une expérience de luxe accessible à tous nos clients." },
+            { q: "Que faire si ma pièce d'identité est étrangère ?", a: "Les passeports internationaux originaux sont parfaitement acceptés et scannés par notre système de sécurité." }
+        ]
+    },
+    {
+        category: "RÉSERVATIONS & TABLES",
+        questions: [
+            { q: "Quel est le Minimum Spend pour une table ?", a: "Le Minimum Bottle Spend est de $3,000 le jeudi et dimanche, et de $5,000 les vendredi et samedi pour sécuriser une table en Main Line." },
+            { q: "Qu'est-ce qui est inclus dans le prix d'une bouteille ?", a: "Tous les prix incluent les soft drinks, jus et mixers premium. Notez que le service de 20% est appliqué en sus." },
+            { q: "Comment fonctionne le dépôt de garantie ?", a: "Un dépôt de $200 est requis pour confirmer toute réservation de table. Ce montant est déduit de votre facture finale." },
+            { q: "Combien d'invités par bouteille ?", a: "La règle standard est d'une bouteille minimum pour 4 invités. Pour les groupes de prestige, contactez le concierge." },
+            { q: "Quelle est la politique d'annulation pour les tables ?", a: "Annulation gratuite jusqu'à 7 jours avant. Moins de 48h avant l'événement, le dépôt est intégralement conservé." },
+            { q: "Puis-je choisir mon emplacement sur le plan ?", a: "Les demandes spécifiques (Main Room, Backstage) sont traitées en priorité pour les Members et les réservations à haut spend." },
+            { q: "Que se passe-t-il si j'arrive en retard à ma table ?", a: "Les tables sont maintenues jusqu'à 01:30. Au-delà, la réservation peut être annulée sans remboursement du dépôt." }
+        ]
+    },
+    {
+        category: "MENU PRESTIGE & BOUTEILLES",
+        questions: [
+            { q: "Quelle est la bouteille la plus rare de votre cave ?", a: "Le Macallan 1926 Fine & Rare, affiché à $1,900,000. Un chef-d'œuvre de l'histoire du whisky." },
+            { q: "Quels sont les champagnes de format exceptionnel ?", a: "Nous proposons l'Armand de Brignac Midas en 30L au prix de $210,000 pour des célébrations hors normes." },
+            { q: "Peut-on commander des spiritueux hors-menu ?", a: "Oui. Pour des raretés comme le Louis XIII Black Pearl, prévenez la conciergerie 48h à l'avance." },
+            { q: "Proposez-vous des cocktails signature ?", a: "Oui, comme 'The Billionaire' ($950) ou le 'Golden Mirage' à base de 1942 et or comestible ($60)." },
+            { q: "Qu'est-ce qu'un 'Luxury Add-on' ?", a: "Ce sont des services premium : fumée de glace sèche ($35), feuilles d'or comestibles ($30) ou seaux à glace en cristal ($20)." },
+            { q: "Quelles sont les options d'accompagnement frais ?", a: "Nous servons des garnitures d'élite : baies fraîches ($18), cerises Maraschino premium ($12) ou olives Castelvetrano ($14)." },
+            { q: "Les sparklers (étincelles) sont-ils payants ?", a: "Le Sparkler Show avec LED est un service additionnel à $60 pour une présentation de bouteille spectaculaire." }
+        ]
+    },
+    {
+        category: "PAIEMENTS & SÉCURITÉ",
+        questions: [
+            { q: "Quels sont les modes de paiement acceptés ?", a: "Apple Pay et les cartes bancaires majeures. Pour les réservations en ligne uniquement, les Crypto-monnaies sont acceptées." },
+            { q: "Puis-je payer une bouteille en Crypto au club ?", a: "Non. À l'intérieur du club, seuls Apple Pay et les cartes de crédit sont acceptés pour le règlement des consommations." },
+            { q: "Qu'est-ce que le Bradford Encrypted System ?", a: "C'est notre protocole de sécurité exclusif qui crypte toutes vos données personnelles et bancaires pour une confidentialité totale." },
+            { q: "Le service charge de 20% est-il facultatif ?", a: "Non, cette charge de service est automatiquement appliquée à toutes les commandes (bouteilles et add-ons)." },
+            { q: "Les prix affichés sur le menu sont-ils TTC ?", a: "Les prix sont hors taxes et hors service. Cliquez sur un prix pour voir le coût total incluant les frais." },
+            { q: "Comment obtenir une facture détaillée ?", a: "Adressez votre demande à reservations@bradfordnightclub.com ou demandez à votre serveur avant la fermeture de la note." }
+        ]
+    },
+    {
+        category: "DRESS CODE & ÉTIQUETTE",
+        questions: [
+            { q: "Quel est le Dress Code imposé ?", a: "Élégance absolue. Blazer/Costume pour les hommes, tenue haute couture pour les femmes. Sneakers de sport interdites." },
+            { q: "Pourquoi les photos sont-elles limitées ?", a: "Pour préserver la vie privée de nos clients et Members. L'usage du flash est strictement prohibé." },
+            { q: "Puis-je venir en tenue décontractée chic ?", a: "Le Bradford impose un standard élevé. Le management se réserve le droit de refuser l'entrée en cas de tenue jugée inadéquate." },
+            { q: "Les lunettes de soleil sont-elles autorisées ?", a: "Uniquement en extérieur. Elles doivent être retirées à l'intérieur pour des raisons de sécurité." },
+            { q: "Quelle est la règle concernant les célébrités ?", a: "Toute demande de selfie ou harcèlement envers un autre client entraîne une expulsion immédiate sans remboursement et un bannissement de nos clubs." }
+        ]
+    },
+    {
+        category: "LOGISTIQUE & SERVICES VIP",
+        questions: [
+            { q: "Comment fonctionne le partenariat Uber Black ?", a: "Nous offrons un service 'Premium Arrival Concierge'. Votre chauffeur Uber Black vous dépose directement au point d'accès prioritaire." },
+            { q: "Proposez-vous un service de voiturier ?", a: "Oui, un service de voiturier sécurisé est disponible à l'entrée officielle (1234 Collins Ave)." },
+            { q: "Peut-on privatiser le club ?", a: "Oui, pour des événements corporate ou tournages. Contactez events@bradfordnightclub.com." },
+            { q: "J'ai oublié un objet au club, que faire ?", a: "Appelez le +1 305 VIP BRAD. Les objets sont stockés 30 jours dans notre coffre-fort avant d'être traités." },
+            { q: "Où se trouve le prochain Bradford ?", a: "Notre expansion majeure est prévue à Las Vegas pour l'horizon 2027-2028." },
+            { q: "Proposez-vous des cigares ?", a: "Oui, une sélection de cigares premium est disponible entre $100 et $250 l'unité pour nos espaces fumeurs VIP." },
+            { q: "Qu'est-ce que le service de Butler privé ?", a: "Pour $300 la nuit, un majordome dédié s'occupe exclusivement de votre table et de vos commandes." },
+            { q: "Le club dispose-t-il d'un héliport ?", a: "Pour certains établissements, une coordination est possible. Contactez le concierge pour les transferts en hélicoptère." }
+        ]
+    },
+    {
+        category: "DÉTAILS DU MENU & ADD-ONS",
+        questions: [
+            { q: "Quels sont les tarifs des softs et eaux ?", a: "La bouteille de Fiji ou VOSS Still est à $12. Les boissons énergisantes (Red Bull, Celsius, Monster Gold) sont entre $14 et $16." },
+            { q: "Proposez-vous des options de récupération (Recovery) ?", a: "Oui, nous proposons des packs Liquid IV ($10), Gatorade Fierce ($10) et Vitamin Water ($12) pour votre confort durant la soirée." },
+            { q: "Qu'est-ce que le service 'Dry Ice Smoke' ?", a: "C'est un effet visuel de fumée cryogénique ajouté à votre service de bouteille pour $35." },
+            { q: "Le set de pailles en or est-il réutilisable ?", a: "Absolument. Le Gold Straw Set ($25) est un accessoire de luxe réutilisable pour nos clients exclusifs." },
+            { q: "Peut-on personnaliser sa bouteille ?", a: "Oui, nous proposons une gravure personnalisée (Bottle Engraving) sur bouteille pour $180. Prévoir un délai pour la réalisation." },
+            { q: "Quelles sont les options de présentation LED ?", a: "Nous proposons des seaux à glace LED ($80) et des plateaux néon pour le service de 10 shots ($120)." },
+            { q: "Y a-t-il des garnitures de luxe pour les cocktails ?", a: "Nous proposons des Silver Rim Upgrades ($20) et des zestes d'agrumes frais servis en bol ($10-$12)." }
+        ]
+    },
+    {
+        category: "PROTOCOLES DE SÉCURITÉ & DISCRÉTION",
+        questions: [
+            { q: "Qu'est-ce que l'engagement de discrétion Bradford ?", a: "Chaque interaction est traitée avec une confidentialité diplomatique. Nous garantissons la protection totale de l'identité de nos clients de prestige." },
+            { q: "Le Bradford Inscribed System conserve-t-il mes données ?", a: "Le système crypte les données pour la validation immédiate mais ne stocke aucune information sensible après votre passage, conformément aux normes de haute sécurité." },
+            { q: "Puis-je venir avec ma propre équipe de sécurité ?", a: "Les gardes du corps personnels sont autorisés mais doivent impérativement se coordonner avec notre chef de sécurité 48h avant l'arrivée." },
+            { q: "Le club est-il équipé de caméras ?", a: "Pour la sécurité de tous, le club est sous vidéo-protection 24/7, mais les flux sont strictement confidentiels et protégés par le Bradford Encrypted System." },
+            { q: "Comment sont gérés les groupes de célébrités ?", a: "Nous disposons d'entrées et de sorties privées sécurisées pour garantir une arrivée et un départ sans exposition publique." }
+        ]
+    },
+    {
+        category: "LOGISTIQUE INTERNATIONALE & ÉVÉNEMENTS",
+        questions: [
+            { q: "Quels sont les bureaux officiels du Bradford ?", a: "Le Bradford Headquarters gère les opérations mondiales. Pour toute demande corporate, contactez l'adresse officielle à Miami Beach." },
+            { q: "Comment obtenir une accréditation presse ?", a: "Toutes les demandes média et interviews d'artistes résidents doivent passer par media@bradfordnightclub.com." },
+            { q: "Le Bradford organise-t-il des tournages ?", a: "Oui, nos établissements de New York, LA et Miami sont disponibles pour des productions professionnelles de luxe. Contactez le département Events." },
+            { q: "Quelle est la capacité maximale du club ?", a: "La capacité varie selon l'établissement (Miami, NYC, SF). Chaque table est strictement limitée pour garantir le confort et la sécurité." },
+            { q: "Comment réserver pour un groupe de plus de 15 personnes ?", a: "Ces demandes sont considérées comme des 'Groupes de Prestige' et nécessitent une validation via +1 305 VIP BRAD." }
+        ]
+    },
+    {
+        category: "EXPANSION & FUTUR",
+        questions: [
+            { q: "Le Bradford prévoit-il d'autres ouvertures que Las Vegas ?", a: "Nous évaluons constamment des opportunités dans les hubs mondiaux du luxe, mais Vegas 2027 est actuellement notre priorité majeure." },
+            { q: "Peut-on investir dans le groupe Bradford ?", a: "Pour toute demande relative aux investissements et aux flux d'expansion, veuillez contacter le bureau de direction via l'email des Headquaters." },
+            { q: "Où trouver les offres d'emploi pour les nouveaux clubs ?", a: "Toutes les opportunités de carrière pour nos futurs établissements sont centralisées sur careers@bradfordnightclub.com." }
+        ]
+    }
+];
+
+
+
+    APP_CONTENT.innerHTML = `
+        <div class="faq-elite-container fade-in">
+            <h1 class="title-page">FREQUENTLY ASKED QUESTIONS</h1>
+            <p class="subtitle-page">L'excellence réside dans la clarté.</p>
+
+            <div class="faq-search-section">
+                <div class="search-minimal">
+                    <input type="text" id="faqInput" placeholder="RECHERCHER" onkeyup="filterFAQ()">
+                    <div class="search-line"></div>
+                </div>
+            </div>
+
+            <div class="faq-accordion" id="faqGrid">
+                ${faqData.map((section, sIdx) => `
+                    <div class="faq-group">
+                        <h2 class="faq-cat-title">${section.category}</h2>
+                        ${section.questions.map((item, qIdx) => `
+                            <div class="faq-item" data-search="${item.q.toLowerCase()}">
+                                <button class="faq-trigger" onclick="handleFaqToggle(${sIdx}, ${qIdx})">
+                                    <span>${item.q}</span>
+                                    <div class="cross-icon" id="icon-${sIdx}-${qIdx}"></div>
+                                </button>
+                                <div class="faq-content" id="ans-${sIdx}-${qIdx}">
+                                    <div class="faq-text">${item.a}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `).join('')}
+            </div>
+
+       <div class="faq-luxury-footer">
+                <div class="gold-divider"></div>
+                <div class="footer-content">
+                    <h3>VOUS AVEZ UNE DEMANDE PARTICULIÈRE ?</h3>
+                    <p>Notre conciergerie est disponible 24/7 pour nos membres.</p>
+
+                <button class="btn-concierge-ultra" onclick="navigate('contact')">
+                    <span>CONTACTER LE CONCIERGE</span>
+                </button>
+            </div>
+        </div>
+    `;
+    window.scrollTo(0, 0);
+}
+
+// LOGIQUE ACCORDEON - PROPRE ET ROBUSTE
+function handleFaqToggle(sIdx, qIdx) {
+    const content = document.getElementById(`ans-${sIdx}-${qIdx}`);
+    const icon = document.getElementById(`icon-${sIdx}-${qIdx}`);
+    const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
+
+    // Fermeture des autres
+    document.querySelectorAll('.faq-content').forEach(el => el.style.maxHeight = null);
+    document.querySelectorAll('.cross-icon').forEach(el => el.classList.remove('active'));
+
+    if (!isOpen) {
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.classList.add('active');
+    }
+}
+
+function filterFAQ() {
+    const input = document.getElementById('faqInput').value.toLowerCase();
+    const items = document.querySelectorAll('.faq-item'); // On cible chaque bloc question+réponse
+
+    items.forEach(item => {
+        // On récupère tout le texte à l'intérieur du bloc (Question + Réponse)
+        const text = item.textContent.toLowerCase();
+        
+        if (text.includes(input)) {
+            item.style.display = "block"; // On affiche si ça match
+        } else {
+            item.style.display = "none";  // On cache si ça ne match pas
+        }
+    });
+}
 
 
 /** Charge le JSON et démarre l'application */
