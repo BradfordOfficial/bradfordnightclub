@@ -567,7 +567,7 @@ if (pageId === 'faq') {
             renderCareersPage();
             break; 
          case 'legal': renderLegalPage(); break;
- 
+         case 'press': renderPressPage(); break;
         case 'location': renderLocationPage(); break; // Utilisation de la fonction spécifique
 case 'concierge': renderConciergePage(); break; 
         default: navigate('home');
