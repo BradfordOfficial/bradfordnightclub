@@ -4684,6 +4684,156 @@ function renderCareersPage() {
     window.scrollTo(0, 0);
 }
 
+function renderLegalPage() {
+    if (!APP_CONTENT) return;
+
+    const legalSections = [
+    {
+        ref: "ARTICLE I",
+        title: "COMPREHENSIVE SCOPE OF AGREEMENT, DEFINITIONS & BINDING MANDATE",
+        content: "This Master Terms of Service Agreement (the 'Agreement') constitutes a legally binding contractual mandate between the individual user, guest, patron, or member (hereinafter 'The Guest') and The Bradford Group, inclusive of its global parent entities, regional subsidiaries, affiliates, and managed nightlife venues (collectively 'The Bradford', 'The Venue', or 'The Group') across jurisdictions including but not limited to Florida, New York, and California. By utilizing this digital interface, executing a reservation, submitting a deposit, or crossing the physical threshold of any Bradford property, The Guest acknowledges having read, understood, and irrevocably consented to these statutes in their entirety. This Agreement incorporates by reference all specific policies regarding Dress Code, Bottle Service, and Privacy. Any prior representations, whether oral, written, or implied through marketing materials, are hereby superseded and rendered null and void by this integration clause. Failure to adhere to any provision herein grants The Bradford the unilateral right to terminate services without notice, refund, or liability. The Guest explicitly waives any right to claim 'lack of notice' regarding these terms, as they are permanently accessible and presented as a prerequisite for any commercial interaction with The Group."
+    },
+    {
+        ref: "ARTICLE II",
+        title: "MANDATORY ARBITRATION, CLASS ACTION WAIVER & DISPUTE RESOLUTION",
+        content: "EXCEPT FOR SMALL CLAIMS COURT ACTIONS, THE GUEST AGREES THAT ALL DISPUTES, CLAIMS, OR CONTROVERSIES ARISING OUT OF OR RELATING TO THIS AGREEMENT, THE USE OF THE WEBSITE, OR PHYSICAL ATTENDANCE AT THE VENUE SHALL BE RESOLVED EXCLUSIVELY THROUGH BINDING INDIVIDUAL ARBITRATION CONDUCTED BY THE AMERICAN ARBITRATION ASSOCIATION (AAA) IN ACCORDANCE WITH ITS COMMERCIAL ARBITRATION RULES. THE GUEST IRREVOCABLY WAIVES THE RIGHT TO A TRIAL BY JURY OR TO PARTICIPATE AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS ACTION, REPRESENTATIVE PROCEEDING, OR PRIVATE ATTORNEY GENERAL ACTION. Arbitration shall take place in the County of Miami-Dade (FL), the County of New York (NY), or the County of Los Angeles (CA), depending on the specific venue involved. The arbitrator shall have exclusive authority to resolve any dispute relating to the interpretation, applicability, enforceability, or formation of this Agreement, including any claim that all or any part of this Agreement is void or voidable. Judgment on the award rendered by the arbitrator may be entered in any court having jurisdiction thereof. This clause survives the termination of any relationship between The Guest and The Group."
+    },
+    {
+        ref: "ARTICLE III",
+        title: "AGE VERIFICATION, FORENSIC IDENTIFICATION & ACCESS CONTROL STATUTES",
+        content: "The Bradford operates in strict adherence to the National Minimum Drinking Age Act (23 U.S.C. § 158) and the specific Liquor Liability Laws of the respective states. Admission is strictly prohibited to any person under the age of twenty-one (21). The Guest must present a valid, non-expired, government-issued identification containing a photograph and date of birth (e.g., U.S. State Driver’s License, U.S. Military ID, or International Passport). The Venue utilizes the 'Bradford Inscribed System', a high-fidelity forensic scanning technology, to verify the authenticity of identification documents. The Group reserves the unilateral, absolute right to refuse admission to any individual, including confirmed reservation holders and Members, if: (a) ID authenticity is questioned; (b) The Guest exhibits signs of pre-arrival intoxication; (c) Dress code standards are not met; (d) The Guest's name appears on any global internal blacklist or sanctioned entity list. Admission is a revocable license granted by The Venue, and this license may be terminated at any moment for any non-discriminatory reason by the Lead Security Officer or Management."
+    },
+    {
+        ref: "ARTICLE IV",
+        title: "FINANCIAL DISCLOSURE: MINIMUM SPEND, TAXATION, GRATUITY & LIQUIDATED DAMAGES",
+        content: "All table reservations are governed by a 'Minimum Bottle Spend' (MBS) contractual obligation. This MBS represents a guaranteed revenue commitment by The Guest. Crucially, the MBS is a baseline figure and does not include: (i) Applicable State Sales Tax (7% in FL / 8.875% in NY); (ii) A mandatory 20% Service Charge, which is a gratuity distributed to service staff; (iii) A 4% Venue Administrative Fee; (iv) Any premium 'Luxury Add-ons' or surcharges for rare vintages. If The Guest's total consumption fails to reach the MBS, the remaining balance will be charged as a 'Venue Placement Fee'. Deposits are strictly non-refundable. The Guest agrees that the $200.00 (or higher as specified) deposit represents a fair estimate of 'liquidated damages' incurred by The Venue due to lost opportunity costs for late cancellations (under 48 hours) or 'No-Shows'. The Guest explicitly agrees to waive all 'chargeback' rights through their credit card provider for these fees. Any attempt to reverse a legitimate charge for services rendered or deposits forfeited under this agreement will be treated as fraudulent and may result in legal action for 'Theft of Services' and permanent blacklisting."
+    },
+    {
+        ref: "ARTICLE V",
+        title: "PHYSICAL PREMISES LIABILITY, PERSONAL INJURY & EXPRESS ASSUMPTION OF RISK",
+        content: "The Guest acknowledges that the nightlife environment at The Bradford involves inherent and significant risks, including but not limited to: high-intensity strobe lighting, laser radiation, atmospheric smoke effects, high-decibel audio levels exceeding 100dB (which may cause hearing damage), slippery floor surfaces from liquid spills, and crowded kinetic environments. By entering the premises, The Guest voluntarily and expressly assumes all risks of personal injury, illness, permanent disability, or death. The Bradford, its officers, and directors are hereby indemnified and held harmless from any claims arising from the Guest's attendance. This release includes any injury resulting from the negligence of The Venue, its employees, or third-party contractors. The Guest acknowledges that they are responsible for their own safety and the safety of their belongings. The Bradford does not provide bailment for personal items; the use of the cloakroom or VIP storage is at the Guest's own risk, and The Venue’s liability for lost or stolen items is limited to a maximum of $100.00 USD, regardless of the item’s appraised value."
+    },
+    {
+        ref: "ARTICLE VI",
+        title: "PRIVACY, BIOMETRICS & IRREVOCABLE MEDIA LICENSE (CCPA/GDPR/BIPA)",
+        content: "The Bradford Group maintains a sophisticated surveillance network. In compliance with the CCPA (California) and similar privacy frameworks, The Guest is notified that all public and semi-private areas are under continuous high-definition video and audio recording. Data is processed through the 'Bradford Encrypted System' for security analytics, asset protection, and legal compliance. By entering, The Guest grants The Bradford an absolute, irrevocable, worldwide, royalty-free, and sub-licensable license to use their name, image, likeness, and voice in any media now known or hereafter devised, including but not limited to promotional videos, social media, and commercial broadcasts, without further notice or compensation. This serves as a 'Blanket Release'. Regarding biometric data: any data captured during ID verification is stored in a secure, encrypted vault and is used exclusively for internal security protocols (e.g., identifying individuals who have been previously ejected or blacklisted) and will not be sold to third-party data brokers."
+    },
+    {
+        ref: "ARTICLE VII",
+        title: "SHADOW UNIT OPERATIONS, TACTICAL SECURITY & ZERO-TOLERANCE STATUTES",
+        content: "The 'Shadow Unit' is The Bradford's elite internal security force, tasked with maintaining a zero-compromise safety environment. The Guest is subject to physical searches, pat-downs, and electronic metal detection upon entry and at any time while on the premises. Possession of illegal narcotics, paraphrenalia, or weapons of any kind—including those held under a concealed carry permit—is strictly prohibited and will result in immediate ejection and referral to local Law Enforcement (MDPD, NYPD, or LAPD). The Bradford maintains a Zero-Tolerance policy for: (a) Physical or verbal harassment of staff or performers; (b) Unauthorized entry into restricted VIP areas; (c) Solicitation of any kind; (d) Vandalism of property. Ejection under these terms is final and does not entitle The Guest to any refund of deposits, bottle service spends, or entrance fees. The Shadow Unit is authorized to use reasonable force to maintain order and protect the safety of the collective patrons and staff."
+    },
+    {
+        ref: "ARTICLE VIII",
+        title: "BOTTLE SERVICE INTEGRITY, CONSUMPTION & ALCOHOL RESPONSIBILITY",
+        content: "The Bradford is committed to the Responsible Service of Alcohol (RSA). While Table Service provides large-format spirits, the Lead Guest (the individual whose name is on the reservation) assumes primary liability for the consumption levels at their table. Management and service staff reserve the right to 'cut off' or cease service to any table where guests appear dangerously intoxicated, as mandated by State Liquor Authority (SLA) regulations. No alcohol may be removed from the premises ('to-go' bottles are prohibited by law). Any 'tampering' with bottles, including refilling or bringing outside alcohol into the venue, will result in immediate termination of the table reservation and a mandatory fine of $1,000.00 USD added to the final bill as a penalty for breach of liquor license protocols."
+    },
+    {
+        ref: "ARTICLE IX",
+        title: "CYBERSECURITY, ENCRYPTION & BLOCKCHAIN PAYMENT DISCLOSURE",
+        content: "All digital interactions with The Bradford are secured by the 'Bradford Encrypted System', utilizing AES-256 bit encryption for data at rest and TLS 1.3 for data in transit. Cryptocurrency payments (BTC, ETH, USDC) for online deposits are processed through decentralized protocols. The Guest acknowledges that blockchain transactions are immutable and subject to network volatility. Once a transaction is broadcast to the network, it is considered a final payment and is not subject to refund, regardless of subsequent changes in the asset's market value. The Bradford is not liable for losses resulting from user-side security failures, such as compromised private keys or incorrect wallet addresses provided by The Guest."
+    },
+    {
+        ref: "ARTICLE X",
+        title: "FORCE MAJEURE & OPERATIONAL CONTINUITY",
+        content: "The Bradford shall not be liable for any delay or failure in performance resulting from causes beyond its reasonable control, including, without limitation, 'Acts of God' (hurricanes, earthquakes, floods), pandemics, government-mandated lockdowns, civil unrest, terrorist threats, localized power grid failures, or international cyber-warfare impacting digital reservation systems. In the event of a Force Majeure closure, table deposits will be issued as 'Bradford Credit' valid for 12 months, but cash or crypto refunds will not be processed. This ensures the operational stability of The Group's global infrastructure."
+    },
+    {
+        ref: "ARTICLE XI",
+        title: "GOVERNING LAW, VENUE & SEVERABILITY",
+        content: "This Agreement is governed by the laws of the State where the specific venue is located (Florida for Miami; New York for NYC; California for LA/SF). If any provision of this Agreement is found by an arbitrator or court of competent jurisdiction to be invalid or unenforceable, the remaining provisions shall remain in full force and effect. This document constitutes the entire legal framework between the parties. Any failure by The Bradford to enforce a specific clause does not constitute a waiver of its right to enforce that clause in the future. All legal notices must be sent via certified mail to: The Bradford Headquarters, Legal Dept, 1234 Collins Ave, Miami Beach, FL 33139."
+    },
+{
+        ref: "ARTICLE XII",
+        title: "INTELLECTUAL PROPERTY, TRADEMARKS & DIGITAL ASSETS",
+        content: "All content included on this interface, such as text, graphics, logos, button icons, images, audio clips, digital downloads, data compilations, and software, is the exclusive property of The Bradford Group or its content suppliers and is protected by United States and international copyright, trademark, and patent laws. The compilation of all content on this site is the exclusive property of The Group. Any unauthorized use, including but not limited to the reproduction, distribution, display, or transmission of the content of this site is strictly prohibited. The 'Bradford' name, the lion/crest logo, and the 'Bradford Inscribed System' are federally registered trademarks. Any 'cloning' of this interface or unauthorized use of our branding for promotional events not sanctioned by the Group will be met with immediate injunctive relief and statutory damages of up to $150,000 per infringement under the Digital Millennium Copyright Act (DMCA)."
+    },
+    {
+        ref: "ARTICLE XIII",
+        title: "CYBER-SECURITY, DATA BREACH & LIMITATION OF ELECTRONIC LIABILITY",
+        content: "While the 'Bradford Encrypted System' employs military-grade AES-256 encryption, The Guest acknowledges that no electronic transmission or digital storage is 100% secure. In the event of a sophisticated cyber-attack or data breach, The Bradford’s liability is strictly limited to the notification requirements set forth by the Florida Information Protection Act (FIPA) and California’s CCPA. The Group shall not be liable for any indirect, incidental, or consequential damages resulting from a third-party breach of our secure servers. The Guest is responsible for maintaining the confidentiality of any account credentials used to access the Bradford portal and agrees to accept responsibility for all activities that occur under their credentials."
+    },
+    {
+        ref: "ARTICLE XIV",
+        title: "DRONE POLICY & AERIAL SURVEILLANCE RESTRICTIONS",
+        content: "To protect the privacy of our high-profile clientele and ensure the safety of our airspace, the operation of Unmanned Aircraft Systems (Drones) over or near any Bradford property is strictly prohibited without a valid FAA Part 107 waiver and written consent from our Shadow Unit. Any unauthorized drone will be treated as a security threat. The Group reserves the right to utilize signal jamming technology or other legal defensive measures to neutralize unauthorized aerial surveillance. Any footage captured via unauthorized drones is the immediate property of The Bradford, and the operator will be liable for privacy invasion damages."
+    },
+    {
+        ref: "ARTICLE XV",
+        title: "SUBSTANCE ABUSE, NARCOTICS & CHEMICAL TESTING POLICY",
+        content: "The Bradford maintains a drug-free environment in accordance with the Federal Controlled Substances Act. The Guest agrees that the use, possession, or distribution of illegal narcotics, including synthetic substances and non-prescribed pharmaceuticals, is strictly prohibited. The Shadow Unit reserves the right to conduct non-invasive chemical trace detection on any bags or surfaces within a VIP area. Any guest found in violation will be immediately turned over to local authorities. Furthermore, the use of 'vaping' devices is restricted to designated outdoor lounges only; any interference with fire suppression systems or smoke detectors is a felony and will be prosecuted accordingly."
+    },
+    {
+        ref: "ARTICLE XVI",
+        title: "ANTI-MONEY LAUNDERING (AML) & KYC COMPLIANCE",
+        content: "As a global entity handling high-value transactions, The Bradford complies with the Bank Secrecy Act and Anti-Money Laundering (AML) regulations. For any transaction exceeding $10,000 USD (or equivalent in cryptocurrency), The Guest may be required to undergo a 'Know Your Customer' (KYC) verification, including providing proof of funds and additional government documentation. The Group reserves the right to report suspicious financial activity to the Financial Crimes Enforcement Network (FinCEN). We do not accept 'smurfing' or structured payments designed to evade federal reporting requirements."
+    },
+    {
+        ref: "ARTICLE XVII",
+        title: "DRESS CODE & AESTHETIC STANDARDS ENFORCEMENT",
+        content: "The Bradford enforces a 'Strict Luxury' dress code. The definition of 'appropriate attire' is at the sole and subjective discretion of the Front-of-House Management. Prohibited items include, but are not limited to: athletic wear, tank tops, distressed denim, flip-flops, and branded headwear. Any Guest who is denied entry based on aesthetic non-compliance is not entitled to a refund of their table deposit. The Group maintains that the atmosphere of the venue is a core component of the service provided, and dress code enforcement is a necessary tool for brand integrity."
+    },
+    {
+        ref: "ARTICLE XVIII",
+        title: "THIRD-PARTY PROMOTERS & UNAUTHORIZED TICKET SALES",
+        content: "The Bradford does not recognize tickets or table reservations purchased through unauthorized third-party secondary markets (e.g., Craigslist, unofficial Telegram bots, or scalpers). Only reservations made through bradfordnightclub.com or via an official @bradfordnightclub.com email address are valid. Any guest presenting a fraudulent or resold reservation will be denied entry without compensation. We reserve the right to cancel, without refund, any reservation that we suspect has been resold for profit."
+    },
+    {
+        ref: "ARTICLE XIX",
+        title: "HEALTH, SAFETY & INFECTIOUS DISEASE WAIVER",
+        content: "By attending The Bradford, The Guest acknowledges the contagious nature of various infectious diseases (including but not limited to COVID-19 and its variants). Despite our high standards of sanitation, The Group cannot guarantee that you will not become infected. You voluntarily assume the risk of exposure and agree to hold The Bradford harmless from any claims related to illness or medical expenses incurred following your visit. Guests must comply with all posted health protocols and temperature checks if mandated by local health authorities."
+    },
+    {
+        ref: "ARTICLE XX",
+        title: "RIGHT TO SEARCH & SEIZURE OF PROHIBITED ITEMS",
+        content: "The Shadow Unit reserves the right to search all persons, clothing, bags, and vehicles on or entering the premises. Prohibited items include: weapons of any kind, professional recording equipment, outside food/beverage, and hazardous chemicals. Any seized items may be discarded or held for law enforcement. Refusal to submit to a search will result in immediate denial of entry or ejection from the venue."
+    },
+    {
+        ref: "ARTICLE XXI",
+        title: "NON-DISPARAGEMENT & REPUTATIONAL INTEGRITY",
+        content: "The Guest agrees not to make any public statements, online reviews, or social media posts that are knowingly false, defamatory, or intended to cause malicious harm to the reputation of The Bradford Group. While we value honest feedback, the systematic 'review bombing' or organized smear campaigns orchestrated by competitors or disgruntled former guests will be met with litigation for tortious interference with business relations."
+    },
+    {
+        ref: "ARTICLE XXII",
+        title: "ENTIRE AGREEMENT & AMENDMENTS",
+        content: "This Agreement constitutes the entire and sole agreement between The Guest and The Bradford regarding the subject matter herein. The Bradford reserves the right to amend these terms at any time by posting the updated version on our website. Continued use of our services after such changes constitutes your acceptance of the new terms. No waiver by The Group of any term or condition set forth in this Agreement shall be deemed a further or continuing waiver of such term or condition or a waiver of any other term or condition."
+    }
+];
+
+
+    APP_CONTENT.innerHTML = `
+        <div class="legal-container fade-in">
+            <div class="legal-header">
+                <h1 class="legal-title">LEGAL & PRIVACY POLICIES</h1>
+                <p class="legal-date">LAST UPDATED: FEBRUARY 2026</p>
+                <div class="legal-line"></div>
+            </div>
+
+            <div class="legal-scroll-area">
+                ${legalSections.map(section => `
+                    <section class="legal-section">
+                        <span class="legal-ref">${section.ref}</span>
+                        <h2 class="legal-sub">${section.title}</h2>
+                        <p class="legal-text">${section.content}</p>
+                    </section>
+                `).join('')}
+                
+                <div class="legal-full-disclosure">
+                    <h3>OFFICIAL DISCLOSURE</h3>
+                    <p>The Bradford Headquarters - 1234 Collins Ave, Miami Beach, FL 33139. All rights reserved. The term "Member" refers to individuals approved by the internal committee and does not imply ownership or voting rights within the corporation.</p>
+                </div>
+            </div>
+
+            <div class="legal-footer">
+                <button class="btn-print-minimal" onclick="window.print()">
+                    DOWNLOAD PDF VERSION
+                </button>
+            </div>
+        </div>
+    `;
+    window.scrollTo(0, 0);
+}
+
 /** Charge le JSON et démarre l'application */
 async function initApp() {
     try {
