@@ -11,65 +11,75 @@
 
 
 
-/* --- 1. BASE SYSTÈME --- */
+/* --- 1. RESET TOTAL --- */
 html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden;
+    min-height: 100vh;
     background-color: #000;
-    font-family: 'Helvetica', Arial, sans-serif; /* Standard luxe */
-    font-size: 16px;
-    color: #fff;
+    overflow-x: hidden; /* Sécurité anti-bug de scroll latéral */
+    -webkit-font-smoothing: antialiased;
 }
 
-/* --- 2. LE WRAPPER GLOBAL --- */
+/* --- 2. LE MAIN WRAPPER (Neutre) --- */
 .main-wrapper {
     width: 100%;
-    min-height: 100vh;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    /* Gère les encoches iPhone (Safe Areas) */
-    padding-top: env(safe-area-inset-top);
-    padding-bottom: env(safe-area-inset-bottom);
+    margin: 0;
+    padding: 0;
+    display: block;
 }
 
-/* --- 3. PROTECTION DE TES SECTIONS IPHONE 13 --- */
-/* On applique ça à tes containers de page pour qu'ils ne se déforment pas */
+/* --- 3. L'ADAPTATION SMART (iPhone / Tablette / PC) --- */
+
+/* PAR DÉFAUT (Mobile & iPhone 13) */
 #APP_CONTENT > div, 
 .legal-container, 
 .press-container, 
 .career-container {
     width: 100%;
-    max-width: 390px; /* Force le format iPhone 13 par défaut */
-    margin: 0 auto;    /* Centre la section si l'écran est plus large */
+    max-width: 390px; /* On reste sur ton format de référence */
+    margin: 0 auto;    /* Centre la colonne si l'écran est plus large que 390px */
     box-sizing: border-box;
+    position: relative;
 }
 
-/* --- 4. ADAPTATION TABLETTES & PC --- */
-/* Si l'écran est un PC ou une Tablette large, on peut élargir les textes légaux pour la lisibilité */
+/* TABLETTES (iPad, Galaxy Tab) */
+@media (min-width: 768px) {
+    /* Sur tablette, on peut se permettre d'élargir un tout petit peu 
+       ou de rester en format "App centrée" selon ton envie. 
+       Ici on garde le format centré pour ne pas casser tes designs. */
+    #APP_CONTENT > div {
+        max-width: 450px; 
+    }
+}
+
+/* ORDINATEURS & ÉCRANS LARGES (PC, iMac, 4K) */
 @media (min-width: 1024px) {
-    .main-wrapper {
+    /* On élargit uniquement les pages de lecture (Legal / Press) pour le confort */
+    .legal-container, 
+    .press-container {
+        max-width: 900px !important; 
+        padding: 60px 40px;
+    }
+    
+    /* Le reste du site reste dans un format "Mobile App" élégant au centre */
+    #APP_CONTENT > div:not(.legal-container):not(.press-container) {
+        max-width: 450px; 
         border-left: 1px solid rgba(212, 175, 55, 0.1);
         border-right: 1px solid rgba(212, 175, 55, 0.1);
-    }
-
-    /* Optionnel : Si tu veux que tes pages LEGAL et PRESS respirent plus sur PC */
-    .legal-container, .press-container {
-        max-width: 800px !important; /* On débride le format iPhone pour ces pages longues */
+        box-shadow: 0 0 50px rgba(0,0,0,0.5);
     }
 }
 
-/* --- 5. COMPOSANTS FLUIDES --- */
+/* --- 4. SÉCURITÉ MÉDIAS --- */
 img, video {
     max-width: 100%;
     height: auto;
     display: block;
-    object-fit: cover;
 }
 
-/* Suppression des barres de défilement pour le look "App" */
+/* Nettoyage des barres de scroll pour le look "App de luxe" */
 ::-webkit-scrollbar {
     display: none;
 }
