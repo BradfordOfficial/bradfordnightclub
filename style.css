@@ -2018,6 +2018,7 @@ body {
     background: var(--bg); 
     color: #fff; 
     padding: 60px 20px; /* Plus d'espace en haut et en bas */
+    margin-top: 140px;
     font-family: 'Inter', sans-serif; 
 }
 
