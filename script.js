@@ -74,6 +74,10 @@ if (pageId === 'faq') {
     renderCareersPage(); 
     return; 
 }
+    if (pageId === 'legal')  {
+    renderLegalPage(); 
+    return; 
+}
 
 
  
