@@ -4916,6 +4916,47 @@ function renderPressPage() {
     window.scrollTo(0, 0);
 }
 
+
+function renderLocationPage() {
+    const locations = [
+        { city: "MIAMI", country: "🇺🇸", address: "1234 Collins Avenue", area: "Miami Beach, FL 33139", hours: "THU–SUN | 00:00 – 06:00", status: "FLAGSHIP" },
+        { city: "LOS ANGELES", country: "🇺🇸", address: "850 Sunset Boulevard", area: "Beverly Hills, CA 90210", hours: "THU–SUN | 00:00 – 06:00", status: "ELITE" },
+        { city: "NEW YORK", country: "🇺🇸", address: "25 Park Avenue", area: "Manhattan, NY 10016", hours: "THU–SUN | 00:00 – 06:00", status: "URBAN LUXE" },
+        { city: "SAN FRANCISCO", country: "🇺🇸", address: "555 Lombard Street", area: "California 94133", hours: "THU–SUN | 00:00 – 06:00", status: "TECH ELITE" }
+    ];
+
+    APP_CONTENT.innerHTML = `
+        <div class="location-container fade-in">
+            <header class="location-header">
+                <h1 class="location-title">GLOBAL LOCATIONS</h1>
+                <p class="subtitle-page">LES CAPITALES DU LUXE, NOTRE MAISON.</p>
+                <div class="gold-separator"></div>
+            </header>
+
+            <div class="location-grid">
+                ${locations.map(loc => `
+                    <div class="location-card">
+                        <div class="card-status">${loc.status}</div>
+                        <h2 class="card-city">${loc.city} ${loc.country}</h2>
+                        <div class="card-details">
+                            <p class="card-address">${loc.address}</p>
+                            <p class="card-area">${loc.area}</p>
+                            <div class="card-divider"></div>
+                            <p class="card-hours">${loc.hours}</p>
+                        </div>
+                        <button class="card-btn" onclick="window.open('https://maps.google.com/?q=${loc.address} ${loc.city}')">GET DIRECTIONS</button>
+                    </div>
+                `).join('')}
+            </div>
+
+            <footer class="location-footer">
+                <p>PRIVATE EVENTS & WORLDWIDE INQUIRIES: concierge@bradford.com</p>
+            </footer>
+        </div>
+    `;
+    window.scrollTo(0, 0);
+}
+
 /** Charge le JSON et démarre l'application */
 async function initApp() {
     try {
