@@ -3973,6 +3973,33 @@ h1.tit-page:first-of-type {
     color: #d4af37;
 }
 
+.press-contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.press-card {
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 20px;
+    text-align: center;
+}
+
+.press-card h3 {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: #d4af37;
+    margin-bottom: 8px;
+}
+
+.press-card p {
+    font-size: 0.75rem;
+    color: #fff;
+    font-weight: bold;
+}
+
 /* --- Footer --- */
 .footer {
     background-color: var(--navy);
