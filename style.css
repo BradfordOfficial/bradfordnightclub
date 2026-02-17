@@ -9,6 +9,76 @@
 /* Polices élégantes */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;900&family=Inter:wght@300;400;700&display=swap');
 
+
+
+/* --- 1. BASE SYSTÈME --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #000;
+    font-family: 'Helvetica', Arial, sans-serif; /* Standard luxe */
+    font-size: 16px;
+    color: #fff;
+}
+
+/* --- 2. LE WRAPPER GLOBAL --- */
+.main-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* Gère les encoches iPhone (Safe Areas) */
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* --- 3. PROTECTION DE TES SECTIONS IPHONE 13 --- */
+/* On applique ça à tes containers de page pour qu'ils ne se déforment pas */
+#APP_CONTENT > div, 
+.legal-container, 
+.press-container, 
+.career-container {
+    width: 100%;
+    max-width: 390px; /* Force le format iPhone 13 par défaut */
+    margin: 0 auto;    /* Centre la section si l'écran est plus large */
+    box-sizing: border-box;
+}
+
+/* --- 4. ADAPTATION TABLETTES & PC --- */
+/* Si l'écran est un PC ou une Tablette large, on peut élargir les textes légaux pour la lisibilité */
+@media (min-width: 1024px) {
+    .main-wrapper {
+        border-left: 1px solid rgba(212, 175, 55, 0.1);
+        border-right: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    /* Optionnel : Si tu veux que tes pages LEGAL et PRESS respirent plus sur PC */
+    .legal-container, .press-container {
+        max-width: 800px !important; /* On débride le format iPhone pour ces pages longues */
+    }
+}
+
+/* --- 5. COMPOSANTS FLUIDES --- */
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Suppression des barres de défilement pour le look "App" */
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+
+
 /* --- STYLES GLOBAUX --- */
 
 body {
