@@ -549,6 +549,8 @@ if (pageId === 'faq') {
         case 'menu': renderBottleMenuPage(); break;
         case 'reservations': renderReservationPage(); break;
         case 'gallery': renderGalleryPage(); break; // Utilisera la version précédente ou à mettre à jour
+         case 'faq': renderFAQPage(); break; 
+ 
         case 'location': renderLocationPage(); break; // Utilisation de la fonction spécifique
 case 'concierge': renderConciergePage(); break; 
         default: navigate('home');
