@@ -82,6 +82,10 @@ if (pageId === 'faq') {
     renderPressPage(); 
     return; 
 }
+    if (pageId === 'location') {
+    renderLocationPage(); 
+    return; 
+}
 
 
  
@@ -1474,27 +1478,7 @@ function renderContactPage() {
     `;
 }
 
-/** Rendu de la page Localisation & Heures */
-function renderLocationPage() {
-    const locationsList = APP_DATA.venue.locations.map(city => `
-        <div class="menu-item-card">
-            <h3 class="item-name" style="color: var(--gold);">${city.toUpperCase()} VENUE</h3>
-            <p class="item-size">1000 Luxury Street, ${city}</p>
-            <p class="item-rarity">Open: Thursday - Sunday</p>
-            <p class="item-rarity">Hours: 00:00 - 05:00</p>
-        </div>
-    `).join('');
 
-    APP_CONTENT.innerHTML = `
-        <h1 class="title-page">GLOBAL LOCATIONS & HOURS</h1>
-        <p class="subtitle-page">The Bradford Experience across the globe.</p>
-
-        <div class="menu-grid">
-            ${locationsList}
-        </div>
-        <p style="text-align: center; color: #999; margin-top: 40px;">Please check local event calendars for special closures or extended hours during holiday weekends.</p>
-    `;
-}
 
 // Fonction finale pour générer le HTML en fonction des catégories d'images.
 function generateGalleryHTML(data) {
