@@ -555,6 +555,9 @@ if (pageId === 'faq') {
         case 'reservations': renderReservationPage(); break;
         case 'gallery': renderGalleryPage(); break; // Utilisera la version précédente ou à mettre à jour
          case 'faq': renderFAQPage(); break; 
+         case 'careers': // AJOUTE ÇA
+            renderCareersPage();
+            break; 
  
         case 'location': renderLocationPage(); break; // Utilisation de la fonction spécifique
 case 'concierge': renderConciergePage(); break; 
