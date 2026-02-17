@@ -57,7 +57,8 @@ html, body {
 /* ORDINATEURS & ÉCRANS LARGES (PC, iMac, 4K) */
 @media (min-width: 1024px) {
     /* On élargit uniquement les pages de lecture (Legal / Press) pour le confort */
-    .legal-container, 
+    .legal-container,
+    .career-container,
     .press-container {
         max-width: 900px !important; 
         padding: 60px 40px;
