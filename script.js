@@ -4972,6 +4972,65 @@ function renderLocationPage() {
     window.scrollTo(0, 0);
 }
 
+function renderEntryPolicy() {
+    const protocols = [
+        {
+            id: "01",
+            title: "VERIFICATION BIOMÉTRIQUE & AGE",
+            desc: "L'accès est un privilège, non un droit. Identification gouvernementale physique (Passeport/ID) obligatoire. Aucune copie numérique acceptée.",
+            details: ["Âge minimum : 21 ans révolus", "Vérification d'authenticité systématique", "Scan de sécurité biométrique"]
+        },
+        {
+            id: "02",
+            title: "SÉCURITÉ INFLEXIBLE",
+            desc: "Un sanctuaire sans stress nécessite une surveillance absolue. Nos protocoles de fouille surpassent les standards aéroportuaires.",
+            details: ["Fouille électronique et manuelle", "Politique zéro stupéfiant", "Protection des VVIP garantie"]
+        },
+        {
+            id: "03",
+            title: "DISCRÉTION MANAGÉRIALE",
+            desc: "Nos 'Door Selectors' sont les gardiens de l'atmosphère. Le refus d'entrée est à leur discrétion totale, sans justification requise.",
+            details: ["Comportement impeccable exigé", "Contrôle d'ébriété pré-entrée", "Alignement esthétique requis"]
+        }
+    ];
+
+    APP_CONTENT.innerHTML = `
+        <div class="policy-page fade-in">
+            <div class="hero-section">
+                <div class="hero-line"></div>
+                <h1 class="title-page">ENTRY PROTOCOL</h1>
+                <p class="subtitle-page">UN PROCESSUS D'ADMISSION CONÇU POUR L'ÉLITE</p>
+            </div>
+
+            <div class="protocol-grid">
+                ${protocols.map(p => `
+                    <div class="protocol-box">
+                        <span class="protocol-number">${p.id}</span>
+                        <h2 class="protocol-heading">${p.title}</h2>
+                        <p class="protocol-text">${p.desc}</p>
+                        <ul class="protocol-list">
+                            ${p.details.map(d => `<li><span class="gold-dot"></span> ${d}</li>`).join('')}
+                        </ul>
+                    </div>
+                `).join('')}
+            </div>
+
+            <div class="entry-disclaimer">
+                <div class="disclaimer-content">
+                    <h3>DROIT DE REFUS ABSOLU</h3>
+                    <p>Le Bradford se réserve le droit d'interdire l'accès à toute personne ne reflétant pas les valeurs de prestige et de respect portées par l'établissement. Une réservation de table ne garantit pas l'admission automatique.</p>
+                </div>
+            </div>
+
+            <div class="action-footer">
+              <button class="btn-primary" onclick="renderDressCodePage()">CONSULTER LE DRESS CODE</button>
+            </div>
+        </div>
+    `;
+    window.scrollTo(0, 0);
+}
+
+
 /** Charge le JSON et démarre l'application */
 async function initApp() {
     try {
