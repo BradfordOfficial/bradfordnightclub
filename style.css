@@ -4218,6 +4218,149 @@ h1.tit-page:first-of-type {
     .location-title { font-size: 2.5rem; }
 }
 
+/* --- PAGE ENTRY POLICY - VERSION ELITE --- */
+.policy-page {
+    padding: 0 20px 60px 20px; /* 0 en haut pour coller au titre */
+    max-width: 390px;
+    margin: 0 auto;
+}
+
+/* HEADER : NETTOYÉ ET COLLÉ AU HAUT */
+.hero-section {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-top: 20px; /* Juste assez pour ne pas toucher le bord du navigateur */
+}
+
+
+/* LES BOXES ARRONDIES AVEC EFFET NUMÉRO COUPE-LIGNE */
+.protocol-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+}
+
+.protocol-box {
+    position: relative;
+    padding: 30px 25px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(212, 175, 55, 0.2); /* Ligne dorée fine */
+    border-radius: 15px; /* Bords arrondis comme demandé */
+    transition: border-color 0.3s ease;
+}
+
+.protocol-number {
+    position: absolute;
+    top: -22px; /* Ajusté pour la nouvelle taille */
+    right: 30px;
+    background: #000;
+    padding: 0 15px;
+    font-size: 1.8rem; /* Bien plus massif et impactant */
+    font-weight: 800;
+    color: #d4af37;
+    letter-spacing: 2px;
+    font-family: 'Helvetica', sans-serif;
+}
+
+
+.protocol-heading {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.protocol-text {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.protocol-list {
+    list-style: none;
+    padding: 0;
+}
+
+.protocol-list li {
+    font-size: 0.75rem;
+    color: #fff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.gold-dot {
+    width: 6px;
+    height: 1px; /* Petit trait au lieu du point */
+    background: #d4af37;
+    margin-right: 12px;
+}
+
+.entry-disclaimer {
+    margin-top: 50px;
+    margin-bottom: 60px; /* Ajout d'air avant le bouton */
+    padding: 30px;
+    border: 1px dashed rgba(212, 175, 55, 0.4);
+    border-radius: 10px;
+    text-align: center;
+}
+
+
+.disclaimer-content h3 {
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    color: #d4af37;
+    margin-bottom: 12px;
+}
+
+.disclaimer-content p {
+    font-size: 0.65rem;
+    color: #888;
+    line-height: 1.7;
+}
+
+/* RETOUR AU BOUTON D'ORIGINE (Transparent carré) */
+.action-footer {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.btn-primary {
+    background: transparent;
+    border: 1px solid #d4af37; /* Retour à l'Or */
+    color: #d4af37;            /* Retour à l'Or */
+    padding: 15px 45px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-primary:hover {
+    background: #d4af37;
+    color: #000;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+
+/* ADAPTATION PC SANS CASSER LE DESIGN */
+@media (min-width: 1024px) {
+    .policy-page {
+        max-width: 1000px !important;
+    }
+    .protocol-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+
+
 
 /* --- Footer --- */
 .footer {
