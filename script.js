@@ -2593,8 +2593,18 @@ function closePolicyMenu() {
 }
 
 function handlePolicyClick(page) {
-    closePolicyMenu(); // On ferme le menu d'abord
-    navigate(page);    // On affiche la page demandée
+    closePolicyMenu(); // On ferme le menu
+    
+    // On remonte tout en haut pour le confort visuel
+    window.scrollTo(0, 0); 
+
+    // On aiguille vers la bonne fonction "Elite"
+    if (page === 'entry_policy') {
+        renderEntryPolicy(); // C'est ici qu'on lance la fonction de fou
+    } else {
+        // Pour les autres pages que tu n'as pas encore upgradées :
+        navigate(page); 
+    }
 }
 const B_ENGINE = {
     lex: {
