@@ -86,6 +86,10 @@ if (pageId === 'faq') {
     renderLocationPage(); 
     return; 
 }
+    if (pageId === 'entry_policy') {
+    renderEntryPolicy(); 
+    return; 
+}
 
 
  
