@@ -574,6 +574,7 @@ if (pageId === 'faq') {
          case 'careers': // AJOUTE ÇA
             renderCareersPage();
             break; 
+            case 'entry_policy': renderEntryPolicy(); break;
          case 'legal': renderLegalPage(); break;
          case 'press': renderPressPage(); break;
         case 'location': renderLocationPage(); break; // Utilisation de la fonction spécifique
