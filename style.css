@@ -3119,11 +3119,9 @@ body {
 
 
 
-/* ÉTAT NORMAL (Haut de page) */
 .floating-prestige-bar {
     position: fixed;
-    top: 43vh; 
-    margin-top: -25px; /* On le remonte bien pour qu'il ne cache pas ton titre au repos */
+    top: 43vh; /* Ta position cible au scroll */
     left: 50%;
     transform: translateX(-50%); 
     z-index: 998;
@@ -3138,19 +3136,8 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 10px 40px rgba(0,0,0,0.9);
-    
-    /* La transition qui va rendre le passage de -25px à 0px super fluide */
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    /* On enlève les transitions ici pour que le JS soit instantané et fluide */
 }
-
-/* ÉTAT SCROLLÉ (Quand on commence à descendre) */
-/* On annule la marge pour qu'il vienne se coller parfaitement au header */
-.floating-prestige-bar.scrolled {
-    margin-top: 0px; 
-    /* Ici, si tu veux qu'il bouge aussi un peu le top, tu peux, mais margin 0 devrait suffire */
-}
-
-
 
 
 
