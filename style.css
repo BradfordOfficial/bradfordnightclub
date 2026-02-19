@@ -4359,7 +4359,238 @@ h1.tit-page:first-of-type {
     }
 }
 
+/* --- VIP PRESTIGE PAGE --- */
+.vip-page {
+    padding: 0 20px 80px 20px;
+    max-width: 390px;
+    margin: 0 auto;
+}
 
+.vip-hero {
+    text-align: center;
+    padding: 30px 0 10px 0; /* Réduit de 60px à 30px/10px */
+}
+
+.vip-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 45px; /* On passe de 25 à 45 pour bien séparer les concepts */
+    margin-top: 20px;
+}
+
+.vip-card {
+    position: relative;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+    border-radius: 20px;
+    padding: 1px; /* Pour l'effet de bordure gradient */
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.vip-card.highlight {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(0,0,0,0) 100%);
+}
+
+.card-inner {
+    background: linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+    border-radius: 20px;
+    padding: 40px 25px;
+    box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.05); /* Lueur dorée interne */
+}
+
+
+.vip-tag {
+    font-size: 0.5rem;
+    letter-spacing: 2px;
+    color: #d4af37;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 4px 10px;
+    display: inline-block;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.card-desc {
+    font-size: 0.8rem;
+    color: #888;
+    line-height: 1.6;
+}
+
+/* PRICE DISPLAY */
+.vip-price-box {
+    margin: 30px 0;
+    border-left: 2px solid #d4af37;
+    padding-left: 20px;
+}
+
+.currency { font-size: 1rem; color: #d4af37; vertical-align: top; }
+.amount { font-size: 3rem; font-weight: 800; color: #fff; line-height: 1; }
+.price-label { display: block; font-size: 0.55rem; color: #666; letter-spacing: 1px; margin-top: 5px; }
+
+.vip-perks { list-style: none; padding: 0; margin-top: 20px; }
+.vip-perks li { font-size: 0.75rem; color: #fff; margin-bottom: 10px; display: flex; align-items: center; }
+.gold-line { width: 15px; height: 1px; background: #d4af37; margin-right: 12px; }
+
+/* CANCELLATION BANNER - PROTOCOLE ÉLITE */
+.cancellation-banner {
+    margin-top: 40px;
+    background: rgba(255, 255, 255, 0.02); /* Plus subtil que le noir pur */
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    border-left: none;
+    border-right: none;
+    padding: 45px 25px;
+    text-align: center;
+    position: relative;
+}
+
+/* Le petit sceau doré au-dessus */
+.cancellation-banner::before {
+    content: "!";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    color: #d4af37;
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: 1px solid #d4af37;
+    border-radius: 50%;
+    line-height: 24px;
+    z-index: 2;
+}
+
+.cancellation-banner h3 { 
+    font-size: 0.85rem; 
+    letter-spacing: 5px; 
+    color: #fff; 
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.cancellation-banner p { 
+    font-size: 0.7rem; 
+    color: #888; 
+    line-height: 1.8;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+.banner-footer { 
+    font-size: 0.55rem; 
+    color: #d4af37; 
+    letter-spacing: 6px; 
+    margin-top: 35px; 
+    opacity: 0.6;
+    text-transform: uppercase;
+}
+/* Styling du contenu Minimum Spend */
+.spend-levels {
+    margin: 25px 0;
+}
+
+/* Les barres de progression esthétiques */
+.spend-levels {
+    margin: 20px 0;
+}
+
+.level-item {
+    margin-bottom: 12px;
+}
+
+.level-label {
+    display: block;
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+    color: rgba(255,255,255,0.7);
+}
+
+.level-bar {
+    width: 100%;
+    height: 1px; /* Encore plus fin pour la discrétion */
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.level-fill {
+    height: 100%;
+    background: #d4af37;
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+}
+
+.vip-alert {
+    margin-top: 25px;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.alert-dot {
+    width: 6px;
+    height: 6px;
+    background: #ff4444;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+
+/* ACTION BUTTON */
+.vip-actions { 
+    margin-top: 80px; /* Plus d'espace avant le bouton final */
+    text-align: center; 
+}
+
+.btn-vip {
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.6);
+    color: #d4af37;
+    padding: 16px 40px; /* Moins haut, plus élégant */
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-vip:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid #d4af37;
+    letter-spacing: 7px; /* Le texte s'étire légèrement au survol */
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    transform: translateY(-2px);
+}
+
+
+
+/* RESPONSIVE TABLETTE / PC */
+@media (min-width: 1024px) {
+    .vip-page { max-width: 1100px !important; }
+    .vip-grid { flex-direction: row; gap: 40px; }
+    .vip-card { flex: 1; }
+    .vip-title { font-size: 4rem; }
+}
 
 
 /* --- Footer --- */
