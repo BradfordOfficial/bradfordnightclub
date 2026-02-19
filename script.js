@@ -5212,6 +5212,24 @@ function renderBottleRequirements() {
     window.scrollTo(0, 0);
 }
 
+window.addEventListener('scroll', () => {
+    const bar = document.querySelector('.floating-prestige-bar');
+    const header = document.querySelector('.header');
+    
+    if (bar && header) {
+        // On récupère la position du bas du header en temps réel
+        const headerBottom = header.getBoundingClientRect().bottom;
+        
+        // On force la barre à se coller juste là
+        // On enlève 1px pour le "seamless" (pas d'écart)
+        bar.style.position = 'fixed';
+        bar.style.top = (headerBottom - 1) + 'px';
+        bar.style.left = '50%';
+        bar.style.transform = 'translateX(-50%)';
+        bar.style.zIndex = '2001';
+    }
+});
+
 
 
 /** Charge le JSON et démarre l'application */
