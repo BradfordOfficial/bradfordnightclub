@@ -5212,58 +5212,7 @@ function renderBottleRequirements() {
     window.scrollTo(0, 0);
 }
 
-function initPrestigeBarForce() {
-    const bar = document.querySelector('.floating-prestige-bar');
-    const header = document.querySelector('header');
-    if (!bar || !header) return;
 
-    // 1. On injecte le LOOK directement (comme ça, on oublie le CSS)
-    Object.assign(bar.style, {
-        position: 'fixed',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        zIndex: '2001',
-        background: 'rgba(10, 10, 10, 0.7)',
-        backdropFilter: 'blur(25px)',
-        webkitBackdropFilter: 'blur(25px)',
-        border: '1px solid rgba(212, 175, 55, 0.4)',
-        borderRadius: '100px',
-        width: '70%',
-        height: '60px',
-        padding: '0 25px',
-        display: 'flex',
-        justify-content: 'space-between',
-        alignItems: 'center',
-        boxShadow: '0 10px 40px rgba(0,0,0,0.9)',
-        transition: 'top 0.4s cubic-bezier(0.16, 1, 0.3, 1)' // Ta transition exacte
-    });
-
-    function updatePosition() {
-        const vh = window.innerHeight;
-        const scrollY = window.scrollY;
-        const headerBottom = header.getBoundingClientRect().bottom;
-        
-        // Ta valeur cible : 48vh
-        const targetPos = vh * 0.48; 
-        
-        // Calcul de la position par rapport au scroll
-        let currentTop = targetPos - scrollY;
-
-        // FORCE LE STICKY : Si la barre remonte plus haut que le bas du header
-        if (currentTop <= headerBottom) {
-            bar.style.top = (headerBottom - 1) + 'px'; // Collé au header
-        } else {
-            bar.style.top = currentTop + 'px'; // Suit le scroll naturellement
-        }
-    }
-
-    window.addEventListener('scroll', updatePosition);
-    window.addEventListener('resize', updatePosition);
-    updatePosition(); // Lance une fois au démarrage
-}
-
-// On l'appelle
-initPrestigeBarForce();
 
 
 
