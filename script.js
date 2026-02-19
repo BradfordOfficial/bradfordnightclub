@@ -2598,19 +2598,20 @@ function closePolicyMenu() {
 }
 
 function handlePolicyClick(page) {
-    closePolicyMenu(); // On ferme le menu
-    
-    // On remonte tout en haut pour le confort visuel
+    closePolicyMenu();
     window.scrollTo(0, 0); 
 
-    // On aiguille vers la bonne fonction "Elite"
     if (page === 'entry_policy') {
-        renderEntryPolicy(); // C'est ici qu'on lance la fonction de fou
-    } else {
-        // Pour les autres pages que tu n'as pas encore upgradées :
+        renderEntryPolicy(); 
+    } 
+    else if (page === 'vip_policy') {
+        renderVIPPolicy(); // APPEL DIRECT ICI COMME POUR L'AUTRE
+    }
+    else {
         navigate(page); 
     }
 }
+
 const B_ENGINE = {
     lex: {
         titles: ["Baron", "Sheikh", "Lord", "Don", "Saint", "Vip", "Elite", "Pro", "Agent", "Sir", "Excellency", "Master", "The", "Real", "Official", "Crypto", "Czar", "Archduke"],
