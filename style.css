@@ -3119,15 +3119,13 @@ body {
 
 
 
+/* ÉTAT NORMAL (Haut de page) */
 .floating-prestige-bar {
     position: fixed;
-    top: 43vh; /* Garde ton réglage si le header est très grand, sinon mets 80px */
-    margin-top: -15px;
-    /* --- LE SECRET DU CENTRAGE EN FIXED --- */
+    top: 43vh; 
+    margin-top: -25px; /* On le remonte bien pour qu'il ne cache pas ton titre au repos */
     left: 50%;
     transform: translateX(-50%); 
-    /* --------------------------------------- */
-
     z-index: 998;
     background: rgba(10, 10, 10, 0.7);
     backdrop-filter: blur(25px);
@@ -3140,7 +3138,16 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 10px 40px rgba(0,0,0,0.9);
+    
+    /* La transition qui va rendre le passage de -25px à 0px super fluide */
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+/* ÉTAT SCROLLÉ (Quand on commence à descendre) */
+/* On annule la marge pour qu'il vienne se coller parfaitement au header */
+.floating-prestige-bar.scrolled {
+    margin-top: 0px; 
+    /* Ici, si tu veux qu'il bouge aussi un peu le top, tu peux, mais margin 0 devrait suffire */
 }
 
 
