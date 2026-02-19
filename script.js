@@ -5213,33 +5213,22 @@ function renderBottleRequirements() {
 }
 
 
-let currentMargin = -28; // Position de départ
-let targetMargin = -28;  // Position voulue
-const lerpFactor = 0.15;  // Vitesse de lissage (0.1 = très fluide, 0.2 = plus nerveux)
-
-function updateBarSmooth() {
+window.addEventListener('scroll', function() {
     const bar = document.querySelector('.floating-prestige-bar');
     if (!bar) return;
 
     let scrollY = window.scrollY;
     
-    // On définit la cible : -28 au repos, 0 après 120px de scroll
-    targetMargin = Math.min(0, -28 + (scrollY * 0.25));
+    // 1. Ton décalage souhaité au repos (en pixels)
+    let maxOffset = -28; 
+    
+    // 2. On réduit ce décalage sur les 100 premiers pixels de scroll
+    // Plus tu scrolles, plus "currentOffset" se rapproche de 0
+    let currentOffset = Math.min(0, maxOffset + (scrollY * 0.28)); 
 
-    // L'équation magique du lissage (Lerp)
-    // currentMargin va glisser vers targetMargin de manière organique
-    currentMargin += (targetMargin - currentMargin) * lerpFactor;
-
-    // On applique le résultat
-    bar.style.marginTop = currentMargin.toFixed(2) + 'px';
-
-    // On boucle l'animation de manière fluide
-    requestAnimationFrame(updateBarSmooth);
-}
-
-// On lance l'animation
-requestAnimationFrame(updateBarSmooth);
-
+    // 3. On applique le décalage dynamiquement
+    bar.style.marginTop = currentOffset + 'px';
+});
 
 
 
