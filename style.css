@@ -4815,12 +4815,28 @@ h1.tit-page:first-of-type {
     text-align: center;
 }
 
-/* Responsive PC */
+/* RESPONSIVE BOTTLE - DESIGN VERTICAL ÉLITE */
 @media (min-width: 1024px) {
-    .bottle-page { max-width: 900px; }
-    .requirements-container { flex-direction: row; }
-    .req-block { flex: 1; }
+    .bottle-page { 
+        max-width: 600px !important; /* Largeur idéale pour garder l'aspect "Menu" */
+        margin: 0 auto; 
+    }
+
+    .requirements-container { 
+        flex-direction: column; /* ON RESTE IMPÉRATIVEMENT EN COLONNE */
+        gap: 80px; 
+    }
+
+    .req-block { 
+        width: 100%; 
+    }
+
+    .bottle-title { 
+        font-size: 3.5rem; 
+        letter-spacing: 15px; 
+    }
 }
+
 
 
 /* --- Footer --- */
