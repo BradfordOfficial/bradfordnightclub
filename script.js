@@ -2189,7 +2189,7 @@ function processFullPayment(artiste, ville, date, guests, prix) {
     APP_CONTENT.innerHTML = `
         <div style="height:80vh; display:flex; flex-direction:column; align-items:center; justify-content:center;">
             <div class="loader"></div>
-            <h2 style="font-family:'Cinzel'; color:var(--gold); margin-top:30px; letter-spacing:5px; animation:pulse 1s infinite;">AUTHENTICATION...</h2>
+            <h2 style="font-family:'Cinzel'; color:var(--gold); margin-top:30px; letter-spacing:5px;">AUTHENTICATION...</h2>
             <p style="font-size:0.7rem; opacity:0.5;">DO NOT REFRESH THIS PAGE</p>
         </div>
     `;
