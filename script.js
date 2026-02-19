@@ -2610,9 +2610,13 @@ function handlePolicyClick(page) {
         renderEntryPolicy(); 
     } 
     else if (page === 'vip_policy') {
-        renderVIPPolicy(); // APPEL DIRECT ICI COMME POUR L'AUTRE
+        renderVIPPolicy(); 
+    }
+    else if (page === 'bottle_service_req') {
+        renderBottleRequirements(); // Ajout de la nouvelle page Bottle Service
     }
     else {
+        // Pour les pages restantes (House Rules, Dress Code, etc.)
         navigate(page); 
     }
 }
