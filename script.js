@@ -5190,13 +5190,13 @@ function renderBottleRequirements() {
     </div>
 </div>
 
-<div class="minimum-disclaimer">
-    <div class="disclaimer-line"></div>
-    <div class="disclaimer-content">
-        <span class="disclaimer-tag">ENGAGEMENT</span>
+<div class="minimum-disclaimero">
+    <div class="disclaimero-line"></div>
+    <div class="disclaimero-content">
+        <span class="disclaimero-tag">ENGAGEMENT</span>
         <p>Les minimums de table doivent être atteints via vos achats de <strong>Bouteilles</strong> ou de <strong>Services Additionnels (Add-ons)</strong>.</p>
     </div>
-    <div class="disclaimer-line"></div>
+    <div class="disclaimero-line"></div>
 </div>
 
 
