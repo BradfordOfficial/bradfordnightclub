@@ -95,6 +95,10 @@ if (pageId === 'faq') {
     renderVIPPolicy(); 
     return; 
 }
+    if (pageId === 'bottle_service_req') {
+    renderBottleRequirements(); 
+    return; 
+}
 
  
     // --- Contenu Riche et étendu ---
