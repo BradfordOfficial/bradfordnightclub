@@ -3122,7 +3122,7 @@ body {
 .floating-prestige-bar {
     position: fixed;
     /* On la remonte un chouïa en position initiale (48 au lieu de 52) */
-    top: 40vh; 
+    top: 40svh; 
     left: 50%;
     transform: translateX(-50%); 
     z-index: 998;
