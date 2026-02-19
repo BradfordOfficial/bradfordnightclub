@@ -582,6 +582,7 @@ if (pageId === 'faq') {
          case 'careers': // AJOUTE ÇA
             renderCareersPage();
             break; 
+            case 'bottle_service_req': renderBottleRequirements(); break;
             case 'vip_policy': renderVIPPolicy(); break;
             case 'entry_policy': renderEntryPolicy(); break;
          case 'legal': renderLegalPage(); break;
