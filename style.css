@@ -3121,12 +3121,13 @@ body {
 
 .floating-prestige-bar {
     position: fixed;
-    top: 43vh; /* Ta position cible au scroll */
+    top: 43vh;
     left: 50%;
     transform: translateX(-50%); 
     z-index: 998;
     background: rgba(10, 10, 10, 0.7);
     backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     border: 1px solid rgba(212, 175, 55, 0.4);
     border-radius: 100px;
     width: 70%;
@@ -3136,8 +3137,12 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 10px 40px rgba(0,0,0,0.9);
-    /* On enlève les transitions ici pour que le JS soit instantané et fluide */
+    
+    /* Optimisation pour éviter les micro-saccades */
+    will-change: margin-top;
+    pointer-events: auto;
 }
+
 
 
 
