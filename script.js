@@ -90,7 +90,11 @@ if (pageId === 'faq') {
     renderEntryPolicy(); 
     return; 
 }
-
+    
+    if (pageId === 'vip_policy') {
+    renderVIPPolicy(); 
+    return; 
+}
 
  
     // --- Contenu Riche et étendu ---
