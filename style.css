@@ -4584,13 +4584,28 @@ h1.tit-page:first-of-type {
 
 
 
-/* RESPONSIVE TABLETTE / PC */
+/* RESPONSIVE PC - GARDER LE DESIGN VERTICAL */
 @media (min-width: 1024px) {
-    .vip-page { max-width: 1100px !important; }
-    .vip-grid { flex-direction: row; gap: 40px; }
-    .vip-card { flex: 1; }
-    .vip-title { font-size: 4rem; }
+    .vip-page { 
+        max-width: 500px !important; /* On force une largeur "mobile" centrée sur PC */
+        margin: 0 auto; 
+    }
+
+    .vip-grid { 
+        flex-direction: column; /* ON RESTE EN COLONNE */
+        gap: 30px; 
+    }
+
+    .vip-card { 
+        width: 100%; 
+    }
+
+    .vip-title { 
+        font-size: 3.5rem; 
+        white-space: nowrap; /* Évite que le titre ne se coupe */
+    }
 }
+
 
 /* --- BOTTLE SERVICE PAGE --- */
 .bottle-page {
