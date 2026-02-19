@@ -4592,6 +4592,221 @@ h1.tit-page:first-of-type {
     .vip-title { font-size: 4rem; }
 }
 
+/* --- BOTTLE SERVICE PAGE --- */
+.bottle-page {
+    padding: 0 25px 100px 25px;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.bottle-hero {
+    text-align: center;
+    padding: 40px 0;
+    position: relative;
+}
+
+
+/* RATIO WIDGET */
+.ratio-section {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.ratio-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.ratio-num {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+}
+
+.ratio-label {
+    font-size: 0.5rem;
+    letter-spacing: 3px;
+    color: #d4af37;
+}
+
+.ratio-divider {
+    font-size: 2rem;
+    color: #d4af37;
+    font-weight: 200;
+}
+
+.ratio-disclaimer {
+    font-size: 0.65rem;
+    color: #666;
+    letter-spacing: 1px;
+}
+
+/* --- AÉRATION DE PRÉCISION --- */
+.requirements-container {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;      /* Espace entre les deux gros blocs (Protocole et Prestige) */
+    margin-top: 80px; /* <--- C'EST ÇA : Espace massif entre le 1:4 et le Titre */
+}
+
+
+.req-block {
+    margin-bottom: 20px;
+}
+
+
+/* Le titre sans fioritures, juste la classe */
+.luxury-main-title {
+    font-size: 0.75rem;
+    letter-spacing: 5px;
+    color: #d4af37;
+    text-align: center;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+/* --- TES CARTES (IDENTIQUES À TON SOUHAIT) --- */
+.service-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.s-card {
+    background: rgba(255,255,255,0.03);
+    padding: 25px 15px;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.s-card:hover {
+    border-color: #d4af37;
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.s-value { display: block; font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 5px; }
+.s-label { display: block; font-size: 0.5rem; letter-spacing: 2px; color: #d4af37; margin-bottom: 10px; }
+.s-details { font-size: 0.6rem; color: #666; line-height: 1.4; }
+
+/* --- SECTION PRESTIGE HORIZONTALE --- */
+.prestige-gallery {
+    padding: 0 10px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.gallery-item {
+    position: relative;
+}
+
+.top-line {
+    width: 20px;
+    height: 1px;
+    background: #d4af37;
+    margin: 0 auto 15px;
+}
+
+.gallery-item h3 {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.gallery-item p {
+    font-size: 0.65rem;
+    color: #777;
+    line-height: 1.5;
+}
+
+
+
+/* Mobile : On empile pour la lisibilité mais on garde le style */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+/* --- MINIMUM ENGAGEMENT BAR (MODERNE) --- */
+.minimum-disclaimer {
+    margin: 80px auto 40px;
+    max-width: 380px;
+    position: relative;
+    padding: 20px 0;
+    /* Une bordure latérale uniquement pour le style */
+    border-left: 1px solid rgba(212, 175, 55, 0.4);
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%);
+}
+
+.disclaimer-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-left: 20px;
+}
+
+.disclaimer-tag {
+    font-size: 0.5rem;
+    letter-spacing: 3px;
+    color: #d4af37; /* Le texte repasse en doré */
+    background: transparent; /* On vire le carré jaune plein */
+    border: 1px solid rgba(212, 175, 55, 0.5); /* Bordure fine à la place */
+    padding: 3px 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+
+.disclaimer-content p {
+    font-size: 0.6rem;
+    color: #aaa;
+    line-height: 1.4;
+    text-align: left;
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.disclaimer-content strong {
+    color: #fff;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.5); /* Soulignement fin doré */
+    padding-bottom: 1px;
+}
+
+/* On enlève les anciennes lignes de l'autre version */
+.disclaimer-line { display: none; }
+
+
+
+/* --- LE BOUTON (AÉRATION FINALE) --- */
+.bottle-footer {
+    margin-top: 100px; /* On laisse respirer avant le bouton final */
+    text-align: center;
+}
+
+/* Responsive PC */
+@media (min-width: 1024px) {
+    .bottle-page { max-width: 900px; }
+    .requirements-container { flex-direction: row; }
+    .req-block { flex: 1; }
+}
+
 
 /* --- Footer --- */
 .footer {
