@@ -3120,25 +3120,40 @@ body {
 
 
 .floating-prestige-bar {
-    position: sticky;
-    /* On la remonte un chouïa en position initiale (48 au lieu de 52) */
-    top: 48vh; 
-    z-index: 998;
-    background: rgba(10, 10, 10, 0.7);
-    backdrop-filter: blur(25px);
-    border: 1px solid rgba(212, 175, 55, 0.4);
-    border-radius: 100px;
-    margin: 0 auto;
-    width: 70%;
-    height: 60px;
-    padding: 0 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.9);
-    /* Transition un peu plus douce pour le "chouïa" */
-    transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    /* FORCE LE STICKY SUR TOUS LES MOTEURS */
+    position: -webkit-sticky !important; /* Pour iOS/Safari */
+    position: sticky !important;
+    
+    /* TA POSITION : On la verrouille */
+    top: 48vh !important; 
+    
+    /* PRIORITÉ VISUELLE */
+    z-index: 9999 !important; /* On passe même au-dessus du header si besoin */
+    
+    /* TON DESIGN BRADFORD */
+    background: rgba(10, 10, 10, 0.7) !important;
+    backdrop-filter: blur(25px) !important;
+    -webkit-backdrop-filter: blur(25px) !important; /* Indispensable pour l'effet flou sur iPhone */
+    border: 1px solid rgba(212, 175, 55, 0.4) !important;
+    border-radius: 100px !important;
+    
+    /* LAYOUT */
+    margin: 0 auto !important;
+    width: 70% !important;
+    height: 60px !important;
+    padding: 0 25px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.9) !important;
+    
+    /* TA TRANSITION */
+    transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    
+    /* SÉCURITÉ : Empêche les parents de masquer la barre */
+    pointer-events: auto !important;
 }
+
 
 
 
