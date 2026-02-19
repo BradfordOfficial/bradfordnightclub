@@ -4744,7 +4744,7 @@ h1.tit-page:first-of-type {
 }
 
 /* --- MINIMUM ENGAGEMENT BAR (MODERNE) --- */
-.minimum-disclaimer {
+.minimum-disclaimero {
     margin: 80px auto 40px;
     max-width: 380px;
     position: relative;
@@ -4754,14 +4754,14 @@ h1.tit-page:first-of-type {
     background: linear-gradient(90deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%);
 }
 
-.disclaimer-content {
+.disclaimero-content {
     display: flex;
     align-items: center;
     gap: 15px;
     padding-left: 20px;
 }
 
-.disclaimer-tag {
+.disclaimero-tag {
     font-size: 0.5rem;
     letter-spacing: 3px;
     color: #d4af37; /* Le texte repasse en doré */
@@ -4773,7 +4773,7 @@ h1.tit-page:first-of-type {
 }
 
 
-.disclaimer-content p {
+.disclaimero-content p {
     font-size: 0.6rem;
     color: #aaa;
     line-height: 1.4;
@@ -4783,14 +4783,14 @@ h1.tit-page:first-of-type {
     text-transform: uppercase;
 }
 
-.disclaimer-content strong {
+.disclaimero-content strong {
     color: #fff;
     border-bottom: 1px solid rgba(212, 175, 55, 0.5); /* Soulignement fin doré */
     padding-bottom: 1px;
 }
 
 /* On enlève les anciennes lignes de l'autre version */
-.disclaimer-line { display: none; }
+.disclaimero-line { display: none; }
 
 
 
