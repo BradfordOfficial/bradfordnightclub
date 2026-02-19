@@ -5036,6 +5036,83 @@ function renderEntryPolicy() {
     window.scrollTo(0, 0);
 }
 
+function renderVIPPolicy() {
+   
+    APP_CONTENT.innerHTML = '';
+
+    const vipHTML = `
+        <div class="vip-page fade-in">
+            <header class="vip-hero">
+                <h1 class="title-page">PRESTIGE VIP</h1>
+                <p class="subtitle-page">LE SOMMET DE L'HOSPITALITÉ EXCLUSIVE</p>
+            </header>
+
+            <div class="vip-grid">
+                <div class="vip-card highlight">
+                    <div class="card-inner">
+                        <div class="vip-tag">GUARANTEE</div>
+                        <h2 class="card-title">RÉSERVATION & DÉPÔT</h2>
+                        <p class="card-desc">Accès direct à une soirée personnalisée. Votre table est un sanctuaire réservé.</p>
+                        <div class="vip-price-box">
+                            <span class="currency">$</span><span class="amount">200</span>
+                            <span class="price-label">DÉPÔT NON-REMBOURSABLE*</span>
+                        </div>
+                        <ul class="vip-perks">
+                            <li><span class="gold-line"></span> Appliqué au Minimum Spend</li>
+                            <li><span class="gold-line"></span> Confirmation SMS à H-24</li>
+                        </ul>
+                    </div>
+                </div>
+
+             <div class="card-inner">
+    <div class="vip-tag">DYNAMIC</div>
+    <h2 class="card-title">MINIMUM SPEND</h2>
+    
+      <div class="spend-levels">
+        <div class="level-item active">
+            <span class="level-label">VIP MAIN FLOOR</span>
+            <div class="level-bar"><div class="level-fill" style="width: 65%;"></div></div>
+        </div>
+        <div class="level-item active">
+            <span class="level-label">VIP DANCEFLOOR</span>
+            <div class="level-bar"><div class="level-fill" style="width: 85%;"></div></div>
+        </div>
+    </div>
+
+    <p class="card-desc" style="margin-top: 20px;">
+        Engagement d'achat exclusif de bouteilles, calculé selon l'affluence et le prestige de la soirée.
+    </p>
+    
+    <p class="card-desc" style="margin-top: 10px; font-size: 0.65rem; color: #555;">
+        * Hors taxes et 20% de frais de service standard.
+    </p>
+    
+    
+    <div class="vip-alert">
+        <span class="alert-dot"></span> RETARD MAX : 30 MINUTES
+    </div>
+</div>
+
+
+            <div class="cancellation-banner">
+                <div class="banner-content">
+                    <h3>POLITIQUE D'ANNULATION</h3>
+                    <p>Notification requise 48H avant pour transfert de crédit. Le "No-Show" est un acte définitif.</p>
+                </div>
+                <div class="banner-footer">BRADFORD ELITE PROTOCOL</div>
+            </div>
+
+            <div class="vip-actions">
+              <button class="btn-primary" onclick="window.scrollTo(0,0); navigate('reservations')">RESERVER UNE TABLE</button>
+
+            </div>
+        </div>
+    `;
+    
+    APP_CONTENT.innerHTML = vipHTML;
+    window.scrollTo(0, 0);
+}
+
 
 /** Charge le JSON et démarre l'application */
 async function initApp() {
