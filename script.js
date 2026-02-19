@@ -5213,6 +5213,22 @@ function renderBottleRequirements() {
 }
 
 
+window.addEventListener('scroll', function() {
+    const bar = document.querySelector('.floating-prestige-bar');
+    if (!bar) return;
+
+    let scrollY = window.scrollY;
+    
+    // 1. Ton décalage souhaité au repos (en pixels)
+    let maxOffset = -28; 
+    
+    // 2. On réduit ce décalage sur les 100 premiers pixels de scroll
+    // Plus tu scrolles, plus "currentOffset" se rapproche de 0
+    let currentOffset = Math.min(0, maxOffset + (scrollY * 0.28)); 
+
+    // 3. On applique le décalage dynamiquement
+    bar.style.marginTop = currentOffset + 'px';
+});
 
 
 
