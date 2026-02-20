@@ -5052,7 +5052,7 @@ function renderVIPPolicy() {
     const vipHTML = `
         <div class="vip-page fade-in">
             <header class="vip-hero">
-                <h1 class="title-page">PRESTIGE VIP</h1>
+                <h1 class="title-page">PRESTIGE VIP POLICY</h1>
                 <p class="subtitle-page">LE SOMMET DE L'HOSPITALITÉ EXCLUSIVE</p>
             </header>
 
