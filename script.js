@@ -5651,6 +5651,39 @@ function injectPrivilegeCSS() {
             color: black;
         }
 
+        .confirmation-wrapper {
+    margin-bottom: 25px;
+    padding: 10px 5px;
+}
+
+.confirm-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+/* Style du bouton quand il est bloqué */
+.submit-privilege-btn:disabled {
+    border-color: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.2);
+    cursor: not-allowed;
+    background: transparent;
+}
+
+/* Style de la checkbox (discret et luxe) */
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #D4AF37;
+    cursor: pointer;
+}
+
+
 .reward-desc {
     color: #D4AF37;
     font-size: 0.75rem;
