@@ -3268,6 +3268,25 @@ function renderEventPage() {
                 <h3 style="font-family:'Cinzel'; color:var(--gold); margin-bottom:10px; font-size:1rem;">RÉSIDENCES DE DJS INTERNATIONAUX</h3>
                 <p>Chaque week-end, le Bradford accueille une résidence de DJs de renommée mondiale, sélectionnés pour leur capacité à créer une énergie sophistiquée et exclusive. Les billets d\'entrée générale et les réservations de tables sont fortement recommandés, car ces événements se remplissent rapidement. Consultez notre calendrier pour les prochains "Gold Label Residencies" avec les artistes les plus prestigieux.</p>
             </div>
+<div class="privilege-teaser-container">
+    <div class="privilege-card-link" onclick="renderPrivilegePage()">
+        <div class="card-glow"></div>
+        <div class="card-content">
+            <span class="event-tag">EXCLUSIVE EVENT</span>
+            <h2 class="card-title">THE 21 PRIVILEGE</h2>
+            <div class="timer-display" id="teaserTimer">
+                <span class="time-part">00D</span>
+                <span class="time-part">00H</span>
+                <span class="time-part">00M</span>
+                <span class="time-part">00S</span>
+            </div>
+            <div class="card-footer">
+                <span>ACCESS THE VAULT</span>
+                <i class="arrow-icon">→</i>
+            </div>
+        </div>
+    </div>
+</div>
 
             <div class="gold-pricing-grid">
                 <div class="price-item-premium">
