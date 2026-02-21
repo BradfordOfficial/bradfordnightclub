@@ -5423,6 +5423,22 @@ window.renderPrivilegePage = function() {
         </main>
     </div>`;
 
+    // Attendre que le DOM soit chargé ou l'insérer dans ton script d'ouverture
+const setupCheckboxLogic = () => {
+    const checkbox = document.getElementById('confirmAttendance');
+    const submitBtn = document.getElementById('submitBtn');
+
+    if (checkbox && submitBtn) {
+        checkbox.addEventListener('change', function() {
+            submitBtn.disabled = !this.checked;
+        });
+    }
+};
+
+// Appelle cette fonction juste après avoir injecté ton HTML
+setupCheckboxLogic();
+
+
     // 4. On injecte le CSS
     injectPrivilegeCSS();
 
