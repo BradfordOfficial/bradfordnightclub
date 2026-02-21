@@ -5408,7 +5408,15 @@ window.renderPrivilegePage = function() {
                             </div>
                             <input type="hidden" id="selectedCity">
                         </div>
-                        <button type="submit" class="submit-privilege-btn">REQUEST ACCESS</button>
+                       <div class="confirmation-wrapper">
+    <label class="confirm-container">
+        <input type="checkbox" id="confirmAttendance">
+        <span class="checkmark"></span>
+        I CONFIRM MY ABILITY TO ATTEND THE EVENT IN THE SELECTED CITY IF GRANTED ACCESS.
+    </label>
+</div>
+<button type="submit" id="submitBtn" class="submit-privilege-btn" disabled>REQUEST ACCESS</button>
+
                     </form>
                 </div>
             </section>
