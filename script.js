@@ -877,7 +877,27 @@ function renderReservationPage() {
     APP_CONTENT.innerHTML = `
         <h1 class="title-page">RÉSERVATION TABLE VIP</h1>
         <p class="subtitle-page">Calculez vos exigences de service bouteille</p>
-        
+
+      <div class="privilege-teaser-container">
+    <div class="privilege-card-link" onclick="renderPrivilegePage()">
+        <div class="card-glow"></div>
+        <div class="card-content">
+            <span class="event-tag">EXCLUSIVE EVENT</span>
+            <h2 class="card-title">THE 21 PRIVILEGE</h2>
+            <div class="timer-display" id="teaserTimer">
+                <span class="time-part">00D</span>
+                <span class="time-part">00H</span>
+                <span class="time-part">00M</span>
+                <span class="time-part">00S</span>
+            </div>
+            <div class="card-footer">
+                <span>ACCESS THE VAULT</span>
+                <i class="arrow-icon">→</i>
+            </div>
+        </div>
+    </div>
+</div>
+  
              <div class="reservation-controls" style="display: flex; flex-direction: column; gap: 30px; margin-top: 3rem;">
 
             
