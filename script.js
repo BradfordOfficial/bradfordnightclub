@@ -5466,13 +5466,23 @@ function injectPrivilegeCSS() {
     const style = document.createElement('style');
     style.id = styleId;
     style.innerHTML = `
-        .privilege-page-wrapper {
-            background: #050505;
-            color: white;
-            min-height: 100vh;
-            font-family: 'Cinzel', serif;
-            padding-bottom: 100px;
-        }
+       .privilege-page-wrapper {
+    background: #050505;
+    color: white;
+    font-family: 'Cinzel', serif;
+    padding-bottom: 100px;
+    
+    /* LES MODIFS CRUCIALES ICI */
+    position: fixed;     /* 1. Bloque la page au-dessus du site */
+    top: 0;              /* 2. Colle au haut de l'écran */
+    left: 0;             /* 3. Colle à gauche */
+    width: 100vw;        /* 4. Prend toute la largeur */
+    height: 100vh;       /* 5. Prend toute la hauteur */
+    z-index: 999999;     /* 6. Passe devant ton header et tout le reste */
+    overflow-y: auto;    /* 7. Permet de scroller le formulaire si besoin */
+    padding-top: 80px;   /* 8. Décale le contenu pour qu'il soit sous ton header */
+}
+
 
         .privilege-header {
             display: flex;
