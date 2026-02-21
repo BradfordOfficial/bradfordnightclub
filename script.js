@@ -5661,6 +5661,69 @@ function injectPrivilegeCSS() {
 
         .success-msg { text-align: center; }
         .success-icon { font-size: 4rem; color: #D4AF37; margin-bottom: 20px; }
+        /* --- ADAPTATION RESPONSIVE (ORDI / TABLETTE / MOBILE) --- */
+
+/* 1. Ajustements pour les écrans larges (Ordinateurs) */
+@media (min-width: 1024px) {
+    .p-lineup {
+        grid-template-columns: repeat(4, 1fr); /* 4 rappeurs alignés sur une ligne */
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    
+    .p-title {
+        font-size: 5rem; /* Titre imposant sur grand écran */
+    }
+}
+
+/* 2. Ajustements pour les Tablettes */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .p-lineup {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes par ligne */
+        padding: 30px;
+    }
+    
+    .p-title {
+        font-size: 3rem;
+    }
+}
+
+/* 3. Ajustements pour les Mobiles (iPhone/Android) */
+@media (max-width: 767px) {
+    .p-title {
+        font-size: 2rem; /* Réduction pour éviter que le titre sorte de l'écran */
+        letter-spacing: 5px;
+        margin-top: 20px;
+    }
+
+    .p-lineup {
+        grid-template-columns: 1fr; /* 1 seul rappeur par ligne pour la lisibilité */
+        padding: 20px;
+    }
+
+    .artist-card {
+        height: 300px; /* On réduit un peu la hauteur des cartes sur mobile */
+    }
+
+    .p-rewards {
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .reward-box {
+        width: 100%; /* Les boîtes de récompenses prennent toute la largeur */
+    }
+
+    .input-group {
+        flex-direction: column; /* Nom et Prénom l'un sous l'autre sur mobile */
+        gap: 0;
+    }
+
+    .privilege-page-wrapper {
+        padding-top: 60px; /* Moins d'espace en haut pour laisser respirer le titre */
+    }
+}
+
     `;
     document.head.appendChild(style);
 }
