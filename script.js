@@ -1071,6 +1071,27 @@ function renderHomePage() {
                 <p>Minimum Bottle Spend obligatoire. $3000 (Jeu/Dim) et $5000 (Ven/Sam) pour sécuriser la table.</p>
             </div>
         </div>
+
+        <div class="privilege-teaser-container">
+    <div class="privilege-card-link" onclick="renderPrivilegePage()">
+        <div class="card-glow"></div>
+        <div class="card-content">
+            <span class="event-tag">EXCLUSIVE EVENT</span>
+            <h2 class="card-title">THE 21 PRIVILEGE</h2>
+            <div class="timer-display" id="teaserTimer">
+                <span class="time-part">00D</span>
+                <span class="time-part">00H</span>
+                <span class="time-part">00M</span>
+                <span class="time-part">00S</span>
+            </div>
+            <div class="card-footer">
+                <span>ACCESS THE VAULT</span>
+                <i class="arrow-icon">→</i>
+            </div>
+        </div>
+    </div>
+</div>
+
         
          <div class="hero-section"
 style="
