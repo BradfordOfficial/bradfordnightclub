@@ -5290,6 +5290,370 @@ window.addEventListener('scroll', function() {
     bar.style.marginTop = currentOffset + 'px';
 });
 
+function initTeaserTimer() {
+    // Date de fin : Jeudi 26 Février 2026 à 23:59:59
+    const targetDate = new Date("February 26, 2026 23:59:59").getTime();
+
+    const timerInterval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+            clearInterval(timerInterval);
+            document.getElementById("teaserTimer").innerHTML = "CONCOURS TERMINÉ";
+            return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("teaserTimer").innerHTML = `
+            <span class="time-part">${days}D</span>
+            <span class="time-part">${hours}H</span>
+            <span class="time-part">${minutes}M</span>
+            <span class="time-part">${seconds}S</span>
+        `;
+    }, 1000);
+}
+
+// Lancement au chargement
+document.addEventListener('DOMContentLoaded', initTeaserTimer);
+
+
+window.renderPrivilegePage = function() {
+    // 1. On bloque tout mouvement de scroll parasite
+    if (event) event.stopPropagation();
+    
+    // 2. On cible le container (on essaie plusieurs ID courants au cas où)
+    const container = document.getElementById('app') || 
+                      document.getElementById('APP_CONTENT') || 
+                      document.body; 
+
+    if (!container) {
+        console.error("Bradford Error: Container non trouvé");
+        return;
+    }
+
+    // 3. On vide le container et on injecte (ton code de folie est ici)
+    container.innerHTML = `
+    <div class="privilege-page-wrapper" style="display:block !important; visibility:visible !important; opacity:1 !important;">
+        <header class="privilege-header">
+            <button onclick="location.reload()" class="back-btn">← EXIT</button>
+            <div class="p-logo">BRADFORD</div>
+        </header>
+        <main class="privilege-content">
+            <section class="p-hero">
+                <h1 class="p-title">THE 21 PRIVILEGE</h1>
+                <p class="p-subtitle">EXCLUSIVITÉ MONDIALE • SAMEDI 28 FÉVRIER</p>
+                <div class="p-lineup">
+                    <div class="artist-card">
+                        <img src="https://www.thefamouspeople.com/profiles/images/future-2.jpg" alt="Future">
+                        <div class="artist-info"><h3>FUTURE</h3><p>MIAMI</p></div>
+                    </div>
+                    <div class="artist-card">
+                        <img src="https://www.thefamouspeople.com/profiles/images/metro-boomin-1.jpg" alt="Metro Boomin">
+                        <div class="artist-info"><h3>METRO BOOMIN</h3><p>LOS ANGELES</p></div>
+                    </div>
+                    <div class="artist-card">
+                        <img src="https://www.thefamouspeople.com/profiles/images/lil-baby-1.jpg" alt="Lil Baby">
+                        <div class="artist-info"><h3>LIL BABY</h3><p>NEW YORK</p></div>
+                    </div>
+                    <div class="artist-card">
+                        <img src="https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=2070&auto=format&fit=crop" alt="Yeat">
+                        <div class="artist-info"><h3>YEAT</h3><p>SAN FRANCISCO</p></div>
+                    </div>
+                </div>
+            </section>
+
+         <section class="p-rewards">
+    <div class="reward-box">
+        <h3>THE VAULT EXPERIENCE</h3>
+        <p class="reward-desc"><strong>LE GRAAL (1 GAGNANT PAR VILLE)</strong></p>
+        <p>Table VIP privatisée pour vous et 7 de vos proches (8 personnes total). Inclus : 2 bouteilles de prestige servies à table et un accès prioritaire sans attente.</p>
+    </div>
+    <div class="reward-box">
+        <h3>THE ACCESS PASS</h3>
+        <p class="reward-desc"><strong>(15 GAGNANTS PAR VILLE)</strong></p>
+        <p>Entrée individuelle gratuite toute la nuit avec 2 consommations "Signature" offertes au bar principal.</p>
+    </div>
+    <div class="reward-box">
+        <h3>THE GUEST LIST</h3>
+        <p class="reward-desc"><strong>(50 GAGNANTS PAR VILLE)</strong></p>
+        <p>Accès direct à l'établissement sans frais d'entrée (Cover Charge offert). Présentez votre QR Code à l'accueil.</p>
+    </div>
+</section>
+ 
+
+            <section class="p-form-section">
+                <div class="p-form-container">
+                    <h2>THE ACCESS PROTOCOL</h2>
+                    <form onsubmit="event.preventDefault(); submitPrivilege(event);">
+                        <div class="input-group">
+                            <input type="text" id="p-lastname" placeholder="LAST NAME" required>
+                            <input type="text" id="p-firstname" placeholder="FIRST NAME" required>
+                        </div>
+                        <input type="email" id="p-email" placeholder="EMAIL ADDRESS" required>
+                        <div class="age-check-box">
+                            <label>DATE OF BIRTH</label>
+                            <input type="date" id="p-dob" required style="color-scheme: dark;">
+                        </div>
+                        <div class="city-selector">
+                            <div class="city-chips">
+                                <div class="chip" onclick="selectCity('MIAMI', this)">MIAMI</div>
+                                <div class="chip" onclick="selectCity('LA', this)">L.A.</div>
+                                <div class="chip" onclick="selectCity('NY', this)">N.Y.</div>
+                                <div class="chip" onclick="selectCity('SF', this)">S.F.</div>
+                            </div>
+                            <input type="hidden" id="selectedCity">
+                        </div>
+                        <button type="submit" class="submit-privilege-btn">REQUEST ACCESS</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>`;
+
+    // 4. On injecte le CSS
+    injectPrivilegeCSS();
+
+    // 5. On force le scroll en haut de la NOUVELLE page
+    window.scrollTo({ top: 0, behavior: 'instant' });
+};
+
+
+// Logique de soumission et vérification d'âge
+window.submitPrivilege = function(e) {
+    e.preventDefault();
+    const dob = new Date(document.getElementById('p-dob').value);
+    const today = new Date();
+    let age = today.getFullYear() - dob.getFullYear();
+    const m = today.getMonth() - dob.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) { age--; }
+
+    if (age < 21) {
+        alert("MATURITY REQUIRED. Bradford is 21+ only.");
+        return;
+    }
+
+    const city = document.getElementById('selectedCity').value;
+    if(!city) { alert("Please select a destination."); return; }
+
+    // Simulation de succès
+    const form = document.querySelector('.p-form-container');
+    form.innerHTML = `
+        <div class="success-msg">
+            <div class="success-icon">✦</div>
+            <h2>ACCESS REQUESTED</h2>
+            <p>Votre demande pour <strong>${city}</strong> a été enregistrée.</p>
+            <p>Réponse par email le 27 février.</p>
+        </div>
+    `;
+};
+
+window.selectCity = function(city, el) {
+    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('selectedCity').value = city;
+};
+
+
+function injectPrivilegeCSS() {
+    const styleId = 'privilege-style';
+    if (document.getElementById(styleId)) return;
+
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.innerHTML = `
+        .privilege-page-wrapper {
+            background: #050505;
+            color: white;
+            min-height: 100vh;
+            font-family: 'Cinzel', serif;
+            padding-bottom: 100px;
+        }
+
+        .privilege-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px;
+            align-items: center;
+        }
+
+        .back-btn {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .p-title {
+            text-align: center;
+            font-size: 4rem;
+            letter-spacing: 10px;
+            margin-top: 50px;
+            background: linear-gradient(to bottom, #fff, #D4AF37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .p-subtitle {
+            text-align: center;
+            letter-spacing: 5px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* LINEUP CARDS */
+        .p-lineup {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 50px;
+        }
+
+        .artist-card {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            filter: grayscale(100%);
+            transition: 0.5s;
+        }
+
+        .artist-card:hover {
+            filter: grayscale(0%);
+            border-color: #D4AF37;
+            transform: scale(1.02);
+        }
+
+        .artist-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .artist-info {
+            position: absolute;
+            bottom: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, black);
+            width: 100%;
+        }
+
+        /* REWARDS */
+        .p-rewards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px;
+            flex-wrap: wrap;
+        }
+
+        .reward-box {
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 30px;
+            text-align: center;
+            width: 300px;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .reward-box h3 { color: #D4AF37; margin-bottom: 10px; }
+
+        /* FORM */
+       .p-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.03);
+    padding: 40px 20px;  /* On réduit un peu le padding latéral pour gagner de la place */
+    border-top: 1px solid #D4AF37;
+}
+
+
+        .input-group { display: flex; gap: 20px; }
+        
+        input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 15px 5px;
+            width: 100%;
+            margin-bottom: 30px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus { border-bottom-color: #D4AF37; }
+
+        .city-chips {
+    display: flex;
+    gap: 10px;           /* Espace entre les carrés */
+    margin-top: 15px;
+    margin-bottom: 40px;
+    justify-content: flex-start; /* Aligne au début (gauche) */
+    flex-wrap: wrap;     /* Force le retour à la ligne si l'écran est trop petit au lieu de déborder */
+}
+
+       .chip {
+    flex: 1;             /* Force les carrés à avoir la même largeur */
+    min-width: 80px;     /* Empêche qu'ils deviennent trop minuscules */
+    max-width: 120px;    /* Limite leur taille pour qu'ils restent élégants */
+    padding: 12px 5px;   /* Ajustement du padding interne */
+    border: 1px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;  /* Centre bien le nom de la ville */
+    font-size: 0.8rem;   /* Taille de police optimale */
+}
+
+        .chip.active {
+            background: #D4AF37;
+            color: black;
+            border-color: #D4AF37;
+        }
+
+        .submit-privilege-btn {
+            width: 100%;
+            padding: 20px;
+            background: transparent;
+            border: 1px solid #D4AF37;
+            color: #D4AF37;
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .submit-privilege-btn:hover {
+            background: #D4AF37;
+            color: black;
+        }
+
+.reward-desc {
+    color: #D4AF37;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.reward-box p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.7);
+    font-family: 'Helvetica', sans-serif; /* Plus lisible pour les règles */
+}
+
+
+        .success-msg { text-align: center; }
+        .success-icon { font-size: 4rem; color: #D4AF37; margin-bottom: 20px; }
+    `;
+    document.head.appendChild(style);
+}
 
 
 
