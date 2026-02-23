@@ -4232,12 +4232,6 @@ h1.tit-page:first-of-type {
     margin: 0 auto;
 }
 
-/* HEADER : NETTOYÉ ET COLLÉ AU HAUT */
-.hero-section {
-    text-align: center;
-    margin-bottom: 50px;
-    padding-top: 20px; /* Juste assez pour ne pas toucher le bord du navigateur */
-}
 
 
 /* LES BOXES ARRONDIES AVEC EFFET NUMÉRO COUPE-LIGNE */
@@ -4373,10 +4367,6 @@ h1.tit-page:first-of-type {
     margin: 0 auto;
 }
 
-.vip-hero {
-    text-align: center;
-    padding: 30px 0 10px 0; /* Réduit de 60px à 30px/10px */
-}
 
 .vip-grid {
     display: flex;
@@ -4621,11 +4611,6 @@ h1.tit-page:first-of-type {
     margin: 0 auto;
 }
 
-.bottle-hero {
-    text-align: center;
-    padding: 40px 0;
-    position: relative;
-}
 
 
 /* RATIO WIDGET */
