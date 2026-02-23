@@ -1184,7 +1184,7 @@ const donneesEvenements = [
     { date: '2026-02-26', jour: 'JEU.', ville: 'LA', artiste: 'BRENT FAIYAZ', details: 'It’s A Wasteland (R&B/Soul Showcase - $90)' },
     { date: '2026-02-26', jour: 'JEU.', ville: 'MIAMI', artiste: 'WIZKID', details: 'More Love, Less Ego (Afrobeats/Highlife - $90)' },
     { date: '2026-02-26', jour: 'JEU.', ville: 'NYC', artiste: 'TEMS', details: 'Born in the Wild (Afro-Fusion/R&B Showcase - $90)' },
-    { date: '2026-02-26', jour: 'JEU.', ville: 'SF', artiste: 'JHUS', details: 'Beautiful and Brutal Yard (UK Afroswing/Rap - $90)' },
+    { date: '2026-02-26', jour: 'JEU.', ville: 'SF', artiste: 'J HUS', details: 'Beautiful and Brutal Yard (UK Afroswing/Rap - $90)' },
 
     // --- VENDREDI 27 FÉVRIER 2026 ---
     { date: '2026-02-27', jour: 'VEN.', ville: 'LA', artiste: 'FEID', details: 'FerxxoCalipsis (Reggaeton/Trap Latino - Accès restreint)' },
