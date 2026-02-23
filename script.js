@@ -1180,29 +1180,29 @@ const dateActuelle = new Date();
 
 // --- BASE DE DONNÉES COMPLÈTE DES ÉVÉNEMENTS ---
 const donneesEvenements = [
-   // Jeudi 19 Février
-    { date: '2026-02-19', jour: 'JEU.', ville: 'LA', artiste: 'AYRA STARR', details: 'Sabi Girl Tour (Afro-Pop - $90)' },
-    { date: '2026-02-19', jour: 'JEU.', ville: 'MIAMI', artiste: 'REMA', details: 'Rave & Roses (Afrobeats - $90)' },
-    { date: '2026-02-19', jour: 'JEU.', ville: 'NYC', artiste: 'FOLAMOUR', details: 'House of Love (House/Disco - $90)' },
-    { date: '2026-02-19', jour: 'JEU.', ville: 'SF', artiste: 'KEN CARSON', details: 'Chaos Tour (Underground Trap - $90)' },
+   // --- JEUDI 26 FÉVRIER 2026 ---
+    { date: '2026-02-26', jour: 'JEU.', ville: 'LA', artiste: 'BRENT FAIYAZ', details: 'It’s A Wasteland (R&B/Soul Showcase - $90)' },
+    { date: '2026-02-26', jour: 'JEU.', ville: 'MIAMI', artiste: 'WIZKID', details: 'More Love, Less Ego (Afrobeats/Highlife - $90)' },
+    { date: '2026-02-26', jour: 'JEU.', ville: 'NYC', artiste: 'TEMS', details: 'Born in the Wild (Afro-Fusion/R&B Showcase - $90)' },
+    { date: '2026-02-26', jour: 'JEU.', ville: 'SF', artiste: 'JHUS', details: 'Beautiful and Brutal Yard (UK Afroswing/Rap - $90)' },
 
-    // Vendredi 20 Février
-    { date: '2026-02-20', jour: 'VEN.', ville: 'LA', artiste: 'J BALVIN', details: 'Rayo Tour (Reggaeton - Accès restreint)' },
-    { date: '2026-02-20', jour: 'VEN.', ville: 'MIAMI', artiste: 'JAMIE XX', details: 'In Waves (Electronic/Indie - $90)' },
-    { date: '2026-02-20', jour: 'VEN.', ville: 'NYC', artiste: 'GUNNA', details: 'One of Wun (Melodic Rap - $90)' },
-    { date: '2026-02-20', jour: 'VEN.', ville: 'SF', artiste: 'MURA MASA', details: 'Curveball (Electronic - $90)' },
+    // --- VENDREDI 27 FÉVRIER 2026 ---
+    { date: '2026-02-27', jour: 'VEN.', ville: 'LA', artiste: 'FEID', details: 'FerxxoCalipsis (Reggaeton/Trap Latino - Accès restreint)' },
+    { date: '2026-02-27', jour: 'VEN.', ville: 'MIAMI', artiste: 'KAYCYY', details: 'Who Is KayCyy? (Experimental Trap/R&B - $120)' },
+    { date: '2026-02-27', jour: 'VEN.', ville: 'NYC', artiste: 'PESO PLUMA', details: 'Éxodo Club (Corrido/Trap Latino - $110)' },
+    { date: '2026-02-27', jour: 'VEN.', ville: 'SF', artiste: 'SKEE MASK', details: 'Compro Live (IDM/Breakbeat Techno Set - $90)' },
 
-    // Samedi 21 Février
-    { date: '2026-02-21', jour: 'SAM.', ville: 'LA', artiste: 'YOUNG THUG', details: 'Business Is Business (Rap - Accès sur liste VIP uniquement)' },
-    { date: '2026-02-21', jour: 'SAM.', ville: 'MIAMI', artiste: 'KAROL G', details: 'Mañana Será Bonito (Latin Pop - Accès restreint)' },
-    { date: '2026-02-21', jour: 'SAM.', ville: 'NYC', artiste: 'DANIEL CAESAR', details: 'Superpowers (Soul/R&B - Accès sur liste VIP uniquement)' },
-    { date: '2026-02-21', jour: 'SAM.', ville: 'SF', artiste: 'THE MARTINEZ BROTHERS', details: 'Cuttin’ Headz (House - $90)' },
+    // --- SAMEDI 28 FÉVRIER 2026 ---
+    { date: '2026-02-28', jour: 'SAM.', ville: 'LA', artiste: 'METRO BOOMIN', details: 'Heroes & Villains (Cinematic Trap - Accès sur liste VIP uniquement)' },
+    { date: '2026-02-28', jour: 'SAM.', ville: 'MIAMI', artiste: 'FUTURE', details: 'Pluto Never Died (Toxic Trap Showcase - $180)' },
+    { date: '2026-02-28', jour: 'SAM.', ville: 'NYC', artiste: 'LIL BABY', details: 'It’s Only Us (Atlanta Street-Rap - $150)' },
+    { date: '2026-02-28', jour: 'SAM.', ville: 'SF', artiste: 'YEAT', details: '2093 Lyfestyle (Experimental Rage/Trap - $90)' },
 
-    // Dimanche 22 Février
-    { date: '2026-02-22', jour: 'DIM.', ville: 'LA', artiste: 'KODAK BLACK', details: 'Florida Boy in LA (Rap - $90)' },
-    { date: '2026-02-22', jour: 'DIM.', ville: 'MIAMI', artiste: 'CHRIS LAKE', details: 'Black Book (Tech-House - $90)' },
-    { date: '2026-02-22', jour: 'DIM.', ville: 'NYC', artiste: 'JAMES BLAKE', details: 'CMYK (Experimental/Bass - $90)' },
-    { date: '2026-02-22', jour: 'DIM.', ville: 'SF', artiste: 'MOCHAKK', details: 'Mochakk Back 9 (House - $90)' },
+    // --- DIMANCHE 01 MARS 2026 ---
+    { date: '2026-03-01', jour: 'DIM.', ville: 'LA', artiste: 'TYCHO', details: 'Infinite Health (Dreamwave/Electronic Live - $90)' },
+    { date: '2026-03-01', jour: 'DIM.', ville: 'MIAMI', artiste: 'SARA LANDRY', details: 'High Voltage (Hard Techno/Industrial - $90)' },
+    { date: '2026-03-01', jour: 'DIM.', ville: 'NYC', artiste: 'SEXYY RED', details: 'Hood Hottest Princess (Ratchet Trap Showcase - $90)' },
+    { date: '2026-03-01', jour: 'DIM.', ville: 'SF', artiste: 'MARLON HOFFSTADT', details: 'Daddy Trance (Eurodance/Techno - $90)' }
 ];
 
 
