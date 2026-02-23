@@ -600,28 +600,53 @@ case 'concierge': renderConciergePage(); break;
 }
 
 
-/** Rendu du Footer (avec plus de liens) */
 function renderFooter() {
     APP_FOOTER.innerHTML = `
-        <div class="footer-links">
-            <a href="#" onclick="navigate('location')">LOCATIONS & HOURS</a>
-            <a href="#" onclick="navigate('events')">EVENTS CALENDAR</a>
-  <a href="#" onclick="navigate('press_mentions')">PRESS MENTIONS</a>
-            <a href="#" onclick="navigate('gallery')">MEDIA GALLERY</a>
-            |
-            <a href="#" onclick="navigate('dress_code')">DRESS CODE</a>
-            <a href="#" onclick="navigate('vip_policy')">VIP POLICY</a>
-            <a href="#" onclick="navigate('house_rules')">HOUSE RULES</a>
-            |
-            <a href="#" onclick="navigate('about_bradford')">ABOUT BRADFORD</a>
-            <a href="#" onclick="navigate('careers')">CAREERS</a>
-            <a href="#" onclick="navigate('press')">PRESS & MEDIA</a>
-            <a href="#" onclick="navigate('faq')">FAQ</a>
-            <a href="#" onclick="navigate('legal')">LEGAL</a>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 class="f-logo">BRADFORD</h2>
+                <p class="f-cities">MIAMI • LOS ANGELES • NEW YORK • SAN FRANCISCO</p>
+                <div class="f-socials">
+                     <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.x.com" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.threads.net" target="_blank"><i class="fab fa-threads"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-grid">
+                <div class="f-col">
+                    <span class="f-title">EXPERIENCE</span>
+                    <a href="#" onclick="navigate('location')">LOCATIONS & HOURS</a>
+                    <a href="#" onclick="navigate('events')">EVENTS CALENDAR</a>
+                    <a href="#" onclick="navigate('gallery')">MEDIA GALLERY</a>
+                    <a href="#" onclick="navigate('press_mentions')">PRESS MENTIONS</a>
+                </div>
+
+                <div class="f-col">
+                    <span class="f-title">PROTOCOLS</span>
+                    <a href="#" onclick="navigate('dress_code')">DRESS CODE</a>
+                    <a href="#" onclick="navigate('vip_policy')">VIP POLICY</a>
+                    <a href="#" onclick="navigate('house_rules')">HOUSE RULES</a>
+                    <a href="#" onclick="navigate('faq')">FAQ</a> </div>
+
+                <div class="f-col">
+                    <span class="f-title">CORPORATE</span>
+                    <a href="#" onclick="navigate('about_bradford')">ABOUT BRADFORD</a>
+                    <a href="#" onclick="navigate('careers')">CAREERS</a>
+                </div>
+            </div>
         </div>
-        <p>&copy; ${new Date().getFullYear()} Bradford Nightclub. All rights reserved. Miami • Los Angeles • New York • San Francisco.</p>
+
+        <div class="footer-bottom">
+            <div class="f-legal">
+                <a href="#" onclick="navigate('legal')">LEGAL NOTICE</a>
+                <a href="#" onclick="navigate('press')">PRESS & MEDIA</a> </div>
+            <p class="f-copy">&copy; ${new Date().getFullYear()} BRADFORD NIGHTCLUB. ALL RIGHTS RESERVED.</p>
+        </div>
     `;
 }
+
 
 
 function renderBottleMenuPage(filterCategory = 'all', sortBy = 'default') {
