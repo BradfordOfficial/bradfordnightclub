@@ -5065,24 +5065,144 @@ h1.tit-page:first-of-type {
 
 
 
-/* --- Footer --- */
+/* --- FOOTER : RÉGLAGES FINAUX --- */
 .footer {
-    background-color: var(--navy);
-    border-top: 1px solid var(--gold);
-    padding: 30px 5%;
-    text-align: center;
-    font-size: 0.9rem;
+    background-color: #050505;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 60px 5% 40px 5%;
+    margin-top: 100px;
+    font-family: 'Cinzel', serif;
+}
+
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+/* BRAND COLUMN - AÉRATION TITRE */
+.footer-brand {
+    flex: 1.5;
+}
+
+.f-logo {
+    font-size: 2.2rem; /* Légèrement plus grand */
+    letter-spacing: 10px;
+    color: #fff;
+    margin-bottom: 25px; /* ESPACE AJOUTÉ ICI */
+    line-height: 1.2;
+}
+
+.f-cities {
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    color: #d4af37;
+    margin-bottom: 35px; /* ESPACE AJOUTÉ ICI AVANT LES LOGOS */
+}
+
+/* LOGOS SOCIAUX */
+.f-socials {
+    display: flex;
+    gap: 25px;
+}
+
+.f-socials a {
+    font-size: 1.2rem;
     color: #666;
-    margin-top: 50px;
+    transition: 0.3s;
 }
 
-.footer-links a {
-    color: var(--ivory);
+.f-socials a:hover {
+    color: #fff;
+}
+
+/* NAVIGATION GRID */
+.footer-grid {
+    flex: 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.f-col {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.f-title {
+    font-size: 0.75rem;
+    color: #fff;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.f-title::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: #d4af37;
+    margin-top: 8px;
+}
+
+.f-col a {
+    color: #666;
     text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
 }
 
-.footer-links a:hover {
-    color: var(--gold);
+.f-col a:hover {
+    color: #d4af37;
+}
+
+/* BOTTOM SECTION */
+.footer-bottom {
+    max-width: 1400px;
+    margin: 60px auto 0;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.f-legal {
+    display: flex;
+    gap: 25px;
+}
+
+.f-legal a, .f-copy {
+    font-size: 0.6rem;
+    color: #444;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+/* RESPONSIVE FULL (Ce qui garantit que ça marche sur ton iPhone) */
+@media (max-width: 1024px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .f-socials { justify-content: center; }
+    .f-title::after { margin: 8px auto; }
+}
+
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
