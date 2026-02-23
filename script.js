@@ -5794,6 +5794,82 @@ input[type="checkbox"] {
     document.head.appendChild(style);
 }
 
+function renderHouseRules() {
+    APP_CONTENT.innerHTML = '';
+
+    const rulesHTML = `
+        <div class="rules-page fade-in">
+            <header class="rules-hero">
+                <div class="hero-accent"></div>
+                <h1 class="title-page">HOUSE RULES</h1>
+                <p class="subtitle-page">BRADFORD HOUSE RULES & ETIQUETTE</p>
+            </header>
+
+            <section class="protocol-highlight">
+                <div class="p-accent-box">
+                    <span class="p-top">PREMIUM ETIQUETTE</span>
+                    <div class="p-main-val">SILENCE & ELEGANCE</div>
+                    <span class="p-bottom">NOTRE SANCTUAIRE, VOS RÈGLES</span>
+                </div>
+                <p class="p-disclaimer">L'accès au Bradford implique une acceptation tacite de nos codes de conduite.</p>
+            </section>
+
+            <div class="rules-grid-container">
+                
+                <div class="rule-block main-rule">
+                    <h2 class="rule-title">01. CONDUITE & RESPECT</h2>
+                    <p class="rule-text">Nous maintenons une atmosphère de sérénité absolue. Toute perturbation du service ou manque de respect envers nos collaborateurs est proscrit.</p>
+                    <ul class="rule-list">
+                        <li><span>COMPORTEMENT</span> <span>IRRÉPROCHABLE</span></li>
+                        <li><span>HARCÈLEMENT</span> <span>TOLÉRANCE ZÉRO</span></li>
+                        <li><span>EXPULSION</span> <span>IMMÉDIATE</span></li>
+                    </ul>
+                </div>
+
+                <div class="rule-block">
+                    <h2 class="rule-title">02. ATMOSPHÈRE</h2>
+                    <p class="rule-text">L'ambiance est notre priorité. Certains protocoles sont en place pour garantir l'immersion totale de nos invités.</p>
+                    <ul class="rule-list">
+                        <li><span>SMOKING / VAPE</span> <span>PROHIBÉ</span></li>
+                        <li><span>VESTIAIRE</span> <span>MANDATAIRE</span></li>
+                        <li><span>DÉGRADATION</span> <span>FRAIS FIXES</span></li>
+                    </ul>
+                </div>
+
+                <div class="rule-block security-focus">
+                    <h2 class="rule-title">03. SÉCURITÉ & CAPACITÉ</h2>
+                    <p class="rule-text">Pour votre confort, nous filtrons strictement les accès. Le respect des limites de capacité est une exigence légale et de prestige.</p>
+                    <ul class="rule-list">
+                        <li><span>MOBILIER</span> <span>FIXE</span></li>
+                        <li><span>SÉCURITÉ</span> <span>AGENTS DÉDIÉS</span></li>
+                        <li><span>ÉVACUATION</span> <span>PROCÉDURE VIP</span></li>
+                    </ul>
+                </div>
+
+                <div class="rule-block privacy-focus">
+                    <h2 class="rule-title">04. DISCRÉTION</h2>
+                    <p class="rule-text">La protection de l'image de nos clients est capitale. L'usage de caméras est strictement encadré au sein du sanctuaire.</p>
+                    <ul class="rule-list">
+                        <li><span>PHOTOS</span> <span>RESTREINTES</span></li>
+                        <li><span>FLASH</span> <span>INTERDIT</span></li>
+                        <li><span>ANONYMAT</span> <span>GARANTI</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="rules-footer">
+                <div class="footer-divider"></div>
+              
+                <button class="btn-primary" onclick="window.scrollTo(0,0); navigate('reservations')">RÉSERVEZ VOTRE TABLE</button>
+            </div>
+        </div>
+    `;
+
+    APP_CONTENT.innerHTML = rulesHTML;
+    window.scrollTo(0, 0);
+}
+
+
 
 
 /** Charge le JSON et démarre l'application */
