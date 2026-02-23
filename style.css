@@ -4925,6 +4925,161 @@ h1.tit-page:first-of-type {
     padding-top: 15px;
 }
 
+
+/* --- HOUSE RULES ELITE CSS --- */
+.rules-page {
+    padding: 0 25px 120px 25px;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+
+
+.rules-title {
+    font-size: 2.5rem;
+    letter-spacing: 15px;
+    font-weight: 200;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+/* PROTOCOL HIGHLIGHT (STYLE RATIO) */
+.protocol-highlight {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    padding: 40px 20px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.p-main-val {
+    font-size: 1.4rem;
+    color: #fff;
+    letter-spacing: 5px;
+    margin: 10px 0;
+    font-weight: 800;
+}
+
+.p-top, .p-bottom {
+    font-size: 0.5rem;
+    letter-spacing: 3px;
+    color: #d4af37;
+    text-transform: uppercase;
+}
+
+/* GRID DES RÈGLES */
+.rules-grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.rule-block {
+    border-left: 1px solid rgba(212, 175, 55, 0.4);
+    padding-left: 30px;
+    transition: 0.3s;
+}
+
+.rule-block:hover {
+    border-left: 1px solid #d4af37;
+    background: rgba(212, 175, 55, 0.02);
+}
+
+.rule-title {
+    font-size: 1rem;
+    letter-spacing: 4px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.rule-text {
+    font-size: 0.8rem;
+    color: #888;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+.rule-list {
+    list-style: none;
+    padding: 0;
+}
+
+.rule-list li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: #fff;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.rule-list li span:last-child {
+    color: #d4af37;
+    font-weight: bold;
+}
+
+/* FOOTER & BUTTONS */
+.rules-footer {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.btn-vip.main-btn {
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    background: #d4af37;
+    color: #000;
+    border: none;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 3px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    color: #d4af37;
+    padding: 15px 40px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+/* --- RESPONSIVE OPTIMISATION (PC/TABLETTE) --- */
+@media (min-width: 1024px) {
+    .rules-page {
+        max-width: 1100px;
+    }
+
+    .rules-grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+        gap: 80px 40px;
+    }
+
+    .rule-block.main-rule {
+        grid-column: span 2; /* Prend toute la largeur en haut */
+        border-left: 3px solid #d4af37;
+    }
+
+    .rules-title { font-size: 4rem; }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .rules-page { max-width: 700px; }
+    .rules-grid-container { grid-template-columns: 1fr; }
+}
+
+
+
+
 /* --- Footer --- */
 .footer {
     background-color: var(--navy);
