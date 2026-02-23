@@ -100,6 +100,11 @@ if (pageId === 'faq') {
     return; 
 }
 
+    if (pageId === 'house_rules') {
+    renderHouseRules(); 
+    return; 
+}
+
  
     // --- Contenu Riche et étendu ---
     const contentData = {
