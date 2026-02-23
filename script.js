@@ -590,6 +590,7 @@ if (pageId === 'faq') {
             case 'bottle_service_req': renderBottleRequirements(); break;
             case 'vip_policy': renderVIPPolicy(); break;
             case 'entry_policy': renderEntryPolicy(); break;
+            case 'house_rules': renderHouseRules(); break;
          case 'legal': renderLegalPage(); break;
          case 'press': renderPressPage(); break;
         case 'location': renderLocationPage(); break; // Utilisation de la fonction spécifique
