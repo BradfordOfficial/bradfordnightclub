@@ -2662,6 +2662,9 @@ function handlePolicyClick(page) {
     else if (page === 'bottle_service_req') {
         renderBottleRequirements(); // Ajout de la nouvelle page Bottle Service
     }
+        else if (page === 'house_rules') {
+        renderHouseRules(); // Ajout de la nouvelle page Bottle Service
+    }
     else {
         // Pour les pages restantes (House Rules, Dress Code, etc.)
         navigate(page); 
