@@ -2300,7 +2300,6 @@ body {
     width: 120px; height: 120px;
     border: 2px solid #D4AF37;
     border-radius: 50%;
-    animation: pulse 2s infinite alternate;
 }
 
 #neural-event-engine {
