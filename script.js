@@ -5907,7 +5907,7 @@ function renderAboutBradford() {
             <header class="about-hero">
                 <div class="hero-overlay"></div>
                 <div class="hero-content">
-                    <p class="gold-tag">THE LEGACY</p>
+                  
                     <h1 class="title-page">ABOUT BRADFORD</h1>
                     <p class="subtitle-page">UNE MARQUE MONDIALE, SYNONYME DE NIGHTLIFE DE PRESTIGE.</p>
                 </div>
