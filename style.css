@@ -5065,16 +5065,7 @@ h1.tit-page:first-of-type {
 /* ABOUT PAGE STYLES */
 .about-page { color: #fff; line-height: 1.6; }
 
-.about-hero {
-    height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: url('about-vision.jpg') center/cover;
-    position: relative;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-}
+
 
 .hero-overlay {
     position: absolute;
