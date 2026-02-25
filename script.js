@@ -4808,14 +4808,19 @@ const B_ENGINE = {
 
     generateData(count) { 
     let currentMinutes = 0;
+    // On crée les messages par petits blocs pour soulager le processeur
     for(let i=0; i<count; i++) {
         const gap = (i === 0) ? 0 : Math.floor(Math.random() * 8) + 1; 
         currentMinutes += gap;
-        const review = this.createReview(currentMinutes);
-        this.db.push(review);
-        // NOTE: On ne touche PAS à this.stats.total ici pour garder le chiffre cohérent au refresh
+        
+        // On pousse directement dans db
+        this.db.push(this.createReview(currentMinutes));
+        
+        // Optionnel : toutes les 10 000 entrées, on pourrait logguer 
+        // mais ici on laisse filer, 30k c'est très gérable.
     } 
 },
+
 
 
 
