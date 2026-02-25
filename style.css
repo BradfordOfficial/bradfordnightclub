@@ -5066,13 +5066,6 @@ h1.tit-page:first-of-type {
 .about-page { color: #fff; line-height: 1.6; }
 
 
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, transparent, #050505);
-}
-
 .hero-content { position: relative; z-index: 2; padding: 20px; }
 
 
