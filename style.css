@@ -5066,7 +5066,7 @@ h1.tit-page:first-of-type {
 .about-page { color: #fff; line-height: 1.6; }
 
 .about-hero {
-    height: 60vh;
+    height: 30vh;
     display: flex;
     align-items: center;
     justify-content: center;
