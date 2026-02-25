@@ -5894,6 +5894,114 @@ function renderHouseRules() {
     window.scrollTo(0, 0);
 }
 
+function renderAboutBradford() {
+    APP_CONTENT.innerHTML = '';
+
+    const aboutHTML = `
+        <div class="about-page fade-in">
+            <header class="about-hero">
+                <div class="hero-overlay"></div>
+                <div class="hero-content">
+                    <p class="gold-tag">THE LEGACY</p>
+                    <h1 class="title-page">ABOUT BRADFORD</h1>
+                    <p class="subtitle-page">UNE MARQUE MONDIALE, SYNONYME DE NIGHTLIFE DE PRESTIGE.</p>
+                </div>
+            </header>
+
+            <section class="story-section">
+                <div class="story-container">
+                    <div class="story-text-wrapper">
+                        <h2 class="section-gold-title">Notre Vision de l'Exclusivité</h2>
+                        <p class="story-paragraph">
+                               <span class="drop-cap">F</span>ondé il y a près de huit ans, Bradford Night Club s'est imposé comme une référence mondiale du nightlife ultra-luxueux. Présent dans quatre villes emblématiques: Miami, Los Angeles, New York et San Francisco, chaque établissement allie design exclusif, ambiance raffinée et service sur-mesure pour une clientèle exigeante.
+                        </p>
+
+                        <p class="story-paragraph">
+                            Bradford n'est pas seulement un lieu pour danser ou écouter les meilleurs DJs internationaux : c'est un univers dédié à l'excellence du divertissement, où chaque détail, du mobilier aux cocktails signatures, est pensé pour offrir une expérience immersive unique. Les espaces VIP, les tables de prestige et le service bouteille garantissent que chaque soirée se transforme en événement mémorable parfaitement orchestré par un personnel formé à anticiper chaque désir.
+                        </p>
+
+                        <p class="story-paragraph">
+                            Le fondateur passionné par le lifestyle et les expériences haut de gamme a personnellement investi dans une vision où luxe et discrétion se rencontrent. Chaque Club Bradford reflète cette philosophie par des intérieurs élégants, des technologies de pointe, et une carte de boisson et de cocktail parmi les plus prestigieuses au monde, allant des champagnes rares aux spiritueux en éditions limitées, ainsi que des créations signatures exclusivement conçues pour nos invités VIP.
+                        </p>
+
+                        <p class="story-paragraph">
+                            Ouvert quatre soirs par semaine, de jeudi à dimanche, de minuit à 6h, Bradford attire une moyenne de 5500 invités par soirée dont un segment VIP de 800 personnes bénéficiant d'un service entièrement personnalisé. Que vous découvriez Bradford pour la première fois ou que vous soyez un habitué, chaque visite est une immersion dans un univers où luxe, élégance et sophistication se rencontrent.
+                        </p>
+                    </div>
+
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <span class="h-icon">✦</span>
+                            <p>Fondé sur le concept du service bouteille exclusif.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="h-icon">✦</span>
+                            <p>Présence mondiale dans quatre métropoles du luxe.</p>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="h-icon">✦</span>
+                            <p>Design intérieur primé pour son opulence.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-num">04</span>
+                    <span class="stat-label">CITIES</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">5500</span>
+                    <span class="stat-label">GUESTS / NIGHT</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">800</span>
+                    <span class="stat-label">VIP SEGMENT</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num">08</span>
+                    <span class="stat-label">YEARS OF EXCELLENCE</span>
+                </div>
+            </section>
+
+
+           <section class="hours-display-section">
+                <div class="hours-wrapper">
+                    <div class="hours-header">
+                        <div class="line"></div>
+                        <h2 class="hours-title">OPENING HOURS</h2>
+                        <div class="line"></div>
+                    </div>
+                    
+                    <div class="hours-card">
+                        <span class="day-range">THU — SUN</span>
+                        <div class="time-slot">
+                            <span class="time-digit">00:00</span>
+                            <span class="time-to">TO</span>
+                            <span class="time-digit">06:00</span>
+                        </div>
+                     
+                    
+                    <div class="hours-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">ADMISSION BY RESERVATION ONLY</span>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="about-footer">
+                <p>CHAQUE VISITE EST UNE IMMERSION DANS UN UNIVERS OÙ L'ÉLÉGANCE ET LA SOPHISTICATION SE RENCONTRENT.</p>
+                   <button class="btn-primary" onclick="window.scrollTo(0,0); navigate('reservations')">
+                    REJOINDRE L'EXPÉRIENCE
+                </button>
+            </footer>
+        </div>
+    `;
+
+    APP_CONTENT.innerHTML = aboutHTML;
+    window.scrollTo(0, 0);
+}
 
 
 
