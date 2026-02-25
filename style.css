@@ -5062,6 +5062,170 @@ h1.tit-page:first-of-type {
     .rules-grid-container { grid-template-columns: 1fr; }
 }
 
+/* ABOUT PAGE STYLES */
+.about-page { color: #fff; line-height: 1.6; }
+
+.about-hero {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: url('about-vision.jpg') center/cover;
+    position: relative;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent, #050505);
+}
+
+.hero-content { position: relative; z-index: 2; padding: 20px; }
+
+.gold-tag { color: #d4af37; letter-spacing: 5px; font-size: 0.8rem; margin-bottom: 15px; }
+
+.about-title { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 8vw, 5rem); color: #fff; }
+
+/* STORY SECTION */
+.story-section { padding: 100px 20px; max-width: 1100px; margin: 0 auto; }
+
+.story-container {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 colonne par défaut (mobile) */
+    gap: 40px;
+    align-items: start;
+}
+
+@media (min-width: 900px) {
+    .story-container {
+        grid-template-columns: 1.5fr 1fr; /* 2 colonnes sur ordi */
+    }
+}
+
+
+.drop-cap {
+    float: left;
+    font-family: 'Cinzel', serif;
+    font-size: 5rem;
+    line-height: 1;
+    margin-right: 15px;
+    color: #d4af37;
+    margin-top: 5px;
+}
+
+.story-paragraph {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+/* HIGHLIGHTS */
+.about-highlights {
+    background: rgba(255,255,255,0.03);
+    padding: 40px;
+    border-left: 2px solid #d4af37;
+}
+
+.highlight-item { display: flex; gap: 15px; margin-bottom: 25px; }
+.h-icon { color: #d4af37; }
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2x2 sur mobile */
+    background: #000;
+    padding: 40px 0;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 en ligne sur PC */
+    }
+}
+
+
+.stat-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-num { font-family: 'Cinzel', serif; font-size: 3rem; color: #d4af37; }
+.stat-label { font-size: 0.7rem; letter-spacing: 3px; color: #666; }
+
+
+/* SECTION HOURS - Garde tes codes mais en plus propre */
+.hours-display-section { padding: 80px 0 20px 0; display: flex; justify-content: center; }
+.hours-wrapper { width: 100%; max-width: 500px; }
+
+.hours-header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+.hours-header .line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #d4af37, transparent); }
+.hours-title { font-family: 'Cinzel', serif; letter-spacing: 4px; font-size: 0.75rem; color: #d4af37; white-space: nowrap; }
+
+.hours-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 40px 20px;
+    border-radius: 2px;
+}
+
+.day-range { 
+    display: block; 
+    width: 100%;            /* Prend toute la largeur pour le centrage */
+    text-align: center;     /* Force le centrage du texte */
+    font-family: 'Cinzel', serif; 
+    font-size: 1.4rem; 
+    letter-spacing: 6px; 
+    margin-bottom: 20px; 
+    color: #fff; 
+}
+
+/* On s'assure aussi que la time-slot est bien centrée sur mobile */
+.time-slot { 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; /* Centre les chiffres et le TO */
+    gap: 10px; 
+    margin-bottom: 15px; 
+}
+
+.time-digit { font-family: 'Inter', sans-serif; font-size: 2.2rem; font-weight: 300; color: #fff; }
+.time-to { font-family: 'Cinzel'; font-size: 0.7rem; color: #666; }
+
+
+.hours-status { margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.65rem; color: #888; letter-spacing: 1px; }
+.status-dot { width: 6px; height: 6px; background: #d4af37; border-radius: 50%; }
+
+/* FIX IPHONE 13 */
+@media (max-width: 390px) {
+    .time-digit { font-size: 1.8rem; }
+    .about-title-main { font-size: 1.8rem; }
+    .day-range { font-size: 1.1rem; }
+}
+
+/* FOOTER */
+.about-footer { padding: 60px 20px; text-align: center; max-width: 800px; margin: 0 auto; }
+.about-footer p { font-family: 'Cinzel'; color: #888; margin-bottom: 40px; font-size: 0.9rem; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .story-container { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+}
+
+
+@media (min-width: 1024px) {
+    .time-digit { font-size: 3.5rem; }
+    .day-range { font-size: 2rem; }
+    .hours-card { padding: 60px 80px; }
+}
+
+
 
 
 
