@@ -4709,7 +4709,7 @@ const B_ENGINE = {
 
 
     // 3. Lancement des données générées (les 1000 messages du club)
-    this.generateData(1000); 
+    this.generateData(30000); 
 
     // --- CORRECTION POINT B : NETTOYAGE DES ANCIENS TESTS ---
     let savedMsgs = JSON.parse(localStorage.getItem("BRADFORD_MY_MSGS") || "[]");
