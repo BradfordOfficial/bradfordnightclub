@@ -590,7 +590,8 @@ if (pageId === 'faq') {
          case 'faq': renderFAQPage(); break; 
          case 'careers': // AJOUTE ÇA
             renderCareersPage();
-            break; 
+            break;
+            case 'about_bradford': renderAboutBradford(); break;
             case 'bottle_service_req': renderBottleRequirements(); break;
             case 'vip_policy': renderVIPPolicy(); break;
             case 'entry_policy': renderEntryPolicy(); break;
