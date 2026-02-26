@@ -351,7 +351,7 @@ header.reduced .brd-night {
 .section-header {
     font-family: 'Cinzel', serif;
     color: var(--teal);
-    font-size: 1.9rem;
+    font-size: 1.6rem;
     border-bottom: 2px solid rgba(212, 175, 55, 0.3);
     padding-bottom: 0.5rem;
     margin-top: 2rem;
