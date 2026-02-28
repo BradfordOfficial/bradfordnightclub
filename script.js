@@ -4690,9 +4690,9 @@ const B_ENGINE = {
     // 2. SIMULATION D'ABSENCE (Rattrapage intelligent)
     if (lastVisit) {
         const secondsPassed = Math.floor((Date.now() - parseInt(lastVisit)) / 1000);
-        const missedMessages = Math.floor(secondsPassed / 120);
+        const missedMessages = Math.floor(secondsPassed / 160);
         if (missedMessages > 0) {
-            const added = Math.min(missedMessages, 500);
+            const added = Math.min(missedMessages, 100);
             this.stats.total += added;
 
             // On répartit l'augmentation directement
