@@ -4646,13 +4646,48 @@ const B_ENGINE = {
     display_limit: 10,
 
   init() {
-    // 1. Charger le total et la dernière heure de visite
+    // 1. CHARGEMENT INITIAL
     const savedCount = localStorage.getItem("BRADFORD_COUNT");
+    const savedStars = localStorage.getItem("BRADFORD_STARS");
     const lastVisit = localStorage.getItem("BRADFORD_LAST_VISIT");
     
-    this.stats.total = savedCount ? parseInt(savedCount) : 57923;
+    // On définit le total (61k par défaut si vide)
+    this.stats.total = savedCount ? parseInt(savedCount) : 61245;
 
-        // 2. SIMULATION D'ABSENCE (Répartition réaliste)
+    // --- LOGIQUE D'ADAPTATION AUTOMATIQUE ---
+    if (savedStars) {
+        this.stats.stars = JSON.parse(savedStars);
+        
+        // On calcule la somme actuelle de tes barres
+        const currentSum = this.stats.stars.reduce((a, b) => a + b, 0);
+
+        // Si le total est plus élevé que la somme des barres (décalage détecté)
+        if (this.stats.total > currentSum) {
+            const gap = this.stats.total - currentSum;
+            // On injecte automatiquement la différence dans les 5 et 4 étoiles
+            const fixFive = Math.floor(gap * 0.92);
+            const fixFour = gap - fixFive;
+            
+            this.stats.stars[0] += fixFive;
+            this.stats.stars[1] += fixFour;
+            
+            // On sauvegarde la correction
+            localStorage.setItem("BRADFORD_STARS", JSON.stringify(this.stats.stars));
+        }
+    } else {
+        // Si c'est un nouveau visiteur, on génère une répartition parfaite basée sur le total
+        this.stats.stars = [
+            Math.floor(this.stats.total * 0.91), // 5*
+            Math.floor(this.stats.total * 0.06), // 4*
+            Math.floor(this.stats.total * 0.02), // 3*
+            Math.floor(this.stats.total * 0.007),// 2*
+            0 // On comblera le 1* juste après
+        ];
+        const sum = this.stats.stars.reduce((a, b) => a + b, 0);
+        this.stats.stars[4] = this.stats.total - sum; // Ajustement final
+    }
+
+    // 2. SIMULATION D'ABSENCE (Rattrapage intelligent)
     if (lastVisit) {
         const secondsPassed = Math.floor((Date.now() - parseInt(lastVisit)) / 1000);
         const missedMessages = Math.floor(secondsPassed / 120);
@@ -4660,14 +4695,17 @@ const B_ENGINE = {
             const added = Math.min(missedMessages, 500);
             this.stats.total += added;
 
-            // Répartition réaliste : 90% de 5*, 7% de 4*, 3% le reste
-            const fiveStars = Math.floor(added * 0.90);
-            const fourStars = Math.floor(added * 0.07);
-            const others = added - fiveStars - fourStars;
+            // On répartit l'augmentation directement
+            const fiveStars = Math.floor(added * 0.92);
+            const fourStars = added - fiveStars;
 
             this.stats.stars[0] += fiveStars;
             this.stats.stars[1] += fourStars;
-            this.stats.stars[2] += others; // On met le reste dans les 3*
+
+            // Sauvegarde synchronisée
+            localStorage.setItem("BRADFORD_COUNT", this.stats.total);
+            localStorage.setItem("BRADFORD_STARS", JSON.stringify(this.stats.stars));
+            localStorage.setItem("BRADFORD_LAST_VISIT", Date.now().toString());
         }
     }
 
