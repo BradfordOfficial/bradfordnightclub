@@ -4915,14 +4915,14 @@ const B_ENGINE = {
     
     // Trouve la section TRI dans ta fonction render() et remplace-la par celle-ci :
 
-// --- TRI ULTRA-PRÉCIS ---
+// --- TRI ULTRA-PRÉCIS (CORRIGÉ) ---
 if(orderF === 'new') {
-    // On trie d'abord par timestamp (le plus récent en haut)
-    // S'il n'y a pas de timestamp (vieux messages robots), on utilise rawTime
     filtered.sort((a, b) => {
+        // Si le message a un timestamp (nouveau), on l'utilise.
+        // Sinon (vieux messages), on calcule un faux timestamp basé sur rawTime pour comparer.
         const timeA = a.timestamp || (Date.now() - (a.rawTime * 60000));
         const timeB = b.timestamp || (Date.now() - (b.rawTime * 60000));
-        return timeB - timeA; // Plus grand timestamp (plus récent) en premier
+        return timeB - timeA; 
     });
 } else {
     filtered.sort((a, b) => {
@@ -4931,6 +4931,7 @@ if(orderF === 'new') {
         return timeA - timeB;
     });
 }
+
 
 
     wall.innerHTML = "";
