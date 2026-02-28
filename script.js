@@ -4971,7 +4971,6 @@ function pushReview() {
     const msg = document.getElementById('g-msg').value;
     if(!msg) return alert("YOUR TESTIMONY IS REQUIRED");
 
-    // LE CITYMAP CORRIGÉ SELON TA PHOTO
     const cityMap = { 
         "MIAMI": "MIA", 
         "NEW YORK CITY": "NY", 
@@ -4979,10 +4978,7 @@ function pushReview() {
         "SAN FRANCISCO": "SF" 
     };
     
-    // On transforme l'entrée en MAJUSCULES pour être sûr
     const rawCity = cityInput.toUpperCase().trim();
-    
-    // On cherche la correspondance, sinon on garde le nom de base
     const city = cityMap[rawCity] || rawCity;
 
     const newEntry = { 
@@ -4995,16 +4991,32 @@ function pushReview() {
         timeLabel: "JUST NOW" 
     };
 
+    // 1. Sauvegarde du message dans ton historique perso
     let myMsgs = JSON.parse(localStorage.getItem("BRADFORD_MY_MSGS") || "[]");
     myMsgs.unshift(newEntry);
     localStorage.setItem("BRADFORD_MY_MSGS", JSON.stringify(myMsgs));
     
-    B_ENGINE.db.unshift(newEntry);
-    B_ENGINE.render();
+    // 2. MISE À JOUR DES STATS GLOBALES (C'est ici que ça se passe)
+    B_ENGINE.stats.total++;
+    // Calcul de l'index : 5 étoiles -> index 0, 4 étoiles -> index 1, etc.
+    B_ENGINE.stats.stars[5 - star]++; 
     
+    // 3. Sauvegarde des nouveaux totaux dans le navigateur
+    localStorage.setItem("BRADFORD_STARS", JSON.stringify(B_ENGINE.stats.stars));
+    localStorage.setItem("BRADFORD_COUNT", B_ENGINE.stats.total);
+
+    // 4. Ajout du message dans la base de données actuelle
+    B_ENGINE.db.unshift(newEntry);
+    
+    // 5. MISE À JOUR VISUELLE IMMÉDIATE
+    B_ENGINE.renderStats(); // Met à jour les barres et le compteur
+    B_ENGINE.render();      // Affiche le nouveau message sur le mur
+    
+    // 6. Nettoyage et fermeture
     document.getElementById('g-msg').value = "";
     closeWriteForm();
 }
+
 
 
 
