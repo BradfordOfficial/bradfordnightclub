@@ -4690,7 +4690,7 @@ const B_ENGINE = {
     // 2. SIMULATION D'ABSENCE (Rattrapage intelligent)
     if (lastVisit) {
         const secondsPassed = Math.floor((Date.now() - parseInt(lastVisit)) / 1000);
-        const added = Math.floor(secondsPassed / 160); 
+        const added = Math.floor(secondsPassed / 460); 
     
     if (added > 0) {
         // ON ENLÈVE LE MATH.MIN ! On ajoute TOUT ce qui a été manqué.
