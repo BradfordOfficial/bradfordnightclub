@@ -4781,7 +4781,7 @@ const B_ENGINE = {
 },
 
 
-   createReview(minutes, isNew = false) {
+      createReview(minutes, isNew = false) {
     const cities = ["NY", "LA", "SF", "MIA"];
     const star = Math.random() > 0.9 ? 4 : 5;
     
@@ -4791,9 +4791,12 @@ const B_ENGINE = {
         star: star,
         msg: this.genText(star),
         rawTime: minutes,
+        // --- LA LIGNE À AJOUTER EST JUSTE EN DESSOUS ---
+        timestamp: isNew ? Date.now() : null, 
         timeLabel: this.formatTime(minutes) 
     };
 },
+
 
 
     formatTime(m) {
