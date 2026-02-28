@@ -4830,7 +4830,8 @@ const B_ENGINE = {
 
             startLiveEngine() {
         const triggerNext = () => {
-            const randomDelay = Math.floor(Math.random() * (300000 - 20000 + 1) + 20000);
+            const randomDelay = Math.floor(Math.random() * (900000 - 20000 + 1) + 20000);
+
 
             setTimeout(() => {
                 // 1. On génère d'abord la review (elle choisira 4* ou 5* selon TA règle du Math.random)
