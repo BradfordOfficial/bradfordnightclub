@@ -4827,20 +4827,29 @@ const B_ENGINE = {
 
 
 
-        startLiveEngine() {
+            startLiveEngine() {
         const triggerNext = () => {
             const randomDelay = Math.floor(Math.random() * (300000 - 20000 + 1) + 20000);
 
             setTimeout(() => {
+                // 1. On génère d'abord la review (elle choisira 4* ou 5* selon TA règle du Math.random)
+                const newReview = this.createReview(0, true);
+                
+                // 2. On augmente le total
                 this.stats.total++;
-                this.stats.stars[0]++; // On ajoute un 5 étoiles en live
 
-                // --- SAUVEGARDE CRUCIALE ---
+                // 3. ON ADAPTE LA BARRE SELON LA NOTE GÉNÉRÉE
+                // Si la review est 5*, on incrémente stars[0]. Si c'est 4*, stars[1].
+                const starIndex = 5 - newReview.star; 
+                this.stats.stars[starIndex]++;
+
+                // --- SAUVEGARDE CRUCIALE (Total + Stars synchronisés) ---
                 localStorage.setItem("BRADFORD_COUNT", this.stats.total);
                 localStorage.setItem("BRADFORD_STARS", JSON.stringify(this.stats.stars));
                 localStorage.setItem("BRADFORD_LAST_VISIT", Date.now().toString());
                 
-                this.db.unshift(this.createReview(0, true));
+                // 4. On ajoute le message au mur
+                this.db.unshift(newReview);
                 
                 this.render();
                 this.renderStats();
@@ -4849,6 +4858,7 @@ const B_ENGINE = {
         };
         triggerNext();
     },
+
 
 
 
