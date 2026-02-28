@@ -4827,26 +4827,29 @@ const B_ENGINE = {
 
 
 
-    startLiveEngine() {
-    const triggerNext = () => {
-        const randomDelay = Math.floor(Math.random() * (300000 - 20000 + 1) + 20000);
+        startLiveEngine() {
+        const triggerNext = () => {
+            const randomDelay = Math.floor(Math.random() * (300000 - 20000 + 1) + 20000);
 
-        setTimeout(() => {
-            this.stats.total++;
-            // SAUVEGARDE DU TOTAL ET DE L'HEURE ACTUELLE
-            localStorage.setItem("BRADFORD_COUNT", this.stats.total);
-            localStorage.setItem("BRADFORD_LAST_VISIT", Date.now().toString());
-            
-            this.stats.stars[0]++; 
-            this.db.unshift(this.createReview(0, true));
-            
-            this.render();
-            this.renderStats();
-            triggerNext();
-        }, randomDelay);
-    };
-    triggerNext();
-},
+            setTimeout(() => {
+                this.stats.total++;
+                this.stats.stars[0]++; // On ajoute un 5 étoiles en live
+
+                // --- SAUVEGARDE CRUCIALE ---
+                localStorage.setItem("BRADFORD_COUNT", this.stats.total);
+                localStorage.setItem("BRADFORD_STARS", JSON.stringify(this.stats.stars));
+                localStorage.setItem("BRADFORD_LAST_VISIT", Date.now().toString());
+                
+                this.db.unshift(this.createReview(0, true));
+                
+                this.render();
+                this.renderStats();
+                triggerNext();
+            }, randomDelay);
+        };
+        triggerNext();
+    },
+
 
 
 
