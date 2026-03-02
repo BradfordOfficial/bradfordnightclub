@@ -1180,29 +1180,29 @@ const dateActuelle = new Date();
 
 // --- BASE DE DONNÉES COMPLÈTE DES ÉVÉNEMENTS ---
 const donneesEvenements = [
-   // --- JEUDI 26 FÉVRIER 2026 ---
-    { date: '2026-02-26', jour: 'JEU.', ville: 'LA', artiste: 'BRENT FAIYAZ', details: 'It’s A Wasteland (R&B/Soul Showcase - $90)' },
-    { date: '2026-02-26', jour: 'JEU.', ville: 'MIAMI', artiste: 'WIZKID', details: 'More Love, Less Ego (Afrobeats/Highlife - $90)' },
-    { date: '2026-02-26', jour: 'JEU.', ville: 'NYC', artiste: 'TEMS', details: 'Born in the Wild (Afro-Fusion/R&B Showcase - $90)' },
-    { date: '2026-02-26', jour: 'JEU.', ville: 'SF', artiste: 'J HUS', details: 'Beautiful and Brutal Yard (UK Afroswing/Rap - $90)' },
+  // --- JEUDI 05 MARS 2026 ---
+    { date: '2026-03-05', jour: 'JEU.', ville: 'LA', artiste: 'BABYFACE RAY', details: 'Detroit Wave (Face Card Showcase - $90)' },
+    { date: '2026-03-05', jour: 'JEU.', ville: 'MIAMI', artiste: 'KODAK BLACK', details: 'Nightmare Ambassadors (Florida Trap Showcase - Accès restreint)' },
+    { date: '2026-03-05', jour: 'JEU.', ville: 'NYC', artiste: 'KEHLANI', details: 'Crash Night (Alternative R&B Showcase - $90)' },
+    { date: '2026-03-05', jour: 'JEU.', ville: 'SF', artiste: 'MARCEL DETTMANN', details: 'Berghain Vibe (Pure Techno Set - $90)' },
 
-    // --- VENDREDI 27 FÉVRIER 2026 ---
-    { date: '2026-02-27', jour: 'VEN.', ville: 'LA', artiste: 'FEID', details: 'FerxxoCalipsis (Reggaeton/Trap Latino - Accès restreint)' },
-    { date: '2026-02-27', jour: 'VEN.', ville: 'MIAMI', artiste: 'KAYCYY', details: 'Who Is KayCyy? (Experimental Trap/R&B - $120)' },
-    { date: '2026-02-27', jour: 'VEN.', ville: 'NYC', artiste: 'PESO PLUMA', details: 'Éxodo Club (Corrido/Trap Latino - $110)' },
-    { date: '2026-02-27', jour: 'VEN.', ville: 'SF', artiste: 'SKEE MASK', details: 'Compro Live (IDM/Breakbeat Techno Set - $90)' },
+    // --- VENDREDI 06 MARS 2026 ---
+    { date: '2026-03-06', jour: 'VEN.', ville: 'LA', artiste: 'SCHOOLBOY Q', details: 'Blue Lips Live (TDE West Coast Rap - Accès restreint)' },
+    { date: '2026-03-06', jour: 'VEN.', ville: 'MIAMI', artiste: 'RICK ROSS', details: 'MMG Mansion Party (Luxury Rap Showcase - Accès sur liste VIP uniquement)' },
+    { date: '2026-03-06', jour: 'VEN.', ville: 'NYC', artiste: 'GLORILLA', details: 'TGIF Night (Memphis Street Rap - $90)' },
+    { date: '2026-03-06', jour: 'VEN.', ville: 'SF', artiste: 'DAVE TIHL', details: 'Electronic Underground (Dark Techno / Industrial - $90)' },
 
-    // --- SAMEDI 28 FÉVRIER 2026 ---
-    { date: '2026-02-28', jour: 'SAM.', ville: 'LA', artiste: 'METRO BOOMIN', details: 'Heroes & Villains (Cinematic Trap - Accès sur liste VIP uniquement)' },
-    { date: '2026-02-28', jour: 'SAM.', ville: 'MIAMI', artiste: 'FUTURE', details: 'Pluto Never Died (Toxic Trap Showcase - $180)' },
-    { date: '2026-02-28', jour: 'SAM.', ville: 'NYC', artiste: 'LIL BABY', details: 'It’s Only Us (Atlanta Street-Rap - $150)' },
-    { date: '2026-02-28', jour: 'SAM.', ville: 'SF', artiste: 'YEAT', details: '2093 Lyfestyle (Experimental Rage/Trap - $90)' },
+    // --- SAMEDI 07 MARS 2026 ---
+    { date: '2026-03-07', jour: 'SAM.', ville: 'LA', artiste: 'LUCKY DAYE', details: 'Algorithm Tour (Modern Soul/R&B - $90)' },
+    { date: '2026-03-07', jour: 'SAM.', ville: 'MIAMI', artiste: 'DJ SNAKE', details: 'Pardon My French (Global EDM/Bass Set - Accès sur liste VIP uniquement)' },
+    { date: '2026-03-07', jour: 'SAM.', ville: 'NYC', artiste: 'TEE GRIZZLEY', details: 'Chapters of the Trenches (Detroit Storytelling - $90)' },
+    { date: '2026-03-07', jour: 'SAM.', ville: 'SF', artiste: 'REZZ', details: 'Hypnovizion Night (Mid-Tempo Bass / Dark EDM - Accès restreint)' },
 
-    // --- DIMANCHE 01 MARS 2026 ---
-    { date: '2026-03-01', jour: 'DIM.', ville: 'LA', artiste: 'TYCHO', details: 'Infinite Health (Dreamwave/Electronic Live - $90)' },
-    { date: '2026-03-01', jour: 'DIM.', ville: 'MIAMI', artiste: 'SARA LANDRY', details: 'High Voltage (Hard Techno/Industrial - $90)' },
-    { date: '2026-03-01', jour: 'DIM.', ville: 'NYC', artiste: 'SEXYY RED', details: 'Hood Hottest Princess (Ratchet Trap Showcase - $90)' },
-    { date: '2026-03-01', jour: 'DIM.', ville: 'SF', artiste: 'MARLON HOFFSTADT', details: 'Daddy Trance (Eurodance/Techno - $90)' }
+    // --- DIMANCHE 08 MARS 2026 ---
+    { date: '2026-03-08', jour: 'DIM.', ville: 'LA', artiste: 'VINCE STAPLES', details: 'Dark Times Live (Experimental Rap - $90)' },
+    { date: '2026-03-08', jour: 'DIM.', ville: 'MIAMI', artiste: 'DENZEL CURRY', details: 'Melt My Eyez (Florida Raw Rap Showcase - Accès restreint)' },
+    { date: '2026-03-08', jour: 'DIM.', ville: 'NYC', artiste: 'JID', details: 'Forever & A Day (Lyrical Rap Showcase - $90)' },
+    { date: '2026-03-08', jour: 'DIM.', ville: 'SF', artiste: 'ZEDS DEAD', details: 'Deadbeats Club Set (Dubstep/Bass Music - $90)' }
 ];
 
 
