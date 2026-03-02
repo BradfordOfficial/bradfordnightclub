@@ -1182,7 +1182,7 @@ const dateActuelle = new Date();
 const donneesEvenements = [
   // --- JEUDI 05 MARS 2026 ---
     { date: '2026-03-05', jour: 'JEU.', ville: 'LA', artiste: 'BABYFACE RAY', details: 'Detroit Wave (Face Card Showcase - $90)' },
-    { date: '2026-03-05', jour: 'JEU.', ville: 'MIAMI', artiste: 'KODAK BLACK', details: 'Nightmare Ambassadors (Florida Trap Showcase - Accès restreint)' },
+    { date: '2026-03-05', jour: 'JEU.', ville: 'MIAMI', artiste: 'LIL YACHTY', details: 'Concrete Boys Takeover (Psych-Trap Showcase - Accès restreint)' },
     { date: '2026-03-05', jour: 'JEU.', ville: 'NYC', artiste: 'KEHLANI', details: 'Crash Night (Alternative R&B Showcase - $90)' },
     { date: '2026-03-05', jour: 'JEU.', ville: 'SF', artiste: 'MARCEL DETTMANN', details: 'Berghain Vibe (Pure Techno Set - $90)' },
 
