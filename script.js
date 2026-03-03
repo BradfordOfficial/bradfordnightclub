@@ -7466,20 +7466,17 @@ window.addEventListener('scroll', function() {
 });
 
 
-
 function renderHouseRules() {
     APP_CONTENT.innerHTML = '';
 
     const rulesHTML = `
-        <div class="rules-page fade-in">
-            <header class="rules-hero">
-                <div class="hero-accent"></div>
+        <div class="rules-page">
+            <header class="rules-hero reveal"> <div class="hero-accent"></div>
                 <h1 class="title-page">HOUSE RULES</h1>
                 <p class="subtitle-page">BRADFORD HOUSE RULES & ETIQUETTE</p>
             </header>
 
-            <section class="protocol-highlight">
-                <div class="p-accent-box">
+            <section class="protocol-highlight reveal"> <div class="p-accent-box">
                     <span class="p-top">PREMIUM ETIQUETTE</span>
                     <div class="p-main-val">SILENCE & ELEGANCE</div>
                     <span class="p-bottom">NOTRE SANCTUAIRE, VOS RÈGLES</span>
@@ -7489,8 +7486,7 @@ function renderHouseRules() {
 
             <div class="rules-grid-container">
                 
-                <div class="rule-block main-rule">
-                    <h2 class="rule-title">01. CONDUITE & RESPECT</h2>
+                <div class="rule-block main-rule reveal"> <h2 class="rule-title">01. CONDUITE & RESPECT</h2>
                     <p class="rule-text">Nous maintenons une atmosphère de sérénité absolue. Toute perturbation du service ou manque de respect envers nos collaborateurs est proscrit.</p>
                     <ul class="rule-list">
                         <li><span>COMPORTEMENT</span> <span>IRRÉPROCHABLE</span></li>
@@ -7499,8 +7495,7 @@ function renderHouseRules() {
                     </ul>
                 </div>
 
-                <div class="rule-block">
-                    <h2 class="rule-title">02. ATMOSPHÈRE</h2>
+                <div class="rule-block reveal"> <h2 class="rule-title">02. ATMOSPHÈRE</h2>
                     <p class="rule-text">L'ambiance est notre priorité. Certains protocoles sont en place pour garantir l'immersion totale de nos invités.</p>
                     <ul class="rule-list">
                         <li><span>SMOKING / VAPE</span> <span>PROHIBÉ</span></li>
@@ -7509,8 +7504,7 @@ function renderHouseRules() {
                     </ul>
                 </div>
 
-                <div class="rule-block security-focus">
-                    <h2 class="rule-title">03. SÉCURITÉ & CAPACITÉ</h2>
+                <div class="rule-block security-focus reveal"> <h2 class="rule-title">03. SÉCURITÉ & CAPACITÉ</h2>
                     <p class="rule-text">Pour votre confort, nous filtrons strictement les accès. Le respect des limites de capacité est une exigence légale et de prestige.</p>
                     <ul class="rule-list">
                         <li><span>MOBILIER</span> <span>FIXE</span></li>
@@ -7519,8 +7513,7 @@ function renderHouseRules() {
                     </ul>
                 </div>
 
-                <div class="rule-block privacy-focus">
-                    <h2 class="rule-title">04. DISCRÉTION</h2>
+                <div class="rule-block privacy-focus reveal"> <h2 class="rule-title">04. DISCRÉTION</h2>
                     <p class="rule-text">La protection de l'image de nos clients est capitale. L'usage de caméras est strictement encadré au sein du sanctuaire.</p>
                     <ul class="rule-list">
                         <li><span>PHOTOS</span> <span>RESTREINTES</span></li>
@@ -7530,8 +7523,7 @@ function renderHouseRules() {
                 </div>
             </div>
 
-            <div class="rules-footer">
-                <div class="footer-divider"></div>
+            <div class="rules-footer reveal"> <div class="footer-divider"></div>
               
                 <button class="btn-primary" onclick="window.scrollTo(0,0); navigate('reservations')">RÉSERVEZ VOTRE TABLE</button>
             </div>
@@ -7540,7 +7532,23 @@ function renderHouseRules() {
 
     APP_CONTENT.innerHTML = rulesHTML;
     window.scrollTo(0, 0);
+
+    // --- BLOC ANIMATION SCROLL ---
+    requestAnimationFrame(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
 }
+
+
 
 function renderAboutBradford() {
     APP_CONTENT.innerHTML = '';
