@@ -5697,62 +5697,60 @@ function filterContact(cat, btn) {
 
 function renderDressCodePage() {
     APP_CONTENT.innerHTML = `
-    <div class="dress-code-wrapper fadeIn">
+    <div class="dress-code-wrapper">
         
-        <h1 class="title-page">THE RULES OF ELEGANCE</h1>
-        <p class="subtitle-page">L'ÉLÉGANCE EST NOTRE UNIQUE PASSE D'ENTRÉE.</p>
+        <div class="reveal"> <h1 class="title-page">THE RULES OF ELEGANCE</h1>
+            <p class="subtitle-page">L'ÉLÉGANCE EST NOTRE UNIQUE PASSE D'ENTRÉE.</p>
+        </div>
 
-        <div class="style-category" onclick="toggleStyle(this)">
+        <div class="style-category reveal" onclick="toggleStyle(this)">
             <div class="category-header" style="display:flex; justify-content:space-between; align-items:center;">
                 <span class="category-title">01. L'ESPRIT BRADFORD</span>
                 <span style="color:#D4AF37;">+</span>
             </div>
             <div class="category-content">
                 <p style="text-align:justify; margin-bottom:15px;">
-                    Le Bradford transcende la notion classique de boîte de nuit pour s'imposer comme un sanctuaire de l'esthétique contemporaine. Ici, l'habit n'est pas un accessoire, c'est un langage. Notre vision rejette catégoriquement l'uniformité rigide du costume traditionnel au profit d'une "curation" personnelle de haut vol. Nous célébrons l'audace architecturale, la pureté des lignes et la noblesse des matériaux. 
+                     Le Bradford transcende la notion classique de boîte de nuit pour s'imposer comme un sanctuaire de l'esthétique contemporaine. Ici, l'habit n'est pas un accessoire, c'est un langage. Notre vision rejette catégoriquement l'uniformité rigide du costume traditionnel au profit d'une "curation" personnelle de haut vol. Nous célébrons l'audace architecturale, la pureté des lignes et la noblesse des matériaux.
                 </p>
                 <p style="text-align:justify;">
-                    Franchir nos portes exige une conscience aiguë de son image : chaque texture, chaque coupe et chaque détail doit témoigner d'une intention. Que vous optiez pour le minimalisme radical d'un créateur d'avant-garde ou pour la sophistication d'un tailoring italien déconstruit, votre silhouette doit incarner une vision du luxe qui ne hurle pas, mais qui s'impose par son évidence. Au Bradford, l'excellence est la norme, et l'impeccabilité, votre seule accréditation.
+                   Franchir nos portes exige une conscience aiguë de son image : chaque texture, chaque coupe et chaque détail doit témoigner d'une intention. Que vous optiez pour le minimalisme radical d'un créateur d'avant-garde ou pour la sophistication d'un tailoring italien déconstruit, votre silhouette doit incarner une vision du luxe qui ne hurle pas, mais qui s'impose par son évidence. Au Bradford, l'excellence est la norme, et l'impeccabilité, votre seule accréditation.
                 </p>
             </div>
         </div>
 
-        <div class="style-category" onclick="toggleStyle(this)">
+        <div class="style-category reveal" onclick="toggleStyle(this)">
             <div class="category-header" style="display:flex; justify-content:space-between; align-items:center;">
                 <span class="category-title">02. SÉLECTION MASCULINE (EXEMPLES)</span>
                 <span style="color:#D4AF37;">+</span>
             </div>
             <div class="category-content">
-                          <div class="visual-item">Blazers de créateurs</div>
+                <div class="visual-item">Blazers de créateurs</div>
                 <div class="visual-item">Chemises à col Mao</div>
                 <div class="visual-item">Pantalon large en laine</div>
                 <div class="visual-item">Sneakers d'archives (Clean)</div>
                 <div class="visual-item">Cuir & Daim</div>
-
- <p style="margin-top:15px; font-size:0.75rem; color:#666;">
-            Cette sélection n'est qu'un aperçu des standards acceptés.
-        </p>
+                <p style="margin-top:15px; font-size:0.75rem; color:#666;">
+                    Cette sélection n'est qu'un aperçu des standards acceptés.
+                </p>
             </div>
         </div>
 
-     <div class="style-category">
-    <div class="category-header" onclick="toggleStyle(this.parentElement)" style="display:flex; justify-content:space-between; align-items:center; cursor:pointer;">
-        <span class="category-title">03. SÉLECTION FÉMININE (EXEMPLES)</span>
-        <span style="color:#D4AF37;">+</span>
-    </div>
-    
-    <div class="category-content">
-        <div class="visual-item">Robes architecturales</div>
-        <div class="visual-item">Silk Slip Dresses</div>
-        <div class="visual-item">Ensembles Tailoring</div>
-        <div class="visual-item">Talons Sculpturaux</div>
-        <div class="visual-item">Minimalisme 90s</div>
-        
-        <p style="margin-top:15px; font-size:0.75rem; color:#666;">
-            Cette sélection n'est qu'un aperçu des standards acceptés.
-        </p>
-    </div>
-</div>
+        <div class="style-category reveal">
+            <div class="category-header" onclick="toggleStyle(this.parentElement)" style="display:flex; justify-content:space-between; align-items:center; cursor:pointer;">
+                <span class="category-title">03. SÉLECTION FÉMININE (EXEMPLES)</span>
+                <span style="color:#D4AF37;">+</span>
+            </div>
+            <div class="category-content">
+                <div class="visual-item">Robes architecturales</div>
+                <div class="visual-item">Silk Slip Dresses</div>
+                <div class="visual-item">Ensembles Tailoring</div>
+                <div class="visual-item">Talons Sculpturaux</div>
+                <div class="visual-item">Minimalisme 90s</div>
+                <p style="margin-top:15px; font-size:0.75rem; color:#666;">
+                    Cette sélection n'est qu'un aperçu des standards acceptés.
+                </p>
+            </div>
+        </div>
 
         <div class="analyzer-unit">
             <span class="analyzer-label">BRADFORD STYLE ANALYZER v5.0</span>
@@ -5785,9 +5783,9 @@ function renderDressCodePage() {
                 <option value="premium">Talons Aiguilles / Sculptés</option>
                 <option value="premium">Bottines Chelsea (Cuir Noble)</option>
                 <option value="ban">Sandales / Tongs / Claquettes</option>
-            </div>
+            </select>
 
-               <p style="font-family:'Cinzel'; font-size:0.55rem; color:#444; margin: 20px 0 10px; letter-spacing:1px;">OU DÉCRIRE VOTRE COMPOSITION LIBREMENT :</p>
+            <p style="font-family:'Cinzel'; font-size:0.55rem; color:#444; margin: 20px 0 10px; letter-spacing:1px;">OU DÉCRIRE VOTRE COMPOSITION LIBREMENT :</p>
             <textarea id="text-analyzer" class="analyzer-input" placeholder="Ex: Ensemble Margiela noir, chemise col cassé, bottines en cuir poli..."></textarea>
             
             <button onclick="runUltimateAnalysis()" style="width:100%; background:#D4AF37; color:#000; border:none; padding:18px; font-family:'Cinzel'; font-weight:bold; letter-spacing:3px; cursor:pointer; margin-top:20px;">
@@ -5797,34 +5795,47 @@ function renderDressCodePage() {
             <div id="final-verdict" style="margin-top:25px; text-align:center; font-family:'Cinzel'; letter-spacing:4px; display:none;"></div>
         </div>
 
-           <div class="ban-zone">
+        <div class="ban-zone reveal">
             <h4 style="font-family:'Cinzel'; font-size:0.7rem; color:#ff4d4d; letter-spacing:2px; margin-bottom:20px;">ZONE DE REFUS AUTOMATIQUE</h4>
             <p style="font-size:0.75rem; color:#666; line-height:2;">
                 Tout vêtement de sport, hoodie, casquette, short ou sandale entraînera un refus définitif. Les logos "monogrammes" excessifs sont jugés incompatibles avec l'esthétique du club.
             </p>
         </div>
 
-        <div style="margin-top:40px; border-left: 2px solid #D4AF37; padding-left:20px;">
+        <div class="reveal" style="margin-top:40px; border-left: 2px solid #D4AF37; padding-left:20px;">
             <h3 style="font-family:'Cinzel'; font-size:0.85rem; color:#fff; letter-spacing:3px; margin-bottom:15px;">DISCRÉTION & MARQUE DE LUXE</h3>
             <p style="color:#888; font-size:0.8rem; line-height:1.8; text-align:justify;">
                 Nous encourageons nos invités à exprimer leur style personnel, à condition qu’il soit en harmonie avec le ton ultra-luxe du club. Les logos ostentatoires doivent être minimisés. Notre équipe se réserve le droit souverain de juger de la conformité de toute tenue. Ce jugement est final et non négociable. Nous vous remercions d'être des ambassadeurs de notre image.
             </p>
         </div>
 
-       <button onclick="renderContactPage()" style="background:none; border:1px solid #D4AF37; color:#D4AF37; padding:15px 30px; font-family:'Cinzel'; font-size:0.6rem; letter-spacing:3px; cursor:pointer; width:100%; margin: 40px 0;">
-    Doute sur votre tenue ? Contactez-nous
-</button>
+        <button class="reveal" onclick="renderContactPage()" style="background:none; border:1px solid #D4AF37; color:#D4AF37; padding:15px 30px; font-family:'Cinzel'; font-size:0.6rem; letter-spacing:3px; cursor:pointer; width:100%; margin: 40px 0;">
+            Doute sur votre tenue ? Contactez-nous
+        </button>
+
+        <div class="reveal" style="font-family:'Courier New'; font-size:0.7rem; color:#D4AF37; letter-spacing:2px; text-align: center; width: 100%; margin-top: 20px;">
+            MANAGEMENT DECISION IS FINAL — NO NEGOTIATION
+        </div>
 
     </div>
-
-<div style="font-family:'Courier New'; font-size:0.7rem; color:#D4AF37; letter-spacing:2px; text-align: center; width: 100%; margin-top: 20px;">
-    MANAGEMENT DECISION IS FINAL — NO NEGOTIATION
-</div>
-
-
     `;
     window.scrollTo(0,0);
+
+    // --- BLOC ANIMATION SCROLL (Moteur identique) ---
+    requestAnimationFrame(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 }); 
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
 }
+
 
 function runUltimateAnalysis() {
     const t = document.getElementById('select-top').value;
