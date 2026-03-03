@@ -112,6 +112,10 @@ if (pageId === 'faq') {
     renderGuestGuidelines(); 
     return; 
 }
+    if (pageId === 'press_mentions') {
+    renderPressMentions(); 
+    return; 
+}
 
  
     // --- Contenu Riche et étendu ---
