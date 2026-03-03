@@ -867,114 +867,300 @@ header.reduced .brd-night {
 /* ---------------------------------------------------------------------- */
 
 .detail-page {
-    /* Fond pour simuler une nouvelle page */
-    background-color: var(--couleur-fond-primaire);
+    /* On vire le fond gris/fixe pour laisser respirer le site */
+    background-color: transparent !important; 
     color: var(--couleur-texte-clair); 
-    padding: 30px 5%;
+    padding: 20px; /* Un peu d'espace sur les bords */
     
-    /* Le plus important : garantir qu'elle prend TOUT l'écran */
+    /* On garde la structure mais on arrondit tout le bloc de détails */
     min-height: 100vh;
     width: 100%;
-    
+    display: block;
     box-sizing: border-box; 
-    font-family: var(--font-texte-principal);
     
-    /* Animation douce à l'apparition si tu le souhaites */
-    animation: fadeIn 0.5s ease-out;
+    /* Si tu as un conteneur interne comme .luxury-wiki-container, 
+       c'est LUI qui doit avoir les bords arrondis */
+    border-radius: 40px; 
+    overflow: hidden;
+
+    animation: fadeIn 0.3s ease-out;
 }
 
-.detail-header {
-    margin-bottom: 40px;
-    padding-bottom: 20px;
-    /* Ligne de séparation accentuée en Or */
-    border-bottom: 2px solid var(--couleur-accent-gold); 
+
+.luxury-wiki-container {
+    background-color: #121212; /* Gris anthracite très sombre pour la démarcation */
+    color: #fff;
+    padding: 25px;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    
+    /* LES BORDS ARRONDIS GÉNÉRAUX */
+    border-radius: 40px; 
+    
+    /* LA BORDURE LÉGÈRE DE DÉMARCATION */
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    
+    margin: 10px; /* Petit espace pour voir les arrondis par rapport au bord de l'écran */
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+
+/* --- TOP BAR (Clean & Apple Style) --- */
+.wiki-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+
+.wiki-back-btn {
+    width: 35px;
+    height: 35px;
+    background: #111;
+    border-radius: 50%; /* Bouton rond luxe */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    border: 0.5px solid #222;
 }
 
-.back-link {
-    font-size: 0.9rem;
-    color: var(--couleur-accent-gold); /* Changement de couleur vers l'Or */
-    text-transform: uppercase;
-    font-weight: 600;
-    display: inline-block;
-    margin-bottom: 10px;
-    transition: color 0.2s;
-    letter-spacing: 1px;
-}
-
-.back-link:hover {
-    color: var(--couleur-accent-hover); /* Or Vif au survol */
-}
-
-.artist-name {
-    font-family: 'Cinzel', serif !important;
-    font-size: 2.4rem !important; 
-    font-weight: 900 !important;
-    color: var(--couleur-accent-gold) !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0;
-    text-shadow: 0 0 6px rgba(212, 175, 55, 0.35) !important;
-    text-align: left !important;
-    display: block !important;
-    width: 100% !important;
-
-    /* LE SECRET POUR COLLER LE BORD GAUCHE */
-    margin-left: -5px !important; 
-    padding-left: 5px !important; 
-    
-    /* ESPACE BAS SUPPRIMÉ */
-    margin-top: 0.1rem !important;
-    margin-bottom: 0 !important;
-
-    opacity: 1 !important;
-}
+.back-icon { font-size: 14px; color: #666; }
 
 
-
-
-
-
-
-.artist-location {
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.6); /* Gris doux */
-    margin-top: 5px;
-    font-style: italic;
-}
-
-.detail-body {
+.wiki-header-simple {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    text-align: center;
     padding: 20px 0;
+    width: 100%;
+    /* On le décale d'un chouïa vers la gauche */
+    transform: translateX(-10px); 
 }
 
-.detail-title {
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin-top: 40px; /* Plus d'espace */
-    margin-bottom: 18px;
-    color: var(--couleur-texte-clair);
-    /* Ligne verticale Or, plus marquée */
-    border-left: 5px solid var(--couleur-accent-gold); 
+.wiki-brand-title {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 4px; 
+    font-size: 1.2rem;   
+    font-weight: 900;
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.wiki-brand-subtitle {
+    font-size: 0.8rem;    
+    letter-spacing: 2px;  
+    color: #555;
+    text-transform: uppercase;
+    margin-top: 4px;      
+    font-weight: 400;
+}
+
+
+
+
+/* --- HEADER --- */
+.artist-name-display {
+    font-family: 'Cinzel', serif !important;
+    font-size: clamp(2.4rem, 10vw, 4rem) !important;
+    font-weight: 400 !important;
+    text-align: center;
+    margin-bottom: 10px !important;
+    text-transform: uppercase;
+}
+
+.artist-essential-meta {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.meta-badge {
+    font-size: 0.7rem;
+    color: #666;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.meta-separator { margin: 0 10px; color: #222; }
+
+/* --- INFOCARD (Design Courbé & Pro) --- */
+.wiki-infocard {
+    background: #000000; /* Noir pur pour trancher avec le fond gris de la fiche */
+    border-radius: 28px; /* Arrondi un peu plus prononcé */
+    overflow: hidden;
+    border: 0.5px solid rgba(212, 175, 55, 0.2); /* Bordure dorée très subtile */
+    margin-bottom: 40px;
+}
+
+
+.infocard-media {
+    height: 180px;
+    background: linear-gradient(135deg, #0a0a0a, #151515);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bradford-seal {
+    font-family: 'Cinzel';
+    font-size: 4rem;
+    color: rgba(212, 175, 55, 0.15); /* Sceau doré fantôme */
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.infocard-content { padding: 25px; }
+
+.infocard-group { margin-bottom: 20px; }
+.gold-group { border-top: 1px solid #1a1a1a; padding-top: 20px; }
+
+.infocard-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.infocard-row .label { font-size: 0.7rem; color: #444; text-transform: uppercase; font-weight: 600; }
+.infocard-row .val { font-size: 0.85rem; color: #eee; text-align: right; }
+.accent-gold { color: var(--couleur-accent-gold) !important; font-weight: 800; }
+
+/* --- CONTENU TEXTUEL --- */
+.section-heading {
+    font-family: 'Cinzel';
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    color: var(--couleur-accent-gold);
+    margin: 40px 0 20px;
     padding-left: 15px;
-    font-family: var(--font-titre-luxe);
+    border-left: 2px solid var(--couleur-accent-gold);
 }
 
-.artist-bio-text, .event-details-text {
-    line-height: 1.8; /* Augmenter l'interligne pour une meilleure lisibilité */
-    margin-bottom: 25px;
-    font-size: 1rem;
+.wiki-main-text {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.9;
+    font-size: 1.05rem;
+    color: #999;
+    text-align: justify;
+    margin-bottom: 30px;
 }
 
-.pricing-info {
-    font-size: 1.1rem;
-    font-weight: 500;
-    padding: 20px;
-    /* Fond sombre subtil avec bordure Or légère */
-    background-color: #1a1a1a; 
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    border-radius: 4px;
-    margin-top: 30px;
-    box-shadow: var(--ombre-legere);
+/* --- FOOTER CTA --- */
+.wiki-action-footer {
+    margin-top: 60px;
+    text-align: center;
 }
+
+.footer-divider {
+    height: 0.5px;
+    background: #1a1a1a;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.footer-disclaimer { font-size: 0.7rem; color: #444; margin-bottom: 30px; }
+
+.booking-cta {
+    /* Un doré sophistiqué (pas jaune poussin) */
+    background: linear-gradient(135deg, #c5a059 0%, #d4af37 50%, #c5a059 100%);
+    color: #000;
+    border: none;
+    padding: 22px 0;
+    width: 100%;
+    border-radius: 16px; 
+    font-family: 'Cinzel';
+    font-weight: 900;
+    letter-spacing: 3px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    /* Ombre subtile pour décoller le bouton */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.booking-cta:hover {
+    /* Effet d'illumination au survol */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+    filter: brightness(1.1);
+}
+
+
+.booking-cta:active { transform: scale(0.98); }
+
+.verification-stamp {
+    margin-top: 40px;
+    font-size: 0.5rem;
+    color: #222;
+    letter-spacing: 4px;
+}
+
+/* --- RESPONSIVE IPHONE 13 --- */
+@media (min-width: 768px) {
+    .wiki-main-layout {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 60px;
+        align-items: start;
+    }
+    .wiki-header-section, .wiki-action-footer { grid-column: 1 / span 2; }
+    .wiki-infocard { position: sticky; top: 20px; }
+}
+
+/* --- OPTIMISATION LUXE 1024PX --- */
+@media (min-width: 1024px) {
+    .luxury-wiki-container {
+        max-width: 960px; /* On évite que ça bave trop sur les côtés */
+        margin: 40px auto; /* Centré proprement avec de l'espace autour */
+        padding: 50px; /* Plus d'air à l'intérieur */
+    }
+
+    .wiki-main-layout {
+        display: grid;
+        grid-template-columns: 1fr 350px; /* Biographie large / Infocard fixe */
+        column-gap: 80px; /* Grand espace entre les deux */
+        align-items: start;
+    }
+
+    /* Le titre et le bouton Booking prennent toute la largeur */
+    .wiki-header-section, 
+    .wiki-action-footer { 
+        grid-column: 1 / span 2; 
+    }
+
+    /* L'infocard reste fixée au scroll pour un effet pro */
+    .wiki-infocard { 
+        position: sticky; 
+        top: 40px; 
+        margin-bottom: 0;
+    }
+
+    /* On augmente un peu la taille du texte pour le confort */
+    .wiki-main-text {
+        font-size: 1.15rem;
+        line-height: 2;
+    }
+
+    .artist-name-display {
+        font-size: 5rem !important; /* Titre massif et iconique */
+        text-align: left; /* Aligné à gauche sur grand écran */
+    }
+
+    .artist-essential-meta {
+        text-align: left; /* Aligné avec le titre */
+    }
+}
+
 
 /* --- Style du Bouton d'Action (RÉSERVER UNE TABLE VIP MAINTENANT) --- */
 
