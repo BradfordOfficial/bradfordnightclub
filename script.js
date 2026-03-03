@@ -7623,6 +7623,89 @@ function renderAboutBradford() {
     window.scrollTo(0, 0);
 }
 
+function renderGuestGuidelines() {
+    APP_CONTENT.innerHTML = `
+        <div class="luxury-container fade-in">
+            <h1 class="title-page">EXCLUSIVE GUEST GUIDELINES</h1>
+            <p class="subtitle-page">LE PACTE D'EXCELLENCE DE NOTRE ÉLITE CLIENTÈLE</p>
+
+            <div class="bento-protocol-body">
+                
+                <div class="p-card reveal">
+                    <div class="p-card-accent"></div>
+                    <div class="p-card-header">
+                        <span class="p-tag">PROTOCOL I</span>
+                        <h2 class="p-title">DISCRÉTION & SOPHISTICATION</h2>
+                    </div>
+                    <p class="p-main-text">
+                        Le succès du Bradford repose sur l'invisibilité du service et la retenue de ses hôtes. Le luxe est un murmure, pas un cri.
+                    </p>
+                    <div class="p-sub-grid">
+                        <div class="p-sub-item">
+                            <span class="p-sub-label">ACOUSTIQUE</span>
+                            <p>Discussions maintenues à un volume feutré pour préserver l'intimité des tables adjacentes.</p>
+                        </div>
+                        <div class="p-sub-item">
+                            <span class="p-sub-label">FLUIDITÉ</span>
+                            <p>Circulation limitée au strict nécessaire pour garantir une immersion totale.</p>
+                        </div>
+                    </div>
+                    <div class="p-highlight-box">
+                        <span class="p-highlight-icon">◈</span>
+                        <p>Votre Host dédié est votre unique point de contact pour toute assistance discrète.</p>
+                    </div>
+                </div>
+
+                <div class="p-card alt reveal">
+                    <div class="p-card-accent"></div>
+                    <div class="p-card-header">
+                        <span class="p-tag">PROTOCOL II</span>
+                        <h2 class="p-title">UTILISATION DES MÉDIAS</h2>
+                    </div>
+                    <p class="p-main-text">
+                        Nous protégeons l'anonymat de notre cercle. Votre image est libre, celle des autres est sacrée.
+                    </p>
+                    <div class="p-media-warning">
+                        <div class="w-top">
+                            <span class="w-label">STRICT NO-FLASH POLICY</span>
+                            <span class="w-status">ACTIVE</span>
+                        </div>
+                        <p>L'usage du flash est proscrit dans l'ensemble des zones VIP et tables de service.</p>
+                    </div>
+                    <ul class="p-feature-list">
+                        <li><span class="p-check"></span> Branding Bradford : Valorisation positive uniquement</li>
+                        <li><span class="p-check"></span> Capture d'autrui : Interdiction absolue sans consentement</li>
+                        <li><span class="p-check"></span> Live Streaming : Soumis à autorisation managériale</li>
+                    </ul>
+                </div>
+
+                <div class="p-card reveal full-width">
+                    <div class="p-card-header center">
+                        <span class="p-tag">ENGAGEMENT</span>
+                        <h2 class="p-title">DROIT DE SÉJOUR</h2>
+                    </div>
+                    <p class="p-centered-text">
+                        Le Bradford se réserve le droit d'interrompre l'expérience de tout invité dont la conduite ne reflète pas l'exigence de l'établissement.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="p-footer-action reveal">
+                <button class="btn-primary" onclick="window.scrollTo(0,0); navigate('reservations')">RÉSERVER UNE TABLE</button>
+            </div>
+        </div>
+    `;
+    window.scrollTo(0, 0);
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
 
 
 /** Charge le JSON et démarre l'application */
