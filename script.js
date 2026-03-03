@@ -108,6 +108,10 @@ if (pageId === 'faq') {
     renderAboutBradford(); 
     return; 
 }
+    if (pageId === 'guest_guidelines') {
+    renderGuestGuidelines(); 
+    return; 
+}
 
  
     // --- Contenu Riche et étendu ---
