@@ -5787,7 +5787,7 @@ function renderDressCodePage() {
                 <option value="ban">Sandales / Tongs / Claquettes</option>
             </div>
 
-            <p style="font-family:'Cinzel'; font-size:0.55rem; color:#444; margin: 20px 0 10px; letter-spacing:1px;">OU DÉCRIRE VOTRE COMPOSITION LIBREMENT :</p>
+               <p style="font-family:'Cinzel'; font-size:0.55rem; color:#444; margin: 20px 0 10px; letter-spacing:1px;">OU DÉCRIRE VOTRE COMPOSITION LIBREMENT :</p>
             <textarea id="text-analyzer" class="analyzer-input" placeholder="Ex: Ensemble Margiela noir, chemise col cassé, bottines en cuir poli..."></textarea>
             
             <button onclick="runUltimateAnalysis()" style="width:100%; background:#D4AF37; color:#000; border:none; padding:18px; font-family:'Cinzel'; font-weight:bold; letter-spacing:3px; cursor:pointer; margin-top:20px;">
