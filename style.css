@@ -5476,7 +5476,7 @@ h1.tit-page:first-of-type {
 .logo-wall-header { font-family: 'Cinzel'; font-size: 0.6rem; color: #333; letter-spacing: 5px; margin-bottom: 50px; }
 .logo-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
     gap: 40px; 
     opacity: 0.4; 
     align-items: center;
