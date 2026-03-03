@@ -5366,6 +5366,18 @@ h1.tit-page:first-of-type {
 }
 
 
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 /* --- FOOTER : RÉGLAGES FINAUX --- */
 .footer {
     background-color: #050505;
