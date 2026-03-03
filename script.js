@@ -7217,8 +7217,8 @@ function renderEntryPolicy() {
     ];
 
     APP_CONTENT.innerHTML = `
-        <div class="policy-page fade-in">
-            <div class="hero-section">
+        <div class="policy-page">
+            <div class="hero-section reveal">
                 <div class="hero-line"></div>
                 <h1 class="title-page">ENTRY PROTOCOL</h1>
                 <p class="subtitle-page">UN PROCESSUS D'ADMISSION CONÇU POUR L'ÉLITE</p>
@@ -7226,7 +7226,7 @@ function renderEntryPolicy() {
 
             <div class="protocol-grid">
                 ${protocols.map(p => `
-                    <div class="protocol-box">
+                    <div class="protocol-box reveal">
                         <span class="protocol-number">${p.id}</span>
                         <h2 class="protocol-heading">${p.title}</h2>
                         <p class="protocol-text">${p.desc}</p>
@@ -7237,20 +7237,35 @@ function renderEntryPolicy() {
                 `).join('')}
             </div>
 
-            <div class="entry-disclaimer">
+            <div class="entry-disclaimer reveal">
                 <div class="disclaimer-content">
                     <h3>DROIT DE REFUS ABSOLU</h3>
                     <p>Le Bradford se réserve le droit d'interdire l'accès à toute personne ne reflétant pas les valeurs de prestige et de respect portées par l'établissement. Une réservation de table ne garantit pas l'admission automatique.</p>
                 </div>
             </div>
 
-            <div class="action-footer">
+            <div class="action-footer reveal">
               <button class="btn-primary" onclick="renderDressCodePage()">CONSULTER LE DRESS CODE</button>
             </div>
         </div>
     `;
     window.scrollTo(0, 0);
+
+    // --- BLOC ANIMATION SCROLL ---
+    requestAnimationFrame(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1 }); 
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
 }
+
 
 function renderVIPPolicy() {
    
