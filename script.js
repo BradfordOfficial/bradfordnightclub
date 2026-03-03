@@ -7358,15 +7358,12 @@ function renderBottleRequirements() {
     APP_CONTENT.innerHTML = '';
 
     const bottleHTML = `
-        <div class="bottle-page fade-in">
-            <header class="bottle-hero">
-             
-                <h1 class="title-page">BOTTLE SERVICE EXIGENCY</h1>
+        <div class="bottle-page">
+            <header class="bottle-hero reveal"> <h1 class="title-page">BOTTLE SERVICE EXIGENCY</h1>
                 <p class="subtitle-page">L'ESSENCE MÊME DE L'EXPÉRIENCE BRADFORD</p>
             </header>
 
-            <section class="ratio-section">
-                <div class="ratio-display">
+            <section class="ratio-section reveal"> <div class="ratio-display">
                     <div class="ratio-box">
                         <span class="ratio-num">1</span>
                         <span class="ratio-label">BOTTLE</span>
@@ -7380,69 +7377,75 @@ function renderBottleRequirements() {
                 <p class="ratio-disclaimer">Ratio impératif pour garantir l'excellence du service à votre table.</p>
             </section>
 
-     <div class="requirements-container">
-    <div class="req-block">
-        <h2 class="luxury-main-title">PROTOCOLE DE SERVICE</h2>
-        
-        <div class="service-cards">
-            <div class="s-card">
-                <span class="s-value">20%</span>
-                <span class="s-label">SERVICE CHARGE</span>
-                <p class="s-details">Appliqué sur la facture finale pour l'excellence du staff.</p>
+            <div class="requirements-container">
+                <div class="req-block reveal"> <h2 class="luxury-main-title">PROTOCOLE DE SERVICE</h2>
+                    
+                    <div class="service-cards">
+                        <div class="s-card">
+                            <span class="s-value">20%</span>
+                            <span class="s-label">SERVICE CHARGE</span>
+                            <p class="s-details">Appliqué sur la facture finale pour l'excellence du staff.</p>
+                        </div>
+                        <div class="s-card">
+                            <span class="s-value">∞</span>
+                            <span class="s-label">ACCOMPAGNEMENTS</span>
+                            <p class="s-details">Softs et garnitures premium à discrétion toute la nuit.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prestige-gallery reveal"> <h2 class="luxury-main-title">PRESTIGE & SÉLECTION</h2>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <div class="top-line"></div>
+                            <h3>RARE SPIRITS</h3>
+                            <p>Curated list de spiritueux rares et millésimes exclusifs.</p>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="top-line"></div>
+                            <h3>SECURE TABLE</h3>
+                            <p>Protection de table et gestion sécurisée par nos agents dédiés.</p>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="top-line"></div>
+                            <h3>DEDICATED HOST</h3>
+                            <p>Host personnel pour une personnalisation totale de vos Add-Ons.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="s-card">
-                <span class="s-value">∞</span>
-                <span class="s-label">ACCOMPAGNEMENTS</span>
-                <p class="s-details">Softs et garnitures premium à discrétion toute la nuit.</p>
+
+            <div class="minimum-disclaimero reveal"> <div class="disclaimero-line"></div>
+                <div class="disclaimero-content">
+                    <span class="disclaimero-tag">ENGAGEMENT</span>
+                    <p>Les minimums de table doivent être atteints via vos achats de <strong>Bouteilles</strong> ou de <strong>Services Additionnels (Add-ons)</strong>.</p>
+                </div>
+                <div class="disclaimero-line"></div>
             </div>
-        </div>
-    </div>
 
-
-
-    <div class="prestige-gallery">
-        <h2 class="luxury-main-title">PRESTIGE & SÉLECTION</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                <div class="top-line"></div>
-                <h3>RARE SPIRITS</h3>
-                <p>Curated list de spiritueux rares et millésimes exclusifs.</p>
-            </div>
-            <div class="gallery-item">
-                <div class="top-line"></div>
-                <h3>SECURE TABLE</h3>
-                <p>Protection de table et gestion sécurisée par nos agents dédiés.</p>
-            </div>
-            <div class="gallery-item">
-                <div class="top-line"></div>
-                <h3>DEDICATED HOST</h3>
-                <p>Host personnel pour une personnalisation totale de vos Add-Ons.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="minimum-disclaimero">
-    <div class="disclaimero-line"></div>
-    <div class="disclaimero-content">
-        <span class="disclaimero-tag">ENGAGEMENT</span>
-        <p>Les minimums de table doivent être atteints via vos achats de <strong>Bouteilles</strong> ou de <strong>Services Additionnels (Add-ons)</strong>.</p>
-    </div>
-    <div class="disclaimero-line"></div>
-</div>
-
-
-
-            <div class="bottle-footer">
-              <button class="btn-primary" onclick="window.scrollTo(0,0); navigate('menu')">DÉCOUVRIR LA CARTE</button>
-
+            <div class="bottle-footer reveal"> <button class="btn-primary" onclick="window.scrollTo(0,0); navigate('menu')">DÉCOUVRIR LA CARTE</button>
             </div>
         </div>
     `;
 
     APP_CONTENT.innerHTML = bottleHTML;
     window.scrollTo(0, 0);
+
+    // --- BLOC ANIMATION SCROLL ---
+    requestAnimationFrame(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
 }
+
 
 
 window.addEventListener('scroll', function() {
