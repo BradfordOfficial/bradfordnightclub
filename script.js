@@ -7266,21 +7266,18 @@ function renderEntryPolicy() {
     });
 }
 
-
 function renderVIPPolicy() {
    
     APP_CONTENT.innerHTML = '';
 
     const vipHTML = `
-        <div class="vip-page fade-in">
-            <header class="vip-hero">
-                <h1 class="title-page">PRESTIGE VIP POLICY</h1>
+        <div class="vip-page">
+            <header class="vip-hero reveal"> <h1 class="title-page">PRESTIGE VIP POLICY</h1>
                 <p class="subtitle-page">LE SOMMET DE L'HOSPITALITÉ EXCLUSIVE</p>
             </header>
 
             <div class="vip-grid">
-                <div class="vip-card highlight">
-                    <div class="card-inner">
+                <div class="vip-card highlight reveal"> <div class="card-inner">
                         <div class="vip-tag">GUARANTEE</div>
                         <h2 class="card-title">RÉSERVATION & DÉPÔT</h2>
                         <p class="card-desc">Accès direct à une soirée personnalisée. Votre table est un sanctuaire réservé.</p>
@@ -7295,8 +7292,7 @@ function renderVIPPolicy() {
                     </div>
                 </div>
 
-             <div class="card-inner">
-    <div class="vip-tag">DYNAMIC</div>
+             <div class="card-inner reveal"> <div class="vip-tag">DYNAMIC</div>
     <h2 class="card-title">MINIMUM SPEND</h2>
     
       <div class="spend-levels">
@@ -7325,16 +7321,14 @@ function renderVIPPolicy() {
 </div>
 
 
-            <div class="cancellation-banner">
-                <div class="banner-content">
+            <div class="cancellation-banner reveal"> <div class="banner-content">
                     <h3>POLITIQUE D'ANNULATION</h3>
                     <p>Notification requise 48H avant pour transfert de crédit. Le "No-Show" est un acte définitif.</p>
                 </div>
                 <div class="banner-footer">BRADFORD ELITE PROTOCOL</div>
             </div>
 
-            <div class="vip-actions">
-              <button class="btn-primary" onclick="window.scrollTo(0,0); navigate('reservations')">RESERVER UNE TABLE</button>
+            <div class="vip-actions reveal"> <button class="btn-primary" onclick="window.scrollTo(0,0); navigate('reservations')">RESERVER UNE TABLE</button>
 
             </div>
         </div>
@@ -7342,7 +7336,23 @@ function renderVIPPolicy() {
     
     APP_CONTENT.innerHTML = vipHTML;
     window.scrollTo(0, 0);
+
+    // --- BLOC ANIMATION SCROLL ---
+    requestAnimationFrame(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 }); 
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
 }
+
+
 function renderBottleRequirements() {
     
     APP_CONTENT.innerHTML = '';
