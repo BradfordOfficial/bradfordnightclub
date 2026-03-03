@@ -1350,13 +1350,22 @@ async function afficherDetailsArtiste(artiste, ville, details) {
         .map(mot => mot.charAt(0).toUpperCase() + mot.slice(1))
         .join('_');
 
-    // 3. RECHERCHE WIKIPÉDIA
+       // 3. RECHERCHE WIKIPÉDIA
+    let naissance = "—";
+    let activite = "Actif";
+    let label = "Indépendant";
+
     try {
         const response = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(nomFormate)}`);
         if (response.ok) {
             const data = await response.json();
             bioWiki = data.extract || "Biographie non disponible.";
             genreWiki = data.description || "Artiste";
+            
+            // --- EXTRACTION INTELLIGENTE ---
+            // On cherche des dates dans le texte (ex: 1990)
+            const dateMatch = bioWiki.match(/\b(19|20)\d{2}\b/);
+            if (dateMatch) activite = `Depuis ${dateMatch[0]}`;
         } else {
             const responseEn = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(nomFormate)}`);
             if (responseEn.ok) {
@@ -1371,6 +1380,7 @@ async function afficherDetailsArtiste(artiste, ville, details) {
         bioWiki = "Biographie non disponible.";
     }
 
+
     const detailPage = document.getElementById('artist-detail-page');
     const appContent = document.getElementById('app-content');
     const evenementWidget = document.getElementById('evenement-widget');
@@ -1381,35 +1391,150 @@ async function afficherDetailsArtiste(artiste, ville, details) {
     
     appContent.style.display = 'none';
     if (evenementWidget) evenementWidget.style.display = 'none'; 
-    
-    // On rend la page de détails cliquable et visible
-    detailPage.style.display = 'block';
-    detailPage.style.pointerEvents = 'auto'; 
-    
-    detailPage.innerHTML = `
-        <div class="detail-header" onclick="retourAccueil()">
-            <span class="back-link">← Retour à l'accueil</span>
-            <h1 class="artist-name">${artiste}</h1>
-            <p class="artist-location">${ville} - ${genreWiki}</p>
-        </div>
-        <div class="detail-body">
-            <h2 class="detail-title">L'événement Bradford</h2>
-            <p class="event-details-text">${details}</p>
-            <h2 class="detail-title">L'Artiste</h2>
-            <p class="artist-bio-text">${bioWiki}</p>
-          <div class="pricing-container">
-    <span class="pricing-label">Prix d'entrée:</span>
-    <div class="pricing-value">${prixTrouve}</div>
-</div>
 
-            <div class="reservation-cta">
-                <button class="cta-button" onclick="allerReservations()">
-                    RÉSERVER UNE TABLE VIP MAINTENANT
-                </button>
+  
+    
+detailPage.style.display = 'block';
+detailPage.style.pointerEvents = 'auto'; 
+
+
+// On calcule des données cohérentes
+const dateDuJour = new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long' });
+
+detailPage.innerHTML = `
+    <div class="luxury-wiki-container">
+        <nav class="wiki-top-bar">
+            <div class="wiki-back-btn" onclick="retourAccueil()">
+                <span class="back-icon">✕</span>
             </div>
+         <div class="wiki-header-simple">
+    <div class="wiki-brand-title">BRADFORD</div>
+    <div class="wiki-brand-subtitle">Season 2026</div>
+</div>
+        </nav>
+
+        <div class="wiki-main-layout">
+            
+            <header class="wiki-header-section">
+                <h1 class="artist-name-display">${artiste}</h1>
+                <div class="artist-essential-meta">
+                    <span class="meta-badge">${genreWiki}</span>
+                    <span class="meta-separator">•</span>
+                    <span class="meta-badge">${ville}</span>
+                </div>
+            </header>
+
+                   <aside class="wiki-infocard">
+                <div class="infocard-media">
+                    <div class="bradford-seal">B</div>
+                </div>
+                
+                <div class="infocard-content">
+                    <div class="infocard-group">
+                        <div class="infocard-row">
+                            <span class="label">Artiste</span>
+                            <span class="val">${artiste}</span>
+                        </div>
+                        <div class="infocard-row">
+                            <span class="label">Genre</span>
+                            <span class="val">${genreWiki}</span>
+                        </div>
+                        <div class="infocard-row">
+                            <span class="label">Lieu</span>
+                            <span class="val">${ville}</span>
+                        </div>
+                    </div>
+
+                    <div class="infocard-group" style="border-top: 0.5px solid #1a1a1a; padding-top: 15px;">
+                        <div class="infocard-row">
+                            <span class="label">Activité</span>
+                            <span class="val">${activite}</span>
+                        </div>
+                        <div class="infocard-row">
+                            <span class="label">Label</span>
+                            <span class="val">${label}</span>
+                        </div>
+                        <div class="infocard-row">
+                            <span class="label">Management</span>
+                            <span class="val">Official / Bradford</span>
+                        </div>
+                     
+                    </div>
+
+                    <div class="infocard-group gold-group">
+                        <div class="infocard-row">
+                            <span class="label">Statut</span>
+                            <span class="val accent-gold">CONFIRMÉ</span>
+                        </div>
+                        <div class="infocard-row">
+                            <span class="label">Admission</span>
+                            <span class="val accent-gold">${prixTrouve}</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+
+            <main class="wiki-article-body">
+                <section class="wiki-text-section">
+                    <h2 class="section-heading">L'ÉVÉNEMENT</h2>
+                    <p class="wiki-main-text">${details}</p>
+                </section>
+
+                <section class="wiki-text-section">
+                    <h2 class="section-heading">BIOGRAPHIE</h2>
+                    <p class="wiki-main-text">${bioWiki}</p>
+                </section>
+
+
+        <div id="dynamic-analysis-zone"></div>
+
+    </main>
+
+
+     
+            <footer class="wiki-action-footer">
+                <div class="footer-divider"></div>
+                <p class="footer-disclaimer">SÉLECTION 2026 | BRADFORD COMMITTEE</p>
+                <button class="booking-cta" onclick="allerReservations()">
+                    RÉSERVER VOTRE TABLE VIP
+                </button>
+                <div class="verification-stamp">PROPERTY OF THE BRADFORD COMMIT: VERIFICATION ID: B- ${Math.random().toString(36).substring(7).toUpperCase()}</div>
+            </footer>
         </div>
-    `;
-    window.scrollTo(0, 0); 
+    </div>
+`;
+
+// On lance la recherche d'une section riche (Style ou Carrière) sans bloquer
+fetch(`https://fr.wikipedia.org/api/rest_v1/page/mobile-sections/${encodeURIComponent(nomFormate)}`)
+    .then(res => res.json())
+    .then(data => {
+        // On cherche si une section intéressante existe
+        const section = data.remaining.sections.find(s => 
+            s.line.includes("Style") || s.line.includes("Influence") || s.line.includes("Carrière")
+        );
+
+        if (section) {
+            // On nettoie le HTML pour n'avoir que le texte pur
+            const tempDiv = document.createElement("div");
+            tempDiv.innerHTML = section.text;
+            const cleanText = tempDiv.textContent || tempDiv.innerText || "";
+            
+            // On injecte le bloc III seulement si on a de la vraie matière
+            document.getElementById('dynamic-analysis-zone').innerHTML = `
+                <section class="wiki-text-section" style="animation: fadeIn 0.8s ease-out;">
+                    <h2 class="section-heading">III. RÉPERTOIRE & ANALYSE</h2>
+                    <p class="wiki-main-text">${cleanText.substring(0, 450)}...</p>
+                </section>
+            `;
+        }
+    })
+    .catch(err => console.log("Analyse indisponible, on reste sur l'essentiel."));
+
+window.scrollTo(0, 0);
+
+
+ 
 }
 
 // FONCTION POUR ALLER AUX RÉSERVATIONS
@@ -1419,6 +1544,7 @@ function allerReservations() {
         navigate('reservations');
     }
 }
+
 
 // FONCTION RETOUR CORRIGÉE (LIBÈRE LES BOUTONS DU HEADER)
 function retourAccueil() {
