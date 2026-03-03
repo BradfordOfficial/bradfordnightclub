@@ -5209,7 +5209,161 @@ h1.tit-page:first-of-type {
 }
 
 
+/* --- LUXURY GUIDELINES CORPS --- */
+.luxury-container {
+    padding: 0 20px 80px;
+    background: #000;
+}
 
+.bento-protocol-body {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+/* LA CARTE PRESTIGE */
+.p-card {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #050505 100%);
+    border: 1px solid rgba(198, 161, 89, 0.15);
+    padding: 35px 25px;
+    overflow: hidden;
+}
+
+.p-card-accent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.p-tag {
+    font-size: 0.6rem;
+    color: var(--gold);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.p-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.p-main-text {
+    font-size: 0.9rem;
+    color: #999;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Grille Interne */
+.p-sub-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.p-sub-item {
+    border-left: 1px solid rgba(198, 161, 89, 0.3);
+    padding-left: 15px;
+}
+
+.p-sub-label {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--gold);
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.p-sub-item p {
+    font-size: 0.75rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* Highlight Box */
+.p-highlight-box {
+    background: rgba(198, 161, 89, 0.05);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid rgba(198, 161, 89, 0.1);
+}
+
+.p-highlight-icon { color: var(--gold); font-size: 0.8rem; }
+.p-highlight-box p { font-size: 0.75rem; color: #aaa; font-style: italic; }
+
+/* Media Warning */
+.p-media-warning {
+    background: #000;
+    border: 1px solid #1a1a1a;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.w-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.w-label { font-size: 0.65rem; color: var(--gold); font-weight: bold; }
+.w-status { font-size: 0.5rem; border: 1px solid #ff0000; color: #ff0000; padding: 2px 5px; }
+.p-media-warning p { font-size: 0.7rem; color: #555; }
+
+/* Feature List */
+.p-feature-list { list-style: none; padding: 0; }
+.p-feature-list li {
+    font-size: 0.75rem;
+    color: #ddd;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.p-check { width: 6px; height: 1px; background: var(--gold); }
+
+/* Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.p-footer-action {
+    margin-top: 60px;
+    text-align: center;
+}
+
+/* ADAPTATION PC */
+@media (min-width: 1024px) {
+    .bento-protocol-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        max-width: 1200px;
+        margin-inline: auto;
+    }
+    .full-width { grid-column: span 2; }
+    .p-card-accent { width: 250px; }
+}
 
 
 /* --- FOOTER : RÉGLAGES FINAUX --- */
