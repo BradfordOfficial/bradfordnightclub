@@ -5378,7 +5378,7 @@ h1.tit-page:first-of-type {
 }
 
 /* --- BASE --- */
-.press-page { padding: 40px 15px; background: #000; color: #fff; }
+.press-page { padding: 0 40px 15px; background: #000; color: #fff; }
 
 /* --- CITATIONS STYLE MAGAZINE --- */
 .quote-card { 
@@ -5499,7 +5499,7 @@ h1.tit-page:first-of-type {
    ============================================================ */
 
 @media (min-width: 768px) {
-    .press-page { padding: 80px 10%; } /* Plus d'air sur les côtés */
+    .press-page { padding: 0 80px 10%; } /* Plus d'air sur les côtés */
     
     .quote-content { font-size: 2.2rem; max-width: 900px; } /* Texte plus grand sur ordi */
     
@@ -5516,7 +5516,7 @@ h1.tit-page:first-of-type {
 
 /* Remplace 1200px par 1024px ici */
 @media (min-width: 1024px) {
-    .press-page { padding: 80px 10%; }
+    .press-page { padding: 0 80px 10%; }
     
     .press-manifesto {
         flex-direction: row; 
