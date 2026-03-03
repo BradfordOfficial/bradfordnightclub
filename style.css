@@ -5377,6 +5377,158 @@ h1.tit-page:first-of-type {
     transform: translateY(0);
 }
 
+/* --- BASE --- */
+.press-page { padding: 40px 15px; background: #000; color: #fff; }
+
+/* --- CITATIONS STYLE MAGAZINE --- */
+.quote-card { 
+    border-bottom: 1px solid #111; 
+    padding: 60px 0; 
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.quote-card:hover { border-bottom: 1px solid #D4AF37; transform: translateY(-5px); }
+.quote-source { font-family: 'Cinzel'; font-size: 0.75rem; color: #D4AF37; letter-spacing: 5px; font-weight: 700; }
+
+.quote-content { 
+    font-family: 'Playfair Display', serif; 
+    font-style: italic; 
+    font-size: 1.6rem; 
+    margin: 25px auto; 
+    max-width: 700px;
+    line-height: 1.4;
+    color: #eee;
+}
+.quote-rating { color: #D4AF37; font-size: 0.8rem; letter-spacing: 3px; margin-top: 15px; }
+
+/* --- SECTION MANIFESTE --- */
+.press-manifesto {
+    margin: 60px 0;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+
+.manifesto-item {
+    position: relative;
+    padding-left: 20px;
+    border-left: 1px solid #D4AF37;
+}
+
+.manifesto-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.m-number {
+    font-family: 'Cinzel';
+    color: #D4AF37;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.m-badge {
+    font-family: 'Cinzel';
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    color: #444;
+}
+
+.m-title {
+    font-family: 'Cinzel';
+    font-size: 1.2rem;
+    color: #fff;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.m-text {
+    font-family: 'Playfair Display', serif;
+    color: #888;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    text-align: justify;
+}
+
+/* Lettrine stylisée */
+.dropcap {
+    float: left;
+    font-family: 'Cinzel';
+    font-size: 3rem;
+    line-height: 0.8;
+    padding-top: 4px;
+    padding-right: 8px;
+    color: #D4AF37;
+}
+
+.manifesto-item::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* --- LOGO WALL --- */
+.press-logo-wall { margin-top: 100px; text-align: center; border-top: 1px solid #111; padding-top: 60px; }
+.logo-wall-header { font-family: 'Cinzel'; font-size: 0.6rem; color: #333; letter-spacing: 5px; margin-bottom: 50px; }
+.logo-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+    gap: 40px; 
+    opacity: 0.4; 
+    align-items: center;
+}
+.logo-grid span { 
+    font-family: 'Cinzel'; 
+    font-size: 0.8rem; 
+    letter-spacing: 2px; 
+    transition: 0.3s;
+    cursor: default;
+}
+.logo-grid span:hover { opacity: 1; color: #D4AF37; }
+
+/* --- FOOTER --- */
+.press-footer { margin-top: 120px; padding-bottom: 80px; text-align: center; }
+.pr-contact { font-family: 'Courier New'; font-size: 0.65rem; color: #333; margin-top: 50px; letter-spacing: 1px; }
+
+/* ============================================================
+   ADAPTATION TABLETTE & ORDI (RESPONSIVE)
+   ============================================================ */
+
+@media (min-width: 768px) {
+    .press-page { padding: 80px 10%; } /* Plus d'air sur les côtés */
+    
+    .quote-content { font-size: 2.2rem; max-width: 900px; } /* Texte plus grand sur ordi */
+    
+    .press-manifesto {
+        flex-direction: row; /* Met les deux blocs côte à côte */
+        gap: 50px;
+        margin: 100px 0;
+    }
+    
+    .manifesto-item { flex: 1; } /* Les blocs prennent 50% de largeur chacun */
+    
+    .m-title { font-size: 1.5rem; }
+}
+
+/* Remplace 1200px par 1024px ici */
+@media (min-width: 1024px) {
+    .press-page { padding: 80px 10%; }
+    
+    .press-manifesto {
+        flex-direction: row; 
+        gap: 60px;
+    }
+
+    .logo-grid { 
+        grid-template-columns: repeat(6, 1fr); 
+    }
+}
+
+
 
 /* --- FOOTER : RÉGLAGES FINAUX --- */
 .footer {
