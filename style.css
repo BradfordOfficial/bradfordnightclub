@@ -1671,70 +1671,88 @@ body {
 
 
 /* ========================================================= */
-/* VIII. RESPONSIVE PROTOCOL (TABLETTE & DESKTOP)           */
+/* VIII. RESPONSIVE & CENTRAGE (TABLETTE & DESKTOP)         */
 /* ========================================================= */
 
-/* --- PALIER 768px (Tablettes / iPad Portrait) --- */
-@media screen and (max-width: 1023px) and (min-width: 768px) {
+@media screen and (min-width: 768px) {
     .protocol-container {
-        max-width: 600px; /* On élargit un peu par rapport au mobile */
-        margin: 50px auto;
-        padding: 40px;
+        max-width: 700px; /* Plus large pour l'impact */
+        margin: 60px auto;
+        padding: 50px;
+        text-align: center; /* On centre tout le contenu par défaut */
     }
 
-    .protocol-container h2 {
-        font-size: 1.8rem;
+    /* Centrage des Labels */
+    .protocol-container label {
+        display: block;
+        text-align: center; /* Label centré au-dessus de l'input */
+        width: 100%;
+        font-size: 1rem; /* Un peu plus gros pour la lisibilité */
+        margin-bottom: 15px;
+    }
+
+    /* Centrage et élargissement des Inputs */
+    .protocol-container input,
+    .protocol-container textarea {
+        width: 80%; /* On ne prend pas 100% pour garder de l'air sur les côtés */
+        max-width: 500px; /* Limite pour ne pas que ce soit trop long */
+        margin: 0 auto 40px auto; /* Centrage horizontal automatique */
+        display: block;
+        text-align: center; /* Le texte tapé sera aussi centré */
+        font-size: 1.2rem; /* Plus gros, plus "Authority" */
+        padding: 15px;
+    }
+
+    /* Centrage des Étoiles (Rating) */
+    .rating {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    /* Centrage du Bouton Submit */
+    .protocol-container button[type="submit"] {
+        float: none; /* On annule le float right */
+        display: block;
+        margin: 40px auto 0 auto; /* Centrage parfait */
+        width: 100%;
+        max-width: 350px;
+        height: 60px; /* Plus imposant */
+        font-size: 1.2rem;
+    }
+
+    /* Centrage de la Modale et du Prix */
+    .vip-modal-content {
+        max-width: 600px;
         text-align: center;
     }
-
-    .protocol-container button[type="submit"] {
-        width: 100%; /* Bouton plein écran sur tablette pour le confort */
-        float: none;
+    
+    .membership-fee-display {
+        margin: 0 auto;
+        width: fit-content;
+        padding: 30px 60px;
     }
 }
 
-/* --- PALIER 1024px (Laptops / Desktop / iPad Paysage) --- */
+/* --- AJUSTEMENT DESKTOP 1024px+ --- */
 @media screen and (min-width: 1024px) {
     .protocol-container {
-        max-width: 800px; /* Format "Fiche Technique" large */
-        margin: 60px auto;
-        padding: 60px;
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* On passe en 2 colonnes pour les inputs */
-        column-gap: 40px;
-    }
-
-    /* Le titre et le bouton de fin prennent toute la largeur (2 colonnes) */
-    .protocol-container h2, 
-    .protocol-container .rating,
-    .protocol-container button[type="submit"],
-    .protocol-container .membership-fee-display {
-        grid-column: span 2;
+        max-width: 850px;
+        padding: 80px;
     }
 
     .protocol-container h2 {
-        font-size: 2rem;
-        margin-bottom: 50px;
-        text-align: center;
+        font-size: 2.5rem; /* Titre massif */
+        margin-bottom: 60px;
     }
 
-    .protocol-container button[type="submit"] {
-        width: 300px; /* Bouton imposant centré */
-        margin: 40px auto 0;
-        float: none;
-        display: block;
-    }
-
-    /* La modale sur grand écran */
-    .vip-modal-content {
-        max-width: 700px;
-        margin: 2% auto;
-    }
-
-    .fee-value {
-        font-size: 4rem; /* Impact maximal du prix sur ordi */
+    .protocol-container input,
+    .protocol-container textarea {
+        max-width: 600px;
+        font-size: 1.3rem;
     }
 }
+
 
 /* ========================================================== */
 /* SECTION 1: VARIABLES ET RESET MOBILE-FIRST       */
