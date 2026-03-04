@@ -1152,7 +1152,7 @@ header.reduced .brd-night {
     }
 
     .artist-name-display {
-        font-size: 2.5rem !important; /* Titre massif et iconique */
+        font-size: 4rem !important; /* Titre massif et iconique */
         text-align: center; /* Aligné à gauche sur grand écran */
     }
 
