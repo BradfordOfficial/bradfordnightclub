@@ -2495,6 +2495,9 @@ const mappingVilles = { 'Los Angeles': 'LA', 'San Francisco': 'SF', 'New York': 
     <div onclick="contactVIPConcierge('${ticketID}', '${artiste}')" 
          style="background: #000; border: 1px solid var(--gold); border-radius: 8px; padding: 18px; display: flex; align-items: center; justify-content: center; gap: 15px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(212,175,55,0.05);">
         
+        <div style="display: flex; justify-content: center; width: 100%; margin: 20px 0;">
+    <div style="display: flex; align-items: center; gap: 15px;">
+        
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
         </svg>
@@ -2503,6 +2506,9 @@ const mappingVilles = { 'Los Angeles': 'LA', 'San Francisco': 'SF', 'New York': 
             <p style="margin: 0; font-size: 0.7rem; color: #fff; font-family: 'Cinzel'; letter-spacing: 1px;">Contact VIP Host</p>
             <p style="margin: 0; font-size: 0.45rem; color: var(--gold); opacity: 0.7; text-transform: uppercase; letter-spacing: 1px;">Priority Lane & Special Requests</p>
         </div>
+        </div>
+</div>
+
     </div>
 </div>
 
