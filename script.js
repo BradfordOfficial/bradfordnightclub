@@ -7947,115 +7947,115 @@ function renderPressMentions() {
             </header>
 
             <section class="quotes-sanctuary">
-                            <div class="quote-card">
+                            <div class="quote-card reveal">
                     <span class="quote-source">THE NEW YORK TIMES</span>
                     <blockquote class="quote-content">"Au-delà des listes d'invités, le Bradford s'est imposé comme l'épicentre des cercles de pouvoir à Manhattan."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">FORBES BUSINESS</span>
                     <blockquote class="quote-content">"Le Bradford n'est pas une simple boîte de nuit ; c'est un modèle économique de rareté qui redéfinit la valeur de l'exclusivité."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">LOS ANGELES TIMES</span>
                     <blockquote class="quote-content">"Une gestion de la confidentialité qui frise la paranoïa, faisant du club le refuge privilégié de l'industrie."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">WALL STREET JOURNAL</span>
                     <blockquote class="quote-content">"Une forteresse de discrétion où les politiques d'admission strictes assurent un environnement de networking sans précédent."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">LAS VEGAS WEEKLY</span>
                     <blockquote class="quote-content">"L'expansion prévue pour 2027 pourrait bien forcer le Strip à repenser l'intégralité de son offre ultra-luxe."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">VOGUE US</span>
                     <blockquote class="quote-content">"Plus qu'une adresse, un manifeste visuel. Le Bradford impose une esthétique qui influence désormais le design global du luxe."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">HARPER'S BAZAAR US</span>
                     <blockquote class="quote-content">"Une curation esthétique rigoureuse où le style n'est pas une suggestion, mais une condition d'entrée."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">GQ MAGAZINE</span>
                     <blockquote class="quote-content">"L'incarnation moderne du 'Private Members Club'. Un équilibre parfait entre héritage européen et exigence américaine."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">SAN FRANCISCO CHRONICLE</span>
                     <blockquote class="quote-content">"Le seul lieu de la côte Ouest où les leaders de la Tech délaissent le virtuel pour une réalité physique protégée."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">TOWN & COUNTRY</span>
                     <blockquote class="quote-content">"Le Bradford a réussi l'impossible : importer la discrétion des clubs privés européens dans le chaos américain."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">W MAGAZINE</span>
                     <blockquote class="quote-content">"L'éclairage et l'acoustique y sont pensés comme une mise en scène cinématographique de chaque instant."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">BILLBOARD</span>
                     <blockquote class="quote-content">"Plus qu'un club, c'est le carrefour stratégique où se négocient les plus gros contrats de l'industrie musicale."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">THE TIMES (LONDON)</span>
                     <blockquote class="quote-content">"Une rigueur opérationnelle impressionnante qui justifie son rang parmi les adresses les plus fermées au monde."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">LE FIGARO LUXE</span>
                     <blockquote class="quote-content">"Une approche du service qui privilégie la pertinence et la réserve, loin de l'ostentation habituelle."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">VOGUE JAPAN</span>
                     <blockquote class="quote-content">"L'harmonie parfaite entre un minimalisme structurel et une expérience sensorielle de haut vol."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">KHALEEJ TIMES (DUBAI)</span>
                     <blockquote class="quote-content">"Le Bradford impose un standard de sélectivité qui redéfinit les attentes d'une clientèle habituée à l'exceptionnel."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">MIAMI HERALD</span>
                     <blockquote class="quote-content">"Depuis son ouverture, l'établissement a transformé le paysage économique du secteur de l'hospitalité premium."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">ELLE DECOR</span>
                     <blockquote class="quote-content">"L'architecture intérieure utilise les matériaux comme des éléments de langage à part entière."</blockquote>
                     <div class="quote-rating">★★★★★</div>
                 </div>
 
-                <div class="quote-card">
+                <div class="quote-card reveal">
                     <span class="quote-source">BLOOMBERG</span>
                     <blockquote class="quote-content">"Le Bradford est devenu un indicateur de la santé du marché de l'hospitalité ultra-premium. Une performance insolente."</blockquote>
                     <div class="quote-rating">★★★★★</div>
@@ -8091,7 +8091,7 @@ function renderPressMentions() {
 
             <div class="press-logo-wall">
                 <div class="logo-wall-header">OFFICIAL PARTNERS & MEDIA</div>
-          <div class="logo-grid">
+          <div class="logo-grid reveal">
     <span>FORBES</span>
     <span>VOGUE</span>
     <span>NY TIMES</span>
@@ -8128,6 +8128,19 @@ function renderPressMentions() {
 
     APP_CONTENT.innerHTML = pressHTML;
     window.scrollTo(0, 0);
+        // --- BLOC ANIMATION SCROLL ---
+    requestAnimationFrame(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
 }
 
 
