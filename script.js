@@ -5636,7 +5636,7 @@ function renderEventPage() {
 
             <div class="artist-timeline-display" style="max-width:1000px; margin: 0 auto;">
                 ${filteredEvents.length > 0 ? filteredEvents.map(ev => `
-                    <div class="artist-card-exclusive">
+                    <div class="artist-card-exclusive reveal">
                         <div class="city-badge-vertical">${ev.ville}</div>
                         <div class="artist-content">
                             <span style="color:var(--gold); font-size:0.65rem; font-weight:bold; letter-spacing:2px;">${ev.jour} ${ev.date.split('-')[2]} / ${ev.date.split('-')[1]}</span>
@@ -5663,6 +5663,19 @@ function renderEventPage() {
     `;
 
     APP_CONTENT.innerHTML = html;
+    // --- BLOC ANIMATION SCROLL ---
+    requestAnimationFrame(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
 }
 
 
