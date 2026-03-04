@@ -6961,7 +6961,7 @@ function renderFAQPage() {
                     <div class="faq-group">
                         <h2 class="faq-cat-title">${section.category}</h2>
                         ${section.questions.map((item, qIdx) => `
-                            <div class="faq-item" data-search="${item.q.toLowerCase()}">
+                            <div class="faq-item reveal" data-search="${item.q.toLowerCase()}">
                                 <button class="faq-trigger" onclick="handleFaqToggle(${sIdx}, ${qIdx})">
                                     <span>${item.q}</span>
                                     <div class="cross-icon" id="icon-${sIdx}-${qIdx}"></div>
@@ -6988,6 +6988,19 @@ function renderFAQPage() {
         </div>
     `;
     window.scrollTo(0, 0);
+        // --- BLOC ANIMATION SCROLL ---
+    requestAnimationFrame(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
 }
 
 // LOGIQUE ACCORDEON - PROPRE ET ROBUSTE
