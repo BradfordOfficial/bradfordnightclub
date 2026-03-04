@@ -920,9 +920,10 @@ window.confirmBottleOrder = function(bottleName) {
                     <p style="margin-bottom:10px;"><b style="color:var(--gold);">03.</b> UNE PIÈCE D'IDENTITÉ EST REQUISE.</p>
                 </div>
 
-  <button class="cta-button" onclick="window.scrollTo(0,0); navigate('home')" style="width:100%; max-width:350px; background:var(--gold); color:#000; font-weight:bold; height:50px; margin-top:20px; border:none; cursor:pointer;">
+ <button class="cta-button" onclick="window.scrollTo(0,0); navigate('home')" style="width:100%; max-width:350px; background:var(--gold); color:#000; font-weight:bold; height:50px; margin-top:20px; border:none; cursor:pointer; margin-left:auto; margin-right:auto; display:block;">
     BACK TO CLUB HOME
 </button>
+
 
             </div>
         `;
