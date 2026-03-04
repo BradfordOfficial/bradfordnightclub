@@ -1203,7 +1203,7 @@ text-shadow: 0 10px 40px rgba(0,0,0,0.8);
                     observer.unobserve(entry.target); 
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.3 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     });
