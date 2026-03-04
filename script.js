@@ -716,7 +716,7 @@ function renderBottleMenuPage(filterCategory = 'all', sortBy = 'default') {
             if (sortBy === 'desc') items.sort((a, b) => b.price - a.price);
 
             html += `<h2 class="section-header">${category.toUpperCase()}</h2>`;
-            html += `<div class="menu-grid">`;
+            html += `<div class="menu-grid reveal">`;
 
             items.forEach(item => {
                 const isLimited = item.isLimited;
@@ -726,7 +726,7 @@ function renderBottleMenuPage(filterCategory = 'all', sortBy = 'default') {
                 
                 
 html += `
-    <div class="menu-item-card ${isLimited ? 'premium-limited-card' : ''}" 
+    <div class="menu-item-card reveal ${isLimited ? 'premium-limited-card' : ''}" 
          onclick="showFinalPriceAlert('${item.name}', ${basePrice}, ${finalPrice})">
         
         ${isLimited ? `
@@ -759,6 +759,19 @@ html += `
         }
     }
     APP_CONTENT.innerHTML = html;
+    // --- BLOC ANIMATION SCROLL ---
+    requestAnimationFrame(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
 }
 
 // Fonction indispensable pour que le changement de select relance la page
