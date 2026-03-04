@@ -2616,7 +2616,7 @@ function renderPrestigeAddons() {
         html += `<h2 style="font-family:'Cinzel'; font-size:0.9rem; letter-spacing:6px; color:#444; margin:70px 0 25px 0; border-bottom:1px solid #111; padding-bottom:15px;">${section}</h2>`;
         items.forEach(item => {
             html += `
-            <div class="addon-card-refined" id="item-${item.id}">
+            <div class="addon-card-refined reveal" id="item-${item.id}">
                 <div class="trigger-zone" onclick="toggleServiceSelection('${item.id}', '${item.name}', ${item.price})">
                     <div style="display:flex; align-items:center;">
                         <div class="check-circle"></div>
@@ -2639,6 +2639,19 @@ function renderPrestigeAddons() {
     }
     html += `</div>`;
     APP_CONTENT.innerHTML = html;
+        // --- BLOC ANIMATION SCROLL ---
+    requestAnimationFrame(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.3 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
 }
 
 function toggleDrawer(id) {
