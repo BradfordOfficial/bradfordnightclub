@@ -1159,6 +1159,14 @@ header.reduced .brd-night {
     .artist-essential-meta {
         text-align: center; /* Aligné avec le titre */
     }
+    .wiki-brand-title {
+    font-size: 3.5rem;   
+    
+}
+.wiki-brand-subtitle {
+    font-size: 3rem;   
+    
+}
 }
 
 
