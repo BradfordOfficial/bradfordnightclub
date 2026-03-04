@@ -6000,7 +6000,7 @@ function renderDressCodePage() {
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 }); 
+        }, { threshold: 0.3 }); 
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     });
