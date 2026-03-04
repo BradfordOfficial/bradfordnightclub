@@ -1393,7 +1393,8 @@ body {
     padding: 35px 30px 25px; 
     
     /* Design Tranchant et Réfléchissant */
-    background: linear-gradient(145deg, rgba(15, 25, 45, 0.95), rgba(5, 10, 20, 0.98)); /* Gradient de fond subtil */
+    background: transparent !important;
+
     backdrop-filter: blur(15px) saturate(150%); /* Blur extrême pour le luxe */
     border: 1px solid rgba(212, 175, 55, 0.15); /* Bordure Gold subtile */
     border-radius: 0; /* AUCUN ARRONDISSEMENT (Tranchant) */
