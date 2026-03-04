@@ -914,13 +914,13 @@ window.confirmBottleOrder = function(bottleName) {
                     </div>
                 </div>
 
-                <div style="max-width:350px; margin:30px auto; text-align:left; font-size:0.7rem; color:rgba(255,255,255,0.7); border-left:1px solid var(--gold); padding-left:20px;">
+                <div style="max-width:350px; margin:60px auto; text-align:left; font-size:0.7rem; color:rgba(255,255,255,0.7); border-left:1px solid var(--gold); padding-left:20px;">
                     <p style="margin-bottom:10px;"><b style="color:var(--gold);">01.</b> PRÉSENTEZ CE QR CODE AU COMPTOIR VIP HOST.</p>
                     <p style="margin-bottom:10px;"><b style="color:var(--gold);">02.</b> VOTRE TABLE SERA DRESSÉE À VOTRE ARRIVÉE.</p>
                     <p style="margin-bottom:10px;"><b style="color:var(--gold);">03.</b> UNE PIÈCE D'IDENTITÉ EST REQUISE.</p>
                 </div>
 
- <button class="cta-button" onclick="window.scrollTo(0,0); navigate('home')" style="width:100%; max-width:350px; background:var(--gold); color:#000; font-weight:bold; height:50px; margin-top:20px; border:none; cursor:pointer; margin-left:auto; margin-right:auto; display:block;">
+ <button class="cta-button" onclick="window.scrollTo(0,0); navigate('home')" style="width:100%; max-width:350px; background:var(--gold); color:#000; font-weight:bold; height:50px; margin-top:60px; border:none; cursor:pointer; margin-left:auto; margin-right:auto; display:block;">
     BACK TO CLUB HOME
 </button>
 
