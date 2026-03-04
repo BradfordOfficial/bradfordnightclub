@@ -1668,6 +1668,74 @@ body {
     from { opacity: 0; transform: translateY(-50px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+
+/* ========================================================= */
+/* VIII. RESPONSIVE PROTOCOL (TABLETTE & DESKTOP)           */
+/* ========================================================= */
+
+/* --- PALIER 768px (Tablettes / iPad Portrait) --- */
+@media screen and (max-width: 1023px) and (min-width: 768px) {
+    .protocol-container {
+        max-width: 600px; /* On élargit un peu par rapport au mobile */
+        margin: 50px auto;
+        padding: 40px;
+    }
+
+    .protocol-container h2 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .protocol-container button[type="submit"] {
+        width: 100%; /* Bouton plein écran sur tablette pour le confort */
+        float: none;
+    }
+}
+
+/* --- PALIER 1024px (Laptops / Desktop / iPad Paysage) --- */
+@media screen and (min-width: 1024px) {
+    .protocol-container {
+        max-width: 800px; /* Format "Fiche Technique" large */
+        margin: 60px auto;
+        padding: 60px;
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* On passe en 2 colonnes pour les inputs */
+        column-gap: 40px;
+    }
+
+    /* Le titre et le bouton de fin prennent toute la largeur (2 colonnes) */
+    .protocol-container h2, 
+    .protocol-container .rating,
+    .protocol-container button[type="submit"],
+    .protocol-container .membership-fee-display {
+        grid-column: span 2;
+    }
+
+    .protocol-container h2 {
+        font-size: 2rem;
+        margin-bottom: 50px;
+        text-align: center;
+    }
+
+    .protocol-container button[type="submit"] {
+        width: 300px; /* Bouton imposant centré */
+        margin: 40px auto 0;
+        float: none;
+        display: block;
+    }
+
+    /* La modale sur grand écran */
+    .vip-modal-content {
+        max-width: 700px;
+        margin: 2% auto;
+    }
+
+    .fee-value {
+        font-size: 4rem; /* Impact maximal du prix sur ordi */
+    }
+}
+
 /* ========================================================== */
 /* SECTION 1: VARIABLES ET RESET MOBILE-FIRST       */
 /* ========================================================== */
