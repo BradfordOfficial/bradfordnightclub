@@ -1123,11 +1123,11 @@ function renderHomePage() {
                 <h3 class="item-name" style="color: var(--teal);">Heures d'Ouverture</h3>
                 <p>Queue dès 23:30. Ouverture des portes à 00:00. L'entrée peut être limitée après 02:00.</p>
             </div>
-            <div class="menu-item-card">
+            <div class="menu-item-card reveal">
                 <h3 class="item-name" style="color: var(--teal);">Service Obligatoire</h3>
                 <p>Une charge de service de 20% est automatiquement appliquée au sous-total de toutes les commandes (bottles, add-ons).</p>
             </div>
-            <div class="menu-item-card">
+            <div class="menu-item-card reveal">
                 <h3 class="item-name" style="color: var(--teal);">Min Spend / Table</h3>
                 <p>Minimum Bottle Spend obligatoire. $3000 (Jeu/Dim) et $5000 (Ven/Sam) pour sécuriser la table.</p>
             </div>
