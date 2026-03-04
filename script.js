@@ -7454,7 +7454,7 @@ function renderEntryPolicy() {
                     observer.unobserve(entry.target); 
                 }
             });
-        }, { threshold: 0.1 }); 
+        }, { threshold: 0.3 }); 
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     });
@@ -7540,7 +7540,7 @@ function renderVIPPolicy() {
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 }); 
+        }, { threshold: 0.3 }); 
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     });
@@ -7634,7 +7634,7 @@ function renderBottleRequirements() {
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.3 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     });
@@ -7736,7 +7736,7 @@ function renderHouseRules() {
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.3 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     });
