@@ -1702,6 +1702,8 @@ body {
         font-size: 1.2rem; /* Plus gros, plus "Authority" */
         padding: 15px;
     }
+    .protocol-container h2 { text-align: center !important; width: 100%; }
+
 
     /* Centrage des Étoiles (Rating) */
     .rating {
@@ -1745,6 +1747,8 @@ body {
         font-size: 2.5rem; /* Titre massif */
         margin-bottom: 60px;
     }
+    .protocol-container label { text-align: center !important; display: block; }
+
 
     .protocol-container input,
     .protocol-container textarea {
