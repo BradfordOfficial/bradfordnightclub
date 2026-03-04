@@ -1509,7 +1509,7 @@ detailPage.innerHTML = `
                 </section>
 
                 <section class="wiki-text-section">
-                    <h2 class="section-heading">BIOGRAPHIE</h2>
+                    <h2 class="section-heading">L'ARTISTE</h2>
                     <p class="wiki-main-text">${bioWiki}</p>
                 </section>
 
