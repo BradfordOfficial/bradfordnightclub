@@ -1106,7 +1106,7 @@ function renderHomePage() {
 
     <h2 class="section-header">RÈGLES D'ACCÈS ET DE RÉSERVATION</h2>
         <div class="menu-grid">
-            <div class="menu-item-card">
+            <div class="menu-item-card reveal">
                 <h3 class="item-name" style="color: var(--teal);">Heures d'Ouverture</h3>
                 <p>Queue dès 23:30. Ouverture des portes à 00:00. L'entrée peut être limitée après 02:00.</p>
             </div>
@@ -1181,6 +1181,19 @@ text-shadow: 0 10px 40px rgba(0,0,0,0.8);
 
 
 `;
+    // --- BLOC ANIMATION SCROLL ---
+    requestAnimationFrame(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    });
 
 }
 
