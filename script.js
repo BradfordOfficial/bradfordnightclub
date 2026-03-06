@@ -5169,7 +5169,7 @@ function pushReview() {
 
     const cityMap = { 
         "MIAMI": "MIA", 
-        "NEW YORK CITY": "NY", 
+        "NEW YORK": "NY", 
         "LOS ANGELES": "LA", 
         "SAN FRANCISCO": "SF" 
     };
