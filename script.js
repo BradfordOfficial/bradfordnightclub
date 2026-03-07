@@ -1474,7 +1474,7 @@ detailPage.innerHTML = `
 
                     <div class="infocard-group" style="border-top: 0.5px solid #1a1a1a; padding-top: 15px;">
                         <div class="infocard-row">
-                            <span class="label">Activité</span>
+                            <span class="label">Né(e)</span>
                             <span class="val">${activite}</span>
                         </div>
                         <div class="infocard-row">
