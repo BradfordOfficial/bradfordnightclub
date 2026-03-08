@@ -132,6 +132,247 @@
     <a href="#" class="overlay-link" onclick="closeAndNav('reservations')" style="color:var(--gold); border:1px solid var(--gold); padding:10px 30px; border-radius:40px; margin-top:10px;">RESERVE</a>
 </div>
 
+    <div id="bradford-premium-overlay" style="display:none; opacity:0;"></div>
+
+<style>
+/* DESIGN SYSTEM - BRADFORD S.F. LUXURY 
+   Apparence Pop-up Modale / Glassmorphism
+*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500&display=swap');
+
+:root {
+    --gold-premium: #D4AF37;
+    --bg-dark: rgba(8, 8, 8, 0.98);
+    --border-white: rgba(255, 255, 255, 0.08);
+    --text-muted: #666;
+}
+
+#bradford-premium-overlay {
+    position: fixed;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background: radial-gradient(circle at center, rgba(15,15,15,0.95) 0%, #000 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 10000;
+    display: none; /* Piloté par le JS */
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Inter', sans-serif;
+    overflow-y: auto; /* Permet le scroll interne si petit écran */
+}
+
+.alert-card {
+    position: relative;
+    width: calc(100% - 30px); /* Laisse 15px de chaque côté sur mobile */
+    max-width: 550px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-white);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.9), inset 0 0 40px rgba(212, 175, 55, 0.03);
+    transform: translateY(40px) scale(0.98);
+    transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    color: #fff;
+    margin: auto;
+    box-sizing: border-box; /* Empêche le padding de faire déborder la carte */
+    overflow: hidden; /* Coupe tout ce qui dépasse (laser line) */
+}
+
+
+/* État d'activation déclenché par la classe .active */
+#bradford-premium-overlay.active .alert-card {
+    transform: translateY(0) scale(1);
+}
+
+.laser-line {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-premium), transparent);
+    animation: scanLine 3s ease-in-out infinite;
+}
+@keyframes scanLine { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+.close-trigger {
+    position: absolute;
+    top: 20px; right: 20px;
+    width: 30px; height: 30px;
+    cursor: pointer; opacity: 0.5; transition: 0.3s; z-index: 10;
+}
+.close-trigger:hover { opacity: 1; transform: rotate(90deg); }
+.close-trigger::before, .close-trigger::after {
+    content: ''; position: absolute; top: 15px; left: 7px; width: 15px; height: 1px; background: #fff;
+}
+.close-trigger::before { transform: rotate(45deg); }
+.close-trigger::after { transform: rotate(-45deg); }
+
+.alert-header { padding: 50px 40px 30px; text-align: center; }
+.badge {
+    color: var(--gold-premium); font-size: 10px; letter-spacing: 5px;
+    text-transform: uppercase; border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 6px 12px; margin-bottom: 25px; display: inline-block;
+}
+
+.alert-body { padding: 0 50px 40px; }
+.maintenance-box {
+    background: rgba(255,255,255,0.02); border-left: 2px solid var(--gold-premium);
+    padding: 25px; margin: 30px 0;
+}
+
+.date-row { display: flex; justify-content: space-between; margin-top: 15px; gap: 15px; }
+.date-box { flex: 1; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px; }
+.date-label { color: var(--gold-premium); font-size: 9px; text-transform: uppercase; letter-spacing: 1px; }
+.date-value { font-size: 0.85rem; color: #ddd; display: block; margin-top: 4px; }
+
+/* Accordéon Juridique */
+.legal-accordion { border-top: 1px solid rgba(255,255,255,0.05); margin-top: 20px; }
+.legal-btn {
+    width: 100%; background: none; border: none; padding: 15px 0;
+    color: #444; font-size: 0.75rem; text-align: left; cursor: pointer;
+    display: flex; justify-content: space-between; text-transform: uppercase; transition: 0.3s;
+}
+.legal-btn:hover { color: #888; }
+.legal-content { max-height: 0; overflow: hidden; transition: all 0.4s ease; color: #555; font-size: 0.75rem; line-height: 1.5; }
+
+.btn-action {
+    width: 100%; padding: 25px; background: none; border: none;
+    border-top: 1px solid var(--border-white); color: #fff;
+    font-size: 11px; letter-spacing: 6px; text-transform: uppercase;
+    cursor: pointer; transition: all 0.5s;
+}
+.btn-action:hover { background: #fff; color: #000; }
+
+/* Adaptations spécifiques pour Mobile (iPhone 13, etc.) */
+@media (max-width: 480px) {
+    .alert-header { padding: 40px 20px 20px; }
+    .alert-body { padding: 0 20px 30px; }
+    
+    .alert-title {
+        font-size: 1.8rem !important; /* Titre un peu plus petit sur iPhone */
+    }
+    
+    .date-row {
+        flex-direction: column; /* On empile les dates au lieu de les mettre côte à côte */
+        gap: 10px;
+    }
+    
+    .date-box {
+        padding-bottom: 10px;
+    }
+
+    .badge {
+        letter-spacing: 2px; /* Réduit l'espacement trop large sur petit écran */
+        font-size: 8px;
+    }
+}
+
+/* Fix pour éviter tout scroll horizontal sur le body */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+</style>
+
+<script>
+/**
+ * BRADFORD S.F. - LOGIQUE D'INJECTION OFFICIELLE
+ */
+
+function triggerBradfordAlert() {
+    const overlay = document.getElementById('bradford-premium-overlay');
+    
+    // Injection dynamique du contenu (comme ton modèle Peggy Gou)
+    overlay.innerHTML = `
+        <div class="alert-card">
+            <div class="laser-line"></div>
+            <div class="close-trigger" onclick="closeBradfordAlert()"></div>
+            
+            <div class="alert-header">
+                <div class="badge">Institutional Protocol</div>
+                <h2 style="font-size: 2.4rem; font-weight: 100; letter-spacing: -1px; margin: 15px 0;">SAN FRANCISCO</h2>
+                <p style="color: #666; font-size: 0.8rem; letter-spacing: 2px;">STRUCTURAL UPGRADE • MARCH 12-19</p>
+            </div>
+
+            <div class="alert-body">
+                <p style="font-weight: 300; line-height: 1.7; color: #aaa;">
+                    Le Bradford San Francisco sera inaccessible au public pour <strong>une phase d'optimisation structurelle.</strong> Aucun événement ne sera assuré durant cette période technique obligatoire
+                </p>
+
+                <div class="maintenance-box">
+                    <span style="font-size: 0.8rem; color: #eee; font-weight: 500;">PÉRIODE D'INTERRUPTION :</span>
+                    <div class="date-row">
+                        <div class="date-box">
+                            <span class="date-label">Fermeture technique</span>
+                            <span class="date-value">Jeudi 12 Mars - 00:00</span>
+                        </div>
+                        <div class="date-box">
+                            <span class="date-label">Réouverture officielle</span>
+                            <span class="date-value">Jeudi 19 Mars - 00:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legal-accordion">
+                    <div class="legal-item">
+                        <button class="legal-btn" onclick="toggleLegal(this)">I. RÉSERVATIONS ET TABLES VIP <span>+</span></button>
+                        <div class="legal-content">
+                            <p style="padding-bottom:15px;">Toutes les réservations prévues entre le 12 et le 15 mars sont annulées de plein droit. Les accès seront rétablis dès la réouverture officielle selon le calendrier habituel.</p>
+                        </div>
+                    </div>
+                    <div class="legal-item">
+                        <button class="legal-btn" onclick="toggleLegal(this)">II. ENGAGEMENT QUALITÉ <span>+</span></button>
+                        <div class="legal-content">
+                            <p style="padding-bottom:15px;">Cette interruption permet la mise aux normes des infrastructures sonores et la reconfiguration des espaces. Le club reprendra son exploitation standard dès la fin de l'intervention.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-action" onclick="closeBradfordAlert()">COMPRENDRE ET ACCÉDER AU MENU</button>
+        </div>
+    `;
+
+    // Logique d'affichage (Display puis Opacité pour l'animation)
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Bloque le scroll du site en fond
+
+    setTimeout(() => {
+        overlay.style.opacity = "1";
+        overlay.classList.add('active');
+    }, 100);
+}
+
+// Logique accordéon
+function toggleLegal(btn) {
+    const content = btn.nextElementSibling;
+    const isOpened = content.style.maxHeight !== "0px" && content.style.maxHeight !== "";
+    
+    // Ferme les autres
+    document.querySelectorAll('.legal-content').forEach(c => c.style.maxHeight = "0px");
+    
+    // Ouvre le sélectionné
+    content.style.maxHeight = isOpened ? "0px" : content.scrollHeight + "px";
+}
+
+// Fonction de fermeture
+function closeBradfordAlert() {
+    const overlay = document.getElementById('bradford-premium-overlay');
+    overlay.style.opacity = "0";
+    overlay.classList.remove('active');
+    
+    setTimeout(() => {
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Rend le scroll au site
+    }, 600);
+}
+
+// Lancement automatique
+window.addEventListener('DOMContentLoaded', triggerBradfordAlert);
+</script>
+
+
 <!-- HERO VIDEO VIP -->
 <div class="hero-video-container" id="heroVideo">
   <video autoplay muted loop playsinline preload="metadata" class="hero-video" id="heroVid">
