@@ -1217,29 +1217,25 @@ const dateActuelle = new Date();
 
 // --- BASE DE DONNÉES COMPLÈTE DES ÉVÉNEMENTS ---
 const donneesEvenements = [
-  // --- JEUDI 05 MARS 2026 ---
-    { date: '2026-03-05', jour: 'JEU.', ville: 'LA', artiste: 'BABYFACE RAY', details: 'Detroit Wave (Face Card Showcase - $90)' },
-    { date: '2026-03-05', jour: 'JEU.', ville: 'MIAMI', artiste: 'LIL YACHTY', details: 'Concrete Boys Takeover (Psych-Trap Showcase - Accès restreint)' },
-    { date: '2026-03-05', jour: 'JEU.', ville: 'NYC', artiste: 'KEHLANI', details: 'Crash Night (Alternative R&B Showcase - $90)' },
-    { date: '2026-03-05', jour: 'JEU.', ville: 'SF', artiste: 'MARCEL DETTMANN', details: 'Berghain Vibe (Pure Techno Set - $90)' },
+     // --- JEUDI 12 MARS 2026 ---
+    { date: '2026-03-12', jour: 'JEU.', ville: 'LA', artiste: 'LIL TAY', details: 'The Money Way (Pop/Rap Showcase - $90)' },
+    { date: '2026-03-12', jour: 'JEU.', ville: 'MIAMI', artiste: 'BRYSON TILLER', details: 'Bryson Tiller Tour (Trap Soul Night - Accès restreint)' },
+    { date: '2026-03-12', jour: 'JEU.', ville: 'NYC', artiste: 'JOEY BADA$$', details: 'Pro Era Takeover (Boom Bap Revival - $90)' },
 
-    // --- VENDREDI 06 MARS 2026 ---
-    { date: '2026-03-06', jour: 'VEN.', ville: 'LA', artiste: 'SCHOOLBOY Q', details: 'Blue Lips Live (TDE West Coast Rap - Accès restreint)' },
-    { date: '2026-03-06', jour: 'VEN.', ville: 'MIAMI', artiste: 'RICK ROSS', details: 'MMG Mansion Party (Luxury Rap Showcase - Accès sur liste VIP uniquement)' },
-    { date: '2026-03-06', jour: 'VEN.', ville: 'NYC', artiste: 'GLORILLA', details: 'TGIF Night (Memphis Street Rap - $90)' },
-    { date: '2026-03-06', jour: 'VEN.', ville: 'SF', artiste: 'DAVE TIHL', details: 'Electronic Underground (Dark Techno / Industrial - $90)' },
+    // --- VENDREDI 13 MARS 2026 ---
+    { date: '2026-03-13', jour: 'VEN.', ville: 'LA', artiste: 'TYRESE HALIBURTON & FRIENDS', details: 'Indy in LA (Hoops & Hip-Hop Party - Accès sur liste VIP uniquement)' },
+    { date: '2026-03-13', jour: 'VEN.', ville: 'MIAMI', artiste: 'SEXTON', details: 'Miami Vibes (R&B/Pop Showcase - $90)' },
+    { date: '2026-03-13', jour: 'VEN.', ville: 'NYC', artiste: 'A$AP FERG', details: 'Trap Lord Resurrection (Harlem Energy - Accès restreint)' },
 
-    // --- SAMEDI 07 MARS 2026 ---
-    { date: '2026-03-07', jour: 'SAM.', ville: 'LA', artiste: 'LUCKY DAYE', details: 'Algorithm Tour (Modern Soul/R&B - $90)' },
-    { date: '2026-03-07', jour: 'SAM.', ville: 'MIAMI', artiste: 'DJ SNAKE', details: 'Pardon My French (Global EDM/Bass Set - Accès sur liste VIP uniquement)' },
-    { date: '2026-03-07', jour: 'SAM.', ville: 'NYC', artiste: 'TEE GRIZZLEY', details: 'Chapters of the Trenches (Detroit Storytelling - $90)' },
-    { date: '2026-03-07', jour: 'SAM.', ville: 'SF', artiste: 'REZZ', details: 'Hypnovizion Night (Mid-Tempo Bass / Dark EDM - Accès restreint)' },
+    // --- SAMEDI 14 MARS 2026 ---
+    { date: '2026-03-14', jour: 'SAM.', ville: 'LA', artiste: 'MUSTARD', details: 'Faith of a Mustard Seed (West Coast Beats - $90)' },
+    { date: '2026-03-14', jour: 'SAM.', ville: 'MIAMI', artiste: 'JACK HARLOW', details: 'Louisville Slugger (Pop-Rap Showcase - Accès sur liste VIP uniquement)' },
+    { date: '2026-03-14', jour: 'SAM.', ville: 'NYC', artiste: 'H.E.R.', details: 'Lights On Festival (Soul/R&B Live - Accès restreint)' },
 
-    // --- DIMANCHE 08 MARS 2026 ---
-    { date: '2026-03-08', jour: 'DIM.', ville: 'LA', artiste: 'VINCE STAPLES', details: 'Dark Times Live (Experimental Rap - $90)' },
-    { date: '2026-03-08', jour: 'DIM.', ville: 'MIAMI', artiste: 'DENZEL CURRY', details: 'Melt My Eyez (Florida Raw Rap Showcase - Accès restreint)' },
-    { date: '2026-03-08', jour: 'DIM.', ville: 'NYC', artiste: 'JID', details: 'Forever & A Day (Lyrical Rap Showcase - $90)' },
-    { date: '2026-03-08', jour: 'DIM.', ville: 'SF', artiste: 'ZEDS DEAD', details: 'Deadbeats Club Set (Dubstep/Bass Music - $90)' }
+    // --- DIMANCHE 15 MARS 2026 ---
+    { date: '2026-03-15', jour: 'DIM.', ville: 'LA', artiste: 'EARL SWEATSHIRT', details: 'Voir Dire Live (Abstract Hip-Hop - $90)' },
+    { date: '2026-03-15', jour: 'DIM.', ville: 'MIAMI', artiste: 'GUCCI MANE', details: '1017 Records Night (Trap Legend Showcase - Accès restreint)' },
+    { date: '2026-03-15', jour: 'DIM.', ville: 'NYC', artiste: 'SZA', details: 'SOS Deluxe Session (R&B Perfection - Accès sur liste VIP uniquement)' }
 ];
 
 
