@@ -1132,6 +1132,11 @@ function renderHomePage() {
                 <h3 class="item-name" style="color: var(--teal);">Min Spend / Table</h3>
                 <p>Minimum Bottle Spend obligatoire. $3000 (Jeu/Dim) et $5000 (Ven/Sam) pour sécuriser la table.</p>
             </div>
+            <div class="menu-item-card reveal">
+    <h3 class="item-name" style="color: var(--teal);">Contrôle d'Identité</h3>
+    <p>Accès strictement réservé aux personnes de 21 ans et plus. Une pièce d'identité originale et valide est exigée à l'entrée (pas de photocopies).</p>
+</div>
+
         </div>
 
         
