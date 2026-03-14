@@ -7872,8 +7872,8 @@ function renderAboutBradford() {
 function renderGuestGuidelines() {
     APP_CONTENT.innerHTML = `
         <div class="luxury-container fade-in">
-            <h1 class="title-page">EXCLUSIVE GUEST GUIDELINES</h1>
-            <p class="subtitle-page">LE PACTE D'EXCELLENCE DE NOTRE ÉLITE CLIENTÈLE</p>
+            <h1 class="title-page reveal">EXCLUSIVE GUEST GUIDELINES</h1>
+            <p class="subtitle-page reveal">LE PACTE D'EXCELLENCE DE NOTRE ÉLITE CLIENTÈLE</p>
 
             <div class="bento-protocol-body">
                 
