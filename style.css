@@ -4578,14 +4578,18 @@ h1.tit-page:first-of-type {
 
 @media (min-width: 1024px) {
     .location-container {
-        max-width: 1000px !important; /* On s'élargit sur PC pour voir les 4 villes */
+        max-width: 1000px !important; 
+        /* AJOUT ICI : Centre le bloc entier sur l'écran */
+        margin: 0 auto; 
     }
     .location-grid {
-        grid-template-columns: repeat(2, 1fr); /* On reste sur 2x2 c'est plus massif */
+        grid-template-columns: repeat(2, 1fr); 
         gap: 30px;
     }
     .location-title { font-size: 2.5rem; }
 }
+
+
 
 /* --- PAGE ENTRY POLICY - VERSION ELITE --- */
 .policy-page {
