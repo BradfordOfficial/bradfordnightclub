@@ -2647,76 +2647,30 @@ body {
     border-radius: 50%;
 }
 
-/* ========================================================= */
-/* RESPONSIVE QUANTUM NAV (TABLETTE & DESKTOP)              */
-/* ========================================================= */
-
+/* --- TABLETTE (Zoom 1.4x) --- */
 @media screen and (min-width: 768px) {
     #quantum-nav-container {
-        /* On donne plus de hauteur pour que le grand cercle respire */
-        height: 450px !important; 
-        margin-top: -150px !important; /* On ajuste le décalage pour le grand format */
-        margin-bottom: 100px !important;
+        height: 400px !important; /* On augmente juste le conteneur pour laisser la place au zoom */
+        margin-top: -180px !important;
     }
-
+    
     #quantum-orbit {
-        /* On agrandit l'orbite principale */
-        width: 450px;
-        height: 450px;
-    }
-
-    .nav-node {
-        /* On grossit un peu les planètes (boutons) */
-        width: 70px;
-        height: 70px;
-    }
-
-    .nav-node::after {
-        /* Labels plus lisibles */
-        font-size: 12px;
-        top: 80px;
-    }
-
-    .core-ring {
-        /* Le soleil central devient plus imposant */
-        width: 180px;
-        height: 180px;
+        transform: scale(1.4); /* Zoom global de 40% */
     }
 }
 
+/* --- ORDINATEUR (Zoom 1.8x) --- */
 @media screen and (min-width: 1024px) {
     #quantum-nav-container {
-        height: 550px !important;
+        height: 500px !important; 
         margin-top: -100px !important;
     }
-
+    
     #quantum-orbit {
-        /* Taille maximale pour un effet "Wow" sur PC */
-        width: 550px;
-        height: 550px;
-    }
-
-    .nav-node {
-        width: 85px;
-        height: 85px;
-    }
-
-    .nav-node i {
-        font-size: 1.5rem; /* Si tu as des icônes à l'intérieur */
-    }
-
-    .nav-node::after {
-        font-size: 13px;
-        top: 100px;
-        letter-spacing: 3px;
-    }
-
-    .core-ring {
-        width: 220px;
-        height: 220px;
-        border-width: 3px; /* Bordure plus épaisse pour le luxe */
+        transform: scale(1.8); /* Zoom global de 80% */
     }
 }
+
 
 
 #neural-event-engine {
