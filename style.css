@@ -845,6 +845,66 @@ header.reduced .brd-night {
     color: var(--couleur-texte-clair);
     opacity: 0.5;
 }
+/* ========================================================= */
+/* IX. RESPONSIVE DESIGN (TABLETTE & DESKTOP)               */
+/* ========================================================= */
+
+/* --- TABLETTE (768px et plus) --- */
+@media screen and (min-width: 768px) {
+    #evenement-widget {
+        max-width: 700px; /* On élargit le conteneur */
+        padding: 40px;
+        margin: 4rem auto;
+    }
+
+    #widget-title {
+        font-size: 1.5rem; /* Titre plus imposant */
+        margin-bottom: 35px;
+    }
+
+    #evenement-liste {
+        max-height: 500px; /* Plus d'espace de lecture */
+    }
+
+    .evenement-item {
+        padding: 25px;
+        margin-bottom: 20px;
+    }
+}
+
+/* --- ORDINATEUR (1024px et plus) --- */
+@media screen and (min-width: 1024px) {
+    #evenement-widget {
+        max-width: 950px; /* Largeur optimale pour desktop */
+        padding: 50px;
+    }
+
+    /* Transformation de la liste en GRILLE pour remplir l'espace */
+    #evenement-liste {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Deux colonnes d'événements */
+        gap: 20px; /* Espace entre les colonnes */
+        max-height: none; /* On laisse le widget respirer sur grand écran */
+        padding-right: 0;
+    }
+
+    .evenement-item {
+        margin-bottom: 0; /* Géré par le gap de la grille */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .evenement-item strong {
+        font-size: 1.3rem; /* Artiste plus visible */
+    }
+
+    #widget-title {
+        font-size: 1.8rem;
+        letter-spacing: 5px;
+    }
+}
+
 
 /* --- VARIABLES DE COULEURS PREMIUM (Ajoutez-les au début de votre fichier CSS si elles n'existent pas) --- */
 :root {
