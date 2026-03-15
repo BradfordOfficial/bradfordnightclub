@@ -2647,35 +2647,7 @@ body {
     border-radius: 50%;
 }
 
-/* --- TABLETTE --- */
-@media screen and (min-width: 768px) {
-    #quantum-nav-container {
-        height: 500px !important; 
-        margin-top: -150px !important;
-    }
-    
-    #quantum-orbit {
-        /* On passe de 300 à 450px : tout va suivre à l'intérieur */
-        width: 450px !important;
-        height: 450px !important;
-        zoom: 1.3; /* Deuxième sécurité pour forcer la grosseur sur certains navigateurs */
-    }
-}
 
-/* --- ORDINATEUR --- */
-@media screen and (min-width: 1024px) {
-    #quantum-nav-container {
-        height: 650px !important; 
-        margin-top: -100px !important;
-    }
-    
-    #quantum-orbit {
-        /* On passe de 300 à 600px : c'est DEUX FOIS plus gros que sur mobile */
-        width: 600px !important;
-        height: 600px !important;
-        zoom: 1.6; /* Force l'agrandissement global sans casser tes réglages */
-    }
-}
 
 
 
