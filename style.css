@@ -3147,6 +3147,19 @@ body {
 .data-node { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 2px; color: #444; }
 .data-node b { color: #D4AF37; }
 
+/* --- Ajustement Centrage (Tablette & Ordi) --- */
+@media screen and (min-width: 768px) {
+    .live-data-hub {
+        /* On force le contenu à se mettre au centre mort de la bande */
+        justify-content: center; 
+        
+        /* On empêche le défilement horizontal inutile sur grand écran */
+        overflow-x: hidden; 
+        
+        /* On centre les textes s'ils passent sur plusieurs lignes */
+        text-align: center;
+    }
+}
 
 
 /* FILTRAGE PRO (REDIMENSIONNÉ & EMBELLI) */
