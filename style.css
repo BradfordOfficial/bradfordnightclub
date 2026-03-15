@@ -2647,29 +2647,36 @@ body {
     border-radius: 50%;
 }
 
-/* --- TABLETTE (Zoom 1.4x) --- */
+/* --- TABLETTE --- */
 @media screen and (min-width: 768px) {
     #quantum-nav-container {
-        height: 400px !important; /* On augmente juste le conteneur pour laisser la place au zoom */
-        margin-top: -180px !important;
+        height: 500px !important; 
+        margin-top: -150px !important;
     }
     
     #quantum-orbit {
-        transform: scale(1.4); /* Zoom global de 40% */
+        /* On passe de 300 à 450px : tout va suivre à l'intérieur */
+        width: 450px !important;
+        height: 450px !important;
+        zoom: 1.3; /* Deuxième sécurité pour forcer la grosseur sur certains navigateurs */
     }
 }
 
-/* --- ORDINATEUR (Zoom 1.8x) --- */
+/* --- ORDINATEUR --- */
 @media screen and (min-width: 1024px) {
     #quantum-nav-container {
-        height: 500px !important; 
+        height: 650px !important; 
         margin-top: -100px !important;
     }
     
     #quantum-orbit {
-        transform: scale(1.8); /* Zoom global de 80% */
+        /* On passe de 300 à 600px : c'est DEUX FOIS plus gros que sur mobile */
+        width: 600px !important;
+        height: 600px !important;
+        zoom: 1.6; /* Force l'agrandissement global sans casser tes réglages */
     }
 }
+
 
 
 
