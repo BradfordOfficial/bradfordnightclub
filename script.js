@@ -1222,25 +1222,29 @@ const dateActuelle = new Date();
 
 // --- BASE DE DONNÉES COMPLÈTE DES ÉVÉNEMENTS ---
 const donneesEvenements = [
-     // --- JEUDI 12 MARS 2026 ---
-    { date: '2026-03-12', jour: 'JEU.', ville: 'LA', artiste: 'LIL TAY', details: 'The Money Way (Pop/Rap Showcase - $90)' },
-    { date: '2026-03-12', jour: 'JEU.', ville: 'MIAMI', artiste: 'BRYSON TILLER', details: 'Bryson Tiller Tour (Trap Soul Night - Accès restreint)' },
-    { date: '2026-03-12', jour: 'JEU.', ville: 'NYC', artiste: 'JOEY BADA$$', details: 'Pro Era Takeover (Boom Bap Revival - $90)' },
+   // --- JEUDI 19 MARS 2026 ---
+    { date: '2026-03-19', jour: 'JEU.', ville: 'LA', artiste: 'SABA', details: 'Care For Me (Chicago Storytelling Rap - $90)' }, // REMPLACÉ
+    { date: '2026-03-19', jour: 'JEU.', ville: 'MIAMI', artiste: 'WIZ KHALIFA', details: 'Taylor Gang Party (High Tolerance Showcase - $90)' }, 
+    { date: '2026-03-19', jour: 'JEU.', ville: 'NYC', artiste: 'MUNI LONG', details: 'Made For Me (Contemporary R&B Showcase - $90)' }, 
+    { date: '2026-03-19', jour: 'JEU.', ville: 'SF', artiste: 'JEFF MILLS', details: 'The Wizard (Detroit Techno Legend - $90)' }, 
 
-    // --- VENDREDI 13 MARS 2026 ---
-    { date: '2026-03-13', jour: 'VEN.', ville: 'LA', artiste: 'TYRESE HALIBURTON & FRIENDS', details: 'Indy in LA (Hoops & Hip-Hop Party - Accès sur liste VIP uniquement)' },
-    { date: '2026-03-13', jour: 'VEN.', ville: 'MIAMI', artiste: 'SEXTON', details: 'Miami Vibes (R&B/Pop Showcase - $90)' },
-    { date: '2026-03-13', jour: 'VEN.', ville: 'NYC', artiste: 'A$AP FERG', details: 'Trap Lord Resurrection (Harlem Energy - Accès restreint)' },
+    // --- VENDREDI 20 MARS 2026 ---
+    { date: '2026-03-20', jour: 'VEN.', ville: 'LA', artiste: 'SNAKEHIPS', details: 'All My Friends (Electronic/R&B DJ Set - Accès restreint)' }, // REMPLACÉ
+    { date: '2026-03-20', jour: 'VEN.', ville: 'MIAMI', artiste: 'OFFSET', details: 'Set It Off (Atlanta Trap Performance - $90)' }, 
+    { date: '2026-03-20', jour: 'VEN.', ville: 'NYC', artiste: 'EST GEE', details: 'El Toro Live (Hardcore Street Rap - Accès restreint)' }, 
+    { date: '2026-03-20', jour: 'VEN.', ville: 'SF', artiste: 'VTSS', details: 'Fast & Furious (Hard Techno/Electro Set - $90)' }, 
 
-    // --- SAMEDI 14 MARS 2026 ---
-    { date: '2026-03-14', jour: 'SAM.', ville: 'LA', artiste: 'MUSTARD', details: 'Faith of a Mustard Seed (West Coast Beats - $90)' },
-    { date: '2026-03-14', jour: 'SAM.', ville: 'MIAMI', artiste: 'JACK HARLOW', details: 'Louisville Slugger (Pop-Rap Showcase - Accès sur liste VIP uniquement)' },
-    { date: '2026-03-14', jour: 'SAM.', ville: 'NYC', artiste: 'H.E.R.', details: 'Lights On Festival (Soul/R&B Live - Accès restreint)' },
+    // --- SAMEDI 21 MARS 2026 ---
+    { date: '2026-03-21', jour: 'SAM.', ville: 'LA', artiste: 'NE-YO', details: 'Champagne & Roses (Classic R&B Night - $90)' }, 
+    { date: '2026-03-21', jour: 'SAM.', ville: 'MIAMI', artiste: 'YO GOTTI', details: 'CMG Takeover (Memphis King Showcase - Accès sur liste VIP uniquement)' }, 
+    { date: '2026-03-21', jour: 'SAM.', ville: 'NYC', artiste: 'D’ANGELO', details: 'Black Messiah (Neo-Soul Exclusive Live - Accès sur liste VIP uniquement)' }, 
+    { date: '2026-03-21', jour: 'SAM.', ville: 'SF', artiste: 'CARIBOU', details: 'Honey Live (Electronic/Psych-Pop - $90)' }, 
 
-    // --- DIMANCHE 15 MARS 2026 ---
-    { date: '2026-03-15', jour: 'DIM.', ville: 'LA', artiste: 'EARL SWEATSHIRT', details: 'Voir Dire Live (Abstract Hip-Hop - $90)' },
-    { date: '2026-03-15', jour: 'DIM.', ville: 'MIAMI', artiste: 'GUCCI MANE', details: '1017 Records Night (Trap Legend Showcase - Accès restreint)' },
-    { date: '2026-03-15', jour: 'DIM.', ville: 'NYC', artiste: 'SZA', details: 'SOS Deluxe Session (R&B Perfection - Accès sur liste VIP uniquement)' }
+    // --- DIMANCHE 22 MARS 2026 ---
+    { date: '2026-03-22', jour: 'DIM.', ville: 'LA', artiste: 'ISAIAH RASHAD', details: 'Cilvia Demo Anniversary (TDE Chill Rap - $90)' }, 
+    { date: '2026-03-22', jour: 'DIM.', ville: 'MIAMI', artiste: 'KEY GLOCK', details: 'Glockoma Tour (Memphis Trap Showcase - Accès restreint)' }, 
+    { date: '2026-03-22', jour: 'DIM.', ville: 'NYC', artiste: 'MARIAH THE SCIENTIST', details: 'To Be Eaten Alive (Alternative R&B - Accès restreint)' }, 
+    { date: '2026-03-22', jour: 'DIM.', ville: 'SF', artiste: 'MOODYMANN', details: 'KDJ Records (Soulful Detroit House - $90)' } // REMPLACÉ
 ];
 
 
