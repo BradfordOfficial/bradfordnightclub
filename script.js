@@ -1396,29 +1396,53 @@ async function afficherDetailsArtiste(artiste, ville, details) {
     let label = "Indépendant";
 
     try {
-        const response = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(nomFormate)}`);
-        if (response.ok) {
-            const data = await response.json();
-            bioWiki = data.extract || "Biographie non disponible.";
-            genreWiki = data.description || "Artiste";
-            
-            // --- EXTRACTION INTELLIGENTE ---
-            // On cherche des dates dans le texte (ex: 1990)
-            const dateMatch = bioWiki.match(/\b(19|20)\d{2}\b/);
-            if (dateMatch) activite = `Depuis ${dateMatch[0]}`;
-        } else {
-            const responseEn = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(nomFormate)}`);
-            if (responseEn.ok) {
-                const dataEn = await responseEn.json();
-                bioWiki = dataEn.extract;
-                genreWiki = dataEn.description || "Artist";
-            } else {
-                bioWiki = `Rejoignez-nous pour une performance exclusive de ${artiste} au Bradford.`;
-            }
-        }
-    } catch (e) {
-        bioWiki = "Biographie non disponible.";
+    let data;
+    let pageTitle = null;
+
+    // 🔍 Recherche FR
+    const searchRes = await fetch(`https://fr.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(artiste + " musicien")}&format=json&origin=*`);
+    const searchData = await searchRes.json();
+
+    if (searchData.query.search.length > 0) {
+        pageTitle = searchData.query.search[0].title;
     }
+
+    // 🌍 Fallback EN
+    if (!pageTitle) {
+        const searchResEn = await fetch(`https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(artiste + " musician")}&format=json&origin=*`);
+        const searchDataEn = await searchResEn.json();
+
+        if (searchDataEn.query.search.length > 0) {
+            pageTitle = searchDataEn.query.search[0].title;
+        }
+    }
+
+    // 📄 Récupération du résumé
+    if (pageTitle) {
+        const response = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(pageTitle)}`);
+
+        if (response.ok) {
+            data = await response.json();
+        } else {
+            const responseEn = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(pageTitle)}`);
+            if (responseEn.ok) data = await responseEn.json();
+        }
+    }
+
+    // ✅ TU GARDES TA LOGIQUE
+    if (data) {
+        bioWiki = data.extract || "Biographie non disponible.";
+        genreWiki = data.description || "Artiste";
+
+        const dateMatch = bioWiki.match(/\b(19|20)\d{2}\b/);
+        if (dateMatch) activite = `Depuis ${dateMatch[0]}`;
+    } else {
+        bioWiki = `Rejoignez-nous pour une performance exclusive de ${artiste} au Bradford.`;
+    }
+
+} catch (e) {
+    bioWiki = "Biographie non disponible.";
+}
 
 
     const detailPage = document.getElementById('artist-detail-page');
