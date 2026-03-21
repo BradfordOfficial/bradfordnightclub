@@ -850,7 +850,15 @@ function openBottleCheckout(bottleName, priceHT, priceTTC) {
                         <input type="text" class="payment-input" placeholder="MM/YY" style="flex:1;">
                         <input type="text" class="payment-input" placeholder="CVC" style="flex:1;">
                     </div>
-                </div>
+                    
+                      <div style="text-align: center; margin-bottom: 10px;">
+            <label style="font-size: 0.55rem; color: #D4AF37; letter-spacing: 1px; text-transform: uppercase;">Table Reservation Required</label>
+        </div>
+        <div style="display: flex; align-items: center; background: rgba(212, 175, 55, 0.05); border: 1px dashed rgba(212, 175, 55, 0.3); padding: 5px 12px; border-radius: 4px; margin-bottom: 25px;">
+            <span style="color: #D4AF37; font-family: 'Courier New', monospace; font-weight: bold; letter-spacing: 1px; padding-right: 5px;">BRD-</span>
+            <input type="text" id="tableCode" placeholder="SERIE NUMBER" style="flex: 1; background: transparent; border: none; color: #fff; padding: 10px 0; font-family: 'Courier New', monospace; font-size: 0.9rem; outline: none; text-transform: uppercase;">
+        </div>
+    </div>
 
                 <button class="cta-button" 
                         style="width:100%; height: 50px; background: var(--gold); color: black; font-weight: bold;" 
