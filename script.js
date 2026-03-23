@@ -1230,29 +1230,29 @@ const dateActuelle = new Date();
 
 // --- BASE DE DONNÉES COMPLÈTE DES ÉVÉNEMENTS ---
 const donneesEvenements = [
-   // --- JEUDI 19 MARS 2026 ---
-    { date: '2026-03-19', jour: 'JEU.', ville: 'LA', artiste: 'SABA', details: 'Care For Me (Chicago Storytelling Rap - $90)' }, // REMPLACÉ
-    { date: '2026-03-19', jour: 'JEU.', ville: 'MIAMI', artiste: 'WIZ KHALIFA', details: 'Taylor Gang Party (High Tolerance Showcase - $90)' }, 
-    { date: '2026-03-19', jour: 'JEU.', ville: 'NYC', artiste: 'MUNI LONG', details: 'Made For Me (Contemporary R&B Showcase - $90)' }, 
-    { date: '2026-03-19', jour: 'JEU.', ville: 'SF', artiste: 'JEFF MILLS', details: 'The Wizard (Detroit Techno Legend - $90)' }, 
+  // --- JEUDI 26 MARS 2026 ---
+    { date: '2026-03-26', jour: 'JEU.', ville: 'LA', artiste: 'JORDAN WARD', details: 'FORWARD Live (Alternative R&B/Rap - $90)' }, // REMPLACÉ
+    { date: '2026-03-26', jour: 'JEU.', ville: 'MIAMI', artiste: 'LUCKI', details: 'Gemini! Tour (Chicago Alt-Trap - Accès restreint)' },
+    { date: '2026-03-26', jour: 'JEU.', ville: 'NYC', artiste: 'JID', details: 'The Forever Story (Lyrical Hip-Hop - $90)' },
+    { date: '2026-03-26', jour: 'JEU.', ville: 'SF', artiste: 'MALL GRAB', details: 'Looking For Trouble (Raw House/Techno - $90)' },
 
-    // --- VENDREDI 20 MARS 2026 ---
-    { date: '2026-03-20', jour: 'VEN.', ville: 'LA', artiste: 'SNAKEHIPS', details: 'All My Friends (Electronic/R&B DJ Set - Accès restreint)' }, // REMPLACÉ
-    { date: '2026-03-20', jour: 'VEN.', ville: 'MIAMI', artiste: 'OFFSET', details: 'Set It Off (Atlanta Trap Performance - $90)' }, 
-    { date: '2026-03-20', jour: 'VEN.', ville: 'NYC', artiste: 'EST GEE', details: 'El Toro Live (Hardcore Street Rap - Accès restreint)' }, 
-    { date: '2026-03-20', jour: 'VEN.', ville: 'SF', artiste: 'VTSS', details: 'Fast & Furious (Hard Techno/Electro Set - $90)' }, 
+    // --- VENDREDI 27 MARS 2026 ---
+    { date: '2026-03-27', jour: 'VEN.', ville: 'LA', artiste: 'STEVE LACY', details: 'Gemini Rights Live (Alternative Soul/Funk - Accès sur liste VIP uniquement)' },
+    { date: '2026-03-27', jour: 'VEN.', ville: 'MIAMI', artiste: 'DOECHII', details: 'Swamp Sessions (Experimental Rap Performance - Accès restreint)' }, // REMPLACÉ
+    { date: '2026-03-27', jour: 'VEN.', ville: 'NYC', artiste: 'LIL DURK', details: 'Nightmare in Chicago (Drill Showcase - Accès sur liste VIP uniquement)' },
+    { date: '2026-03-27', jour: 'VEN.', ville: 'SF', artiste: 'TSHA', details: 'Capricorn Sun (Progressive/Electronic Live - $90)' },
 
-    // --- SAMEDI 21 MARS 2026 ---
-    { date: '2026-03-21', jour: 'SAM.', ville: 'LA', artiste: 'NE-YO', details: 'Champagne & Roses (Classic R&B Night - $90)' }, 
-    { date: '2026-03-21', jour: 'SAM.', ville: 'MIAMI', artiste: 'YO GOTTI', details: 'CMG Takeover (Memphis King Showcase - Accès sur liste VIP uniquement)' }, 
-    { date: '2026-03-21', jour: 'SAM.', ville: 'NYC', artiste: 'D’ANGELO', details: 'Black Messiah (Neo-Soul Exclusive Live - Accès sur liste VIP uniquement)' }, 
-    { date: '2026-03-21', jour: 'SAM.', ville: 'SF', artiste: 'CARIBOU', details: 'Honey Live (Electronic/Psych-Pop - $90)' }, 
+    // --- SAMEDI 28 MARS 2026 ---
+    { date: '2026-03-28', jour: 'SAM.', ville: 'LA', artiste: 'REMA', details: 'Heis World Tour (Afrobeats Night - Accès sur liste VIP uniquement)' }, // REMPLACÉ
+    { date: '2026-03-28', jour: 'SAM.', ville: 'MIAMI', artiste: 'AJ TRACEY', details: 'Flu Game (UK Grime/Rap Showcase - $90)' },
+    { date: '2026-03-28', jour: 'SAM.', ville: 'NYC', artiste: 'SNOH AALEGRA', details: 'Temporary Highs (Soulful R&B Night - Accès restreint)' },
+    { date: '2026-03-28', jour: 'SAM.', ville: 'SF', artiste: 'CARL CRAIG', details: 'Planet E (Detroit Techno Legend - $90)' },
 
-    // --- DIMANCHE 22 MARS 2026 ---
-    { date: '2026-03-22', jour: 'DIM.', ville: 'LA', artiste: 'ISAIAH RASHAD', details: 'Cilvia Demo Anniversary (TDE Chill Rap - $90)' }, 
-    { date: '2026-03-22', jour: 'DIM.', ville: 'MIAMI', artiste: 'KEY GLOCK', details: 'Glockoma Tour (Memphis Trap Showcase - Accès restreint)' }, 
-    { date: '2026-03-22', jour: 'DIM.', ville: 'NYC', artiste: 'MARIAH THE SCIENTIST', details: 'To Be Eaten Alive (Alternative R&B - Accès restreint)' }, 
-    { date: '2026-03-22', jour: 'DIM.', ville: 'SF', artiste: 'MOODYMANN', details: 'KDJ Records (Soulful Detroit House - $90)' } // REMPLACÉ
+    // --- DIMANCHE 29 MARS 2026 ---
+    { date: '2026-03-29', jour: 'DIM.', ville: 'LA', artiste: 'BABY KEEM', details: 'The Melodic Blue (Post-Modern Rap - $90)' }, // REMPLACÉ
+    { date: '2026-03-29', jour: 'DIM.', ville: 'MIAMI', artiste: 'DIPLO', details: 'Higher Ground Set (House & Global Bass - Accès sur liste VIP uniquement)' }, // REMPLACÉ
+    { date: '2026-03-29', jour: 'DIM.', ville: 'NYC', artiste: 'WESTSIDE GUNN', details: 'Griselda Records (Art-Rap Showcase - Accès restreint)' },
+    { date: '2026-03-29', jour: 'DIM.', ville: 'SF', artiste: 'SKREAM', details: 'Industrial House Set (Electronic Fusion - $90)' } // REMPLACÉ
 ];
 
 
