@@ -481,7 +481,223 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
 </div>
 
+<div id="brd-ai-launcher" onclick="toggleBradfordAI()">
+    <div class="ai-pulse-ring"></div>
+    <div class="ai-icon-centered">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+    </div>
+    <span class="ai-status-badge">IA</span>
+</div>
 
+<div id="brd-ai-window">
+    <div class="ai-window-header">
+        <h2 class="cinzel-luxe">BRADFORD <span style="color:#fff;">AI</span></h2>
+        <p class="ai-subtitle">ASSISTANT VIRTUEL HAUTE PRÉCISION</p>
+        <button class="ai-close-btn" onclick="toggleBradfordAI()">✕</button>
+    </div>
+
+    <div id="ai-chat-body">
+        <div class="msg ai-bubble">Bienvenue au Bradford. Je suis votre assistant intelligent. Je connais parfaitement nos établissements de LA, NY, Miami et SF. Comment puis-je vous aider ?</div>
+    </div>
+
+   <div class="ai-input-bar">
+    <input type="text" id="ai-user-query" placeholder="Posez votre question..." onkeypress="handleAIKey(event)">
+    <button onclick="askBradford()" id="ai-send-btn">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+    </button>
+</div>
+
+</div>
+
+<style>
+/* ==========================================================
+   CSS PRESTIGE (DESIGN LUXE ET CENTRAGE ABSOLU)
+   ========================================================== */
+
+/* --- LE BOUTON (Positionné et Épuré) --- */
+#brd-ai-launcher {
+    position: fixed;
+    bottom: 120px; /* Aligné juste au-dessus du concierge */
+    right: 5%;
+    width: 65px; height: 65px;
+    background: #000; border-radius: 50%;
+    z-index: 9998; /* Juste sous le loader mais au-dessus du reste */
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(212, 175, 55, 0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 15px rgba(212, 175, 55, 0.2);
+    
+    /* ANIMATION APPARITION/DISPARITION AU SCROLL */
+    opacity: 0;             /* Invisible au chargement */
+    pointer-events: none;   /* In-cliquable */
+    transform: scale(0.8);  /* Plus petit pour l'effet */
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Classe activée par le scroll */
+#brd-ai-launcher.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+#brd-ai-launcher:hover {
+    transform: scale(1.08) translateY(-3px);
+    border-color: #fff;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.ai-icon-centered { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; z-index: 2; }
+.ai-icon-centered svg { width: 100%; fill: #D4AF37; transition: fill 0.3s; }
+#brd-ai-launcher:hover .ai-icon-centered svg { fill: #fff; }
+
+.ai-status-badge { position: absolute; top: -7px; right: -7px; background: #D4AF37; color: #000; font-family: sans-serif; font-size: 10px; font-weight: 900; padding: 3px 6px; border-radius: 6px; letter-spacing: 1px; z-index: 3; }
+
+.ai-pulse-ring { position: absolute; width: 100%; height: 100%; border-radius: 50%; border: 1px solid rgba(212, 175, 55, 0.3); animation: ring-pulse-luxe 3s infinite; opacity: 0.5; z-index: 1; }
+
+/* --- FENÊTRE DE CHAT (GRANDE ET PARFAITEMENT CENTRÉE) --- */
+#brd-ai-window {
+    position: fixed;
+    /* CENTRAGE ABSOLU AU MILIEU DE L'ÉCRAN */
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.9); /* Centré + petit pour l'animation */
+    
+    width: 90%; max-width: 480px; /* Grande taille */
+    height: 80%; max-height: 600px;
+    background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px;
+    display: none; flex-direction: column; z-index: 10000;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.9); overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    opacity: 0; transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#brd-ai-window.active {
+    display: flex; opacity: 1; transform: translate(-50%, -50%) scale(1);
+}
+
+.ai-window-header { padding: 30px; background: rgba(212, 175, 55, 0.03); border-bottom: 1px solid #111; text-align: center; position: relative; }
+.cinzel-luxe { font-family: 'Cinzel', serif; color: #D4AF37; font-size: 1rem; letter-spacing: 4px; margin: 0; text-transform: uppercase; }
+.ai-subtitle { font-size: 0.55rem; color: #555; margin-top: 10px; letter-spacing: 2px; }
+.ai-close-btn { position: absolute; top: 18px; right: 18px; background: none; border: none; color: #444; font-size: 1.5rem; cursor: pointer; transition: color 0.3s; }
+.ai-close-btn:hover { color: #fff; }
+
+#ai-chat-body { flex: 1; padding: 25px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #050505; }
+.ai-bubble, .user-bubble { padding: 12px 18px; border-radius: 12px; font-size: 0.85rem; max-width: 85%; line-height: 1.4; }
+.ai-bubble { background: #111; color: #ccc; align-self: flex-start; border: 1px solid #222; border-bottom-left-radius: 2px; }
+.user-bubble { background: #D4AF37; color: #000; font-weight: 600; align-self: flex-end; border-bottom-right-radius: 2px; }
+
+.ai-input-bar { padding: 20px; display: flex; gap: 10px; background: #0a0a0a; border-top: 1px solid #111; }
+#ai-user-query { flex: 1; background: #000; border: 1px solid #333; color: #fff; padding: 12px; border-radius: 8px; outline: none; font-size: 0.85rem; transition: border-color 0.3s; }
+#ai-user-query:focus { border-color: #D4AF37; }
+
+/* Le bouton ENVOYER textuel original */
+#ai-send-btn {
+    background: #D4AF37; 
+    color: #000;
+    width: 45px; height: 45px; /* Format carré pour l'icône */
+    display: flex; align-items: center; justify-content: center;
+    border: none; border-radius: 8px; cursor: pointer;
+    transition: all 0.3s; flex-shrink: 0;
+}
+
+#ai-send-btn svg {
+    width: 20px; height: 20px;
+    fill: #000; /* L'icône sera noire sur fond doré */
+}
+
+#ai-send-btn:hover { background-color: #fff; transform: scale(1.05); }
+
+
+@keyframes ring-pulse-luxe { 0% { transform: scale(0.8); opacity: 0.8; } 100% { transform: scale(1.4); opacity: 0; } }
+</style>
+
+<script>
+// --- 1. LOGIQUE DE SCROLL (Gère l'apparition auto) ---
+function handleScroll() {
+    const launcher = document.getElementById('brd-ai-launcher');
+    const win = document.getElementById('brd-ai-window');
+    
+    // Le bouton ne s'affiche que si on a scrollé > 150px ET que le chat est fermé
+    if (window.scrollY > 150 && !win.classList.contains('active')) {
+        launcher.classList.add('is-visible');
+    } else {
+        launcher.classList.remove('is-visible');
+    }
+}
+
+window.addEventListener('scroll', handleScroll);
+
+// --- 2. GESTION OUVERTURE / FERMETURE ---
+function toggleBradfordAI() {
+    const win = document.getElementById('brd-ai-window');
+    const launcher = document.getElementById('brd-ai-launcher');
+    
+    if (win.classList.contains('active')) {
+        // FERMETURE
+        win.classList.remove('active');
+        setTimeout(() => {
+            win.style.display = 'none';
+            // CRUCIAL : On retire l'opacité forcée et on relance le check du scroll
+            launcher.style.opacity = ""; 
+            handleScroll(); 
+        }, 500);
+    } else {
+        // OUVERTURE
+        win.style.display = 'flex';
+        launcher.classList.remove('is-visible'); // Cache le bouton quand le chat est là
+        setTimeout(() => win.classList.add('active'), 10);
+    }
+}
+
+function handleAIKey(e) { if (e.key === 'Enter') askBradford(); }
+
+// --- 3. LOGIQUE D'ENVOI ---
+async function askBradford() {
+    const input = document.getElementById('ai-user-query');
+    const box = document.getElementById('ai-chat-body');
+    const text = input.value.trim();
+    if(!text) return;
+
+    box.innerHTML += `<div class="user-bubble">${text}</div>`;
+    input.value = '';
+    box.scrollTop = box.scrollHeight;
+
+    const loadingId = "load-" + Date.now();
+    box.innerHTML += `<div class="ai-bubble" id="${loadingId}">Connexion au Bradford...</div>`;
+
+    const API_KEY = "AIzaSyAOB9THdqWurvLHyNzdpVFg2XT5zlLCWQ8"; 
+    
+    const models = ["gemini-1.5-flash", "gemini-1.5-flash-8b", "gemini-pro"];
+    let success = false;
+
+    for (let model of models) {
+        if (success) break;
+        try {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`;
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: "Tu es le concierge du Bradford. Réponds brièvement : " + text }] }]
+                })
+            });
+
+            const data = await response.json();
+            if (data.candidates && data.candidates[0].content) {
+                const reply = data.candidates[0].content.parts[0].text;
+                document.getElementById(loadingId).innerText = reply;
+                success = true;
+            }
+        } catch (e) { console.log("Echec avec " + model); }
+    }
+
+    if (!success) {
+        document.getElementById(loadingId).innerText = "ERREUR : Connexion perdue. Réessayez dans quelques instants.";
+    }
+    box.scrollTop = box.scrollHeight;
+}
+</script>
 
 
      <div id="app-content" class="app-content">
