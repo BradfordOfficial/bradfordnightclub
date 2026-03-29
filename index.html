@@ -1046,8 +1046,13 @@ async function askBradford() {
         });
 
         const data = await response.json();
-        const reply = data.choices[0].message.content;
-        document.getElementById(loadingId).innerText = reply;
+if (data.choices && data.choices[0]) {
+    const reply = data.choices[0].message.content;
+    document.getElementById(loadingId).innerText = reply;
+} else {
+    document.getElementById(loadingId).innerText = "Je vous invite à contacter notre équipe directement au +1 305-VIP-BRAD ou à reservations@bradfordnightclub.com";
+}
+
 
     } catch (e) {
         document.getElementById(loadingId).innerText = "ERREUR : Connexion perdue. Réessayez dans quelques instants.";
