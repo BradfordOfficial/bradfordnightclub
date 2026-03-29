@@ -666,37 +666,34 @@ async function askBradford() {
     const loadingId = "load-" + Date.now();
     box.innerHTML += `<div class="ai-bubble" id="${loadingId}">Connexion au Bradford...</div>`;
 
-    const API_KEY = "AIzaSyAOB9THdqWurvLHyNzdpVFg2XT5zlLCWQ8"; 
-    
-    const models = ["gemini-1.5-flash", "gemini-1.5-flash-8b", "gemini-pro"];
-    let success = false;
+    const API_KEY = "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";
 
-    for (let model of models) {
-        if (success) break;
-        try {
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${API_KEY}`;
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    contents: [{ parts: [{ text: "Tu es le concierge du Bradford. Réponds brièvement : " + text }] }]
-                })
-            });
+    try {
+        const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${API_KEY}`
+            },
+            body: JSON.stringify({
+                model: "llama-3.1-8b-instant",
+                messages: [
+                    { role: "system", content: "Tu es le concierge virtuel du Bradford, un club privé de luxe présent à LA, NY, Miami et SF. Réponds de manière élégante et professionnelle." },
+                    { role: "user", content: text }
+                ]
+            })
+        });
 
-            const data = await response.json();
-            if (data.candidates && data.candidates[0].content) {
-                const reply = data.candidates[0].content.parts[0].text;
-                document.getElementById(loadingId).innerText = reply;
-                success = true;
-            }
-        } catch (e) { console.log("Echec avec " + model); }
-    }
+        const data = await response.json();
+        const reply = data.choices[0].message.content;
+        document.getElementById(loadingId).innerText = reply;
 
-    if (!success) {
+    } catch(e) {
         document.getElementById(loadingId).innerText = "ERREUR : Connexion perdue. Réessayez dans quelques instants.";
     }
     box.scrollTop = box.scrollHeight;
 }
+
 </script>
 
 
