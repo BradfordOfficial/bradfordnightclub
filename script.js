@@ -2683,6 +2683,17 @@ function renderPrestigeAddons() {
         }, { threshold: 0.3 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        prestigeCart.forEach(item => {
+    const card = document.getElementById(`item-${item.id}`);
+    if (card) card.classList.add('is-selected');
+});
+
+const total = prestigeCart.reduce((s, a) => s + a.price, 0);
+document.getElementById('live-total').innerText = `$${total.toLocaleString()}`;
+const btn = document.getElementById('main-validate-cta');
+btn.disabled = total === 0;
+btn.style.opacity = total === 0 ? "0.3" : "1";
+
     });
 }
 
