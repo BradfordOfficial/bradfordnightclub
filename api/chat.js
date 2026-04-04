@@ -31,7 +31,7 @@ export default async function handler(req, res) {
                         content: req.body.contents[req.body.contents.length - 1].parts[0].text
                     }
                 ],
-                max_tokens: 1000,
+                max_tokens: 200,
                 temperature: 0.8
             })
         });
