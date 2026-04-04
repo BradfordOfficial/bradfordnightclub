@@ -8,8 +8,8 @@ export default async function handler(req, res) {
         const hfToken = process.env.HF_TOKEN;
 
         // ON PASSE SUR LE NOUVEAU ROUTEUR (Indispensable pour le 70B en 2026)
-        const response = await fetch(
-            "https://router.huggingface.co/hf-inference/models/meta-llama/Llama-3.3-70B-Instruct",
+                const response = await fetch(
+            "https://router.huggingface.co/models/meta-llama/Llama-3.3-70B-Instruct",
             {
                 headers: { 
                     Authorization: `Bearer ${hfToken}`,
@@ -17,19 +17,19 @@ export default async function handler(req, res) {
                 },
                 method: "POST",
                 body: JSON.stringify({
-                    // On garde ton format de prompt Llama 3
                     inputs: `<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n${req.body.system_instruction.parts[0].text}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n${req.body.contents[0].parts[0].text}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n`,
                     parameters: {
-                        max_new_tokens: 200,
+                        max_new_tokens: 150, // On réduit à 150 pour gagner en vitesse
                         temperature: 0.7,
                         return_full_text: false
                     },
                     options: {
-                        wait_for_model: true // Crucial pour éviter le "Not Found" pendant que le 70B charge
+                        wait_for_model: true
                     }
                 }),
             }
         );
+
 
         const data = await response.json();
 
