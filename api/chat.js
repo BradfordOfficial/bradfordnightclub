@@ -22,7 +22,7 @@ export default async function handler(req, res) {
                     // On injecte TON gros script système et le message de l'utilisateur
                     inputs: `<|im_start|>system\n${req.body.system_instruction.parts[0].text}<|im_end|>\n<|im_start|>user\n${req.body.contents[req.body.contents.length - 1].parts[0].text}<|im_end|>\n<|im_start|>assistant`,
                     parameters: {
-                        max_new_tokens: 1000,
+                        max_new_tokens: 200,
                         temperature: 0.8, // Pour que le Bradford ait du répondant
                         return_full_text: false
                     }
