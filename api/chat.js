@@ -7,17 +7,17 @@ export default async function handler(req, res) {
     try {
         const hfToken = process.env.HF_TOKEN;
 
-        // NOUVELLE URL OBLIGATOIRE : router.huggingface.co
+        // ON PASSE SUR LE NOUVEAU ROUTEUR (Indispensable pour le 70B en 2026)
         const response = await fetch(
-    "https://api-inference.huggingface.co/models/meta-llama/Llama-3.3-70B-Instruct",
-    {
-        headers: { 
-            Authorization: `Bearer ${hfToken}`,
-            "Content-Type": "application/json",
-            "x-use-cache": "false" // On force pour éviter les vieux résultats
-        },
+            "https://router.huggingface.co/hf-inference/models/meta-llama/Llama-3.3-70B-Instruct",
+            {
+                headers: { 
+                    Authorization: `Bearer ${hfToken}`,
+                    "Content-Type": "application/json"
+                },
                 method: "POST",
                 body: JSON.stringify({
+                    // On garde ton format de prompt Llama 3
                     inputs: `<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n${req.body.system_instruction.parts[0].text}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n${req.body.contents[0].parts[0].text}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n`,
                     parameters: {
                         max_new_tokens: 200,
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
                         return_full_text: false
                     },
                     options: {
-                        wait_for_model: true 
+                        wait_for_model: true // Crucial pour éviter le "Not Found" pendant que le 70B charge
                     }
                 }),
             }
@@ -33,18 +33,30 @@ export default async function handler(req, res) {
 
         const data = await response.json();
 
-        // Gestion d'erreur si le nouveau routeur renvoie un truc bizarre
-        if (data.error) {
-            return res.status(500).json({ error: "Erreur Routeur HF", details: data.error });
+        // Si le modèle charge encore (le 70B est lourd)
+        if (data.error && data.error.includes("currently loading")) {
+            return res.status(503).json({ 
+                error: "Le videur met ses gants...", 
+                details: "Le 70B est en train de chauffer, réessaie dans 20 secondes." 
+            });
         }
 
+        if (data.error) {
+            return res.status(500).json({ error: "HF Erreur", details: data.error });
+        }
+
+        // Llama 3.3 via Router renvoie souvent un tableau [ { generated_text: "..." } ]
         const text = Array.isArray(data) ? data[0].generated_text : data.generated_text;
 
         res.status(200).json({
-            candidates: [{ content: { parts: [{ text: text || "Le videur fait la sourde oreille..." }] } }]
+            candidates: [{
+                content: {
+                    parts: [{ text: text || "Bradford est muet... (Pas de réponse)" }]
+                }
+            }]
         });
 
     } catch (error) {
-        res.status(500).json({ error: "Erreur fatale", details: error.message });
+        res.status(500).json({ error: "Crash serveur", details: error.message });
     }
 }
