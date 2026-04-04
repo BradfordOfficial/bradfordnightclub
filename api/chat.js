@@ -1,4 +1,5 @@
 export default async function handler(req, res) {
+    // On autorise ton site à appeler l'API
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -6,35 +7,53 @@ export default async function handler(req, res) {
     if (req.method === 'OPTIONS') return res.status(200).end();
 
     try {
-        const apiKey = process.env.GEMINI_API_KEY;
-        
-        // PASSAGE AU MODÈLE 2.0 FLASH (Version stable pour l'API v1beta)
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+        const hfToken = process.env.HF_TOKEN; // Ta clé Hugging Face configurée sur Vercel
 
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                system_instruction: req.body.system_instruction, 
-                contents: req.body.contents,
-                generationConfig: {
-                    temperature: 0.7,
-                    maxOutputTokens: 1000, // Le 2.0 gère mieux les réponses détaillées
-                    topP: 0.95
-                }
-            })
-        });
+        // On appelle le cerveau de Qwen 2.5 72B
+        const response = await fetch(
+            "https://api-inference.huggingface.co/models/Qwen/Qwen2.5-72B-Instruct",
+            {
+                headers: { 
+                    Authorization: `Bearer ${hfToken}`,
+                    "Content-Type": "application/json" 
+                },
+                method: "POST",
+                body: JSON.stringify({
+                    // On injecte TON gros script système et le message de l'utilisateur
+                    inputs: `<|im_start|>system\n${req.body.system_instruction.parts[0].text}<|im_end|>\n<|im_start|>user\n${req.body.contents[req.body.contents.length - 1].parts[0].text}<|im_end|>\n<|im_start|>assistant`,
+                    parameters: {
+                        max_new_tokens: 1000,
+                        temperature: 0.8, // Pour que le Bradford ait du répondant
+                        return_full_text: false
+                    }
+                }),
+            }
+        );
 
         const data = await response.json();
-        
-        if (data.error) {
-            console.error("Erreur Google API:", data.error);
-            // On renvoie l'erreur précise pour savoir si c'est encore un quota ou autre chose
-            return res.status(response.status).json(data);
+
+        // Si le modèle est en train de démarrer (fréquent sur le gratuit)
+        if (data.error && data.error.includes("currently loading")) {
+            return res.status(503).json({ 
+                error: "Le videur met ses lunettes noires...",
+                details: "Le modèle charge, réessaie dans 20 secondes." 
+            });
         }
 
-        res.status(200).json(data);
+        // On récupère le texte généré
+        const text = data[0]?.generated_text || data.generated_text;
+
+        // On renvoie le format EXACT que ton interface attend déjà
+        res.status(200).json({
+            candidates: [{
+                content: {
+                    parts: [{ text: text }]
+                }
+            }]
+        });
+
     } catch (error) {
-        res.status(500).json({ error: "Le serveur du Bradford a eu un petit vertige." });
+        console.error("Erreur Bradford:", error);
+        res.status(500).json({ error: "Le cerveau de l'IA a grillé." });
     }
 }
