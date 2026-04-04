@@ -8,20 +8,19 @@ export default async function handler(req, res) {
     try {
         const apiKey = process.env.GEMINI_API_KEY;
         
-        // ON PASSE EN v1 (STABLE) avec le NOM COMPLET
-        const url = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+        // PASSAGE AU MODÈLE 2.0 FLASH (Version stable pour l'API v1beta)
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
         const response = await fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                // Note : En v1, on met parfois les system_instruction dans contents 
-                // mais la structure ci-dessous est la plus standard
                 system_instruction: req.body.system_instruction, 
                 contents: req.body.contents,
                 generationConfig: {
                     temperature: 0.7,
-                    maxOutputTokens: 800
+                    maxOutputTokens: 1000, // Le 2.0 gère mieux les réponses détaillées
+                    topP: 0.95
                 }
             })
         });
@@ -29,13 +28,13 @@ export default async function handler(req, res) {
         const data = await response.json();
         
         if (data.error) {
-            console.error("Erreur Google API détaillée:", JSON.stringify(data.error, null, 2));
+            console.error("Erreur Google API:", data.error);
+            // On renvoie l'erreur précise pour savoir si c'est encore un quota ou autre chose
             return res.status(response.status).json(data);
         }
 
         res.status(200).json(data);
     } catch (error) {
-        console.error("ERREUR SERVEUR:", error);
-        res.status(500).json({ error: "Le Bradford est en maintenance technique." });
+        res.status(500).json({ error: "Le serveur du Bradford a eu un petit vertige." });
     }
 }
