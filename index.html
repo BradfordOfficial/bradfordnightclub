@@ -1049,61 +1049,61 @@ async function askBradford() {
     const text = input.value.trim();
     if (!text) return;
 
+    // 1. Affichage de ta bulle utilisateur
     box.innerHTML += `<div class="user-bubble">${text}</div>`;
     input.value = '';
     box.scrollTop = box.scrollHeight;
 
+    // 2. Création de la bulle de chargement avec ton ID unique
     const loadingId = "load-" + Date.now();
     box.innerHTML += `<div class="ai-bubble" id="${loadingId}">Connexion au Bradford...</div>`;
 
-    
+    try {
+        // 3. Appel à TON API VERCEL (qui elle, utilise Groq en cachette)
+        const response = await fetch("https://bradfordnightclub.vercel.app/api/chat", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                system_instruction: {
+                    parts: [{ text: BRADFORD_SYSTEM_PROMPT }]
+                },
+                contents: [{
+                    parts: [{ text: text }]
+                }]
+            })
+        });
 
-        try {
-    const response = await fetch("https://bradfordnightclub.vercel.app/api/chat", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            system_instruction: { parts: [{ text: BRADFORD_SYSTEM_PROMPT }] },
-            contents: [{ parts: [{ text: text }] }]
-        })
-    });
+        const data = await response.json();
 
-    // ÉTAPE CRUCIALE : On vérifie si la réponse est OK avant de lire le JSON
-    if (!response.ok) {
-        const errorData = await response.json().catch(() => ({ error: "Erreur serveur" }));
-        document.getElementById(loadingId).innerText = "Bradford : " + (errorData.details || "Le serveur est surchargé, réessaie.");
-        return;
-    }
-
-    const data = await response.json();
-    console.log("Réponse reçue :", data);
-
-    if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
-        const reply = data.candidates[0].content.parts[0].text;
-        const target = document.getElementById(loadingId);
-        target.innerText = "";
-        let i = 0;
-        function typeWriter() {
-            if (i < reply.length) {
-                target.innerText += reply.charAt(i);
-                i++;
-                box.scrollTop = box.scrollHeight;
-                setTimeout(typeWriter, 15);
+        // 4. Utilisation de ton système de vérification de réponse
+        if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
+            const reply = data.candidates[0].content.parts[0].text;
+            const target = document.getElementById(loadingId);
+            
+            // 5. TON SYSTÈME TYPEWRITER (Exactement comme tu l'as fait)
+            target.innerText = "";
+            let i = 0;
+            function typeWriter() {
+                if (i < reply.length) {
+                    target.innerText += reply.charAt(i);
+                    i++;
+                    box.scrollTop = box.scrollHeight;
+                    setTimeout(typeWriter, 15);
+                }
             }
+            typeWriter();
+
+        } else {
+            document.getElementById(loadingId).innerText = "Je vous invite à contacter notre équipe au +1 305-VIP-BRAD.";
         }
-        typeWriter();
-    } else {
-        document.getElementById(loadingId).innerText = "Le videur réfléchit trop... Réessaie dans 10 sec.";
+
+    } catch (e) {
+        // 6. Ton message d'erreur personnalisé
+        document.getElementById(loadingId).innerText = "ERREUR : Connexion perdue.";
     }
-
-} catch (e) {
-    console.error("Détail de l'erreur :", e);
-    document.getElementById(loadingId).innerText = "ERREUR : Connexion trop longue (Hugging Face se réveille).";
-}
-
-
     box.scrollTop = box.scrollHeight;
 }
+
 </script>
 
 
