@@ -1,17 +1,15 @@
 export default async function handler(req, res) {
-    // On autorise ton site à appeler l'API
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    
     if (req.method === 'OPTIONS') return res.status(200).end();
 
     try {
-        const hfToken = process.env.HF_TOKEN; // Ta clé Hugging Face configurée sur Vercel
+        const hfToken = process.env.HF_TOKEN;
 
-        // On appelle le cerveau de Qwen 2.5 72B
+        // ON PASSE SUR LLAMA 3.3 70B (Souvent plus nerveux)
         const response = await fetch(
-            "https://api-inference.huggingface.co/models/Qwen/Qwen2.5-72B-Instruct",
+            "https://api-inference.huggingface.co/models/meta-llama/Llama-3.3-70B-Instruct",
             {
                 headers: { 
                     Authorization: `Bearer ${hfToken}`,
@@ -19,12 +17,15 @@ export default async function handler(req, res) {
                 },
                 method: "POST",
                 body: JSON.stringify({
-                    // On injecte TON gros script système et le message de l'utilisateur
-                    inputs: `<|im_start|>system\n${req.body.system_instruction.parts[0].text}<|im_end|>\n<|im_start|>user\n${req.body.contents[req.body.contents.length - 1].parts[0].text}<|im_end|>\n<|im_start|>assistant`,
+                    inputs: `<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n${req.body.system_instruction.parts[0].text}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n${req.body.contents[0].parts[0].text}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n`,
                     parameters: {
-                        max_new_tokens: 200,
-                        temperature: 0.8, // Pour que le Bradford ait du répondant
+                        max_new_tokens: 150, // On force une réponse courte pour gagner du temps
+                        temperature: 0.7,
+                        top_p: 0.9,
                         return_full_text: false
+                    },
+                    options: {
+                        wait_for_model: true // Indispensable pour éviter le crash au réveil
                     }
                 }),
             }
@@ -32,28 +33,19 @@ export default async function handler(req, res) {
 
         const data = await response.json();
 
-        // Si le modèle est en train de démarrer (fréquent sur le gratuit)
-        if (data.error && data.error.includes("currently loading")) {
-            return res.status(503).json({ 
-                error: "Le videur met ses lunettes noires...",
-                details: "Le modèle charge, réessaie dans 20 secondes." 
-            });
+        // Si Hugging Face est surchargé
+        if (data.error) {
+            return res.status(500).json({ error: "Hugging Face saturé", details: data.error });
         }
 
-        // On récupère le texte généré
-        const text = data[0]?.generated_text || data.generated_text;
+        // Récupération du texte (Llama renvoie parfois un tableau, parfois un objet)
+        const text = Array.isArray(data) ? data[0].generated_text : data.generated_text;
 
-        // On renvoie le format EXACT que ton interface attend déjà
         res.status(200).json({
-            candidates: [{
-                content: {
-                    parts: [{ text: text }]
-                }
-            }]
+            candidates: [{ content: { parts: [{ text: text || "Le videur t'ignore..." }] } }]
         });
 
     } catch (error) {
-        console.error("Erreur Bradford:", error);
-        res.status(500).json({ error: "Le cerveau de l'IA a grillé." });
+        res.status(500).json({ error: "Crash serveur", details: error.message });
     }
 }
