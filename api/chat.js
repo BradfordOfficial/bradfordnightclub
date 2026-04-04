@@ -5,9 +5,13 @@ export default async function handler(req, res) {
     if (req.method === 'OPTIONS') return res.status(200).end();
 
     try {
-        const groqApiKey = process.env.GROQ_API_KEY;
+        // ON APPELLE LE NOM EXACT QUE TU AS MIS SUR VERCEL
+        const groqApiKey = process.env.API_KEY;
 
-        // ON APPELLE L'API DE GROQ (Ultra rapide, adieu les 10s de timeout)
+        if (!groqApiKey) {
+            return res.status(500).json({ error: "Clé API_KEY introuvable sur Vercel" });
+        }
+
         const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
             headers: {
                 "Authorization": `Bearer ${groqApiKey}`,
@@ -15,11 +19,11 @@ export default async function handler(req, res) {
             },
             method: "POST",
             body: JSON.stringify({
-                model: "llama-3.3-70b-specdec", // Le nom exact du 70B chez Groq
+                model: "llama-3.3-70b-specdec",
                 messages: [
                     {
                         role: "system",
-                        content: req.body.system_instruction.parts[0].text // Ton gros script
+                        content: req.body.system_instruction.parts[0].text
                     },
                     {
                         role: "user",
@@ -31,30 +35,34 @@ export default async function handler(req, res) {
             })
         });
 
-                const data = await response.json();
+        const data = await response.json();
 
-        // Si Groq renvoie une erreur directe
+        // Si Groq renvoie une erreur (clé invalide, modèle saturé, etc.)
         if (data.error) {
-            return res.status(500).json({ error: "Erreur Groq", details: data.error.message || data.error });
+            return res.status(500).json({ 
+                error: "Erreur Groq", 
+                details: data.error.message || data.error 
+            });
         }
 
-        // LA CORRECTION EST ICI : On va chercher le contenu du message
-        // Groq (OpenAI style) renvoie : data.choices[0].message.content
+        // Extraction propre du texte
         const text = data.choices && data.choices[0]?.message?.content 
                      ? data.choices[0].message.content 
-                     : "Le videur reste muet...";
+                     : "Bradford te regarde de travers sans répondre...";
 
-        // On renvoie le format que ton interface attend
+        // Envoi au front-end
         res.status(200).json({
             candidates: [{
                 content: {
-                    parts: [{ text: text }] // On s'assure que 'text' est bien une chaîne de caractères
+                    parts: [{ text: text }]
                 }
             }]
         });
 
-
     } catch (error) {
-        res.status(500).json({ error: "Bradford a eu un court-circuit", details: error.message });
+        res.status(500).json({ 
+            error: "Bradford a eu un court-circuit", 
+            details: error.message 
+        });
     }
 }
