@@ -1,60 +1,55 @@
 export default async function handler(req, res) {
-    // On autorise ton site à appeler l'API
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    
     if (req.method === 'OPTIONS') return res.status(200).end();
 
     try {
-        const hfToken = process.env.HF_TOKEN; // Ta clé Hugging Face configurée sur Vercel
+        const groqApiKey = process.env.GROQ_API_KEY;
 
-        // On appelle le cerveau de Qwen 2.5 72B
-        const response = await fetch(
-            "https://api-inference.huggingface.co/models/Qwen/Qwen2.5-72B-Instruct",
-            {
-                headers: { 
-                    Authorization: `Bearer ${hfToken}`,
-                    "Content-Type": "application/json" 
-                },
-                method: "POST",
-                body: JSON.stringify({
-                    // On injecte TON gros script système et le message de l'utilisateur
-                    inputs: `<|im_start|>system\n${req.body.system_instruction.parts[0].text}<|im_end|>\n<|im_start|>user\n${req.body.contents[req.body.contents.length - 1].parts[0].text}<|im_end|>\n<|im_start|>assistant`,
-                    parameters: {
-                        max_new_tokens: 1000,
-                        temperature: 0.8, // Pour que le Bradford ait du répondant
-                        return_full_text: false
+        // ON APPELLE L'API DE GROQ (Ultra rapide, adieu les 10s de timeout)
+        const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+            headers: {
+                "Authorization": `Bearer ${groqApiKey}`,
+                "Content-Type": "application/json"
+            },
+            method: "POST",
+            body: JSON.stringify({
+                model: "llama-3.3-70b-specdec", // Le nom exact du 70B chez Groq
+                messages: [
+                    {
+                        role: "system",
+                        content: req.body.system_instruction.parts[0].text // Ton gros script
+                    },
+                    {
+                        role: "user",
+                        content: req.body.contents[req.body.contents.length - 1].parts[0].text
                     }
-                }),
-            }
-        );
+                ],
+                max_tokens: 1000,
+                temperature: 0.8
+            })
+        });
 
         const data = await response.json();
 
-        // Si le modèle est en train de démarrer (fréquent sur le gratuit)
-        if (data.error && data.error.includes("currently loading")) {
-            return res.status(503).json({ 
-                error: "Le videur met ses lunettes noires...",
-                details: "Le modèle charge, réessaie dans 20 secondes." 
-            });
+        if (data.error) {
+            return res.status(500).json({ error: "Erreur Groq", details: data.error });
         }
 
-        // On récupère le texte généré
-        const text = data[0]?.generated_text || data.generated_text;
+        // Groq renvoie un format "OpenAI style"
+        const text = data.choices[0]?.message?.content;
 
-        // On renvoie le format EXACT que ton interface attend déjà
+        // On renvoie le format que ton front attend
         res.status(200).json({
             candidates: [{
                 content: {
-                    parts: [{ text: text }]
+                    parts: [{ text: text || "Le videur t'ignore..." }]
                 }
             }]
         });
 
     } catch (error) {
-        console.error("Erreur Bradford:", error);
-        res.status(500).json({ error: "Le cerveau de l'IA a grillé." });
+        res.status(500).json({ error: "Bradford a eu un court-circuit", details: error.message });
     }
 }
-
