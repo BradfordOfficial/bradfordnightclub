@@ -7,9 +7,9 @@ export default async function handler(req, res) {
     try {
         const hfToken = process.env.HF_TOKEN;
 
-        // ON PASSE SUR LLAMA 3.3 70B (Souvent plus nerveux)
+        // NOUVELLE URL OBLIGATOIRE : router.huggingface.co
         const response = await fetch(
-            "https://api-inference.huggingface.co/models/meta-llama/Llama-3.3-70B-Instruct",
+            "https://router.huggingface.co/hf-inference/models/meta-llama/Llama-3.3-70B-Instruct",
             {
                 headers: { 
                     Authorization: `Bearer ${hfToken}`,
@@ -19,13 +19,12 @@ export default async function handler(req, res) {
                 body: JSON.stringify({
                     inputs: `<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n${req.body.system_instruction.parts[0].text}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n${req.body.contents[0].parts[0].text}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n`,
                     parameters: {
-                        max_new_tokens: 150, // On force une réponse courte pour gagner du temps
+                        max_new_tokens: 200,
                         temperature: 0.7,
-                        top_p: 0.9,
                         return_full_text: false
                     },
                     options: {
-                        wait_for_model: true // Indispensable pour éviter le crash au réveil
+                        wait_for_model: true 
                     }
                 }),
             }
@@ -33,19 +32,18 @@ export default async function handler(req, res) {
 
         const data = await response.json();
 
-        // Si Hugging Face est surchargé
+        // Gestion d'erreur si le nouveau routeur renvoie un truc bizarre
         if (data.error) {
-            return res.status(500).json({ error: "Hugging Face saturé", details: data.error });
+            return res.status(500).json({ error: "Erreur Routeur HF", details: data.error });
         }
 
-        // Récupération du texte (Llama renvoie parfois un tableau, parfois un objet)
         const text = Array.isArray(data) ? data[0].generated_text : data.generated_text;
 
         res.status(200).json({
-            candidates: [{ content: { parts: [{ text: text || "Le videur t'ignore..." }] } }]
+            candidates: [{ content: { parts: [{ text: text || "Le videur fait la sourde oreille..." }] } }]
         });
 
     } catch (error) {
-        res.status(500).json({ error: "Crash serveur", details: error.message });
+        res.status(500).json({ error: "Erreur fatale", details: error.message });
     }
 }
