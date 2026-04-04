@@ -5,17 +5,18 @@ export default async function handler(req, res) {
     if (req.method === 'OPTIONS') return res.status(200).end();
 
     try {
-        // ON APPELLE LE NOM EXACT QUE TU AS MIS SUR VERCEL
-        const groqApiKey = process.env.API_KEY;
+        // Sécurité 1 : On nettoie la clé de tout caractère invisible (Espaces, retours à la ligne)
+        const groqApiKey = process.env.API_KEY ? process.env.API_KEY.replace(/[^a-zA-Z0-9_-]/g, '') : null;
 
         if (!groqApiKey) {
-            return res.status(500).json({ error: "Clé API_KEY introuvable sur Vercel" });
+            return res.status(500).json({ error: "Clé API_KEY manquante sur Vercel" });
         }
 
         const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
             headers: {
                 "Authorization": `Bearer ${groqApiKey}`,
-                "Content-Type": "application/json"
+                // Sécurité 2 : On force l'UTF-8 pour que les accents passent comme une lettre à la poste
+                "Content-Type": "application/json; charset=utf-8"
             },
             method: "POST",
             body: JSON.stringify({
@@ -35,22 +36,15 @@ export default async function handler(req, res) {
             })
         });
 
-        const data = await response.json();
-
-        // Si Groq renvoie une erreur (clé invalide, modèle saturé, etc.)
-        if (data.error) {
-            return res.status(500).json({ 
-                error: "Erreur Groq", 
-                details: data.error.message || data.error 
-            });
+        // On vérifie si la réponse est ok
+        if (!response.ok) {
+            const errorText = await response.text();
+            return res.status(response.status).json({ error: "Erreur Groq", details: errorText });
         }
 
-        // Extraction propre du texte
-        const text = data.choices && data.choices[0]?.message?.content 
-                     ? data.choices[0].message.content 
-                     : "Bradford te regarde de travers sans répondre...";
+        const data = await response.json();
+        const text = data.choices?.[0]?.message?.content || "Bradford ne répond pas...";
 
-        // Envoi au front-end
         res.status(200).json({
             candidates: [{
                 content: {
@@ -60,8 +54,9 @@ export default async function handler(req, res) {
         });
 
     } catch (error) {
+        // Si ça bug encore ici, c'est que le problème vient du format du JSON reçu
         res.status(500).json({ 
-            error: "Bradford a eu un court-circuit", 
+            error: "Erreur Bradford", 
             details: error.message 
         });
     }
