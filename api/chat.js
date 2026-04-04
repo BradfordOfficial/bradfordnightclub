@@ -7,20 +7,22 @@ export default async function handler(req, res) {
     try {
         const hfToken = process.env.HF_TOKEN;
 
-        // ON PASSE SUR LE NOUVEAU ROUTEUR (Indispensable pour le 70B en 2026)
-                const response = await fetch(
-            "https://router.huggingface.co/models/meta-llama/Llama-3.3-70B-Instruct",
+        // RETOUR SUR QWEN 2.5 72B (L'URL QUI MARCHAIT)
+        const response = await fetch(
+            "https://api-inference.huggingface.co/models/Qwen/Qwen2.5-72B-Instruct",
             {
                 headers: { 
                     Authorization: `Bearer ${hfToken}`,
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json" 
                 },
                 method: "POST",
                 body: JSON.stringify({
-                    inputs: `<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n${req.body.system_instruction.parts[0].text}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n${req.body.contents[0].parts[0].text}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n`,
+                    // Format spécifique pour Qwen (ChatML)
+                    inputs: `<|im_start|>system\n${req.body.system_instruction.parts[0].text}<|im_end|>\n<|im_start|>user\n${req.body.contents[0].parts[0].text}<|im_end|>\n<|im_start|>assistant\n`,
                     parameters: {
-                        max_new_tokens: 150, // On réduit à 150 pour gagner en vitesse
-                        temperature: 0.7,
+                        max_new_tokens: 100, // ON RESTE SUR 100 POUR LA VITESSE
+                        temperature: 0.8,
+                        top_p: 0.9,
                         return_full_text: false
                     },
                     options: {
@@ -30,14 +32,13 @@ export default async function handler(req, res) {
             }
         );
 
-
         const data = await response.json();
 
-        // Si le modèle charge encore (le 70B est lourd)
+        // Gestion du chargement (Le 72B est une baleine à réveiller)
         if (data.error && data.error.includes("currently loading")) {
             return res.status(503).json({ 
-                error: "Le videur met ses gants...", 
-                details: "Le 70B est en train de chauffer, réessaie dans 20 secondes." 
+                error: "Bradford arrive...", 
+                details: "Le modèle est en train de charger sur Hugging Face. Réessaie dans 15-20 sec." 
             });
         }
 
@@ -45,13 +46,13 @@ export default async function handler(req, res) {
             return res.status(500).json({ error: "HF Erreur", details: data.error });
         }
 
-        // Llama 3.3 via Router renvoie souvent un tableau [ { generated_text: "..." } ]
+        // Qwen renvoie souvent un tableau [ { generated_text: "..." } ]
         const text = Array.isArray(data) ? data[0].generated_text : data.generated_text;
 
         res.status(200).json({
             candidates: [{
                 content: {
-                    parts: [{ text: text || "Bradford est muet... (Pas de réponse)" }]
+                    parts: [{ text: text || "Bradford te regarde de haut sans rien dire..." }]
                 }
             }]
         });
