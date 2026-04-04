@@ -31,23 +31,28 @@ export default async function handler(req, res) {
             })
         });
 
-        const data = await response.json();
+                const data = await response.json();
 
+        // Si Groq renvoie une erreur directe
         if (data.error) {
-            return res.status(500).json({ error: "Erreur Groq", details: data.error });
+            return res.status(500).json({ error: "Erreur Groq", details: data.error.message || data.error });
         }
 
-        // Groq renvoie un format "OpenAI style"
-        const text = data.choices[0]?.message?.content;
+        // LA CORRECTION EST ICI : On va chercher le contenu du message
+        // Groq (OpenAI style) renvoie : data.choices[0].message.content
+        const text = data.choices && data.choices[0]?.message?.content 
+                     ? data.choices[0].message.content 
+                     : "Le videur reste muet...";
 
-        // On renvoie le format que ton front attend
+        // On renvoie le format que ton interface attend
         res.status(200).json({
             candidates: [{
                 content: {
-                    parts: [{ text: text || "Le videur t'ignore..." }]
+                    parts: [{ text: text }] // On s'assure que 'text' est bien une chaîne de caractères
                 }
             }]
         });
+
 
     } catch (error) {
         res.status(500).json({ error: "Bradford a eu un court-circuit", details: error.message });
