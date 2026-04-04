@@ -9,12 +9,13 @@ export default async function handler(req, res) {
 
         // NOUVELLE URL OBLIGATOIRE : router.huggingface.co
         const response = await fetch(
-            "https://router.huggingface.co/hf-inference/models/meta-llama/Llama-3.3-70B-Instruct",
-            {
-                headers: { 
-                    Authorization: `Bearer ${hfToken}`,
-                    "Content-Type": "application/json" 
-                },
+    "https://api-inference.huggingface.co/models/meta-llama/Llama-3.3-70B-Instruct",
+    {
+        headers: { 
+            Authorization: `Bearer ${hfToken}`,
+            "Content-Type": "application/json",
+            "x-use-cache": "false" // On force pour éviter les vieux résultats
+        },
                 method: "POST",
                 body: JSON.stringify({
                     inputs: `<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n${req.body.system_instruction.parts[0].text}<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n${req.body.contents[0].parts[0].text}<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n`,
