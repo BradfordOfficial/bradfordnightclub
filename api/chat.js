@@ -7,26 +7,27 @@ export default async function handler(req, res) {
 
     try {
         const apiKey = process.env.GEMINI_API_KEY;
-        // Avec ton nouveau projet, cette URL est maintenant débloquée
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+        // On utilise la version v1beta pour avoir accès au system_instruction
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
 
         const response = await fetch(url, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
+                // STRUCTURE CORRIGÉE ICI
+                system_instruction: req.body.system_instruction, 
                 contents: req.body.contents,
-                system_instruction: req.body.system_instruction,
                 generationConfig: {
                     temperature: 0.7,
-                    maxOutputTokens: 1000
+                    maxOutputTokens: 800
                 }
             })
         });
 
         const data = await response.json();
         
-        // Si Google renvoie une erreur, on la voit passer
         if (data.error) {
+            console.error("Erreur Google API:", data.error);
             return res.status(response.status).json(data);
         }
 
