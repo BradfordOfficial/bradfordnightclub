@@ -5328,7 +5328,8 @@ function pushReview() {
     let cityInput = document.getElementById('g-city').value; 
     const star = parseInt(document.getElementById('g-stars').value);
     const msg = document.getElementById('g-msg').value;
-    if(!msg) return alert("YOUR TESTIMONY IS REQUIRED");
+    if(!msg.trim()) return alert("YOUR TESTIMONY IS REQUIRED");
+
 
     const cityMap = { 
         "MIAMI": "MIA", 
