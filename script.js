@@ -5228,8 +5228,7 @@ const B_ENGINE = {
     const wall = document.getElementById('masterWall');
     if(!wall) return;
 
-    // --- LOGIQUE DE VIEILLISSEMENT DYNAMIQUE ---
-    // Heure de référence = moment où la session a commencé
+   
 if (!this._sessionStart) this._sessionStart = Date.now();
 
 this.db.forEach(r => {
