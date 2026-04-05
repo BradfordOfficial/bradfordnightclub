@@ -5230,20 +5230,16 @@ const B_ENGINE = {
     if(!wall) return;
 
    
-if (!this._sessionStart) this._sessionStart = Date.now();
-
 this.db.forEach(r => {
-    if (r.timestamp) {
-        // Vrai message utilisateur → âge réel
+    if(r.timestamp) {
         const diffMinutes = Math.floor((Date.now() - r.timestamp) / 60000);
         r.rawTime = diffMinutes;
         r.timeLabel = this.formatTime(diffMinutes);
-    } else {
-        // Message robot → on simule l'écoulement du temps depuis le début de session
-        const sessionMinutes = Math.floor((Date.now() - this._sessionStart) / 60000);
-        r.timeLabel = this.formatTime(r.rawTime + sessionMinutes);
+    } else if (r.timeLabel === "JUST NOW" && !r.timestamp) {
+        r.timestamp = Date.now() - 3600000;
     }
 });
+
 
 
     // Récupération des filtres
