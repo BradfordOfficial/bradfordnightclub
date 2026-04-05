@@ -5255,23 +5255,19 @@ this.db.forEach(r => {
     
     // Trouve la section TRI dans ta fonction render() et remplace-la par celle-ci :
 
-// --- LE TRI LÉGENDAIRE (CORRIGÉ & STABLE) ---
-const now = Date.now(); 
-
-filtered.sort((a, b) => {
-    // On calcule le point de référence temporel pour A et B
-    const tA = a.timestamp || (now - (parseInt(a.rawTime || 0) * 60000));
-    const tB = b.timestamp || (now - (parseInt(b.rawTime || 0) * 60000));
-
-    // En cas d'égalité parfaite (collision), on privilégie le vrai message utilisateur
-    if (tA === tB) {
-        if (a.timestamp && !b.timestamp) return (orderF === 'new') ? -1 : 1;
-        if (!a.timestamp && b.timestamp) return (orderF === 'new') ? 1 : -1;
-    }
-
-    // Tri Newest (tB - tA) ou Oldest (tA - tB)
-    return (orderF === 'new') ? (tB - tA) : (tA - tB);
-});
+if(orderF === 'new') {
+    filtered.sort((a, b) => {
+        const timeA = a.timestamp || (Date.now() - (a.rawTime * 60000));
+        const timeB = b.timestamp || (Date.now() - (b.rawTime * 60000));
+        return timeB - timeA; 
+    });
+} else {
+    filtered.sort((a, b) => {
+        const timeA = a.timestamp || (Date.now() - (a.rawTime * 60000));
+        const timeB = b.timestamp || (Date.now() - (b.rawTime * 60000));
+        return timeA - timeB;
+    });
+}
 
 
 
