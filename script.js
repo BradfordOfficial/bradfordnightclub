@@ -5342,14 +5342,15 @@ function pushReview() {
     const city = cityMap[rawCity] || rawCity;
 
     const newEntry = { 
-        name: name.toUpperCase(), 
-        city: city, 
-        star: star, 
-        msg: msg, 
-        timestamp: Date.now(), 
-        rawTime: 0, 
-        timeLabel: "JUST NOW" 
-    };
+    name: name.toUpperCase(), 
+    city: city, 
+    star: star, 
+    msg: msg, 
+    timestamp: Date.now() + 1000, 
+    rawTime: 0, 
+    timeLabel: "JUST NOW" 
+};
+
 
     // 1. Sauvegarde du message dans ton historique perso
     let myMsgs = JSON.parse(localStorage.getItem("BRADFORD_MY_MSGS") || "[]");
