@@ -5170,7 +5170,8 @@ const B_ENGINE = {
 
             startLiveEngine() {
         const triggerNext = () => {
-            const randomDelay = Math.floor(Math.random() * (900000 - 20000 + 1) + 20000);
+            const randomDelay = Math.floor(Math.random() * (300000 - 120000 + 1) + 120000);
+
 
 
             setTimeout(() => {
