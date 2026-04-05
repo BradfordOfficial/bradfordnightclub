@@ -1396,49 +1396,161 @@ async function afficherDetailsArtiste(artiste, ville, details) {
     let label = "Indépendant";
 
     try {
-    let data;
-    let pageTitle = null;
+            // ============================================================
+        // WIKIPEDIA LOOKUP — ULTRA SECURE v6 (Bradford Edition)
+        // ============================================================
 
-    // 🔍 Recherche FR
-    const searchRes = await fetch(`https://fr.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(artiste + " musicien")}&format=json&origin=*`);
-    const searchData = await searchRes.json();
+        const ARTIST_KEYWORDS = [
+            "musicien", "chanteur", "chanteuse", "rappeur", "rappeuse",
+            "DJ", "disc jockey", "producteur", "artiste", "groupe musical",
+            "band", "singer", "rapper", "musician", "producer", "artist",
+            "hip-hop", "r&b", "electronic", "pop", "jazz", "soul", "reggae",
+            "dancehall", "afrobeats", "trap", "drill", "house", "techno",
+            "record", "album", "single", "label", "tour", "concert",
+            "songwriter", "compositeur", "interprète", "beatmaker"
+        ];
 
-    if (searchData.query.search.length > 0) {
-        pageTitle = searchData.query.search[0].title;
-    }
+        const BLACKLIST_KEYWORDS = [
+            "film", "série télévisée", "roman", "livre",
+            "sportif", "footballeur", "politicien", "homme politique",
+            "personnage fictif", "télévision", "movie",
+            "politician", "football", "basketball", "wrestler",
+            "circonscription", "commune", "village", "rivière", "montagne",
+            "oiseau", "animal", "espèce", "plante", "bird", "species"
+        ];
 
-    // 🌍 Fallback EN
-    if (!pageTitle) {
-        const searchResEn = await fetch(`https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(artiste + " musician")}&format=json&origin=*`);
-        const searchDataEn = await searchResEn.json();
-
-        if (searchDataEn.query.search.length > 0) {
-            pageTitle = searchDataEn.query.search[0].title;
+        // Nettoyage du nom pour gérer $, chiffres, caractères spéciaux
+        function normalizeArtistName(name) {
+            return name
+                .replace(/\$/g, 's')
+                .replace(/[@!]/g, '')
+                .trim();
         }
-    }
 
-    // 📄 Récupération du résumé
-    if (pageTitle) {
-        const response = await fetch(`https://fr.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(pageTitle)}`);
+        function scoreCandidat(title, description, extract) {
+            let score = 0;
+            const corpus = (title + " " + description + " " + extract).toLowerCase();
+            const artistLower = artiste.toLowerCase();
+            const artistNorm = normalizeArtistName(artistLower);
 
-        if (response.ok) {
-            data = await response.json();
+            // 🏆 Titre exact
+            if (title.toLowerCase() === artistLower || title.toLowerCase() === artistNorm) score += 60;
+            else if (title.toLowerCase().includes(artistLower) || title.toLowerCase().includes(artistNorm)) score += 35;
+
+            // 🔴 Nom absent de l'extrait = suspect
+            const nameInExtract = extract.toLowerCase().includes(artistLower) || 
+                                  extract.toLowerCase().includes(artistNorm);
+            if (!nameInExtract) score -= 40;
+
+            // ✅ Keywords musicaux
+            for (const kw of ARTIST_KEYWORDS) {
+                if (corpus.includes(kw.toLowerCase())) score += 12;
+            }
+
+            // ❌ Blacklist légère
+            for (const bad of BLACKLIST_KEYWORDS) {
+                if (corpus.includes(bad.toLowerCase())) score -= 8;
+            }
+
+            // ❌ Titres parasites
+            const titleLower = title.toLowerCase();
+            if (titleLower.includes("discography") || titleLower.includes("discographie")) score -= 30;
+            if (titleLower.includes("filmography")) score -= 30;
+            // "tour" et "album" retirés du malus titre car trop agressifs
+
+            // 🎯 BONUS : description courte et directe = bonne page principale
+            if (description && description.length < 80) score += 10;
+
+            // 🎯 BONUS : Wikipedia catégorise directement comme artiste
+            const directCategories = ["rapper", "singer", "musician", "dj", "producer", 
+                                       "rappeur", "chanteur", "musicien", "artiste"];
+            for (const cat of directCategories) {
+                if ((description || "").toLowerCase().startsWith(cat)) score += 25;
+            }
+
+            return score;
+        }
+
+        async function searchWiki(lang, query, limit = 5) {
+            try {
+                const res = await fetch(
+                    `https://${lang}.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(query)}&srlimit=${limit}&format=json&origin=*`
+                );
+                const json = await res.json();
+                return json?.query?.search || [];
+            } catch { return []; }
+        }
+
+        async function fetchSummary(lang, title) {
+            try {
+                const res = await fetch(
+                    `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
+                );
+                if (res.ok) return await res.json();
+
+                const otherLang = lang === "fr" ? "en" : "fr";
+                const res2 = await fetch(
+                    `https://${otherLang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
+                );
+                if (res2.ok) return await res2.json();
+                return null;
+            } catch { return null; }
+        }
+
+        const artisteNormalise = normalizeArtistName(artiste);
+
+        const strategies = [
+            // Nom exact + musician EN (meilleur signal)
+            { lang: "en", query: `${artiste} musician` },
+            { lang: "en", query: `${artiste} rapper singer DJ artist` },
+            // Nom normalisé si caractères spéciaux
+            { lang: "en", query: `${artisteNormalise} musician` },
+            // FR
+            { lang: "fr", query: `${artiste} musicien` },
+            { lang: "fr", query: `${artiste} chanteur rappeur DJ` },
+            // Fallback nom seul
+            { lang: "en", query: artiste },
+            { lang: "fr", query: artiste },
+            // Fallback nom normalisé seul
+            { lang: "en", query: artisteNormalise },
+        ];
+
+        let bestScore = -Infinity;
+        let bestData = null;
+
+        for (const strategy of strategies) {
+            const results = await searchWiki(strategy.lang, strategy.query, 5);
+
+            for (const result of results) {
+                const summary = await fetchSummary(strategy.lang, result.title);
+                if (!summary) continue;
+
+                const score = scoreCandidat(
+                    summary.title || result.title,
+                    summary.description || "",
+                    summary.extract || ""
+                );
+
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestData = summary;
+                }
+            }
+
+            // Seuil de confiance élevé atteint = stop
+            if (bestScore > 50) break;
+        }
+
+        if (bestData && bestScore > 15) {
+            bioWiki = bestData.extract || "Biographie non disponible.";
+            genreWiki = bestData.description || "Artiste";
+
+            const dateMatch = bioWiki.match(/\b(19|20)\d{2}\b/);
+            if (dateMatch) activite = `Depuis ${dateMatch[0]}`;
         } else {
-            const responseEn = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(pageTitle)}`);
-            if (responseEn.ok) data = await responseEn.json();
+            bioWiki = `Rejoignez-nous pour une performance exclusive de ${artiste} au Bradford.`;
         }
-    }
 
-    // ✅ TU GARDES TA LOGIQUE
-    if (data) {
-        bioWiki = data.extract || "Biographie non disponible.";
-        genreWiki = data.description || "Artiste";
-
-        const dateMatch = bioWiki.match(/\b(19|20)\d{2}\b/);
-        if (dateMatch) activite = `Depuis ${dateMatch[0]}`;
-    } else {
-        bioWiki = `Rejoignez-nous pour une performance exclusive de ${artiste} au Bradford.`;
-    }
 
 } catch (e) {
     bioWiki = "Biographie non disponible.";
