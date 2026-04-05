@@ -5229,18 +5229,22 @@ const B_ENGINE = {
     if(!wall) return;
 
     // --- LOGIQUE DE VIEILLISSEMENT DYNAMIQUE ---
-    this.db.forEach(r => {
-        if(r.timestamp) {
-            // Calcule l'âge réel du message
-            const diffMinutes = Math.floor((Date.now() - r.timestamp) / 60000);
-            r.rawTime = diffMinutes;
-            r.timeLabel = this.formatTime(diffMinutes);
-        } else if (r.timeLabel === "JUST NOW" && !r.timestamp) {
-            // ANTI-BUG : Si c'est un vieux message "test" sans timestamp, on lui donne un âge par défaut
-            // pour qu'il arrête de squatter le haut de la liste
-            r.timestamp = Date.now() - 3600000; // Il y a 1 heure
-        }
-    });
+    // Heure de référence = moment où la session a commencé
+if (!this._sessionStart) this._sessionStart = Date.now();
+
+this.db.forEach(r => {
+    if (r.timestamp) {
+        // Vrai message utilisateur → âge réel
+        const diffMinutes = Math.floor((Date.now() - r.timestamp) / 60000);
+        r.rawTime = diffMinutes;
+        r.timeLabel = this.formatTime(diffMinutes);
+    } else {
+        // Message robot → on simule l'écoulement du temps depuis le début de session
+        const sessionMinutes = Math.floor((Date.now() - this._sessionStart) / 60000);
+        r.timeLabel = this.formatTime(r.rawTime + sessionMinutes);
+    }
+});
+
 
     // Récupération des filtres
     const cityF = document.getElementById('f-city')?.value || 'all';
