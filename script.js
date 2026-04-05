@@ -5346,10 +5346,11 @@ function pushReview() {
     city: city, 
     star: star, 
     msg: msg, 
-    timestamp: Date.now() + 1000, 
+    timestamp: Date.now(), 
     rawTime: 0, 
     timeLabel: "JUST NOW" 
 };
+
 
 
     // 1. Sauvegarde du message dans ton historique perso
