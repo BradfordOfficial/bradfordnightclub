@@ -1230,29 +1230,29 @@ const dateActuelle = new Date();
 
 // --- BASE DE DONNÉES COMPLÈTE DES ÉVÉNEMENTS ---
 const donneesEvenements = [
-  // --- JEUDI 02 AVRIL 2026 ---
-    { date: '2026-04-02', jour: 'JEU.', ville: 'LA', artiste: 'KENNY MASON', details: 'Angelic Hoodrat (Alt-Rap/Grunge Showcase - $90)' },
-    { date: '2026-04-02', jour: 'JEU.', ville: 'MIAMI', artiste: 'TEEZO TOUCHDOWN', details: 'How Do You Sleep? (Experimental Pop/Rap - Accès restreint)' },
-    { date: '2026-04-02', jour: 'JEU.', ville: 'NYC', artiste: 'AMINE', details: 'Kaytraminé & Solo Hits (Good Vibe Rap - $90)' },
-    { date: '2026-04-02', jour: 'JEU.', ville: 'SF', artiste: 'DIXON', details: 'Innervisions Night (Melodic Techno/Deep - $90)' },
+ // --- JEUDI 09 AVRIL 2026 ---
+    { date: '2026-04-09', jour: 'JEU.', ville: 'LA', artiste: 'SCHOOLBOY Q', details: 'Blue Lips Live (TDE West Coast Rap - $90)' },
+    { date: '2026-04-09', jour: 'JEU.', ville: 'MIAMI', artiste: 'FLOETRY', details: 'Say Yes Tour (Neo-Soul Reunion - Accès restreint)' },
+    { date: '2026-04-09', jour: 'JEU.', ville: 'NYC', artiste: 'ACTION BRONSON', details: 'Baklava Performance (Queens Hip-Hop - $90)' },
+    { date: '2026-04-09', jour: 'JEU.', ville: 'SF', artiste: 'ADAM BEYER', details: 'Drumcode Night (Swedish Techno - $90)' },
 
-    // --- VENDREDI 03 AVRIL 2026 ---
-    { date: '2026-04-03', jour: 'VEN.', ville: 'LA', artiste: 'ANDERSON .PAAK', details: 'Malibu Live (Funk/Soul/Rap Drum Set - Accès sur liste VIP uniquement)' },
-    { date: '2026-04-03', jour: 'VEN.', ville: 'MIAMI', artiste: 'LATTO', details: 'Sugar Honey Iced Tea (Atlanta Energy - Accès restreint)' },
-    { date: '2026-04-03', jour: 'VEN.', ville: 'NYC', artiste: 'DAVE', details: 'Psychodrama Live (UK Lyrical Masterclass - Accès sur liste VIP uniquement)' },
-    { date: '2026-04-03', jour: 'VEN.', ville: 'SF', artiste: 'THE BLESSED MADONNA', details: 'We Still Believe (House/Disco/High Energy - $90)' },
+    // --- VENDREDI 10 AVRIL 2026 ---
+    { date: '2026-04-10', jour: 'VEN.', ville: 'LA', artiste: 'BRUNO MARS', details: 'The Romantic Tour (Pop/Soul Showcase - Accès sur liste VIP uniquement)' },
+    { date: '2026-04-10', jour: 'VEN.', ville: 'MIAMI', artiste: 'CHRIS PATRICK', details: 'The Camden Walk (Lyrical Hip-Hop - $90)' },
+    { date: '2026-04-10', jour: 'VEN.', ville: 'NYC', artiste: 'VICTORIA MONÉT', details: 'Jaguar II Live (Modern R&B/Soul - Accès restreint)' },
+    { date: '2026-04-10', jour: 'VEN.', ville: 'SF', artiste: 'LP GIOBBI', details: 'Dead House (Piano-House Set - $90)' },
 
-    // --- SAMEDI 04 AVRIL 2026 ---
-    { date: '2026-04-04', jour: 'SAM.', ville: 'LA', artiste: 'MICK JENKINS', details: 'The Patience (Chicago Lyricist Showcase - $90)' },
-    { date: '2026-04-04', jour: 'SAM.', ville: 'MIAMI', artiste: 'CENTRAL CEE', details: '23 Tour (UK Drill/Global Star - Accès sur liste VIP uniquement)' }, // REMPLACÉ
-    { date: '2026-04-04', jour: 'SAM.', ville: 'NYC', artiste: 'SAMPHA', details: 'Lahai Tour (Alternative Soul/Electronic - Accès restreint)' },
-    { date: '2026-04-04', jour: 'SAM.', ville: 'SF', artiste: 'NICOLE MOUDABER', details: 'In The Mood (Heavy Techno/Industrial - $90)' },
+    // --- SAMEDI 11 AVRIL 2026 ---
+    { date: '2026-04-11', jour: 'SAM.', ville: 'LA', artiste: 'GALANTIS', details: 'Sea of Fox (Pop-Dance Set - $90)' },
+    { date: '2026-04-11', jour: 'SAM.', ville: 'MIAMI', artiste: 'BLACK COFFEE', details: 'African House Experience (Spiritual Set - Accès sur liste VIP uniquement)' },
+    { date: '2026-04-11', jour: 'SAM.', ville: 'NYC', artiste: 'YUNGBLUD', details: 'Blud n’ Guts Tour (Alt-Rock/Rap Energy - $90)' },
+    { date: '2026-04-11', jour: 'SAM.', ville: 'SF', artiste: 'NINA KRAVIZ', details: 'Trip Night (Acid Techno/IDM - Accès restreint)' },
 
-    // --- DIMANCHE 05 AVRIL 2026 ---
-    { date: '2026-04-05', jour: 'DIM.', ville: 'LA', artiste: 'THUNDERCAT', details: 'Drunk & Apocalypse (Space Funk/Bass Live - $90)' },
-    { date: '2026-04-05', jour: 'DIM.', ville: 'MIAMI', artiste: 'MASEGO', details: 'Studying Abroad (TrapHouseJazz Showcase - Accès restreint)' }, // REMPLACÉ
-    { date: '2026-04-05', jour: 'DIM.', ville: 'NYC', artiste: 'RAURY', details: 'Indigo Child (Acoustic Folk-Rap - $90)' },
-    { date: '2026-04-05', jour: 'DIM.', ville: 'SF', artiste: 'MODERAT', details: 'More Love (Live Electronic/IDM - $90)' }
+    // --- DIMANCHE 12 AVRIL 2026 ---
+    { date: '2026-04-12', jour: 'DIM.', ville: 'LA', artiste: 'ARI LENNOX', details: 'Age/Sex/Location (Soul/R&B Showcase - $90)' },
+    { date: '2026-04-12', jour: 'DIM.', ville: 'MIAMI', artiste: 'RICK ROSS', details: 'Rich Forever Night (MMG Luxury Rap - Accès sur liste VIP uniquement)' },
+    { date: '2026-04-12', jour: 'DIM.', ville: 'NYC', artiste: 'BABYFACE RAY', details: 'Detroit Connection (Real Street Rap - $90)' },
+    { date: '2026-04-12', jour: 'DIM.', ville: 'SF', artiste: 'HELLOWEEN', details: '40th Anniversary (Heavy Metal Special Guest - $90)' }
 ];
 
 
