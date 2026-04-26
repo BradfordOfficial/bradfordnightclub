@@ -6101,35 +6101,368 @@ function renderDressCodePage() {
         <div class="analyzer-unit">
             <span class="analyzer-label">BRADFORD STYLE ANALYZER v5.0</span>
             
-            <select id="select-top" class="brdf-select">
-                <option value="none">-- CHOISIR LE HAUT --</option>
-                <option value="premium">Blazer Double-Breasted (Laine froide)</option>
-                <option value="premium">Veste en Cuir Grainé (Archive)</option>
-                <option value="premium">Chemise en Soie (Col Italien/Mao)</option>
-                <option value="premium">Pull Cachemire (Coupe Ajustée)</option>
-                <option value="premium">Top Architectural (Designer)</option>
-                <option value="ban">T-shirt Oversize / Logo massif</option>
-                <option value="ban">Hoodie / Sweat-shirt</option>
-            </select>
+           <!-- ============================================================
+     BRADFORD — BRDF SELECTS ULTRA-COMPLETS
+     Remplace simplement tes 3 <select> par ceux-ci.
+     Structure identique : value="premium" | value="ban" | value="none"
+     ============================================================ -->
 
-            <select id="select-bottom" class="brdf-select">
-                <option value="none">-- CHOISIR LE BAS --</option>
-                <option value="premium">Pantalon Tailoring Large (Flanelle)</option>
-                <option value="premium">Denim Brut Japonais (Noir)</option>
-                <option value="premium">Pantalon en Cuir / Daim</option>
-                <option value="premium">Jupe Midi en Satin</option>
-                <option value="ban">Short / Bermuda</option>
-                <option value="ban">Jogging / Pantalon de sport</option>
-            </select>
+<!-- ═══════════════════════════════════════════
+     HAUT
+     ═══════════════════════════════════════════ -->
 
-            <select id="select-shoes" class="brdf-select">
-                <option value="none">-- CHOISIR LES SOULIERS --</option>
-                <option value="premium">Mocassins Vernis / Derbies</option>
-                <option value="premium">Baskets de Luxe (Limited/Impeccables)</option>
-                <option value="premium">Talons Aiguilles / Sculptés</option>
-                <option value="premium">Bottines Chelsea (Cuir Noble)</option>
-                <option value="ban">Sandales / Tongs / Claquettes</option>
-            </select>
+<select id="select-top" class="brdf-select">
+  <option value="none">-- CHOISIR LE HAUT --</option>
+
+  <!-- ── BLAZERS & VESTES STRUCTURÉES ── -->
+
+  <optgroup label="▸ BLAZERS & VESTES STRUCTURÉES">
+    <option value="premium">Blazer Double-Breasted (Laine froide)</option>
+    <option value="premium">Blazer Single-Breasted (Laine / Mohair)</option>
+    <option value="premium">Blazer Croisé (Velours Côtelé)</option>
+    <option value="premium">Blazer Oversize (Épaules tombantes, Couturier)</option>
+    <option value="premium">Blazer Court Structuré (Femme)</option>
+    <option value="premium">Smoking (Revers Satin Noir)</option>
+    <option value="premium">Smoking (Revers Satin Blanc / Ivoire)</option>
+    <option value="premium">Smoking Velours (Bordeaux / Bleu Nuit)</option>
+    <option value="premium">Spencer (Veste Courte de Smoking)</option>
+    <option value="premium">Veste en Cuir Lisse (Coupe Ajustée)</option>
+    <option value="premium">Veste en Cuir Grainé (Archive)</option>
+    <option value="premium">Veste en Cuir Verni</option>
+    <option value="premium">Veste en Cuir Suédé (Daim)</option>
+    <option value="premium">Veste Biker (Cuir, Zips Métal)</option>
+    <option value="premium">Veste Moto Lacée (Cuir Brut)</option>
+    <option value="premium">Veste en Velours (Bordeaux / Emeraude / Noir)</option>
+    <option value="premium">Veste en Daim Frangé (Style 70's Luxe)</option>
+    <option value="premium">Veste Kimono (Soie / Brocart)</option>
+    <option value="premium">Veste Kimono (Jacquard Floral)</option>
+    <option value="premium">Veste Harrington (Satin / Nylon Haute Gamme)</option>
+    <option value="premium">Veste MA-1 Bomber (Nylon Premium)</option>
+    <option value="premium">Veste Teddy (Laine / Fourrure Col)</option>
+    <option value="premium">Veste Varsity (Cuir & Laine, Personnalisée)</option>
+    <option value="premium">Veste en Jean Brut (Selvedge)</option>
+    <option value="premium">Veste Shearling (Mouton Retourné)</option>
+    <option value="premium">Veste en Tweed (Chanel / Harris)</option>
+    <option value="premium">Veste en Maille Crochetée (Designer)</option>
+    <option value="premium">Manteau Court (Laine Camel)</option>
+    <option value="premium">Cape (Laine / Cachemire)</option>
+    <option value="premium">Trench Court (Coton Gabardine)</option>
+    <option value="premium">Veste Imprimée (Print Artistique / Archive)</option>
+    <option value="premium">Veste Sequins (Intégrale)</option>
+    <option value="premium">Veste Métallisée (Tissu Lamé)</option>
+    <option value="premium">Veste en PVC / Vinyle (Transparent)</option>
+    <option value="premium">Veste Tailored (Boutons Dorés, Marine)</option>
+  </optgroup>
+
+  <!-- ── CHEMISES & TOPS HABILLÉS ── -->
+
+  <optgroup label="▸ CHEMISES & TOPS HABILLÉS">
+    <option value="premium">Chemise en Soie (Col Italien)</option>
+    <option value="premium">Chemise en Soie (Col Mao)</option>
+    <option value="premium">Chemise en Soie (Col Lavallière / Nœud)</option>
+    <option value="premium">Chemise en Soie Imprimée (Motif Artistique)</option>
+    <option value="premium">Chemise en Satin (Brillant Luxe)</option>
+    <option value="premium">Chemise en Organza (Transparente)</option>
+    <option value="premium">Chemise en Batiste (Froufrous / Jabot)</option>
+    <option value="premium">Chemise à Plastron (Smoking)</option>
+    <option value="premium">Chemise Oversize (Couturier, Col Structuré)</option>
+    <option value="premium">Chemise en Lin (Froissé Luxe)</option>
+    <option value="premium">Chemise en Popeline (Coupe Parfaite)</option>
+    <option value="premium">Chemise en Velours (Col Ouvert)</option>
+    <option value="premium">Blouse en Soie (Femme, Manches Ballon)</option>
+    <option value="premium">Blouse en Organza (Femme, Volants)</option>
+    <option value="premium">Corsage en Satin (Bustier Structuré)</option>
+    <option value="premium">Corset en Cuir (Designer)</option>
+    <option value="premium">Corset en Satin (Laçage Dos)</option>
+    <option value="premium">Corset en Brocart (Brodé / Jacquard)</option>
+    <option value="premium">Body en Dentelle Fine</option>
+    <option value="premium">Body en Maille Résille (Luxe)</option>
+    <option value="premium">Body en Satin (Col Plongeant)</option>
+    <option value="premium">Body en Velours (Décolleté)</option>
+    <option value="premium">Top Bandeau (Satin / Sequins)</option>
+    <option value="premium">Top Bralette en Dentelle (Couturier)</option>
+    <option value="premium">Top en Maille Crochetée (Designer)</option>
+    <option value="premium">Top Architectural (Designer, Armaturé)</option>
+    <option value="premium">Top Asymétrique (Couturier)</option>
+    <option value="premium">Top Drapé (Jersey Soie)</option>
+    <option value="premium">Top Sequins Intégral</option>
+    <option value="premium">Top Métallisé (Lamé)</option>
+    <option value="premium">Top en Cuir (Bustier / Crop)</option>
+    <option value="premium">Top en PVC (Transparent / Vinyle)</option>
+    <option value="premium">Crop Top Structured (Rigide, Couturier)</option>
+    <option value="premium">Haut en Plumes (Designer)</option>
+    <option value="premium">Haut en Strass / Cristaux (Brodé)</option>
+    <option value="premium">Chemise Lurex (Fil Métallique)</option>
+  </optgroup>
+
+  <!-- ── PULLS & MAILLES PREMIUM ── -->
+
+  <optgroup label="▸ PULLS & MAILLES PREMIUM">
+    <option value="premium">Pull Cachemire (Coupe Ajustée)</option>
+    <option value="premium">Pull Cachemire (Col Roulé)</option>
+    <option value="premium">Pull en Laine Mérinos (Col V)</option>
+    <option value="premium">Pull en Angora (Duveteux Luxe)</option>
+    <option value="premium">Pull en Mohair (Oversized Luxe)</option>
+    <option value="premium">Pull en Soie-Cachemire Mélangé</option>
+    <option value="premium">Cardigan Long (Cachemire / Mohair)</option>
+    <option value="premium">Débardeur en Maille Fine (Cachemire)</option>
+    <option value="premium">Pull Torsadé (Irlandais, Laine Brute)</option>
+    <option value="premium">Pull Intarsia (Motif Jacquard Luxe)</option>
+    <option value="premium">Pull en Lurex (Maille Brillante)</option>
+    <option value="premium">Pull Crocheté (Designer, Voir-Through)</option>
+    <option value="premium">Crop Pull Ajusté (Cachemire)</option>
+    <option value="premium">Col Roulé en Soie</option>
+    <option value="premium">Polo en Piqué (Coton Pima / Cachemire)</option>
+    <option value="premium">Polo en Maille Fine (Couleur Unie Luxe)</option>
+  </optgroup>
+
+  <!-- ── T-SHIRTS ACCEPTÉS (Premium/Discret) ── -->
+
+  <optgroup label="▸ T-SHIRTS ACCEPTÉS (Contexte Premium)">
+    <option value="premium">T-shirt Blanc Uni (Coton Égyptien, Coupe Parfaite)</option>
+    <option value="premium">T-shirt Noir Uni (Ajusté, Qualité Supima)</option>
+    <option value="premium">T-shirt Graphique (Imprimé Artistique / Archive Luxe)</option>
+    <option value="premium">T-shirt en Soie (Uni, Col Rond)</option>
+    <option value="premium">Débardeur Fin (Côtelé Luxe)</option>
+  </optgroup>
+
+  <!-- ── TENUES COMPLÈTES HAUTS ── -->
+
+  <optgroup label="▸ ENSEMBLES / COMBINAISONS (Haut)">
+    <option value="premium">Combinaison Pantalon (Jumpsuit Soie / Satin)</option>
+    <option value="premium">Combinaison Courte (Romper en Satin)</option>
+    <option value="premium">Robe Moulante (Maille / Jersey)</option>
+    <option value="premium">Robe en Satin (Biais, Longue)</option>
+    <option value="premium">Robe en Velours (Midi / Longue)</option>
+    <option value="premium">Robe en Sequins (Mini / Midi)</option>
+    <option value="premium">Robe Bustier (Corset intégré)</option>
+    <option value="premium">Robe Asymétrique (Couturier)</option>
+    <option value="premium">Robe en Dentelle (Transparence Luxe)</option>
+    <option value="premium">Robe en Cuir (Moulante)</option>
+    <option value="premium">Robe Cut-Out (Découpes Stratégiques)</option>
+    <option value="premium">Mini Robe Architecturale (Designer)</option>
+    <option value="premium">Robe Wrap (Soie Imprimée)</option>
+    <option value="premium">Robe en Plumes (Marabout / Autruche)</option>
+    <option value="premium">Tenue Traditionnelle Luxe (Kaftan / Kimono / Ao Dai en Soie)</option>
+  </optgroup>
+
+  <!-- ── BANNIS ── -->
+
+  <optgroup label="✗ NON ADMIS">
+    <option value="ban">T-shirt Oversize / Logo massif</option>
+    <option value="ban">Hoodie / Sweat-shirt</option>
+    <option value="ban">Débardeur de Sport / Rashguard</option>
+    <option value="ban">Maillot de Foot / Jersey Sportif</option>
+    <option value="ban">T-shirt Souvenir / Imprimé Touristique</option>
+    <option value="ban">Chemise Hawaïenne (Casual)</option>
+    <option value="ban">Veste de Survêtement / Tracksuit</option>
+    <option value="ban">Flanelle de Bûcheron (Oversize)</option>
+    <option value="ban">Gilet à Capuche (Zippé)</option>
+    <option value="ban">Pull à Capuche (Logo Université)</option>
+    <option value="ban">Débardeur Filet de Pêche</option>
+    <option value="ban">Chemise en Polyester Low-Cost</option>
+    <option value="ban">Crop Top Basique (H&M / Shein)</option>
+    <option value="ban">Haut de Pyjama</option>
+  </optgroup>
+</select>
+
+<!-- ═══════════════════════════════════════════
+     BAS
+     ═══════════════════════════════════════════ -->
+
+<select id="select-bottom" class="brdf-select">
+  <option value="none">-- CHOISIR LE BAS --</option>
+
+  <!-- ── PANTALONS TAILORING ── -->
+
+  <optgroup label="▸ PANTALONS TAILORING & HABILLÉS">
+    <option value="premium">Pantalon Tailoring Large (Flanelle Grise)</option>
+    <option value="premium">Pantalon Tailoring Large (Flanelle Noire)</option>
+    <option value="premium">Pantalon Tailoring Ajusté (Laine Mérinos)</option>
+    <option value="premium">Pantalon Cigarette (Coupe Nette, Mi-Cheville)</option>
+    <option value="premium">Pantalon à Pince Haut (Taille Haute Couturier)</option>
+    <option value="premium">Pantalon Marlène (Jambes Larges Flottantes)</option>
+    <option value="premium">Pantalon en Velours Côtelé (Couleur Riche)</option>
+    <option value="premium">Pantalon Smoking (Galon Satin)</option>
+    <option value="premium">Pantalon en Soie (Large, Fluide)</option>
+    <option value="premium">Pantalon en Satin (Biais)</option>
+    <option value="premium">Pantalon en Organza (Transparent, Luxe)</option>
+    <option value="premium">Pantalon Palazzo (Soie / Chiffon)</option>
+    <option value="premium">Pantalon en Brocart (Jacquard)</option>
+    <option value="premium">Pantalon en Tweed</option>
+    <option value="premium">Pantalon en Lin (Coupe Ample, Qualité Luxe)</option>
+    <option value="premium">Pantalon en Cachemire (Maille Fine)</option>
+    <option value="premium">Pantalon Oversize (Couturier, Tombé Parfait)</option>
+    <option value="premium">Baggy Premium (Coupe Architecturale)</option>
+    <option value="premium">Pantalon Cargo (Nylon Technique Luxe / Designer)</option>
+    <option value="premium">Pantalon Flare (Pattes d'Éléphant, Couturier)</option>
+    <option value="premium">Pantalon Bootcut (Laine Stretch)</option>
+  </optgroup>
+
+  <!-- ── CUIRS & MATIÈRES FORTES ── -->
+
+  <optgroup label="▸ CUIRS & MATIÈRES FORTES">
+    <option value="premium">Pantalon en Cuir Lisse (Noir, Ajusté)</option>
+    <option value="premium">Pantalon en Cuir Grainé</option>
+    <option value="premium">Pantalon en Cuir Verni</option>
+    <option value="premium">Pantalon en Daim / Suédé</option>
+    <option value="premium">Legging en Cuir (Ajusté Luxe)</option>
+    <option value="premium">Pantalon en PVC / Vinyle (Designer)</option>
+    <option value="premium">Pantalon en Latex (Couturier)</option>
+    <option value="premium">Pantalon en Neoprène (Designer)</option>
+    <option value="premium">Pantalon en Sequins (Intégral)</option>
+    <option value="premium">Pantalon Métallisé (Lamé / Lurex)</option>
+  </optgroup>
+
+  <!-- ── DENIM ── -->
+
+  <optgroup label="▸ DENIM PREMIUM">
+    <option value="premium">Denim Brut Japonais (Noir, Selvedge)</option>
+    <option value="premium">Denim Brut Japonais (Indigo Profond)</option>
+    <option value="premium">Jean Slim (Noir, Ajusté Net)</option>
+    <option value="premium">Jean Straight (Couture, Non Délavé)</option>
+    <option value="premium">Jean Taille Haute (Coupe Nette)</option>
+    <option value="premium">Jean Déchiré (Luxe Designer, Distressed Maîtrisé)</option>
+    <option value="premium">Jean Flare (Vintage Luxe, Taille Haute)</option>
+    <option value="premium">Jean Barrel / Baggy (Designer)</option>
+  </optgroup>
+
+  <!-- ── JUPES ── -->
+
+  <optgroup label="▸ JUPES">
+    <option value="premium">Jupe Midi en Satin (Biais)</option>
+    <option value="premium">Jupe Longue en Satin (Sol)</option>
+    <option value="premium">Jupe Midi en Velours</option>
+    <option value="premium">Jupe Midi en Soie Imprimée</option>
+    <option value="premium">Jupe Mini en Cuir (Ajustée)</option>
+    <option value="premium">Jupe Mini Sequins</option>
+    <option value="premium">Jupe Mini en Tweed (Chanel)</option>
+    <option value="premium">Jupe Portefeuille (Soie / Jersey)</option>
+    <option value="premium">Jupe Tutu / Tulle (Couturier, Volumineuse)</option>
+    <option value="premium">Jupe Plissée (Plissé Soleil, Issey Miyake Style)</option>
+    <option value="premium">Jupe en Dentelle (Transparence Luxe)</option>
+    <option value="premium">Jupe en Cuir (Midi, Moulante)</option>
+    <option value="premium">Jupe Longue en Sequins</option>
+    <option value="premium">Jupe Asymétrique (Couturier)</option>
+    <option value="premium">Jupe en Plumes (Mini / Midi)</option>
+    <option value="premium">Jupe en Latex (Designer)</option>
+    <option value="premium">Jupe en Brocart (Midi, Jacquard)</option>
+    <option value="premium">Jupe Crayon (Laine, Coupe Précise)</option>
+    <option value="premium">Jupe Longue en Mousseline (Fluide)</option>
+    <option value="premium">Mini-Jupe en Jean Brut (Taille Haute)</option>
+  </optgroup>
+
+  <!-- ── BANNIS ── -->
+
+  <optgroup label="✗ NON ADMIS">
+    <option value="ban">Short / Bermuda</option>
+    <option value="ban">Jogging / Pantalon de Sport</option>
+    <option value="ban">Legging en Lycra / Collant Opaque Seul</option>
+    <option value="ban">Bas de Survêtement / Tracksuit</option>
+    <option value="ban">Short de Bain</option>
+    <option value="ban">Short en Jean (Coupé / Cutoff)</option>
+    <option value="ban">Cargo Bas de Gamme (Polyester)</option>
+    <option value="ban">Pantalon de Pyjama</option>
+    <option value="ban">Jean Délavé / Blanchi (Style Usé Excessif)</option>
+    <option value="ban">Sarouel / Aladin (Casual)</option>
+  </optgroup>
+</select>
+
+<!-- ═══════════════════════════════════════════
+     SOULIERS
+     ═══════════════════════════════════════════ -->
+
+<select id="select-shoes" class="brdf-select">
+  <option value="none">-- CHOISIR LES SOULIERS --</option>
+
+  <!-- ── CHAUSSURES HABILLÉES HOMME ── -->
+
+  <optgroup label="▸ CHAUSSURES HABILLÉES">
+    <option value="premium">Mocassins Vernis (Noir / Bordeaux)</option>
+    <option value="premium">Mocassins à Glands (Cuir Pleine Fleur)</option>
+    <option value="premium">Mocassins Horsebit (Style Gucci)</option>
+    <option value="premium">Mocassins Plateforme (Cuir Luxe)</option>
+    <option value="premium">Derbies Richelieu (Cuir Box Calf)</option>
+    <option value="premium">Derbies Cap-Toe (Noir Patiné)</option>
+    <option value="premium">Derbies Brogue (Cuir Grainé)</option>
+    <option value="premium">Oxford à Lacets (Cuir Vernis Noir)</option>
+    <option value="premium">Oxford Double Monk-Strap</option>
+    <option value="premium">Souliers à Boucle (Monk Strap Simple)</option>
+    <option value="premium">Loafers en Velours (Col de Pied Brodé)</option>
+    <option value="premium">Mules en Cuir (Couture)</option>
+    <option value="premium">Mules en Daim (Talon Plat Luxe)</option>
+  </optgroup>
+
+  <!-- ── BOTTINES & BOOTS ── -->
+
+  <optgroup label="▸ BOTTINES & BOOTS">
+    <option value="premium">Bottines Chelsea (Cuir Box Calf)</option>
+    <option value="premium">Bottines Chelsea (Cuir Verni)</option>
+    <option value="premium">Bottines Chelsea (Daim Noir)</option>
+    <option value="premium">Bottines à Talon Bloc (Cuir Luxe)</option>
+    <option value="premium">Bottines à Talon Aiguille (Cuir, Bout Pointu)</option>
+    <option value="premium">Bottines Zippées Côté (Cuir Grainé)</option>
+    <option value="premium">Bottines à Lacets (Style Rock Luxe)</option>
+    <option value="premium">Boots Motard (Cuir Épais, Boucles Métal)</option>
+    <option value="premium">Boots Cowboy (Cuir Exotique / Brodé)</option>
+    <option value="premium">Boots Plateforme (Cuir, Semelle Épaisse)</option>
+    <option value="premium">Boots Cuissardes (Cuir Noir, Sur-Genou)</option>
+    <option value="premium">Boots Genoux (Cuir / Daim)</option>
+    <option value="premium">Boots Militaires Luxe (Cuir Poli, Œillets Or)</option>
+    <option value="premium">Boots en Velours (Talon Kitten)</option>
+    <option value="premium">Bottines Sock Boots (Maille / Cuir)</option>
+    <option value="premium">Boots à Crampons / Lug Sole (Designer)</option>
+  </optgroup>
+
+  <!-- ── TALONS ── -->
+
+  <optgroup label="▸ TALONS & ESCARPINS">
+    <option value="premium">Escarpins Aiguille (Noir, Cuir Classique)</option>
+    <option value="premium">Escarpins Aiguille (Vernis, Bout Carré)</option>
+    <option value="premium">Escarpins à Bride (Slingback, Luxe)</option>
+    <option value="premium">Escarpins Plateforme (Taille Haute)</option>
+    <option value="premium">Escarpins Mules (Talons Aiguille, Ouvert)</option>
+    <option value="premium">Sandales à Talons Sculptés (Designer)</option>
+    <option value="premium">Sandales Strappy (Cuir Fine, Talon Haut)</option>
+    <option value="premium">Sandales Gladiateur (Cuir, Talon Bloc)</option>
+    <option value="premium">Talons Kitten (Élégance Minimaliste)</option>
+    <option value="premium">Talons Bloc (Cuir, Robuste Luxe)</option>
+    <option value="premium">Talons en Perspex / Acrylique (Designer)</option>
+    <option value="premium">Mules à Talon (Cuir / Satin)</option>
+    <option value="premium">Chaussures Ballet Flat (Cuir Pleine Fleur)</option>
+    <option value="premium">Mary-Janes à Talon (Cuir Luxe)</option>
+  </optgroup>
+
+  <!-- ── SNEAKERS DE LUXE ── -->
+
+  <optgroup label="▸ SNEAKERS DE LUXE & LIMITÉ">
+    <option value="premium">Baskets de Luxe (Edition Limitée, Impeccables)</option>
+    <option value="premium">Sneakers Blanches Minimalistes (High-End)</option>
+    <option value="premium">Sneakers Noires Monochrome (Designer)</option>
+    <option value="premium">Platform Sneakers (Chunky, Designer)</option>
+    <option value="premium">Sneakers en Cuir Pleine Fleur (Blanc)</option>
+    <option value="premium">Low-Top Luxe (Cuir Vernis, Monochrome)</option>
+    <option value="premium">High-Top en Cuir (Couturier / Archive)</option>
+    <option value="premium">Sneakers en Daim (Couleur Unie, Premium)</option>
+    <option value="premium">Sneakers Collab Artiste / Couturier</option>
+    <option value="premium">Running Luxe (Silhouette Technique Couturier)</option>
+  </optgroup>
+
+  <!-- ── BANNIS ── -->
+
+  <optgroup label="✗ NON ADMIS">
+    <option value="ban">Sandales / Tongs / Claquettes</option>
+    <option value="ban">Chaussures de Sport Basiques (Running / Training)</option>
+    <option value="ban">Sneakers Sales / Usées</option>
+    <option value="ban">Chaussures de Randonnée / Trail</option>
+    <option value="ban">Chaussures de Sécurité / Travail</option>
+    <option value="ban">Crocs (Peu importe la couleur)</option>
+    <option value="ban">Espadrilles Basiques</option>
+    <option value="ban">Moccasins en Plastique / Bas de Gamme</option>
+    <option value="ban">Chaussons / Slippers Maison</option>
+    <option value="ban">Sneakers avec Semelle Lumineuse (Enfant)</option>
+  </optgroup>
+</select>
 
             <p style="font-family:'Cinzel'; font-size:0.55rem; color:#444; margin: 20px 0 10px; letter-spacing:1px;">OU DÉCRIRE VOTRE COMPOSITION LIBREMENT :</p>
             <textarea id="text-analyzer" class="analyzer-input" placeholder="Ex: Ensemble Margiela noir, chemise col cassé, bottines en cuir poli..."></textarea>
