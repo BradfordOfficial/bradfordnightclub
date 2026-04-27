@@ -1147,7 +1147,87 @@ function renderHomePage() {
 
         </div>
 
-        
+ <div style="
+    display: flex;
+    justify-content: center;
+    margin: 50px 0 40px;
+">
+    <div id="faq-cta-card" onclick="navigate('faq')" style="
+        cursor: pointer;
+        background: linear-gradient(135deg, rgba(212,175,55,0.08) 0%, rgba(0,178,169,0.06) 100%);
+        border: 1px solid rgba(212,175,55,0.25);
+        border-radius: 20px;
+        padding: 30px 50px;
+        text-align: center;
+        max-width: 560px;
+        width: 100%;
+        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        position: relative;
+        overflow: hidden;
+    "
+    onmouseenter="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 50px rgba(212,175,55,0.15)'; this.style.borderColor='rgba(212,175,55,0.6)';"
+    onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(212,175,55,0.25)';"
+    >
+        <div style="
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        "></div>
+
+        <p style="
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 0.7rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin: 0 0 10px;
+            opacity: 0.7;
+        ">BRADFORD SERVICE</p>
+
+        <h3 style="
+            font-family: 'Cinzel', serif;
+            color: var(--ivory);
+            font-size: 1.4rem;
+            margin: 0 0 10px;
+            font-weight: 400;
+        ">Questions & Réponses</h3>
+
+        <p style="
+            color: #999;
+            font-size: 0.88rem;
+            letter-spacing: 1px;
+            margin: 0 0 22px;
+            line-height: 1.6;
+        ">Dress code, politique d'annulation,<br>accès VIP et bien plus.</p>
+
+        <div style="
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(212,175,55,0.1);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 50px;
+            padding: 10px 24px;
+            color: var(--gold);
+            font-size: 0.78rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+        ">
+            Consulter la FAQ
+            <span style="font-size: 1rem; opacity: 0.8;">→</span>
+        </div>
+
+        <div style="
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(0,178,169,0.4), transparent);
+        "></div>
+    </div>
+</div>
+       
 
         
          <div class="hero-section"
