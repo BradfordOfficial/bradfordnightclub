@@ -1147,12 +1147,14 @@ function renderHomePage() {
 
         </div>
 
- <div style="
+<!-- FAQ CTA - Mobile : inchangé / Tablette+PC : layout 2 colonnes -->
+<div style="
     display: flex;
     justify-content: center;
     margin: 50px 0 40px;
 ">
-    <div id="faq-cta-card reveal" onclick="navigate('faq')" style="
+    <!-- VERSION MOBILE (< 768px) — identique à avant -->
+    <div id="faq-cta-mobile" onclick="navigate('faq')" style="
         cursor: pointer;
         background: linear-gradient(135deg, rgba(212,175,55,0.08) 0%, rgba(0,178,169,0.06) 100%);
         border: 1px solid rgba(212,175,55,0.25);
@@ -1168,65 +1170,130 @@ function renderHomePage() {
     onmouseenter="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 20px 50px rgba(212,175,55,0.15)'; this.style.borderColor='rgba(212,175,55,0.6)';"
     onmouseleave="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.style.borderColor='rgba(212,175,55,0.25)';"
     >
-        <div style="
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        "></div>
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);"></div>
+        <p style="font-family:'Cinzel',serif;color:var(--gold);font-size:0.7rem;letter-spacing:5px;text-transform:uppercase;margin:0 0 10px;opacity:0.7;">BRADFORD SERVICE</p>
+        <h3 style="font-family:'Cinzel',serif;color:var(--ivory);font-size:1.4rem;margin:0 0 10px;font-weight:400;">Questions & Réponses</h3>
+        <p style="color:#999;font-size:0.88rem;letter-spacing:1px;margin:0 0 22px;line-height:1.6;">Dress code, politique d'annulation,<br>accès VIP et bien plus.</p>
+        <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:50px;padding:10px 24px;color:var(--gold);font-size:0.78rem;letter-spacing:3px;text-transform:uppercase;font-family:'Cinzel',serif;">
+            Consulter la FAQ <span style="font-size:1rem;opacity:0.8;">→</span>
+        </div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,178,169,0.4),transparent);"></div>
+    </div>
 
-        <p style="
-            font-family: 'Cinzel', serif;
-            color: var(--gold);
-            font-size: 0.7rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            margin: 0 0 10px;
-            opacity: 0.7;
-        ">BRADFORD SERVICE</p>
+    <!-- VERSION TABLETTE + PC (>= 768px) — layout 2 colonnes -->
+    <div id="faq-cta-desktop" style="
+        display: none;
+        width: 100%;
+        background: linear-gradient(135deg, rgba(212,175,55,0.08) 0%, rgba(0,178,169,0.06) 100%);
+        border: 1px solid rgba(212,175,55,0.25);
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        transition: border-color 0.3s, box-shadow 0.3s;
+    "
+    onmouseenter="this.style.borderColor='rgba(212,175,55,0.5)'; this.style.boxShadow='0 20px 60px rgba(212,175,55,0.12)';"
+    onmouseleave="this.style.borderColor='rgba(212,175,55,0.25)'; this.style.boxShadow='none';"
+    >
+        <!-- Ligne dorée haut -->
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);"></div>
 
-        <h3 style="
-            font-family: 'Cinzel', serif;
-            color: var(--ivory);
-            font-size: 1.4rem;
-            margin: 0 0 10px;
-            font-weight: 400;
-        ">Questions & Réponses</h3>
+        <div style="display:flex;align-items:stretch;">
 
-        <p style="
-            color: #999;
-            font-size: 0.88rem;
-            letter-spacing: 1px;
-            margin: 0 0 22px;
-            line-height: 1.6;
-        ">Dress code, politique d'annulation,<br>accès VIP et bien plus.</p>
+            <!-- COLONNE GAUCHE -->
+            <div style="
+                flex: 0 0 42%;
+                padding: 45px 40px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                border-right: 1px solid rgba(212,175,55,0.1);
+            ">
+                <p style="font-family:'Cinzel',serif;color:var(--gold);font-size:0.65rem;letter-spacing:5px;text-transform:uppercase;margin:0 0 14px;opacity:0.7;">BRADFORD SERVICE</p>
+                <h3 style="font-family:'Cinzel',serif;color:var(--ivory);font-size:1.6rem;margin:0 0 14px;font-weight:400;line-height:1.3;">Questions<br>& Réponses</h3>
+                <p style="color:#999;font-size:0.85rem;letter-spacing:0.5px;margin:0 0 30px;line-height:1.7;">Dress code, politique d'annulation, accès VIP et bien plus.</p>
+                <div onclick="navigate('faq')" style="
+                    display:inline-flex;
+                    align-items:center;
+                    gap:10px;
+                    background:rgba(212,175,55,0.1);
+                    border:1px solid rgba(212,175,55,0.35);
+                    border-radius:50px;
+                    padding:12px 28px;
+                    color:var(--gold);
+                    font-size:0.75rem;
+                    letter-spacing:3px;
+                    text-transform:uppercase;
+                    font-family:'Cinzel',serif;
+                    cursor:pointer;
+                    width:fit-content;
+                    transition:background 0.3s, box-shadow 0.3s;
+                "
+                onmouseenter="this.style.background='rgba(212,175,55,0.2)'; this.style.boxShadow='0 5px 20px rgba(212,175,55,0.2)';"
+                onmouseleave="this.style.background='rgba(212,175,55,0.1)'; this.style.boxShadow='none';"
+                >
+                    Consulter la FAQ <span style="font-size:1rem;opacity:0.8;">→</span>
+                </div>
+            </div>
 
-        <div style="
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(212,175,55,0.1);
-            border: 1px solid rgba(212,175,55,0.3);
-            border-radius: 50px;
-            padding: 10px 24px;
-            color: var(--gold);
-            font-size: 0.78rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-family: 'Cinzel', serif;
-        ">
-            Consulter la FAQ
-            <span style="font-size: 1rem; opacity: 0.8;">→</span>
+            <!-- COLONNE DROITE — questions -->
+            <div style="
+                flex: 1;
+                padding: 35px 35px 0 35px;
+                position: relative;
+                overflow: hidden;
+                max-height: 280px;
+            ">
+                <!-- Questions cliquables -->
+                <div id="faq-questions-list">
+                    ${[
+                        "Comment devenir Member au Bradford ?",
+                        "Quel est l'âge minimum requis ?",
+                        "Quel est le Minimum Spend pour une table ?",
+                        "Quelle est la bouteille la plus rare de votre cave ?",
+                        "Quels sont les avantages exclusifs des Members ?",
+                        "Puis-je entrer après 2h du matin ?",
+                        "Comment fonctionne le dépôt de garantie ?",
+                        "Proposez-vous des cocktails signature ?"
+                    ].map(q => `
+                        <div onclick="navigate('faq')" style="
+                            display:flex;
+                            align-items:center;
+                            justify-content:space-between;
+                            padding:14px 0;
+                            border-bottom:1px solid rgba(212,175,55,0.1);
+                            cursor:pointer;
+                            transition:color 0.2s;
+                            color:#bbb;
+                            font-size:0.88rem;
+                            letter-spacing:0.3px;
+                            gap:12px;
+                        "
+                        onmouseenter="this.style.color='var(--ivory)'; this.querySelector('span').style.color='var(--gold)';"
+                        onmouseleave="this.style.color='#bbb'; this.querySelector('span').style.color='rgba(212,175,55,0.4)';"
+                        >
+                            ${q}
+                            <span style="color:rgba(212,175,55,0.4);font-size:1.1rem;flex-shrink:0;transition:color 0.2s;">→</span>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <!-- Dégradé disparition bas -->
+                <div style="
+                    position:absolute;
+                    bottom:0;left:0;right:0;
+                    height:90px;
+                    background:linear-gradient(to bottom, transparent, rgba(5,8,20,0.97));
+                    pointer-events:none;
+                "></div>
+            </div>
+
         </div>
 
-        <div style="
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(0,178,169,0.4), transparent);
-        "></div>
+        <!-- Ligne teal bas -->
+        <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,178,169,0.4),transparent);"></div>
     </div>
 </div>
+
        
 
         
