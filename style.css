@@ -5926,6 +5926,210 @@ h1.tit-page:first-of-type {
 }
 
 
+/* === BRADFORD NAV SECTION === */
+#bradford-nav-section {
+    max-width: 1000px;
+    margin: 80px auto 80px;
+    padding: 0 20px;
+}
+
+#bradford-nav-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 8px;
+    color: rgba(212,175,55,0.4);
+    text-align: center;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+#bradford-nav-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.bradford-nav-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 22px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(212,175,55,0.1);
+    transition: padding-left 0.35s ease, background 0.35s ease;
+    overflow: hidden;
+}
+
+.bradford-nav-card:first-child {
+    border-top: 1px solid rgba(212,175,55,0.1);
+}
+
+.bradford-nav-card:hover {
+    padding-left: 20px;
+    background: rgba(212,175,55,0.04);
+}
+
+/* Ligne dorée gauche au hover */
+.bnc-top-line {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--gold);
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: transform 0.35s ease;
+}
+
+.bradford-nav-card:hover .bnc-top-line {
+    transform: scaleY(1);
+}
+
+.bnc-number {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    color: rgba(212,175,55,0.35);
+    letter-spacing: 2px;
+    min-width: 28px;
+    transition: color 0.3s;
+}
+
+.bradford-nav-card:hover .bnc-number {
+    color: var(--gold);
+}
+
+.bnc-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 5px;
+    flex: 1;
+    transition: color 0.3s;
+}
+
+.bradford-nav-card:hover .bnc-title {
+    color: var(--ivory);
+}
+
+.bnc-sub {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    display: none;
+}
+
+.bnc-arrow {
+    font-size: 1.2rem;
+    color: rgba(212,175,55,0.2);
+    transition: color 0.3s, transform 0.3s;
+}
+
+.bradford-nav-card:hover .bnc-arrow {
+    color: var(--gold);
+    transform: translateX(6px);
+}
+
+.bnc-bottom-line { display: none; }
+
+/* TABLETTE */
+@media (min-width: 768px) {
+    .bnc-sub { display: block; }
+
+    .bnc-title { font-size: 1.8rem; }
+
+    #bradford-nav-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0;
+    }
+
+    .bradford-nav-card {
+        border: none;
+        border-bottom: 1px solid rgba(212,175,55,0.1);
+        padding: 30px 20px;
+    }
+
+    .bradford-nav-card:nth-child(odd) {
+        border-right: 1px solid rgba(212,175,55,0.1);
+    }
+
+    .bradford-nav-card:first-child,
+    .bradford-nav-card:nth-child(2) {
+        border-top: 1px solid rgba(212,175,55,0.1);
+    }
+
+    /* La 5ème carte centree */
+    .bradford-nav-card:last-child {
+        grid-column: 1 / -1;
+        border-right: none;
+        max-width: 50%;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+/* PC */
+@media (min-width: 1024px) {
+    #bradford-nav-grid {
+        grid-template-columns: repeat(5, 1fr);
+        display: grid;
+    }
+
+    .bradford-nav-card {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 35px 25px;
+        border-bottom: none;
+        border-right: 1px solid rgba(212,175,55,0.1);
+        gap: 12px;
+        min-height: 160px;
+    }
+
+    .bradford-nav-card:first-child {
+        border-top: none;
+        border-left: 1px solid rgba(212,175,55,0.1);
+    }
+
+    .bradford-nav-card:last-child {
+        grid-column: auto;
+        max-width: 100%;
+        margin: 0;
+        border-right: 1px solid rgba(212,175,55,0.1);
+    }
+
+    .bradford-nav-card:nth-child(odd) {
+        border-right: 1px solid rgba(212,175,55,0.1);
+    }
+
+    /* Ligne dorée en haut au hover sur PC */
+    .bnc-top-line {
+        top: 0; left: 0; right: 0; bottom: auto;
+        width: auto;
+        height: 2px;
+        transform: scaleX(0);
+        transform-origin: left;
+    }
+
+    .bradford-nav-card:hover .bnc-top-line {
+        transform: scaleX(1);
+    }
+
+    .bradford-nav-card:hover {
+        padding-left: 25px;
+        padding-top: 45px;
+    }
+
+    .bnc-title { font-size: 1.1rem; letter-spacing: 4px; }
+
+    .bnc-sub { font-size: 0.68rem; }
+
+    .bnc-arrow {
+        margin-top: auto;
+    }
+}
+
 /* --- FOOTER : RÉGLAGES FINAUX --- */
 .footer {
     background-color: #050505;
