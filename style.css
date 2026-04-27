@@ -5915,6 +5915,16 @@ h1.tit-page:first-of-type {
     }
 }
 
+@media (max-width: 767px) {
+    #faq-cta-desktop { display: none !important; }
+    #faq-cta-mobile  { display: block !important; }
+}
+
+@media (min-width: 768px) {
+    #faq-cta-mobile  { display: none !important; }
+    #faq-cta-desktop { display: block !important; }
+}
+
 
 /* --- FOOTER : RÉGLAGES FINAUX --- */
 .footer {
