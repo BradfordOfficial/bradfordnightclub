@@ -114,6 +114,11 @@ body {
     box-sizing: border-box; /* Pour que le padding ne fasse pas déborder l'iPhone */
 }
 
+#app-content ~ #app-content {
+    display: none;
+}
+
+
 /* LE HEADER RESTE EN FIXED POUR LA FLUIDITÉ */
 .header {
     background: #000;
