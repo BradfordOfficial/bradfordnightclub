@@ -1711,6 +1711,9 @@ async function afficherDetailsArtiste(artiste, ville, details) {
     // ON CACHE LES ÉLÉMENTS ET ON ACTIVE LA PAGE DE DÉTAILS
     const orbitContainer = document.getElementById('bradford-universe') || document.getElementById('quantum-nav-container');
     if (orbitContainer) orbitContainer.style.display = 'none';
+    const bradfordNav = document.getElementById('bradford-nav-section');
+if (bradfordNav) bradfordNav.style.display = 'none';
+
     
     appContent.style.display = 'none';
     if (evenementWidget) evenementWidget.style.display = 'none'; 
@@ -1877,6 +1880,9 @@ function retourAccueil() {
     
     const orbitContainer = document.getElementById('bradford-universe') || document.getElementById('quantum-nav-container');
     if (orbitContainer) orbitContainer.style.display = 'flex';
+    const bradfordNav = document.getElementById('bradford-nav-section');
+if (bradfordNav) bradfordNav.style.display = 'block';
+
 
     // IMPORTANT : On rend la page de détails invisible ET non-cliquable
     detailPage.style.display = 'none';
