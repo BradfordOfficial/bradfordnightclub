@@ -1152,7 +1152,7 @@ function renderHomePage() {
     justify-content: center;
     margin: 50px 0 40px;
 ">
-    <div id="faq-cta-card" onclick="navigate('faq')" style="
+    <div id="faq-cta-card reveal" onclick="navigate('faq')" style="
         cursor: pointer;
         background: linear-gradient(135deg, rgba(212,175,55,0.08) 0%, rgba(0,178,169,0.06) 100%);
         border: 1px solid rgba(212,175,55,0.25);
