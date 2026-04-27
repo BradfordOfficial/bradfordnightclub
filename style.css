@@ -5895,6 +5895,25 @@ h1.tit-page:first-of-type {
     }
 }
 
+#faq-cta-card {
+    max-width: 560px;
+    padding: 30px 50px;
+}
+
+@media (min-width: 768px) {
+    #faq-cta-card {
+        max-width: 660px;
+        padding: 35px 70px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #faq-cta-card {
+        max-width: 750px;
+        padding: 40px 90px;
+        font-size: 1.05em;
+    }
+}
 
 
 /* --- FOOTER : RÉGLAGES FINAUX --- */
