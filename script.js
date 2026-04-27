@@ -1884,6 +1884,8 @@ function retourAccueil() {
     if (orbitContainer) orbitContainer.style.display = 'flex';
     const bradfordNav = document.getElementById('bradford-nav-section');
 if (bradfordNav) bradfordNav.style.display = 'block';
+const spacers = document.querySelectorAll('#app-content');
+if (spacers[1]) spacers[1].style.display = 'none';
 
 
     // IMPORTANT : On rend la page de détails invisible ET non-cliquable
