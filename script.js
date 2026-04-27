@@ -1713,6 +1713,8 @@ async function afficherDetailsArtiste(artiste, ville, details) {
     if (orbitContainer) orbitContainer.style.display = 'none';
     const bradfordNav = document.getElementById('bradford-nav-section');
 if (bradfordNav) bradfordNav.style.display = 'none';
+const spacers = document.querySelectorAll('#app-content');
+if (spacers[1]) spacers[1].style.display = 'block';
 
     
     appContent.style.display = 'none';
