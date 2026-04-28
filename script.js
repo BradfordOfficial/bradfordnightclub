@@ -677,12 +677,77 @@ function renderBottleMenuPage(filterCategory = 'all', sortBy = 'default') {
             1 bouteille minimum par 4 invités. Prix en USD, hors taxes et ${APP_DATA.pricing_rules.service_charge_pct * 100}% service charge.
         </p>
 
-     <div style="text-align: center; margin: 10px 0 50px 0;">
-            <button onclick="openOfficialMenu()" 
-                    style="background:none; border:none; color:var(--gold); font-family:'Cinzel'; font-size:0.55rem; letter-spacing:4px; cursor:pointer; padding:10px; opacity:0.6; transition:0.3s; border-bottom: 1px solid rgba(212,175,55,0.2);">
-                VIEW FULL ESTABLISHMENT CARD
-            </button>
+    <div style="text-align: center; margin: 50px 0 50px 0;">
+    <button onclick="openOfficialMenu()" style="
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        position: relative;
+    "
+    onmouseenter="
+        this.querySelector('.vfm-inner').style.borderColor='rgba(212,175,55,0.5)';
+        this.querySelector('.vfm-inner').style.boxShadow='0 0 40px rgba(212,175,55,0.08)';
+        this.querySelector('.vfm-title').style.color='var(--gold)';
+        this.querySelector('.vfm-arrow').style.opacity='1';
+        this.querySelector('.vfm-arrow').style.transform='translateY(3px)';
+    "
+    onmouseleave="
+        this.querySelector('.vfm-inner').style.borderColor='rgba(212,175,55,0.15)';
+        this.querySelector('.vfm-inner').style.boxShadow='none';
+        this.querySelector('.vfm-title').style.color='var(--ivory, #f8f5e6)';
+        this.querySelector('.vfm-arrow').style.opacity='0.3';
+        this.querySelector('.vfm-arrow').style.transform='translateY(0)';
+    "
+    >
+        <div class="vfm-inner" style="
+            border: 1px solid rgba(212,175,55,0.15);
+            border-radius: 4px;
+            padding: 20px 50px;
+            position: relative;
+            transition: border-color 0.4s, box-shadow 0.4s;
+            overflow: hidden;
+        ">
+            <div style="
+                position: absolute;
+                top: 0; left: 0; right: 0;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            "></div>
+
+            <span class="vfm-title" style="
+                font-family: 'Cinzel', serif;
+                font-size: 0.9rem;
+                letter-spacing: 7px;
+                color: var(--ivory, #f8f5e6);
+                text-transform: uppercase;
+                font-weight: 400;
+                transition: color 0.4s;
+                display: block;
+                white-space: nowrap;
+            ">VIEW FULL MENU</span>
+
+            <div style="
+                position: absolute;
+                bottom: 0; left: 0; right: 0;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, rgba(0,178,169,0.4), transparent);
+            "></div>
         </div>
+
+        <span class="vfm-arrow" style="
+            color: rgba(212,175,55,0.3);
+            font-size: 0.7rem;
+            margin-top: 12px;
+            opacity: 0.3;
+            transition: opacity 0.4s, transform 0.4s;
+        ">↓</span>
+    </button>
+</div>
 
 
         <div class="vip-filter-bar">
