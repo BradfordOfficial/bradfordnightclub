@@ -707,208 +707,203 @@ header.reduced .brd-night {
     --couleur-accent-cyan: #00BCD4; 
 }
 
-/* --- Styles du Conteneur Principal (Widget) --- */
+/* === EVENT WIDGET — BRADFORD TONIGHT === */
 #evenement-widget {
-    max-width: 380px;
-    margin: 3rem auto;
-    padding: 25px;
-    border-radius: 20px;
-    background: linear-gradient(165deg, #0a0a0a 0%, #151515 100%);
-    color: #fff;
-    
-    /* Double bordure pour l'effet luxe */
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.9), inset 0 0 20px rgba(212, 175, 55, 0.05);
-    
-    font-family: 'Inter', 'Cinzel', serif;
+    max-width: 480px;
+    margin: 2rem auto 3rem;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    font-family: 'Inter', sans-serif;
     position: relative;
-    overflow: hidden;
 }
 
-/* Ajout d'un reflet de lumière sur le widget */
+/* Ligne décorative haut */
 #evenement-widget::before {
     content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
-    pointer-events: none;
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold, #D4AF37), transparent);
+    margin: 0 auto 28px;
 }
 
-/* --- Titre du Widget --- */
+/* Titre */
 #widget-title {
-    color: var(--couleur-accent-or, #D4AF37);
-    text-align: left; /* Alignement à gauche pour plus de modernité */
-    margin-bottom: 25px;
-    font-size: 1.2rem; 
-    font-family: 'Cinzel', serif; /* Police noble */
-    font-weight: 700;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 6px;
+    color: var(--gold, #D4AF37);
     text-transform: uppercase;
-    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 32px;
+    display: block;
+    opacity: 0.85;
+    padding: 0 10px;
+    line-height: 1.8;
+}
+
+/* Scroll invisible */
+#evenement-liste {
+    max-height: 420px;
+    overflow-y: auto;
+    padding: 0;
+    scrollbar-width: none;
+}
+#evenement-liste::-webkit-scrollbar { display: none; }
+
+/* Item */
+.evenement-item {
+    position: relative;
+    padding: 0;
+    margin-bottom: 12px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(212,175,55,0.08);
+    border-radius: 12px;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    grid-template-rows: auto auto;
+    min-height: 80px;
+}
+
+/* Colonne gauche colorée */
+.evenement-ville {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    background: linear-gradient(180deg, rgba(10,166,166,0.12) 0%, rgba(10,166,166,0.04) 100%);
+    border-right: 1px solid rgba(10,166,166,0.15);
     display: flex;
     align-items: center;
-    gap: 10px;
-}
-
-#widget-title::after {
-    content: '';
-    flex-grow: 1;
-    height: 1px;
-    background: linear-gradient(90deg, var(--couleur-accent-or, #D4AF37), transparent);
-    opacity: 0.5;
-}
-
-/* --- Liste Défilante --- */
-#evenement-liste {
-    max-height: 350px; 
-    overflow-y: auto; 
-    padding-right: 10px; 
-}
-
-/* Stylisation de la barre de défilement discrète */
-#evenement-liste::-webkit-scrollbar { width: 3px; }
-#evenement-liste::-webkit-scrollbar-thumb { background: var(--couleur-accent-or, #D4AF37); border-radius: 10px; }
-
-/* --- Item Événement (Le Coeur de l'esthétique) --- */
-.evenement-item {
-    background: rgba(255, 255, 255, 0.03);
-    margin-bottom: 15px;
-    padding: 18px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    position: relative;
-}
-
-/* Effet au survol : Dorure et lueur */
-.evenement-item:hover {
-    background: rgba(255, 255, 255, 0.07);
-    transform: translateX(5px); /* Glissement latéral élégant */
-    border-color: var(--couleur-accent-or, #D4AF37);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-}
-
-/* Styling des textes internes (en gardant tes noms) */
-.evenement-ville {
-    font-size: 0.65rem;
-    color: var(--couleur-accent-cyan, #00BCD4);
+    justify-content: center;
+    font-size: 0.58rem;
+    color: var(--teal, #0AA6A6);
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     font-weight: 800;
-    margin-bottom: 5px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    padding: 16px 0;
+    transition: background 0.3s;
 }
 
+/* Artiste */
 .evenement-item strong {
+    grid-column: 2;
+    grid-row: 1;
     display: block;
     font-family: 'Cinzel', serif;
-    font-size: 1.1rem;
-    color: #fff;
-    margin: 5px 0;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.92);
+    letter-spacing: 2px;
+    font-weight: 400;
+    padding: 18px 18px 6px;
+    cursor: pointer;
+    text-decoration: none !important;
+    transition: color 0.3s;
+}
+
+/* Détails */
+.evenement-details {
+    grid-column: 2;
+    grid-row: 2;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.3);
     letter-spacing: 1px;
+    line-height: 1.5;
+    padding: 0 18px 16px;
 }
 
-.evenement-details {
-    font-size: 0.75rem;
-    color: #888;
-    line-height: 1.4;
-    font-family: 'Inter', sans-serif;
+/* Flèche décorative */
+.evenement-item::after {
+    content: '→';
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%) translateX(4px);
+    color: rgba(212,175,55,0.2);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    opacity: 0;
 }
 
-
-/* --- Détails de l'Événement --- */
-.evenement-ville {
-    font-weight: bold;
-    color: var(--couleur-accent-cyan); /* Ville en Turquoise/Cyan */
-    font-size: 1em;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+/* Hover */
+.evenement-item:hover {
+    border-color: rgba(212,175,55,0.25);
+    background: rgba(212,175,55,0.03);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    transform: translateY(-2px);
 }
 
-.evenement-item strong {
-    /* Nom de l'artiste en Or pour un impact maximal (comme le logo) */
-    color: var(--couleur-accent-or); 
-    font-size: 1.1em;
-    display: block; 
-    margin-bottom: 3px;
+.evenement-item:hover .evenement-ville {
+    background: linear-gradient(180deg, rgba(10,166,166,0.2) 0%, rgba(10,166,166,0.08) 100%);
 }
 
-.evenement-details {
-    font-size: 0.85em;
-    color: var(--couleur-texte-clair); 
-    opacity: 0.7; /* Légèrement estompé */
+.evenement-item:hover strong {
+    color: var(--ivory, #f8f5e6);
 }
 
-/* --- Note du Bas --- */
+.evenement-item:hover::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+    color: rgba(212,175,55,0.6);
+}
+
+/* Note bas */
 .widget-note {
     text-align: center;
-    font-style: italic;
-    margin-top: 15px;
-    font-size: 0.75em; 
-    color: var(--couleur-texte-clair);
-    opacity: 0.5;
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 18px;
+    font-style: normal;
 }
-/* ========================================================= */
-/* IX. RESPONSIVE DESIGN (TABLETTE & DESKTOP)               */
-/* ========================================================= */
 
-/* --- TABLETTE (768px et plus) --- */
-@media screen and (min-width: 768px) {
+/* TABLETTE */
+@media (min-width: 768px) {
     #evenement-widget {
-        max-width: 700px; /* On élargit le conteneur */
-        padding: 40px;
-        margin: 4rem auto;
-    }
-
-    #widget-title {
-        font-size: 1.5rem; /* Titre plus imposant */
-        margin-bottom: 35px;
-    }
-
-    #evenement-liste {
-        max-height: 500px; /* Plus d'espace de lecture */
+        max-width: 640px;
     }
 
     .evenement-item {
-        padding: 25px;
-        margin-bottom: 20px;
-    }
-}
-
-/* --- ORDINATEUR (1024px et plus) --- */
-@media screen and (min-width: 1024px) {
-    #evenement-widget {
-        max-width: 950px; /* Largeur optimale pour desktop */
-        padding: 50px;
-    }
-
-    /* Transformation de la liste en GRILLE pour remplir l'espace */
-    #evenement-liste {
-        display: grid;
-        grid-template-columns: 1fr 1fr; /* Deux colonnes d'événements */
-        gap: 20px; /* Espace entre les colonnes */
-        max-height: none; /* On laisse le widget respirer sur grand écran */
-        padding-right: 0;
-    }
-
-    .evenement-item {
-        margin-bottom: 0; /* Géré par le gap de la grille */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        grid-template-columns: 110px 1fr;
+        min-height: 90px;
     }
 
     .evenement-item strong {
-        font-size: 1.3rem; /* Artiste plus visible */
+        font-size: 1.1rem;
+        padding: 20px 24px 6px;
     }
 
-    #widget-title {
-        font-size: 1.8rem;
-        letter-spacing: 5px;
+    .evenement-details {
+        padding: 0 24px 18px;
+        font-size: 0.75rem;
     }
 }
+
+/* PC */
+@media (min-width: 1024px) {
+    #evenement-widget {
+        max-width: 800px;
+    }
+
+    #evenement-liste {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        max-height: none;
+    }
+
+    .evenement-item {
+        margin-bottom: 0;
+    }
+}
+
 
 
 /* --- VARIABLES DE COULEURS PREMIUM (Ajoutez-les au début de votre fichier CSS si elles n'existent pas) --- */
