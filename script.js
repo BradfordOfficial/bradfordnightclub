@@ -1498,7 +1498,7 @@ text-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 <div onclick="navigate('concierge');window.scrollTo(0,0);"
                 onmouseenter="this.style.background='rgba(212,175,55,0.14)';this.style.borderColor='rgba(212,175,55,0.55)';this.style.boxShadow='0 8px 30px rgba(212,175,55,0.12)';"
                 onmouseleave="this.style.background='rgba(212,175,55,0.06)';this.style.borderColor='rgba(212,175,55,0.25)';this.style.boxShadow='none';"
-                style="align-self:center;display:inline-flex;align-items:center;gap:12px;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.25);border-radius:50px;padding:13px 30px;color:var(--gold);font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:all 0.35s;white-space:nowrap;"
+                style="align-self:center;display:inline-flex;align-items:center;gap:12px;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.25);border-radius:50px;padding:13px 30px;color:var(--gold);font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:all 0.35s;white-space:nowrap;">
 
                     Accéder au Concierge <span style="opacity:0.6;font-size:0.9rem;">→</span>
                 </div>
