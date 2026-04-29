@@ -710,7 +710,7 @@ header.reduced .brd-night {
 /* === EVENT WIDGET — BRADFORD TONIGHT === */
 #evenement-widget {
     max-width: 480px;
-    margin: 1rem auto 3rem;
+    margin: 0.5rem auto 3rem;
     padding: 0;
     background: transparent;
     border: none;
