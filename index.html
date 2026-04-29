@@ -596,15 +596,15 @@ document.addEventListener("DOMContentLoaded", function () {
 /* --- TABLETTE (768px+) --- */
 @media (min-width: 768px) {
     #brd-ai-launcher {
-        bottom: 50px; /* Bulle remontée à 50px */
-        right: 4%;
+        bottom: 80px; /* Hauteur demandée */
+        right: 6%;    /* Décollé un peu plus vers la gauche */
         width: 72px; height: 72px;
     }
 
     #brd-ai-window {
         top: auto; left: auto;
-        bottom: 130px; /* Fenêtre baissée : 50px (bulle) + 72px (taille) + 8px de marge */
-        right: 4%;
+        bottom: 80px; /* Même départ que la bulle pour la remplacer */
+        right: 6%;    /* Aligné sur la bulle */
         transform: scale(0.9);
         transform-origin: bottom right;
         width: 420px;
@@ -622,20 +622,21 @@ document.addEventListener("DOMContentLoaded", function () {
 /* --- DESKTOP (1024px+) --- */
 @media (min-width: 1024px) {
     #brd-ai-launcher {
-        bottom: 50px; /* Bulle remontée à 50px aussi sur PC */
-        right: 3%;
+        bottom: 80px; /* Hauteur demandée */
+        right: 5%;    /* Décollé un peu plus vers la gauche */
         width: 70px; height: 70px;
     }
 
     #brd-ai-window {
         top: auto; left: auto;
-        bottom: 128px; /* Fenêtre baissée : 50px (bulle) + 70px (taille) + 8px de marge */
-        right: 3%;
+        bottom: 80px; /* Même départ que la bulle */
+        right: 5%;    /* Aligné sur la bulle */
         width: 460px;
         height: 620px;
         max-width: 460px; max-height: 620px;
     }
 }
+
 
 
 
