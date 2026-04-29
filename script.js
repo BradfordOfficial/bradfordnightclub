@@ -1425,7 +1425,7 @@ text-shadow: 0 10px 40px rgba(0,0,0,0.8);
         position:relative;border-radius:20px;overflow:hidden;
         min-height:460px;display:flex;flex-direction:column;justify-content:flex-end;
         background-image:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.55) 55%,rgba(0,0,0,0.25) 100%),
-        url('https://images.pexels.com/photos/1579253/pexels-photo-1579253.jpeg');
+        url('https://images.pexels.com/photos/35925508/pexels-photo-35925508.jpeg');
         background-size:cover;background-position:center;
         box-shadow:0 30px 70px rgba(0,0,0,0.7);
     ">
@@ -1462,7 +1462,7 @@ text-shadow: 0 10px 40px rgba(0,0,0,0.8);
             <div style="
                 min-height:480px;
                 background-image:linear-gradient(to right,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.55) 100%),
-                url('https://images.pexels.com/photos/1579253/pexels-photo-1579253.jpeg');
+                url('https://images.pexels.com/photos/35925508/pexels-photo-35925508.jpeg');
                 background-size:cover;background-position:center;
                 position:relative;
             ">
