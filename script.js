@@ -1418,6 +1418,95 @@ text-shadow: 0 10px 40px rgba(0,0,0,0.8);
     </div>
 </div>
 
+<div id="concierge-cta-section" style="margin:70px auto;max-width:1000px;padding:0 20px;">
+
+    <!-- MOBILE -->
+    <div id="concierge-mobile-view" style="
+        position:relative;border-radius:20px;overflow:hidden;
+        min-height:460px;display:flex;flex-direction:column;justify-content:flex-end;
+        background-image:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.55) 55%,rgba(0,0,0,0.25) 100%),
+        url('https://images.pexels.com/photos/1579253/pexels-photo-1579253.jpeg');
+        background-size:cover;background-position:center;
+        box-shadow:0 30px 70px rgba(0,0,0,0.7);
+    ">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,178,169,0.4),transparent);"></div>
+
+        <div style="position:absolute;top:22px;right:22px;display:inline-flex;align-items:center;gap:7px;background:rgba(0,0,0,0.6);border:1px solid rgba(0,178,169,0.2);border-radius:50px;padding:6px 14px;backdrop-filter:blur(10px);">
+            <div style="width:5px;height:5px;border-radius:50%;background:var(--teal,#0AA6A6);"></div>
+            <span style="font-family:'Cinzel',serif;font-size:0.48rem;letter-spacing:4px;color:rgba(0,178,169,0.8);text-transform:uppercase;">24h · 7j/7</span>
+        </div>
+
+        <div style="padding:34px 28px;">
+          
+            <h2 style="font-family:'Cinzel',serif;font-size:2.1rem;color:var(--ivory,#f8f5e6);font-weight:400;letter-spacing:4px;margin:0 0 4px;line-height:1.1;">CONCIERGE</h2>
+            <h2 style="font-family:'Cinzel',serif;font-size:0.95rem;color:var(--gold);font-weight:400;letter-spacing:10px;margin:0 0 18px;">PRIVÉ</h2>
+            <p style="color:rgba(255,255,255,0.45);font-size:0.79rem;line-height:1.85;margin:0 0 26px;letter-spacing:0.3px;max-width:320px;">Une équipe dédiée pour orchestrer chaque détail de votre soirée — de votre arrivée en Uber Black jusqu'aux requêtes les plus exclusives.</p>
+
+            <div onclick="navigate('concierge');window.scrollTo(0,0);"
+            onmouseenter="this.style.background='rgba(212,175,55,0.18)';this.style.borderColor='rgba(212,175,55,0.6)';"
+            onmouseleave="this.style.background='rgba(0,0,0,0.5)';this.style.borderColor='rgba(212,175,55,0.3)';"
+            style="display:inline-flex;align-items:center;gap:11px;background:rgba(0,0,0,0.5);border:1px solid rgba(212,175,55,0.3);border-radius:50px;padding:12px 28px;color:var(--gold);font-family:'Cinzel',serif;font-size:0.68rem;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:all 0.35s;white-space:nowrap;backdrop-filter:blur(8px);">
+                Accéder au Concierge <span style="opacity:0.6;font-size:0.9rem;">→</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TABLETTE + PC -->
+    <div id="concierge-desktop-view" style="display:none;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;border:1px solid rgba(212,175,55,0.15);border-radius:20px;overflow:hidden;position:relative;">
+            <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);"></div>
+            <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,178,169,0.4),transparent);"></div>
+
+            <!-- Image gauche -->
+            <div style="
+                min-height:480px;
+                background-image:linear-gradient(to right,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.55) 100%),
+                url('https://images.pexels.com/photos/1579253/pexels-photo-1579253.jpeg');
+                background-size:cover;background-position:center;
+                position:relative;
+            ">
+                <div style="position:absolute;top:24px;left:24px;display:inline-flex;align-items:center;gap:7px;background:rgba(0,0,0,0.6);border:1px solid rgba(0,178,169,0.2);border-radius:50px;padding:7px 16px;backdrop-filter:blur(10px);">
+                    <div style="width:5px;height:5px;border-radius:50%;background:var(--teal,#0AA6A6);"></div>
+                    <span style="font-family:'Cinzel',serif;font-size:0.48rem;letter-spacing:4px;color:rgba(0,178,169,0.8);text-transform:uppercase;">24h · 7j/7</span>
+                </div>
+            </div>
+
+            <!-- Texte droite -->
+            <div style="padding:55px 48px;background:linear-gradient(135deg,rgba(212,175,55,0.04) 0%,rgba(0,0,0,0) 100%);display:flex;flex-direction:column;justify-content:center;">
+                <p style="font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:6px;color:rgba(212,175,55,0.5);text-transform:uppercase;margin:0 0 12px;">SERVICE EXCLUSIF</p>
+                <h2 style="font-family:'Cinzel',serif;font-size:2.3rem;color:var(--ivory,#f8f5e6);font-weight:400;letter-spacing:4px;margin:0 0 4px;line-height:1.1;">CONCIERGE</h2>
+                <h2 style="font-family:'Cinzel',serif;font-size:0.95rem;color:var(--gold);font-weight:400;letter-spacing:10px;margin:0 0 22px;">PRIVÉ</h2>
+                <p style="color:rgba(255,255,255,0.4);font-size:0.81rem;line-height:1.9;margin:0 0 30px;letter-spacing:0.3px;">Une équipe dédiée orchestre chaque détail de votre soirée — des transferts Uber Black jusqu'aux spiritueux les plus rares de notre cave privée.</p>
+
+                <!-- Services séparés par traits fins -->
+                <div style="display:flex;flex-direction:column;gap:0;margin-bottom:34px;border-top:1px solid rgba(212,175,55,0.1);">
+                    <div style="padding:14px 0;border-bottom:1px solid rgba(212,175,55,0.08);">
+                        <p style="font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:3px;color:var(--gold);margin:0 5px 4px;text-transform:uppercase;">Ligne Privée</p>
+                        <p style="font-size:0.74rem;color:rgba(255,255,255,0.3);margin:0;line-height:1.5;">Votre hôte personnel Bradford, joignable à tout moment.</p>
+                    </div>
+                    <div style="padding:14px 0;border-bottom:1px solid rgba(212,175,55,0.08);">
+                        <p style="font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:3px;color:var(--gold);margin:0 5px 4px;text-transform:uppercase;">Uber Black · Partenariat Exclusif</p>
+                        <p style="font-size:0.74rem;color:rgba(255,255,255,0.3);margin:0;line-height:1.5;">Transfert VIP depuis votre adresse — Miami, New York, Los Angeles, San Francisco.</p>
+                    </div>
+                    <div style="padding:14px 0;">
+                        <p style="font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:3px;color:var(--gold);margin:0 5px 4px;text-transform:uppercase;">Requêtes Prestige</p>
+                        <p style="font-size:0.74rem;color:rgba(255,255,255,0.3);margin:0;line-height:1.5;">Spiritueux hors-menu, privatisation, groupes VIP & célébrités.</p>
+                    </div>
+                </div>
+
+                <div onclick="navigate('concierge');window.scrollTo(0,0);"
+                onmouseenter="this.style.background='rgba(212,175,55,0.14)';this.style.borderColor='rgba(212,175,55,0.55)';this.style.boxShadow='0 8px 30px rgba(212,175,55,0.12)';"
+                onmouseleave="this.style.background='rgba(212,175,55,0.06)';this.style.borderColor='rgba(212,175,55,0.25)';this.style.boxShadow='none';"
+                style="align-self:center;display:inline-flex;align-items:center;gap:12px;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.25);border-radius:50px;padding:13px 30px;color:var(--gold);font-family:'Cinzel',serif;font-size:0.7rem;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:all 0.35s;white-space:nowrap;"
+
+                    Accéder au Concierge <span style="opacity:0.6;font-size:0.9rem;">→</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 `;
     // --- BLOC ANIMATION SCROLL ---
