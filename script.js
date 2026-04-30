@@ -1441,7 +1441,7 @@ text-shadow: 0 10px 40px rgba(0,0,0,0.8);
           
             <h2 style="font-family:'Cinzel',serif;font-size:2.1rem;color:var(--ivory,#f8f5e6);font-weight:400;letter-spacing:4px;margin:0 0 4px;line-height:1.1;">CONCIERGE</h2>
             <h2 style="font-family:'Cinzel',serif;font-size:0.95rem;color:var(--gold);font-weight:400;letter-spacing:10px;margin:0 0 18px;">PRIVÉ</h2>
-            <p style="color:rgba(255,255,255,0.45);font-size:0.79rem;line-height:1.85;margin:0 0 26px;letter-spacing:0.3px;max-width:320px;">Une équipe dédiée pour orchestrer chaque détail de votre soirée — de votre arrivée en Uber Black jusqu'aux requêtes les plus exclusives.</p>
+            <p style="color:rgba(255,255,255,0.45);font-size:0.79rem;line-height:1.85;margin:0 0 26px;letter-spacing:0.3px;max-width:320px;">Une équipe dédiée pour orchestrer chaque détail de votre soirée, de votre arrivée en Uber Black jusqu'aux requêtes les plus exclusives.</p>
 
             <div onclick="navigate('concierge');window.scrollTo(0,0);"
             onmouseenter="this.style.background='rgba(212,175,55,0.18)';this.style.borderColor='rgba(212,175,55,0.6)';"
