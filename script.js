@@ -1487,7 +1487,7 @@ text-shadow: 0 10px 40px rgba(0,0,0,0.8);
                     </div>
                     <div style="padding:14px 0;border-bottom:1px solid rgba(212,175,55,0.08);">
                         <p style="font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:3px;color:var(--gold);margin:0 5px 4px;text-transform:uppercase;">Uber Black · Partenariat Exclusif</p>
-                        <p style="font-size:0.74rem;color:rgba(255,255,255,0.3);margin:0;line-height:1.5;">Transfert VIP depuis votre adresse — Miami, New York, Los Angeles, San Francisco.</p>
+                        <p style="font-size:0.74rem;color:rgba(255,255,255,0.3);margin:0;line-height:1.5;">Transfert VIP depuis votre adresse: Miami, New York, Los Angeles, San Francisco.</p>
                     </div>
                     <div style="padding:14px 0;">
                         <p style="font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:3px;color:var(--gold);margin:0 5px 4px;text-transform:uppercase;">Requêtes Prestige</p>
