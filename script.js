@@ -1477,7 +1477,7 @@ text-shadow: 0 10px 40px rgba(0,0,0,0.8);
                 <p style="font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:6px;color:rgba(212,175,55,0.5);text-transform:uppercase;margin:0 0 12px;">SERVICE EXCLUSIF</p>
                 <h2 style="font-family:'Cinzel',serif;font-size:2.3rem;color:var(--ivory,#f8f5e6);font-weight:400;letter-spacing:4px;margin:0 0 4px;line-height:1.1;">CONCIERGE</h2>
                 <h2 style="font-family:'Cinzel',serif;font-size:0.95rem;color:var(--gold);font-weight:400;letter-spacing:10px;margin:0 0 22px;">PRIVÉ</h2>
-                <p style="color:rgba(255,255,255,0.4);font-size:0.81rem;line-height:1.9;margin:0 0 30px;letter-spacing:0.3px;">Une équipe dédiée orchestre chaque détail de votre soirée — des transferts Uber Black jusqu'aux spiritueux les plus rares de notre cave privée.</p>
+                <p style="color:rgba(255,255,255,0.4);font-size:0.81rem;line-height:1.9;margin:0 0 30px;letter-spacing:0.3px;">Une équipe dédiée orchestre chaque détail de votre soirée, des transferts Uber Black jusqu'aux spiritueux les plus rares de notre cave privée.</p>
 
                 <!-- Services séparés par traits fins -->
                 <div style="display:flex;flex-direction:column;gap:0;margin-bottom:34px;border-top:1px solid rgba(212,175,55,0.1);">
