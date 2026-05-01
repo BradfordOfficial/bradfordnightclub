@@ -744,10 +744,9 @@ header.reduced .brd-night {
     line-height: 1.8;
 }
 
-/* Scroll invisible */
 #evenement-liste {
-    max-height: 420px;
-    overflow-y: auto;
+    max-height: none;
+    overflow-y: hidden;
     padding: 0;
     scrollbar-width: none;
 }
