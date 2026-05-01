@@ -766,7 +766,7 @@ header.reduced .brd-night {
     display: grid;
     grid-template-columns: 90px 1fr;
     grid-template-rows: auto auto;
-    min-height: 80px;
+    min-height: 100px;
 }
 
 /* Colonne gauche colorée */
