@@ -1557,68 +1557,87 @@ const donneesEvenements = [
 ];
 
 
+// Index du jour affiché (0 = premier jour dispo)
+let indexJourActuel = 0;
+let datesDisponibles = [];
+
 function mettreAJourWidget() {
+    datesDisponibles = [...new Set(donneesEvenements.map(e => e.date))].sort();
     
-    // 1. Trouver le premier jour de programmation
-    const datesUniques = [...new Set(donneesEvenements.map(e => e.date))].sort();
-    
-        let prochainJourDeProg = null;
-    // On récupère l'heure de Miami et on la force à minuit pile pour ne plus avoir le décalage
     const heureMiami = new Date(new Date().toLocaleString("en-US", {timeZone: "America/New_York"}));
     const dateActuelleEnMillis = heureMiami.setHours(0, 0, 0, 0);
 
-    
-    for (const dateStr of datesUniques) {
-        // Crée une date à minuit pour une comparaison juste
-        const dateEvenement = new Date(dateStr + 'T00:00:00'); 
-        
+    // Trouver l'index du premier jour à venir
+    indexJourActuel = 0;
+    for (let i = 0; i < datesDisponibles.length; i++) {
+        const dateEvenement = new Date(datesDisponibles[i] + 'T00:00:00');
         if (dateEvenement.getTime() >= dateActuelleEnMillis) {
-            prochainJourDeProg = dateStr;
-            break; 
+            indexJourActuel = i;
+            break;
         }
     }
-    
+
+    afficherJour(indexJourActuel);
+}
+
+function afficherJour(index) {
     const listeElement = document.getElementById('evenement-liste');
     const titreElement = document.getElementById('widget-title');
-    
-    if (!prochainJourDeProg) {
+
+    if (!datesDisponibles.length) {
         titreElement.textContent = "PAS D'ÉVÉNEMENTS À VENIR";
         listeElement.innerHTML = '';
         return;
     }
 
-    // 2. Filtrer les événements pour ce jour
-    const evenementsDuJour = donneesEvenements.filter(e => e.date === prochainJourDeProg);
-
-    // 3. Mettre à jour le titre du widget
+    const dateStr = datesDisponibles[index];
+    const evenementsDuJour = donneesEvenements.filter(e => e.date === dateStr);
     const jourAffichage = evenementsDuJour[0].jour;
-    const dateAffichage = new Date(prochainJourDeProg).toLocaleDateString('fr-FR', {
+    const dateAffichage = new Date(dateStr).toLocaleDateString('fr-FR', {
         day: 'numeric',
         month: 'long'
     });
-    
-    titreElement.innerHTML = `🔥 ÉVÉNEMENTS ${jourAffichage}. ${dateAffichage.toUpperCase()}`;
-    
-    // 4. Générer l'affichage des événements (AVEC LE CLIC)
-    listeElement.innerHTML = ''; 
-    
+
+    const peutAllerGauche = index > 0;
+    const peutAllerDroite = index < datesDisponibles.length - 1;
+
+titreElement.innerHTML = `
+    <span onclick="${peutAllerGauche ? `naviguerJour(${index - 1})` : ''}" style="
+        cursor:${peutAllerGauche ? 'pointer' : 'default'};
+        opacity:${peutAllerGauche ? '1' : '0.2'};
+        font-size:1.1rem;
+        padding: 0 12px;
+        color: var(--gold);
+    ">‹</span>
+    ${jourAffichage.substring(0,3).toUpperCase()}. ${dateAffichage.toUpperCase()}
+    <span onclick="${peutAllerDroite ? `naviguerJour(${index + 1})` : ''}" style="
+        cursor:${peutAllerDroite ? 'pointer' : 'default'};
+        opacity:${peutAllerDroite ? '1' : '0.2'};
+        font-size:1.1rem;
+        padding: 0 12px;
+        color: var(--gold);
+    ">›</span>
+`;
+
+
+    listeElement.innerHTML = '';
     evenementsDuJour.forEach(evenement => {
         const item = document.createElement('div');
         item.classList.add('evenement-item');
-        
-        // C'EST CETTE LIGNE QUI EST IMPORTANTE :
         item.innerHTML = `
             <div class="evenement-ville">${evenement.ville}</div>
-            <strong onclick="afficherDetailsArtiste('${evenement.artiste}', '${evenement.ville}', '${evenement.details}')" style="cursor: pointer; text-decoration: underline; text-decoration-color: var(--couleur-accent-cyan);">${evenement.artiste}</strong>
+            <strong onclick="afficherDetailsArtiste('${evenement.artiste}', '${evenement.ville}', '${evenement.details}')" style="cursor:pointer;text-decoration:underline;text-decoration-color:var(--couleur-accent-cyan);">${evenement.artiste}</strong>
             <div class="evenement-details">${evenement.details}</div>
         `;
-        // FIN DE LA LIGNE IMPORTANTE
-        
         listeElement.appendChild(item);
     });
 }
 
-// Lancer la fonction au chargement de la page
+function naviguerJour(index) {
+    indexJourActuel = index;
+    afficherJour(index);
+}
+
 document.addEventListener('DOMContentLoaded', mettreAJourWidget);
 
 /** Fonction générique pour les 15 pages de Règles/Politiques */
