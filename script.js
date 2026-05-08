@@ -1531,29 +1531,29 @@ const dateActuelle = new Date();
 
 // --- BASE DE DONNÉES COMPLÈTE DES ÉVÉNEMENTS ---
 const donneesEvenements = [
-// --- JEUDI 30 AVRIL 2026 ---
-    { date: '2026-04-30', jour: 'JEU.', ville: 'LA', artiste: 'DIIV', details: 'Frog in Boiling Water (Dream-Pop/Indie Live - $90)' },
-    { date: '2026-04-30', jour: 'JEU.', ville: 'MIAMI', artiste: 'DAVE EAST', details: 'Survival Pacc (Harlem Street Rap - Accès restreint)' },
-    { date: '2026-04-30', jour: 'JEU.', ville: 'NYC', artiste: 'CLEO SOL', details: 'Gold (Neo-Soul/Jazz Showcase - $90)' },
-    { date: '2026-04-30', jour: 'JEU.', ville: 'SF', artiste: 'DJ SEINFELD', details: 'Mirrors Tour (Lo-Fi House/Electronic - $90)' },
+// --- JEUDI 07 MAI 2026 ---
+    { date: '2026-05-07', jour: 'JEU.', ville: 'LA', artiste: 'JOEY BADA$$', details: '2000 Live (Classic New York Rap in LA - $90)' }, 
+    { date: '2026-05-07', jour: 'JEU.', ville: 'MIAMI', artiste: 'ELADIO CARRION', details: 'Sol María Tour (Latin Trap King - Accès restreint)' }, 
+    { date: '2026-05-07', jour: 'JEU.', ville: 'NYC', artiste: 'JID', details: 'The Forever Story (Lyrical Hip-Hop Showcase - $90)' }, 
+    { date: '2026-05-07', jour: 'JEU.', ville: 'SF', artiste: 'HAAI', details: 'Baby, We’re Ascending (Psychedelic Techno - $90)' }, 
 
-    // --- VENDREDI 01 MAI 2026 ---
-    { date: '2026-05-01', jour: 'VEN.', ville: 'LA', artiste: '070 SHAKE', details: 'You Can’t Kill Me (Atmospheric Rap - Accès sur liste VIP uniquement)' },
-    { date: '2026-05-01', jour: 'VEN.', ville: 'MIAMI', artiste: 'FAT JOE', details: 'Terror Squad Reunion (Bronx Legend Showcase - Accès restreint)' },
-    { date: '2026-05-01', jour: 'VEN.', ville: 'NYC', artiste: 'NIGEL SYLVESTER', details: 'GO (Culture/Soundtrack Night - Accès sur liste VIP uniquement)' },
-    { date: '2026-05-01', jour: 'VEN.', ville: 'SF', artiste: 'BEN BÖHMER', details: 'Bloom Live (Melodic Deep House - $90)' },
+    // --- VENDREDI 08 MAI 2026 ---
+    { date: '2026-05-08', jour: 'VEN.', ville: 'LA', artiste: 'RAVYN LENAE', details: 'Bird\'s Eye (Alternative R&B/Soul - Accès sur liste VIP uniquement)' }, // REMPLACÉ (Bye Bad Bunny)
+    { date: '2026-05-08', jour: 'VEN.', ville: 'MIAMI', artiste: 'LOYLE CARNER', details: 'Hugo Live (UK Jazz-Rap Showcase - $90)' }, 
+    { date: '2026-05-08', jour: 'VEN.', ville: 'NYC', artiste: 'ERYKAH BADU', details: 'Baduizm 2026 (Neo-Soul Legend - Accès sur liste VIP uniquement)' }, 
+    { date: '2026-05-08', jour: 'VEN.', ville: 'SF', artiste: 'MIND AGAINST', details: 'Afterlife Journey (Melodic Techno - $90)' }, 
 
-    // --- SAMEDI 02 MAI 2026 ---
-    { date: '2026-05-02', jour: 'SAM.', ville: 'LA', artiste: 'KAYCYY', details: 'Who Is KayCyy? (Experimental Rap/Vocal - $90)' },
-    { date: '2026-05-02', jour: 'SAM.', ville: 'MIAMI', artiste: 'BURNA BOY', details: 'African Giant Live (Afrobeats Stadium Set - Accès sur liste VIP uniquement)' },
-    { date: '2026-05-02', jour: 'SAM.', ville: 'NYC', artiste: 'IDLES', details: 'TANGK (Post-Punk Energy - Accès restreint)' },
-    { date: '2026-05-02', jour: 'SAM.', ville: 'SF', artiste: 'MACEO PLEX', details: 'Mosaic (Deep Techno/House Masterclass - $90)' },
+    // --- SAMEDI 09 MAI 2026 ---
+    { date: '2026-05-09', jour: 'SAM.', ville: 'LA', artiste: 'DJO', details: 'Decide Tour (Synth-Pop/Psych Showcase - $90)' }, 
+    { date: '2026-05-09', jour: 'SAM.', ville: 'MIAMI', artiste: 'TEMS', details: 'Born in the Wild (Afrobeats/Soul Queen - Accès restreint)' }, 
+    { date: '2026-05-09', jour: 'SAM.', ville: 'NYC', artiste: 'KENNY BEATS', details: 'Louie (Instrumental/Hip-Hop Experience - Accès restreint)' }, 
+    { date: '2026-05-09', jour: 'SAM.', ville: 'SF', artiste: 'FATBOY SLIM', details: 'Right Here, Right Now (Classic House Set - Accès sur liste VIP uniquement)' }, 
 
-    // --- DIMANCHE 03 MAI 2026 ---
-    { date: '2026-05-03', jour: 'DIM.', ville: 'LA', artiste: 'SMILE', details: 'Wall of Eyes (Art-Rock/Experimental - $90)' },
-    { date: '2026-05-03', jour: 'DIM.', ville: 'MIAMI', artiste: 'LUKE COMBS', details: 'Country Crossover Night (Special Guest - Accès sur liste VIP uniquement)' },
-    { date: '2026-05-03', jour: 'DIM.', ville: 'NYC', artiste: 'LEANNE LA HAVAS', details: 'Intimate Soul Session (Acoustic/Soul - $90)' },
-    { date: '2026-05-03', jour: 'DIM.', ville: 'SF', artiste: 'DANIEL AVERY', details: 'Ultra Truth (Industrial/Ambient Techno - $90)' }
+    // --- DIMANCHE 10 MAI 2026 ---
+    { date: '2026-05-10', jour: 'DIM.', ville: 'LA', artiste: 'NIKI', details: 'Nicole World Tour (Indie/Pop-Soul - $90)' }, 
+    { date: '2026-05-10', jour: 'DIM.', ville: 'MIAMI', artiste: 'JEEZY', details: 'Snowman Residency (Atlanta Trap Legend - Accès restreint)' }, 
+    { date: '2026-05-10', jour: 'DIM.', ville: 'NYC', artiste: 'CHLÖE', details: 'In Pieces Live (R&B/Pop Performance - $90)' }, 
+    { date: '2026-05-10', jour: 'DIM.', ville: 'SF', artiste: 'FOLAMOUR', details: 'House of Love (Disco/House Grooves - $90)' } 
 ];
 
 
