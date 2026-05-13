@@ -2815,7 +2815,7 @@ APP_CONTENT.innerHTML = `
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; font-size:0.8rem;">
                     <div><span style="opacity:0.6;">DATE:</span> <br> <strong>${dateInput}</strong></div>
-                    <div><span style="opacity:0.6;">CONVERSATION:</span> <br> <strong>${guests} PERSONNES</strong></div>
+                    <div><span style="opacity:0.6;">GUESTS:</span> <br> <strong>${guests} PERSONNES</strong></div>
                     <div><span style="opacity:0.6;">MINIMUM SPEND:</span> <br> <strong style="color:var(--gold);">${minSpend}</strong></div>
                     <div><span style="opacity:0.6;">TABLE TYPE:</span> <br> <strong>VIP MAIN FLOOR</strong></div>
                 </div>
