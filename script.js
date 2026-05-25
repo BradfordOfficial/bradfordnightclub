@@ -1531,29 +1531,29 @@ const dateActuelle = new Date();
 
 // --- BASE DE DONNÉES COMPLÈTE DES ÉVÉNEMENTS ---
 const donneesEvenements = [
-// --- JEUDI 14 MAI 2026 ---
-    { date: '2026-05-14', jour: 'JEU.', ville: 'LA', artiste: 'VIEEZE', details: 'Ganger Tour (Detroit Scams Rap - $90)' },
-    { date: '2026-05-14', jour: 'JEU.', ville: 'MIAMI', artiste: 'SHENSEEA', details: 'Alpha Night (Dancehall/Pop Showcase - Accès restreint)' },
-    { date: '2026-05-14', jour: 'JEU.', ville: 'NYC', artiste: 'GENESIS OWUSU', details: 'Struggler Live (Experimental Funk/Punk - $90)' },
-    { date: '2026-05-14', jour: 'JEU.', ville: 'SF', artiste: 'KIASMOS', details: 'II Live (Neo-Classical Techno - $90)' },
+// --- JEUDI 28 MAI 2026 ---
+    { date: '2026-05-28', jour: 'JEU.', ville: 'LA', artiste: 'TEEGRIZZLEY', details: 'Tee\'s Coney Island (Detroit Storytelling Rap - $90)' },
+    { date: '2026-05-28', jour: 'JEU.', ville: 'MIAMI', artiste: 'CHIEF KEEF', details: 'Almighty So 2 (Chiraq Drill Legend - Accès restreint)' },
+    { date: '2026-05-28', jour: 'JEU.', ville: 'NYC', artiste: 'LITTLE SIMZ', details: 'No Thank You Live (Lyrical Masterclass - $90)' },
+    { date: '2026-05-28', jour: 'JEU.', ville: 'SF', artiste: 'SAMMY VIRJI', details: 'Find My Way Home (UK Garage / Bassline - $90)' },
 
-    // --- VENDREDI 15 MAI 2026 ---
-    { date: '2026-05-15', jour: 'VEN.', ville: 'LA', artiste: 'SUDAN ARCHIVES', details: 'Natural Brown Prom Queen (Avant-Garde R&B - Accès restreint)' },
-    { date: '2026-05-15', jour: 'VEN.', ville: 'MIAMI', artiste: 'JEEZY', details: 'Trap or Die (Atlanta Legend Night - Accès sur liste VIP uniquement)' },
-    { date: '2026-05-15', jour: 'VEN.', ville: 'NYC', artiste: 'YVES TUMOR', details: 'Praise a Lord... (Art-Rock/Psych-Soul - Accès sur liste VIP uniquement)' },
-    { date: '2026-05-15', jour: 'VEN.', ville: 'SF', artiste: 'ANZ', details: 'All-Night Set (UK Garage/Breaks - $90)' },
+    // --- VENDREDI 29 MAI 2026 ---
+    { date: '2026-05-29', jour: 'VEN.', ville: 'LA', artiste: 'COCO JONES', details: 'What I Know Live (R&B/Soul Premium Sensation - Accès restreint)' },
+    { date: '2026-05-29', jour: 'VEN.', ville: 'MIAMI', artiste: 'YOUNG NUDY', details: 'Gumbo Tour (Atlanta Slime Trap - Accès restreint)' },
+    { date: '2026-05-29', jour: 'VEN.', ville: 'NYC', artiste: 'LOYLE CARNER', details: 'Hugo Experience (UK Conscious Rap - Accès sur liste VIP uniquement)' },
+    { date: '2026-05-29', jour: 'VEN.', ville: 'SF', artiste: 'I HATE MODELS', details: 'Disco Inferno Set (Industrial Hard Techno - $90)' },
 
-    // --- SAMEDI 16 MAI 2026 ---
-    { date: '2026-05-16', jour: 'SAM.', ville: 'LA', artiste: 'TEEZO TOUCHDOWN', details: 'How Do You Sleep? (Alt-Pop/Rap Energy - $90)' },
-    { date: '2026-05-16', jour: 'SAM.', ville: 'MIAMI', artiste: 'UNCLE WAFFLES', details: 'Amapiano Princess (South African House - Accès sur liste VIP uniquement)' },
-    { date: '2026-05-16', jour: 'SAM.', ville: 'NYC', artiste: 'LITTLE SIMZ', details: 'No Thank You (Lyrical Excellence - Accès restreint)' },
-    { date: '2026-05-16', jour: 'SAM.', ville: 'SF', artiste: 'ELKE KLEIJN', details: 'Transmission Live (Progressive House - $90)' },
+    // --- SAMEDI 30 MAI 2026 ---
+    { date: '2026-05-30', jour: 'SAM.', ville: 'LA', artiste: 'DAVE', details: 'We\'re All Alone In This Together (UK Rap Star - Accès sur liste VIP uniquement)' },
+    { date: '2026-05-30', jour: 'SAM.', ville: 'MIAMI', artiste: 'TIKTOK SENSATION SOUR', details: 'Global Beats Showcase (International Sound - $90)' },
+    { date: '2026-05-30', jour: 'SAM.', ville: 'NYC', artiste: 'AMÉ', details: 'Innervisions Special (Deep Melodic Techno - Accès restreint)' },
+    { date: '2026-05-30', jour: 'SAM.', ville: 'SF', artiste: 'BOU', details: 'Gossip Live (UK Drum & Bass Night - Accès sur liste VIP uniquement)' },
 
-    // --- DIMANCHE 17 MAI 2026 ---
-    { date: '2026-05-17', jour: 'DIM.', ville: 'LA', artiste: 'KORYN HAWTHORNE', details: 'Essential Soul (Contemporary Gospel/R&B - $90)' },
-    { date: '2026-05-17', jour: 'DIM.', ville: 'MIAMI', artiste: 'RYLO RODRIGUEZ', details: 'Been One (Emotional Trap Showcase - Accès restreint)' },
-    { date: '2026-05-17', jour: 'DIM.', ville: 'NYC', artiste: 'SZA', details: 'Lana Deluxe (Exclusive Acoustic Set - Accès sur liste VIP uniquement)' },
-    { date: '2026-05-17', jour: 'DIM.', ville: 'SF', artiste: 'BARRY CAN’T SWIM', details: 'When Will We Land? (Jazz-House Live - $90)' }
+    // --- DIMANCHE 31 MAI 2026 ---
+    { date: '2026-05-31', jour: 'DIM.', ville: 'LA', artiste: 'WESTSIDE BOOGIE', details: 'More Black Superhero (Shady Records Rap - $90)' },
+    { date: '2026-05-31', jour: 'DIM.', ville: 'MIAMI', artiste: 'FRANCO ESCAMILLA', details: 'Special Guest Night (Stand-Up & Music Crossover - Accès restreint)' },
+    { date: '2026-05-31', jour: 'DIM.', ville: 'NYC', artiste: 'KENNY BEATS', details: 'Louie & Friends (Producer DJ Set - $90)' },
+    { date: '2026-05-31', jour: 'DIM.', ville: 'SF', artiste: 'SKREAM', details: '140 Dubstep Classics Set (UK Underground - $90)' }
 ];
 
 
