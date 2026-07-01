@@ -1576,21 +1576,24 @@ window.onclick = function(event) {
     cursor: pointer;
 }
 
-    /* --- ADAPTATION STRICTE DE 768PX À 1024PX (TABLETTES ET PETITS ORDIS) --- */
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    /* Élargit proprement la modal pour cette tranche d'écrans */
+/* ==========================================================================
+   1. TABLETTES (À partir de 768px)
+   ========================================================================== */
+@media (min-width: 768px) {
+    /* Élargit proprement la modal pour les tablettes */
     .vip-modal-content {
-        max-width: 540px; 
+        max-width: 480px; 
+        width: 100%;
     }
 
-    /* Ajuste l'espace interne pour les tablettes */
+    /* Ajuste l'espace interne */
     .membership-card-container {
         padding: 45px 30px 30px 30px; 
     }
 
     /* Grossit les textes pour que ça ne fasse pas trop petit sur iPad */
     .membership-header h2 {
-        font-size: 1.6rem; 
+        font-size: 1.5rem; 
     }
     
     .membership-description {
@@ -1606,6 +1609,22 @@ window.onclick = function(event) {
         font-size: 0.95rem;
     }
 }
+
+/* ==========================================================================
+   2. ORDINATEURS & GRANDS ÉCRANS (À partir de 1024px)
+   ========================================================================== */
+@media (min-width: 1024px) {
+    /* Élargit encore plus la modal pour ton écran d'ordinateur HP */
+    .vip-modal-content {
+        max-width: 540px; 
+    }
+
+    /* Optionnel : On redonne un peu de punch aux titres sur grand écran */
+    .membership-header h2 {
+        font-size: 1.7rem; 
+    }
+}
+
 
 </style>
 
