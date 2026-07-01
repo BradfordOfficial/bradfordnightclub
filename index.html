@@ -1360,43 +1360,223 @@ async function askBradford() {
         
         <span class="close-btn-accreditation" onclick="closeMembershipModal()">&times;</span>
         
-        <header style="text-align: center; margin-bottom: 30px;">
-            <h2 style="font-size: 1.8rem;">Protocole d'Adhésion</h2>
-            <p style="color: var(--teal); font-family: 'Cinzel', serif; letter-spacing: 3px; font-size: 0.9rem;">
-                Accès Restreint. Statut Élite.
+        <div class="membership-card-container">
+            <header class="membership-header">
+                <h2>Protocole d'Adhésion</h2>
+                <p class="membership-subtitle">Accès Restreint. Statut Élite.</p>
+            </header>
+
+            <p class="membership-description">
+                Devenir membre du Bradford Nightclub n'est pas une simple adhésion ; c'est une accréditation à un cercle ultra-privilégié. Ce statut garantit un accès instantané aux soirées sur liste, des privilèges de réservation exclusifs et un service de conciergerie de niveau supérieur.
             </p>
-        </header>
 
-        <p style="color: var(--ivory); font-size: 1rem; line-height: 1.5; margin-bottom: 30px;">
-            Devenir membre du Bradford Nightclub n'est pas une simple adhésion ; c'est une accréditation à un cercle ultra-privilégié. Ce statut garantit un accès instantané aux soirées sur liste, des privilèges de réservation exclusifs et un service de conciergerie de niveau supérieur.
-        </p>
-
-        <div class="membership-fee-display">
-            <span class="fee-label">Cotisation Annuelle :</span>
-            <span class="fee-value">$25,000 USD</span>
-            <span class="fee-note" style="color: var(--teal); font-size: 0.8rem; display: block; margin-top: 5px;">
-                (Frais de dossier inclus. Soumis à approbation du comité.)
-            </span>
-        </div>
-        
-        <form id="adhesionForm" style="margin-top: 30px;">
-            <label for="referenceCode">Code de Référence (Obligatoire) :</label>
-            <input type="text" id="referenceCode" required>
+            <div class="membership-fee-display">
+                <span class="fee-label">Cotisation Annuelle</span>
+                <span class="fee-value">$25,000 USD</span>
+                <span class="fee-note">(Frais de dossier inclus. Soumis à approbation du comité.)</span>
+            </div>
             
-            <button type="submit" style="width: 100%; float: none;">Démarrer la Procédure d'Accréditation</button>
-        </form>
+            <form id="adhesionForm" class="membership-form">
+                <div class="form-group">
+                    <label for="referenceCode">Code de Référence (Obligatoire)</label>
+                    <input type="text" id="referenceCode" placeholder="Ex: BRD-7492-X" required>
+                </div>
+                
+                <button type="submit" class="btn-submit">Démarrer la Procédure</button>
+            </form>
+        </div>
 
- </form>
-<span class="close-btn-accreditation" onclick="closeMembershipModal()">&times;</span>
     </div>
 </div>
 
-    </div>
-</main>
+<script>
+function openMembershipModal() {
+    const modal = document.getElementById('membershipModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
 
-        </p>
-    </div>
-</main>
+function closeMembershipModal() {
+    const modal = document.getElementById('membershipModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById('membershipModal');
+    if (event.target === modal) {
+        closeMembershipModal();
+    }
+}
+</script>
+
+<style>
+/* Sécurité globale pour éviter les calculs de largeur erronés */
+#membershipModal, 
+#membershipModal *, 
+#membershipModal *::before, 
+#membershipModal *::after {
+    box-sizing: border-box !important;
+}
+
+/* Le fond flou */
+.vip-modal-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85); 
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 12px; /* Marge externe minimale sur les côtés de l'écran */
+}
+
+/* LE CONTENEUR CRUCIAL (Bloqué horizontalement) */
+.vip-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 440px; /* Taille maximale sur ordinateur */
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden; /* Empêche STRICTEMENT tout défilement horizontal interne */
+    background: #0a0a0a; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
+
+/* Ajustement de la structure interne */
+.membership-card-container {
+    width: 100%;
+    padding: 40px 20px 25px 20px; /* Paddings réduits sur les côtés pour laisser respirer l'horizontale */
+}
+
+/* La croix de fermeture */
+.close-btn-accreditation {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 30px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    z-index: 10; 
+    line-height: 1;
+}
+
+/* Textes */
+.membership-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.membership-header h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: #fff;
+}
+
+.membership-subtitle {
+    color: var(--teal, #008080); 
+    font-family: 'Cinzel', serif; 
+    letter-spacing: 2px; 
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.membership-description {
+    color: #d1d1d1; 
+    font-size: 0.88rem; 
+    line-height: 1.5; 
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Bloc Prix */
+.membership-fee-display {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid rgba(0, 128, 128, 0.4);
+    border-bottom: 1px solid rgba(0, 128, 128, 0.4);
+    padding: 12px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.fee-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.fee-value {
+    display: block;
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #fff;
+    font-family: 'Cinzel', serif;
+}
+
+.fee-note {
+    color: var(--teal, #008080); 
+    font-size: 0.7rem; 
+    display: block;
+}
+
+/* Éléments du Formulaire sécurisés pour la largeur */
+.membership-form {
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.membership-form label {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.membership-form input[type="text"] {
+    width: 100%; /* S'adapte au pixel près au parent sans déborder */
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.btn-submit {
+    width: 100%; /* S'aligne parfaitement sur l'input */
+    padding: 14px;
+    background: var(--teal, #008080);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+</style>
+
     
 <div id="bradford-nerve-center">
     <div class="nerve-blur"></div>
