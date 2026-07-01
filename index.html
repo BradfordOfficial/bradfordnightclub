@@ -1370,21 +1370,6 @@ async function askBradford() {
                 Devenir membre du Bradford Nightclub n'est pas une simple adhésion ; c'est une accréditation à un cercle ultra-privilégié. Ce statut garantit un accès instantané aux soirées sur liste, des privilèges de réservation exclusifs et un service de conciergerie de niveau supérieur.
             </p>
 
-          <div id="membershipModal" class="vip-modal-backdrop">
-    <div class="vip-modal-content protocol-container">
-        
-        <span class="close-btn-accreditation" onclick="closeMembershipModal()">&times;</span>
-        
-        <div class="membership-card-container">
-            <header class="membership-header">
-                <h2>Protocole d'Adhésion</h2>
-                <p class="membership-subtitle">Accès Restreint. Statut Élite.</p>
-            </header>
-
-            <p class="membership-description">
-                Devenir membre du Bradford Nightclub n'est pas une simple adhésion ; c'est une accréditation à un cercle ultra-privilégié. Ce statut garantit un accès instantané aux soirées sur liste, des privilèges de réservation exclusifs et un service de conciergerie de niveau supérieur.
-            </p>
-
             <div class="membership-fee-display">
                 <span class="fee-label">Cotisation Annuelle</span>
                 <span class="fee-value">$25,000 USD</span>
@@ -1451,28 +1436,30 @@ window.onclick = function(event) {
     z-index: 9999;
     justify-content: center;
     align-items: center;
-    padding: 12px;
+    padding: 12px; /* Marge externe minimale sur les côtés de l'écran */
 }
 
-/* Base Mobile (iPhone 13, etc.) - Ultra compacte horizontalement */
+/* LE CONTENEUR CRUCIAL (Bloqué horizontalement) */
 .vip-modal-content {
     position: relative;
     width: 100%;
-    max-width: 440px; 
+    max-width: 440px; /* Taille maximale sur ordinateur */
     max-height: 90vh;
     overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Empêche STRICTEMENT tout défilement horizontal interne */
     background: #0a0a0a; 
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 16px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
 }
 
+/* Ajustement de la structure interne */
 .membership-card-container {
     width: 100%;
-    padding: 40px 20px 25px 20px;
+    padding: 40px 20px 25px 20px; /* Paddings réduits sur les côtés pour laisser respirer l'horizontale */
 }
 
+/* La croix de fermeture */
 .close-btn-accreditation {
     position: absolute;
     top: 12px;
@@ -1485,6 +1472,7 @@ window.onclick = function(event) {
     line-height: 1;
 }
 
+/* Textes */
 .membership-header {
     text-align: center;
     margin-bottom: 20px;
@@ -1514,6 +1502,7 @@ window.onclick = function(event) {
     text-align: center;
 }
 
+/* Bloc Prix */
 .membership-fee-display {
     width: 100%;
     background: rgba(255, 255, 255, 0.02);
@@ -1545,6 +1534,7 @@ window.onclick = function(event) {
     display: block;
 }
 
+/* Éléments du Formulaire sécurisés pour la largeur */
 .membership-form {
     width: 100%;
 }
@@ -1564,7 +1554,7 @@ window.onclick = function(event) {
 }
 
 .membership-form input[type="text"] {
-    width: 100%; 
+    width: 100%; /* S'adapte au pixel près au parent sans déborder */
     padding: 12px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -1574,7 +1564,7 @@ window.onclick = function(event) {
 }
 
 .btn-submit {
-    width: 100%; 
+    width: 100%; /* S'aligne parfaitement sur l'input */
     padding: 14px;
     background: var(--teal, #008080);
     color: #fff;
@@ -1585,45 +1575,8 @@ window.onclick = function(event) {
     text-transform: uppercase;
     cursor: pointer;
 }
-
-/* 
-  CORRECTION ICI : On supprime le "max-width: 1024px".
-  Dès qu'on quitte l'affichage mobile (>= 768px), on applique un style aéré 
-  qui s'adaptera magnifiquement sur Tablettes, Ordinateurs Portables et PC de Bureau.
-*/
-@media screen and (min-width: 768px) {
-    .vip-modal-content {
-        max-width: 520px; /* Largeur parfaite équilibrée pour ordi et tablette */
-        width: 90%;
-    }
-    
-    .membership-card-container {
-        padding: 45px 35px 35px 35px; /* Plus d'espace pour respirer sur grand écran */
-    }
-    
-    .membership-header h2 {
-        font-size: 1.7rem; /* Titre plus imposant et haut de gamme */
-    }
-    
-    .membership-description {
-        font-size: 0.95rem;
-        line-height: 1.6;
-    }
-    
-    .fee-value {
-        font-size: 2.1rem; /* Met en valeur la cotisation */
-    }
-    
-    .membership-form label {
-        font-size: 0.8rem;
-    }
-    
-    .btn-submit {
-        font-size: 0.95rem;
-        padding: 16px; /* Bouton plus imposant et premium */
-    }
-}
 </style>
+
 
 
     
