@@ -1575,6 +1575,38 @@ window.onclick = function(event) {
     text-transform: uppercase;
     cursor: pointer;
 }
+
+    /* --- ADAPTATION STRICTE DE 768PX À 1024PX (TABLETTES ET PETITS ORDIS) --- */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    /* Élargit proprement la modal pour cette tranche d'écrans */
+    .vip-modal-content {
+        max-width: 540px; 
+    }
+
+    /* Ajuste l'espace interne pour les tablettes */
+    .membership-card-container {
+        padding: 45px 30px 30px 30px; 
+    }
+
+    /* Grossit les textes pour que ça ne fasse pas trop petit sur iPad */
+    .membership-header h2 {
+        font-size: 1.6rem; 
+    }
+    
+    .membership-description {
+        font-size: 0.95rem;
+    }
+
+    .fee-value {
+        font-size: 2rem;
+    }
+
+    .btn-submit {
+        padding: 16px;
+        font-size: 0.95rem;
+    }
+}
+
 </style>
 
 
