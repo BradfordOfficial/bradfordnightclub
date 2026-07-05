@@ -1539,7 +1539,7 @@ const donneesEvenements = [
 
     // --- VENDREDI 03 JUILLET 2026 ---
     { date: '2026-07-03', jour: 'VEN.', ville: 'LA', artiste: 'TINASHE', details: 'Quantum Baby Live (High-Energy R&B/Pop - Accès restreint)' },
-    { date: '2026-07-03', ville: 'MIAMI', artiste: 'LUCYANO', details: 'Latin Trap Sensation (Exclusive Performance - $90)' },
+    { date: '2026-07-03', jour: 'VEN.', ville: 'MIAMI', artiste: 'LUCYANO', details: 'Latin Trap Sensation (Exclusive Performance - $90)' },
     { date: '2026-07-03', jour: 'VEN.', ville: 'NYC', artiste: 'BABYFACE RAY', details: 'Detroit Wave in New York (Real Street Rap - Accès sur liste VIP uniquement)' },
     { date: '2026-07-03', jour: 'VEN.', ville: 'SF', artiste: 'FOAM PARTY (SOIRÉE MOUSSE)', details: 'ÉVÉNEMENT SPÉCIAL (Canon à mousse XXL / Summer Clubbing - $110)' }, // SOIRÉE À THÈME (Prix plus cher)
 
