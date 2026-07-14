@@ -9149,6 +9149,19 @@ function renderPressMentions() {
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     });
 }
+// Fonction pour gérer la sélection des tables VIP
+window.updateTableSelection = function(element, tableName, price) {
+    // 1. On retire la classe 'active-tier' de toutes les cartes
+    const allCards = document.querySelectorAll('.table-tier-card');
+    allCards.forEach(card => card.classList.remove('active-tier'));
+
+    // 2. On ajoute la classe 'active-tier' à la carte cliquée
+    element.classList.add('active-tier');
+
+    // 3. On met à jour le résumé de finalisation en direct
+    document.getElementById('summary-table-type').innerText = tableName;
+    document.getElementById('summary-min-spend').innerText = '$' + price.toLocaleString() + ' USD';
+};
 
 
 
