@@ -851,6 +851,10 @@ function applyBottleFilters() {
 // CONFIGURATEUR DE BOUTEILLE AVEC BUNDLES & SIMULATEUR DE QUOTE-PART
 // ==========================================================================
 
+// ==========================================================================
+// CONFIGURATEUR DE BOUTEILLE AVEC BUNDLES DE COMPATIBILITÉ ET SIMULATEUR
+// ==========================================================================
+
 function openBottleCheckout(bottleName, priceHT, priceTTC) {
     // Établir les variables de prix de base dans un état global de session
     window.currentCheckoutState = {
@@ -862,20 +866,91 @@ function openBottleCheckout(bottleName, priceHT, priceTTC) {
         activeTTC: priceTTC
     };
 
-    // Définition des offres spéciales dynamiques basées sur la sélection
+    // ==========================================================================
+    // ALGORITHME DE MATCHING PRESTIGE ( Bradford Nightclub Exclusive )
+    // ==========================================================================
+    let companionName = "";
+    let companionBasePrice = 0;
+    const nameLower = bottleName.toLowerCase();
+
+    // --- CAS 1 : L'UTILISATEUR COMMANDE DE LA TEQUILA ---
+    if (nameLower.includes('patrón') || nameLower.includes('julio') || nameLower.includes('azul')) {
+        if (priceHT < 1000) {
+            // Patrón Silver ($750) -> On propose l'incontournable Dom Pérignon pour upgrader la table
+            companionName = "Dom Pérignon Brut (0.75L)";
+            companionBasePrice = 950;
+        } else {
+            // Don Julio 1942 ($1250) ou Clase Azul ($1600) -> Combo show-off avec la bouteille lumineuse star
+            companionName = "Dom Pérignon Luminous Edition (0.75L)";
+            companionBasePrice = 1500;
+        }
+    }
+    
+    // --- CAS 2 : L'UTILISATEUR COMMANDE DE LA VODKA ---
+    else if (nameLower.includes('goose') || nameLower.includes('belvedere') || nameLower.includes('beluga')) {
+        if (priceHT < 1000) {
+            // Grey Goose ($750) ou Belvedere ($700) -> Le combo classique avec le champagne de fête de base
+            companionName = "Veuve Clicquot Yellow Label (0.75L)";
+            companionBasePrice = 550;
+        } else {
+            // Beluga Gold Line ($1200) -> Vodka Premium avec Champagne Premium
+            companionName = "Dom Pérignon Brut (0.75L)";
+            companionBasePrice = 950;
+        }
+    }
+
+    // --- CAS 3 : L'UTILISATEUR COMMANDE DU CHAMPAGNE ---
+    else if (nameLower.includes('clicquot') || nameLower.includes('pérignon') || nameLower.includes('cristal') || nameLower.includes('brignac')) {
+        if (priceHT < 800) {
+            // Veuve Clicquot ($550) -> On propose la Vodka de référence pour faire les shots/mélanges
+            companionName = "Grey Goose Original (1L)";
+            companionBasePrice = 750;
+        } else if (priceHT < 3000) {
+            // Dom Pérignon ($950) ou Cristal ($1600) -> Le combo ultime des gros clients : Bulles + Tequila de luxe
+            companionName = "Don Julio 1942 (0.75L)";
+            companionBasePrice = 1250;
+        } else {
+            // Armand de Brignac Magnum ($3800) -> Le très haut de gamme, on propose le summum de la Tequila
+            companionName = "Clase Azul Reposado (0.75L)";
+            companionBasePrice = 1600;
+        }
+    }
+
+    // --- CAS 4 : L'UTILISATEUR COMMANDE DU WHISKEY OU DU COGNAC ---
+    else if (nameLower.includes('walker') || nameLower.includes('macallan') || nameLower.includes('hennessy')) {
+        if (priceHT < 1000) {
+            // Hennessy VSOP ($850) -> On propose le champagne classique de début de soirée
+            companionName = "Veuve Clicquot Yellow Label (0.75L)";
+            companionBasePrice = 550;
+        } else if (priceHT < 9000) {
+            // Macallan ($1900) ou Hennessy XO ($1300) -> Alcool brun complexe + bulles de prestige
+            companionName = "Dom Pérignon Brut (0.75L)";
+            companionBasePrice = 950;
+        } else {
+            // Client légendaire : Rémy Martin Louis XIII ($9500) -> On lui propose le Magnum ultime
+            companionName = "Armand de Brignac Brut Magnum (1.5L)";
+            companionBasePrice = 3800;
+        }
+    }
+
+    // --- CAS PAR DÉFAUT (SÉCURITÉ) ---
+    else {
+        companionName = "Dom Pérignon Brut (0.75L)";
+        companionBasePrice = 950;
+    }
+
+    // --- CALCULS FINAUX DES COMBOS ---
     // Combo 1 : La bouteille choisie + Le Show Rituel (Sparklers + Fumée)
     const showComboHT = priceHT + 70; // Tarif préférentiel au lieu de 95$
     const showComboTTC = Math.round(showComboHT * 1.20);
 
-    // Combo 2 : Le Duo Prestige (La bouteille choisie + un Champagne d'exception)
-    // On adapte le duo : si c'est déjà du champagne, on propose une Tequila iconique, et vice-versa.
-    const isChampagne = bottleName.toLowerCase().includes('clicquot') || bottleName.toLowerCase().includes('pérignon') || bottleName.toLowerCase().includes('cristal') || bottleName.toLowerCase().includes('brignac');
-    const companionName = isChampagne ? "Don Julio 1942 (0.75L)" : "Dom Pérignon Brut (0.75L)";
-    const companionBasePrice = isChampagne ? 1250 : 950;
-    
-    // Remise de bundle de -15% sur la deuxième bouteille
+    // Combo 2 : Le Duo Prestige (Remise de bundle de -15% appliquée sur la bouteille suggérée)
     const duoComboHT = Math.round(priceHT + (companionBasePrice * 0.85));
     const duoComboTTC = Math.round(duoComboHT * 1.20);
+
+    // Sécurité anti-bug : on échappe les apostrophes pour éviter que le HTML se casse
+    const escapedBottleName = bottleName.replace(/'/g, "\\'");
+    const escapedCompanionName = companionName.replace(/'/g, "\\'");
 
     // Rendu de l'interface de paiement
     APP_CONTENT.innerHTML = `
