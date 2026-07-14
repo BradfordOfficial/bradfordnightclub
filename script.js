@@ -2937,7 +2937,7 @@ APP_CONTENT.innerHTML = `
 
                 <div class="table-tier-card" onclick="updateTableSelection(this, 'DJ BOOTH ACCREDITATION', ${baseMinSpend + 2000})">
                     <div class="tier-name">DJ BOOTH</div>
-                    <div class="tier-desc">Immergé derrière les platines. Vue imprenable.</div>
+                    <div class="tier-desc">Immergé au plus près des platines. Vue imprenable.</div>
                     <div class="tier-price">$${(baseMinSpend + 2000).toLocaleString()}</div>
                 </div>
 
