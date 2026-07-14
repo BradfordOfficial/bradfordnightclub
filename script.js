@@ -879,27 +879,35 @@ function openBottleCheckout(bottleName, priceHT, priceTTC) {
 
     // Rendu de l'interface de paiement
     APP_CONTENT.innerHTML = `
-        <style>
-            /* --- DESIGN DU MODULE DE BUNDLES (STYLE CONCIERGERIE) --- */
+              <style>
+            /* --- CONTENEUR PRINCIPAL (CIBLE ORDI & TABLETTE) --- */
+            .checkout-container {
+                max-width: 650px; /* Évite que le checkout s'étale de façon moche sur grand écran */
+                margin: 0 auto;   /* Centre parfaitement le module sur PC et tablette */
+                padding: 20px;
+                animation: fadeIn 0.8s ease;
+            }
+
+            /* --- DESIGN DU MODULE DE BUNDLES --- */
             .premium-offers-section {
-                margin: 25px 0;
+                margin: 30px 0;
             }
             .offers-title {
                 font-family: 'Cinzel', serif;
                 font-size: 0.75rem;
                 color: var(--gold, #D4AF37);
                 letter-spacing: 2px;
-                margin-bottom: 12px;
+                margin-bottom: 15px;
                 display: block;
             }
+            
+            /* Grille adaptative : 1 col sur mobile, 2 cols à partir de la tablette (768px) */
             .offers-grid {
                 display: grid;
                 grid-template-columns: 1fr;
-                gap: 12px;
+                gap: 15px;
             }
-            @media (min-width: 768px) {
-                .offers-grid { grid-template-columns: 1fr 1fr; }
-            }
+
             .combo-card {
                 background: rgba(255, 255, 255, 0.01);
                 border: 1px solid rgba(255, 255, 255, 0.05);
@@ -910,16 +918,21 @@ function openBottleCheckout(bottleName, priceHT, priceTTC) {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
+                min-height: 180px; /* Aligne la hauteur des cartes sur PC */
             }
+            
             .combo-card:hover {
                 border-color: rgba(212, 175, 55, 0.3);
                 background: rgba(212, 175, 55, 0.02);
+                transform: translateY(-2px); /* Petit effet de survol très smooth sur PC */
             }
+            
             .combo-card.selected-combo {
-                border-color: var(--gold, #D4AF37);
-                background: rgba(212, 175, 55, 0.05);
+                border-color: var(--gold, #D4AF37) !important;
+                background: rgba(212, 175, 55, 0.05) !important;
                 box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.1);
             }
+            
             .combo-badge {
                 position: absolute;
                 top: 0;
@@ -933,20 +946,24 @@ function openBottleCheckout(bottleName, priceHT, priceTTC) {
                 letter-spacing: 1px;
                 text-transform: uppercase;
             }
+            
             .combo-header {
                 font-family: 'Cinzel', serif;
                 font-size: 0.8rem;
                 color: #fff;
                 font-weight: bold;
+                margin-top: 5px;
                 margin-bottom: 6px;
                 letter-spacing: 1px;
             }
+            
             .combo-description {
                 font-size: 0.65rem;
                 color: rgba(255, 255, 255, 0.4);
                 line-height: 1.4;
                 margin-bottom: 15px;
             }
+            
             .combo-pricing {
                 display: flex;
                 justify-content: space-between;
@@ -954,12 +971,14 @@ function openBottleCheckout(bottleName, priceHT, priceTTC) {
                 border-top: 1px solid rgba(255, 255, 255, 0.05);
                 padding-top: 10px;
             }
+            
             .combo-action-text {
                 font-size: 0.6rem;
                 color: var(--gold, #D4AF37);
                 letter-spacing: 1px;
                 font-weight: bold;
             }
+            
             .combo-price-tag {
                 font-family: 'Space Mono', monospace;
                 font-size: 0.95rem;
@@ -971,7 +990,7 @@ function openBottleCheckout(bottleName, priceHT, priceTTC) {
             .reset-selection-btn {
                 display: block;
                 text-align: center;
-                margin-top: 10px;
+                margin-top: 15px;
                 font-size: 0.65rem;
                 color: rgba(255, 255, 255, 0.3);
                 letter-spacing: 1px;
@@ -982,7 +1001,38 @@ function openBottleCheckout(bottleName, priceHT, priceTTC) {
             .reset-selection-btn:hover {
                 color: #fff;
             }
+
+            /* ==================================================================
+               MEDIA QUERIES : ADAPTATION TABLETTE (768px) & PC (1024px)
+               ================================================================== */
+            
+            /* TABLETTE (Verticale & Horizontale) */
+            @media (min-width: 768px) {
+                .offers-grid { 
+                    grid-template-columns: 1fr 1fr; /* Aligne les deux offres côte à côte */
+                }
+                .combo-card {
+                    min-height: 200px; /* Donne un peu plus d'espace pour respirer */
+                }
+            }
+
+            /* ORDINATEUR / LAPTOP (1024px et plus) */
+            @media (min-width: 1024px) {
+                .checkout-container {
+                    max-width: 750px; /* Légèrement plus large sur grand écran mais reste compact et élégant */
+                    padding: 40px;    /* Plus d'espace interne pour une sensation "Aérée / Luxe" */
+                    border: 1px solid rgba(255, 255, 255, 0.03); /* Un contour très fin et sombre pour habiller sur PC */
+                    background: rgba(255, 255, 255, 0.01);
+                }
+                .combo-header {
+                    font-size: 0.85rem; /* Textes un poil plus lisibles sur ordinateur */
+                }
+                .combo-description {
+                    font-size: 0.7rem;
+                }
+            }
         </style>
+
 
         <div class="checkout-container" style="padding: 20px; animation: fadeIn 0.8s ease;">
             <h1 class="tit-page" style="font-size: 1.8rem;">BOTTLE SERVICE</h1>
