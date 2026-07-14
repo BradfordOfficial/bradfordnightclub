@@ -2794,32 +2794,200 @@ const eventInfo = donneesEvenements.find(e =>
     e.date === dateValue
 ) || { artiste: "ARTISTE À VENIR", details: "Programmation bientôt disponible" };
 
-// 4. TON VISUEL (Inchangé)
+// 1. DÉTECTION DU JOUR ET CALCUL DU MINIMUM SPEND DE BASE
+const selectedDate = new Date(dateInput);
+const dayOfWeek = selectedDate.getDay(); // 0 = Dimanche, 4 = Jeudi, 5 = Vendredi, 6 = Samedi
+
+// Règle métier : 5000$ pour Ven/Sam, 3000$ pour Jeu/Dim (et autres par défaut)
+let baseMinSpend = (dayOfWeek === 5 || dayOfWeek === 6) ? 5000 : 3000;
+
+// 2. TON VISUEL (Avec le sélecteur de tables VIP)
 APP_CONTENT.innerHTML = `
+    <style>
+        /* DESIGN DU SÉLECTEUR DE TABLES */
+        .tier-selection-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .table-tier-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .table-tier-card:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            background: rgba(212, 175, 55, 0.05);
+            transform: translateY(-3px);
+        }
+
+        /* L'état actif (quand la table est sélectionnée) */
+        .table-tier-card.active-tier {
+            border-color: #D4AF37;
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .tier-name {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #fff;
+            margin-bottom: 5px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .tier-desc {
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 15px;
+            min-height: 30px;
+        }
+
+        .tier-price {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem;
+            color: #D4AF37;
+            font-weight: bold;
+        }
+
+        /* Petit badge sur la carte Premium */
+        .badge-elite {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #D4AF37;
+            color: #000;
+            font-size: 0.55rem;
+            padding: 2px 8px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        /* Optimisation Mobile */
+        @media screen and (max-width: 768px) {
+            .tier-selection-grid { grid-template-columns: 1fr; }
+            .tier-desc { min-height: auto; }
+        }
+
+        /* --- BLOC DU DÉPÔT DE GARANTIE (CADRAGE PARFAIT) --- */
+        .deposit-container {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 15px 20px;
+            border-radius: 6px;
+            border-left: 3px solid var(--teal, #008080);
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px; /* Évite la collision des blocs */
+        }
+
+        .deposit-text-side {
+            flex: 1; /* Prend tout l'espace disponible à gauche */
+        }
+
+        .deposit-price-side {
+            text-align: right;
+            white-space: nowrap; /* Empêche le prix de se couper sur 2 lignes */
+        }
+
+        /* responsive tablettes & mobiles */
+        @media screen and (max-width: 768px) {
+            .tier-selection-grid { 
+                grid-template-columns: 1fr; 
+                gap: 10px;
+            }
+            .tier-desc { 
+                min-height: auto; 
+            }
+            .deposit-container {
+                padding: 12px 15px;
+            }
+        }
+    </style>
+
     <div class="checkout-container">
         <h1 class="tp-alt" style="text-align:left; font-size: 2rem;">FINALISATION</h1>
         <p style="color:var(--gold); margin-top:-20px; font-size:0.8rem; letter-spacing:2px;">SECURE PAYMENT GATEWAY</p>
 
+        <div style="margin: 30px 0;">
+            <h3 style="font-family:'Cinzel'; color:#fff; font-size:1.1rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px; margin-bottom:20px;">
+                1. SÉLECTIONNEZ VOTRE EMPLACEMENT
+            </h3>
+            
+            <div class="tier-selection-grid">
+                <div class="table-tier-card active-tier" onclick="updateTableSelection(this, 'MAIN FLOOR VIP', ${baseMinSpend})">
+                    <div class="tier-name">MAIN FLOOR VIP</div>
+                    <div class="tier-desc">Au cœur de l'énergie du club. Accès prioritaire.</div>
+                    <div class="tier-price">$${baseMinSpend.toLocaleString()}</div>
+                </div>
+
+                <div class="table-tier-card" onclick="updateTableSelection(this, 'DJ BOOTH ACCREDITATION', ${baseMinSpend + 2000})">
+                    <div class="tier-name">DJ BOOTH</div>
+                    <div class="tier-desc">Immergé derrière les platines. Vue imprenable.</div>
+                    <div class="tier-price">$${(baseMinSpend + 2000).toLocaleString()}</div>
+                </div>
+
+                <div class="table-tier-card" onclick="updateTableSelection(this, 'THE VAULT BALCONY', ${baseMinSpend + 5000})">
+                    <div class="badge-elite">ULTRA VIP</div>
+                    <div class="tier-name">THE VAULT</div>
+                    <div class="tier-desc">Discrétion absolue, conciergerie privée, balcon.</div>
+                    <div class="tier-price">$${(baseMinSpend + 5000).toLocaleString()}</div>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="font-family:'Cinzel'; color:#fff; font-size:1.1rem; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:10px; margin-bottom:20px;">
+            2. RÉSUMÉ DE LA RÉSERVATION
+        </h3>
         <div class="luxe-summary">
             <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:1px solid rgba(212,175,55,0.2); padding-bottom:15px; margin-bottom:15px;">
                 <div>
                     <span style="font-size:0.6rem; color:var(--teal);">ARTISTE / ÉVÉNEMENT</span>
                     <h2 style="font-family:'Cinzel'; margin:5px 0; color:#fff;">${eventInfo.artiste}</h2>
                     <p style="font-size:0.7rem; color:var(--gold); margin:0;">${eventInfo.details}</p>
-                    </div>
-                    <div style="text-align:right;">
-                        <span style="font-size:0.6rem; color:var(--teal);">LIEU</span>
-                        <p style="font-weight:bold; margin:5px 0;">BRADFORD ${city.toUpperCase()}</p>
-                    </div>
                 </div>
-
-                <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; font-size:0.8rem;">
-                    <div><span style="opacity:0.6;">DATE:</span> <br> <strong>${dateInput}</strong></div>
-                    <div><span style="opacity:0.6;">GUESTS:</span> <br> <strong>${guests} PERSONNES</strong></div>
-                    <div><span style="opacity:0.6;">MINIMUM SPEND:</span> <br> <strong style="color:var(--gold);">${minSpend}</strong></div>
-                    <div><span style="opacity:0.6;">TABLE TYPE:</span> <br> <strong>VIP MAIN FLOOR</strong></div>
+                <div style="text-align:right;">
+                    <span style="font-size:0.6rem; color:var(--teal);">LIEU</span>
+                    <p style="font-weight:bold; margin:5px 0;">BRADFORD ${city.toUpperCase()}</p>
                 </div>
             </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; font-size:0.8rem; margin-bottom: 20px;">
+                <div><span style="opacity:0.6;">DATE:</span> <br> <strong>${dateInput}</strong></div>
+                <div><span style="opacity:0.6;">GUESTS:</span> <br> <strong>${guests} PERSONNES</strong></div>
+                
+                <div><span style="opacity:0.6;">TABLE TYPE:</span> <br> <strong id="summary-table-type">MAIN FLOOR VIP</strong></div>
+                <div><span style="opacity:0.6;">MINIMUM SPEND:</span> <br> <strong id="summary-min-spend" style="color:var(--gold);">$${baseMinSpend.toLocaleString()} USD</strong></div>
+            </div>
+            
+    <div class="deposit-container">
+                <div class="deposit-text-side">
+                    <span style="font-size:0.7rem; color:var(--teal, #008080); font-weight:bold; display:block; letter-spacing:1px;">DÉPÔT DE SÉCURITÉ REQUIS</span>
+                    <span style="font-size:0.6rem; opacity:0.5; display:block; margin-top:2px;">Frais immédiats pour bloquer définitivement votre table. Le reste sera réglé sur place.</span>
+                </div>
+                <div class="deposit-price-side">
+                    <span style="color:#fff; font-size:1.3rem; font-family:'Space Mono', monospace; font-weight:bold;">$200 USD</span>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
 
             <h3 style="font-family:'Cinzel'; font-size:0.9rem; margin-bottom:15px;">MÉTHODE DE PAIEMENT</h3>
             <div class="payment-methods">
