@@ -1531,29 +1531,29 @@ const dateActuelle = new Date();
 
 // --- BASE DE DONNÉES COMPLÈTE DES ÉVÉNEMENTS ---
 const donneesEvenements = [
-// --- JEUDI 02 JUILLET 2026 ---
-    { date: '2026-07-02', jour: 'JEU.', ville: 'LA', artiste: 'VINCE STAPLES', details: 'Dark Times Tour (Long Beach Lyrical Rap - $90)' },
-    { date: '2026-07-02', jour: 'JEU.', ville: 'MIAMI', artiste: 'WHITE PARTY 2026', details: 'ÉVÉNEMENT SPÉCIAL (Dress Code Blanc Obligatoire / Premium House - $130)' }, // SOIRÉE À THÈME (Prix plus cher)
-    { date: '2026-07-02', jour: 'JEU.', ville: 'NYC', artiste: 'KEN CARSON', details: 'A Great Chaos Live (Opium/Rage Rap Energy - $90)' },
-    { date: '2026-07-02', jour: 'JEU.', ville: 'SF', artiste: 'INTERPLANETARY CRIMINAL', details: 'UK Garage Anthem Set (All Night Long - $90)' },
+// --- JEUDI 16 JUILLET 2026 ---
+    { date: '2026-07-16', jour: 'JEU.', ville: 'LA', artiste: 'GLORILLA', details: 'Ehthang Ehthang Tour (High-Energy Memphis Rap - $90)' },
+    { date: '2026-07-16', jour: 'JEU.', ville: 'MIAMI', artiste: 'WET & WILD WATER PARTY', details: 'ÉVÉNEMENT SPÉCIAL (Bataille d’eau géante / Déco Aquatique - $120)' }, // SOIRÉE À THÈME #1
+    { date: '2026-07-16', jour: 'JEU.', ville: 'NYC', artiste: 'YACHT CLUB CRUISE', details: 'ÉVÉNEMENT SPÉCIAL (Vibe Riviera / Capitaine Dress Code - $135)' }, // SOIRÉE À THÈME #2
+    { date: '2026-07-16', jour: 'JEU.', ville: 'SF', artiste: 'SKRILLEX', details: 'Quest for Fire (Exclusive Intimate Club Set - Accès sur liste VIP uniquement)' },
 
-    // --- VENDREDI 03 JUILLET 2026 ---
-    { date: '2026-07-03', jour: 'VEN.', ville: 'LA', artiste: 'TINASHE', details: 'Quantum Baby Live (High-Energy R&B/Pop - Accès restreint)' },
-    { date: '2026-07-03', jour: 'VEN.', ville: 'MIAMI', artiste: 'LUCYANO', details: 'Latin Trap Sensation (Exclusive Performance - $90)' },
-    { date: '2026-07-03', jour: 'VEN.', ville: 'NYC', artiste: 'BABYFACE RAY', details: 'Detroit Wave in New York (Real Street Rap - Accès sur liste VIP uniquement)' },
-    { date: '2026-07-03', jour: 'VEN.', ville: 'SF', artiste: 'FOAM PARTY (SOIRÉE MOUSSE)', details: 'ÉVÉNEMENT SPÉCIAL (Canon à mousse XXL / Summer Clubbing - $110)' }, // SOIRÉE À THÈME (Prix plus cher)
+    // --- VENDREDI 17 JUILLET 2026 ---
+    { date: '2026-07-17', jour: 'VEN.', ville: 'LA', artiste: 'RED LIGHT DISTRICT', details: 'ÉVÉNEMENT SPÉCIAL (Atmosphère Underground / Lumières Rouges / Techno - $110)' }, // SOIRÉE À THÈME #3
+    { date: '2026-07-17', jour: 'VEN.', ville: 'MIAMI', artiste: 'FRENCH MONTANA', details: 'Mac & Cheese 5 Showcase (Coke Boys Miami Vibe - Accès restreint)' },
+    { date: '2026-07-17', jour: 'VEN.', ville: 'NYC', artiste: 'SHYGIRL b2b SEGA BODEGA', details: 'EXCLUSIF B2B (Avant-Garde Club / Hyperpop Beats - Accès sur liste VIP uniquement)' }, // GROS B2B #1
+    { date: '2026-07-17', jour: 'VEN.', ville: 'SF', artiste: 'BARRY CAN’T SWIM b2b DJ BORING', details: 'EXCLUSIF B2B (Summer Feel-Good House Masterclass - $125)' }, // GROS B2B #2
 
-    // --- SAMEDI 04 JUILLET 2026 --- (FÊTE NATIONALE : GROSSES SOIRÉES)
-    { date: '2026-07-04', jour: 'SAM.', ville: 'LA', artiste: 'INDEPENDENCE POOL PARTY', details: 'ÉVÉNEMENT SPÉCIAL (4th of July / Bikini & Open Air Clubbing - $150)' }, // SOIRÉE À THÈME (Prix max)
-    { date: '2026-07-04', jour: 'SAM.', ville: 'MIAMI', artiste: 'GORDO', details: 'Donovan\'s Yard (Extended House Set - Accès sur liste VIP uniquement)' },
-    { date: '2026-07-04', jour: 'SAM.', ville: 'NYC', artiste: 'SHERELLE b2b ANZ', details: 'EXCLUSIF B2B (160BPM+ Jungle / Footwork / UK Beats Masterclass - Accès restreint)' }, // GROS B2B #1
-    { date: '2026-07-04', jour: 'SAM.', ville: 'SF', artiste: 'TSHA b2b DJ SEINFELD', details: 'EXCLUSIF B2B (Summer Melodic & House Anthems - $120)' }, // GROS B2B #2
+    // --- SAMEDI 18 JUILLET 2026 ---
+    { date: '2026-07-18', jour: 'SAM.', ville: 'LA', artiste: 'FULL MOON PARTY', details: 'ÉVÉNEMENT SPÉCIAL (Seau de cocktails / Peinture fluo / Vibe Koh Phangan - $140)' }, // SOIRÉE À THÈME #4
+    { date: '2026-07-18', jour: 'SAM.', ville: 'MIAMI', artiste: 'PEGGY GOU b2b MOCHAKK', details: 'EXCLUSIF B2B (Ibiza Closing Style / Tech-House - Accès sur liste VIP uniquement)' }, // GROS B2B #3
+    { date: '2026-07-18', jour: 'SAM.', ville: 'NYC', artiste: 'TEEZO TOUCHDOWN', details: 'How Do You Sleep? (Alternative Pop/Rock-Rap Showcase - $90)' },
+    { date: '2026-07-18', jour: 'SAM.', ville: 'SF', artiste: 'MALL GRAB', details: 'Looking for Trouble (Raw House / Jumpy Techno - $90)' },
 
-    // --- DIMANCHE 05 JUILLET 2026 ---
-    { date: '2026-07-05', jour: 'DIM.', ville: 'LA', artiste: 'LARRY JUNE', details: 'The Great Escape (Moneymaking Smooth Rap - $90)' },
-    { date: '2026-07-05', jour: 'DIM.', ville: 'MIAMI', artiste: 'RODDY RICCH', details: 'The Feed Tha Streets Session (West Coast Trap in MIA - Accès restreint)' },
-    { date: '2026-07-05', jour: 'DIM.', ville: 'NYC', artiste: 'NEON JUNGLE CLOSING', details: 'ÉVÉNEMENT SPÉCIAL (Déco immersive / UV Glow & Fluorescent Night - $125)' }, // SOIRÉE À THÈME (Prix plus cher)
-    { date: '2026-07-05', jour: 'DIM.', ville: 'SF', artiste: 'SKREAM', details: 'Strictly House & Techno Live (UK Legend - $90)' }
+    // --- DIMANCHE 19 JUILLET 2026 ---
+    { date: '2026-07-19', jour: 'DIM.', ville: 'LA', artiste: 'SNDWCH CLUB CLOSING', details: 'ÉVÉNEMENT SPÉCIAL (Sunset R&B & Chill Poolside - $115)' }, // SOIRÉE À THÈME #5
+    { date: '2026-07-19', jour: 'DIM.', ville: 'MIAMI', artiste: 'EST GEE', details: 'El Toro Live (Raw Gritty Trap - Accès restreint)' },
+    { date: '2026-07-19', jour: 'DIM.', ville: 'NYC', artiste: 'JOEY BADA$$', details: 'Survival Tactics (Classic Brooklyn Rap Night - $90)' },
+    { date: '2026-07-19', jour: 'DIM.', ville: 'SF', artiste: 'SARA LANDRY', details: 'Hard Techno Mass (Industrial Sounds - Accès restreint)' }
 ];
 
 
