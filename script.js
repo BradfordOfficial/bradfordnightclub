@@ -1120,7 +1120,10 @@ window.confirmBottleOrder = function(bottleName) {
     // CORRECTION : On cible APP_CONTENT au lieu de 'reservations'
     // car ton formulaire a déjà remplacé le contenu de APP_CONTENT
     const container = typeof APP_CONTENT !== 'undefined' ? APP_CONTENT : document.getElementById('reservations');
-
+// 1. Logique pour récupérer le nom de la bouteille ou du combo payé
+const finalSelectionName = (window.currentCheckoutState && window.currentCheckoutState.activeName) 
+    ? window.currentCheckoutState.activeName 
+    : bottleName;
     container.innerHTML = `
         <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:400px; text-align:center;">
             <div class="loader-gold"></div>
