@@ -1140,20 +1140,22 @@ window.confirmBottleOrder = function(bottleName) {
                     <p style="font-size: 0.6rem; color: #fff; opacity: 0.6; letter-spacing: 2px;">YOUR PRE-ORDER IS SECURED</p>
                 </div>
 
-                <div class="digital-pass-card" style="background:#000; border:1px solid rgba(212,175,55,0.4); max-width:350px; margin:0 auto; box-shadow:0 0 50px rgba(0,0,0,0.5);">
-                    <div style="background:rgba(212,175,55,0.1); padding:10px; font-size:0.5rem; letter-spacing:2px; display:flex; justify-content:space-between; border-bottom:1px solid rgba(212,175,55,0.2);">
-                        <span>THE BRADFORD | VIP GUEST PASS</span>
-                        <span>OFFICIAL ACCESS</span>
-                    </div>
-                    
-                    <div style="padding:30px; text-align:center;">
-                        <span style="font-size:0.5rem; color:var(--gold); letter-spacing:2px;">VIP ITEM SELECTION</span>
-                        <div style="font-family:'Cinzel'; font-size:1.1rem; color:#fff; margin:10px 0 25px 0;">${bottleName.toUpperCase()}</div>
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${orderID}&color=D4AF37&bgcolor=000" 
-                             style="border:5px solid #fff; width:150px; height:150px; margin:0 auto; display:block;">
-                    </div>
+                 <div class="digital-pass-card" style="background:#000; border:1px solid rgba(212,175,55,0.4); max-width:350px; margin:0 auto; box-shadow:0 0 50px rgba(0,0,0,0.5);">
+        <div style="background:rgba(212,175,55,0.1); padding:10px; font-size:0.5rem; letter-spacing:2px; display:flex; justify-content:space-between; border-bottom:1px solid rgba(212,175,55,0.2);">
+            <span>THE BRADFORD | VIP GUEST PASS</span>
+            <span>OFFICIAL ACCESS</span>
+        </div>
+        
+        <div style="padding:30px; text-align:center;">
+            <span style="font-size:0.5rem; color:var(--gold); letter-spacing:2px;">VIP ITEM SELECTION</span>
+            <!-- Affiche dynamiquement le choix final de l'utilisateur -->
+            <div style="font-family:'Cinzel'; font-size:1.1rem; color:#fff; margin:10px 0 25px 0;">${finalSelectionName.toUpperCase()}</div>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${orderID}&color=D4AF37&bgcolor=000" 
+                 style="border:5px solid #fff; width:150px; height:150px; margin:0 auto; display:block;">
+        </div>
 
-                    <div style="display:flex; border-top:1px dashed rgba(212,175,55,0.2); padding:15px; font-size:0.6rem; justify-content:space-around; text-align:center;">
+        <div style="display:flex; border-top:1px dashed rgba(212,175,55,0.2); padding:15px; font-size:0.6rem; justify-content:space-around; text-align:center;">
+
                         <div><label style="display:block; opacity:0.5;">ORDER ID</label><span>${orderID}</span></div>
                         <div><label style="display:block; opacity:0.5;">STATUS</label><span style="color:#00ff88;">AUTHORIZED</span></div>
                     </div>
