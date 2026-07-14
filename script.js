@@ -9336,6 +9336,84 @@ window.updateTableSelection = function(element, tableName, price) {
 };
 
 
+// ==========================================
+// LOGIQUE INTERACTIVE DES OFFRES SPÉCIALES
+// ==========================================
+
+window.applySpecialBundle = function(element, type, comboName, priceHT, priceTTC) {
+    // 1. Gérer l'état visuel actif/inactif des cartes
+    const cards = document.querySelectorAll('.combo-card');
+    const isAlreadySelected = element.classList.contains('selected-combo');
+
+    if (isAlreadySelected) {
+        // Si on clique sur une offre déjà active, on la désactive pour revenir à l'état de base
+        resetToStandaloneBottle();
+        return;
+    }
+
+    cards.forEach(card => card.classList.remove('selected-combo'));
+    element.classList.add('selected-combo');
+
+    // 2. Mettre à jour l'état de session global
+    window.currentCheckoutState.activeName = comboName;
+    window.currentCheckoutState.activeHT = priceHT;
+    window.currentCheckoutState.activeTTC = priceTTC;
+
+    // 3. Mettre à jour le reçu HTML principal
+    document.getElementById('checkout-display-name').innerText = comboName;
+    document.getElementById('checkout-display-ht').innerText = `$${priceHT.toLocaleString()}`;
+    document.getElementById('checkout-display-service').innerText = `$${(priceTTC - priceHT).toLocaleString()}`;
+    document.getElementById('checkout-display-ttc').innerText = `$${priceTTC.toLocaleString()}`;
+
+    // Afficher le lien pour annuler l'offre
+    document.getElementById('reset-bundle-trigger').style.display = 'block';
+
+    // 4. Mettre à jour le simulateur de quote-part
+    updateSplitResult();
+};
+
+window.resetToStandaloneBottle = function() {
+    const state = window.currentCheckoutState;
+    if (!state) return;
+
+    // Retirer le style sélectionné de tous les bundles
+    document.querySelectorAll('.combo-card').forEach(card => card.classList.remove('selected-combo'));
+
+    // Restaurer les valeurs d'origine dans l'état de session
+    state.activeName = state.originalName;
+    state.activeHT = state.originalHT;
+    state.activeTTC = state.originalTTC;
+
+    // Remettre à jour l'affichage du reçu
+    document.getElementById('checkout-display-name').innerText = state.originalName;
+    document.getElementById('checkout-display-ht').innerText = `$${state.originalHT.toLocaleString()}`;
+    document.getElementById('checkout-display-service').innerText = `$${(state.originalTTC - state.originalHT).toLocaleString()}`;
+    document.getElementById('checkout-display-ttc').innerText = `$${state.originalTTC.toLocaleString()}`;
+
+    // Cacher le lien de réinitialisation
+    document.getElementById('reset-bundle-trigger').style.display = 'none';
+
+    // Mettre à jour le simulateur
+    updateSplitResult();
+};
+
+// Version unifiée et corrigée de ton simulateur de quote-part
+window.updateSplitResult = function() {
+    const guestsInput = document.getElementById('guest-count');
+    const splitValDisplay = document.getElementById('split-result-val');
+    
+    if (!guestsInput || !splitValDisplay) return;
+
+    const guests = parseInt(guestsInput.value) || 1;
+    
+    // On va chercher le montant TTC actuellement actif (soit la bouteille seule, soit le bundle sélectionné)
+    const activePriceTTC = window.currentCheckoutState ? window.currentCheckoutState.activeTTC : 0;
+    
+    const individualShare = Math.round(activePriceTTC / guests);
+    splitValDisplay.innerText = `$${individualShare.toLocaleString()}`;
+};
+
+
 
 /** Charge le JSON et démarre l'application */
 async function initApp() {
