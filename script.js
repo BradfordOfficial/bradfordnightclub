@@ -847,50 +847,222 @@ function applyBottleFilters() {
 }
 
 
-function openBottleCheckout(bottleName, priceHT, priceTTC) {
-    const serviceFee = priceTTC - priceHT;
+// ==========================================================================
+// CONFIGURATEUR DE BOUTEILLE AVEC BUNDLES & SIMULATEUR DE QUOTE-PART
+// ==========================================================================
 
-    // Utilisation de APP_CONTENT comme tu l'as défini
+function openBottleCheckout(bottleName, priceHT, priceTTC) {
+    // Établir les variables de prix de base dans un état global de session
+    window.currentCheckoutState = {
+        originalName: bottleName,
+        originalHT: priceHT,
+        originalTTC: priceTTC,
+        activeName: bottleName,
+        activeHT: priceHT,
+        activeTTC: priceTTC
+    };
+
+    // Définition des offres spéciales dynamiques basées sur la sélection
+    // Combo 1 : La bouteille choisie + Le Show Rituel (Sparklers + Fumée)
+    const showComboHT = priceHT + 70; // Tarif préférentiel au lieu de 95$
+    const showComboTTC = Math.round(showComboHT * 1.20);
+
+    // Combo 2 : Le Duo Prestige (La bouteille choisie + un Champagne d'exception)
+    // On adapte le duo : si c'est déjà du champagne, on propose une Tequila iconique, et vice-versa.
+    const isChampagne = bottleName.toLowerCase().includes('clicquot') || bottleName.toLowerCase().includes('pérignon') || bottleName.toLowerCase().includes('cristal') || bottleName.toLowerCase().includes('brignac');
+    const companionName = isChampagne ? "Don Julio 1942 (0.75L)" : "Dom Pérignon Brut (0.75L)";
+    const companionBasePrice = isChampagne ? 1250 : 950;
+    
+    // Remise de bundle de -15% sur la deuxième bouteille
+    const duoComboHT = Math.round(priceHT + (companionBasePrice * 0.85));
+    const duoComboTTC = Math.round(duoComboHT * 1.20);
+
+    // Rendu de l'interface de paiement
     APP_CONTENT.innerHTML = `
+        <style>
+            /* --- DESIGN DU MODULE DE BUNDLES (STYLE CONCIERGERIE) --- */
+            .premium-offers-section {
+                margin: 25px 0;
+            }
+            .offers-title {
+                font-family: 'Cinzel', serif;
+                font-size: 0.75rem;
+                color: var(--gold, #D4AF37);
+                letter-spacing: 2px;
+                margin-bottom: 12px;
+                display: block;
+            }
+            .offers-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            @media (min-width: 768px) {
+                .offers-grid { grid-template-columns: 1fr 1fr; }
+            }
+            .combo-card {
+                background: rgba(255, 255, 255, 0.01);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                padding: 18px;
+                cursor: pointer;
+                position: relative;
+                transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .combo-card:hover {
+                border-color: rgba(212, 175, 55, 0.3);
+                background: rgba(212, 175, 55, 0.02);
+            }
+            .combo-card.selected-combo {
+                border-color: var(--gold, #D4AF37);
+                background: rgba(212, 175, 55, 0.05);
+                box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.1);
+            }
+            .combo-badge {
+                position: absolute;
+                top: 0;
+                right: 15px;
+                transform: translateY(-50%);
+                background: #D4AF37;
+                color: #000;
+                font-size: 0.55rem;
+                font-weight: 900;
+                padding: 2px 8px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+            .combo-header {
+                font-family: 'Cinzel', serif;
+                font-size: 0.8rem;
+                color: #fff;
+                font-weight: bold;
+                margin-bottom: 6px;
+                letter-spacing: 1px;
+            }
+            .combo-description {
+                font-size: 0.65rem;
+                color: rgba(255, 255, 255, 0.4);
+                line-height: 1.4;
+                margin-bottom: 15px;
+            }
+            .combo-pricing {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+                padding-top: 10px;
+            }
+            .combo-action-text {
+                font-size: 0.6rem;
+                color: var(--gold, #D4AF37);
+                letter-spacing: 1px;
+                font-weight: bold;
+            }
+            .combo-price-tag {
+                font-family: 'Space Mono', monospace;
+                font-size: 0.95rem;
+                color: #fff;
+                font-weight: bold;
+            }
+            
+            /* --- RESET DES OFFRES --- */
+            .reset-selection-btn {
+                display: block;
+                text-align: center;
+                margin-top: 10px;
+                font-size: 0.65rem;
+                color: rgba(255, 255, 255, 0.3);
+                letter-spacing: 1px;
+                cursor: pointer;
+                text-decoration: underline;
+                transition: color 0.2s;
+            }
+            .reset-selection-btn:hover {
+                color: #fff;
+            }
+        </style>
+
         <div class="checkout-container" style="padding: 20px; animation: fadeIn 0.8s ease;">
             <h1 class="tit-page" style="font-size: 1.8rem;">BOTTLE SERVICE</h1>
             <p style="color:var(--gold); text-align:center; font-size:0.7rem; letter-spacing:2px; margin-bottom:30px;">PRE-ORDER PROTOCOL</p>
 
-            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--gold); padding: 25px; margin-bottom: 30px; position: relative;">
+            <!-- 1. RÉCAPITULATIF DE LA COMMANDE (DYNAMIQUE) -->
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--gold); padding: 25px; margin-bottom: 20px; position: relative;">
                 <span style="font-size: 0.6rem; color: var(--gold); letter-spacing: 2px;">SÉLECTION PRÉ-COMMANDE</span>
-                <h2 style="font-family:'Cinzel'; color:#fff; margin:10px 0; font-size: 1.4rem;">${bottleName}</h2>
+                <h2 id="checkout-display-name" style="font-family:'Cinzel'; color:#fff; margin:10px 0; font-size: 1.4rem;">${bottleName}</h2>
                 
                 <div style="border-top: 1px solid rgba(212, 175, 55, 0.2); margin-top: 15px; padding-top: 15px; font-size: 0.8rem;">
                     <div style="display:flex; justify-content:space-between; margin-bottom:8px; opacity: 0.8;">
-                        <span>PRIX BOUTEILLE:</span>
-                        <span>$${priceHT.toLocaleString()}</span>
+                        <span>PRIX DE BASE HT:</span>
+                        <span id="checkout-display-ht">$${priceHT.toLocaleString()}</span>
                     </div>
                     <div style="display:flex; justify-content:space-between; margin-bottom:8px; opacity: 0.8;">
                         <span>TAXES & SERVICE (20%):</span>
-                        <span>$${serviceFee.toLocaleString()}</span>
+                        <span id="checkout-display-service">$${(priceTTC - priceHT).toLocaleString()}</span>
                     </div>
                     <div style="display:flex; justify-content:space-between; font-size:1.1rem; color:var(--gold); font-weight:bold; margin-top:10px; border-top:1px dotted #444; padding-top:10px;">
-                        <span>MONTANT TOTAL:</span>
-                        <span>$${priceTTC.toLocaleString()}</span>
+                        <span>MONTANT TOTAL (TTC):</span>
+                        <span id="checkout-display-ttc">$${priceTTC.toLocaleString()}</span>
                     </div>
                 </div>
             </div>
 
+            <!-- 2. MODULE : CURATED UPGRADES & COMBOS (L'AJOUT ULTRA STYLÉ) -->
+            <div class="premium-offers-section">
+                <span class="offers-title">CONCIERGE RECOMMENDED UPGRADES</span>
+                <div class="offers-grid">
+                    
+                    <!-- Option A : Le Rituel Show -->
+                    <div class="combo-card" onclick="applySpecialBundle(this, 'SHOW', '${bottleName} + Sparkler & Dry Ice Show', ${showComboHT}, ${showComboTTC})">
+                        <div class="combo-badge">Bestseller</div>
+                        <div>
+                            <div class="combo-header">THE RITUAL PACKAGE</div>
+                            <div class="combo-description">Associe votre bouteille à notre show phare : port d'entrée avec cierges magiques scintillants et présentation sous cloche de glace sèche fumante.</div>
+                        </div>
+                        <div class="combo-pricing">
+                            <span class="combo-action-text">+ AJOUTER LE SHOW</span>
+                            <span class="combo-price-tag">$${showComboTTC.toLocaleString()} TTC</span>
+                        </div>
+                    </div>
 
+                    <!-- Option B : Le Duo VIP -->
+                    <div class="combo-card" onclick="applySpecialBundle(this, 'DUO', '${bottleName} + ${companionName}', ${duoComboHT}, ${duoComboTTC})">
+                        <div class="combo-badge" style="background:#fff; color:#000;">Duo Élite</div>
+                        <div>
+                            <div class="combo-header">THE PRESTIGE PAIRING</div>
+                            <div class="combo-description">Le mariage parfait pour votre table. Associe votre sélection à un flacon de <strong>${companionName}</strong> avec une remise exclusive de 15% appliquée sur la seconde bouteille.</div>
+                        </div>
+                        <div class="combo-pricing">
+                            <span class="combo-action-text">+ ASSEMBLER LE DUO</span>
+                            <span class="combo-price-tag">$${duoComboTTC.toLocaleString()} TTC</span>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Option pour revenir en arrière à tout moment -->
+                <span id="reset-bundle-trigger" class="reset-selection-btn" style="display: none;" onclick="resetToStandaloneBottle()">
+                    Revenir à la bouteille individuelle originale
+                </span>
+            </div>
+
+            <!-- 3. SIMULATEUR DE QUOTE-PART (SE SYNCHRONISE AUTOMATIQUEMENT) -->
             <div style="background: rgba(0,0,0,0.5); border: 1px solid #1a1a1a; padding: 20px; margin-bottom: 30px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                     <span style="font-size: 0.55rem; color: #555; letter-spacing: 2px;">SIMULATEUR DE QUOTE-PART</span>
                     <div style="display: flex; align-items: center; border: 1px solid #333; padding: 5px 10px;">
                         <span style="font-size: 0.6rem; color: #888; margin-right: 10px;">INVITÉS:</span>
-                        <input type="number" id="guest-count" value="1" min="1" oninput="updateSplitResult(${priceTTC})" 
+                        <input type="number" id="guest-count" value="1" min="1" oninput="updateSplitResult()" 
                                style="width: 40px; background: transparent; border: none; color: var(--gold); font-family: 'Inter'; font-weight: bold; outline: none; text-align: center;">
                     </div>
                 </div>
                 <div id="split-result" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #111; padding-top: 15px;">
                     <span style="font-size: 0.65rem; color: #fff; letter-spacing: 1px;">PART INDIVIDUELLE :</span>
-                    <span style="font-family: 'Cinzel'; color: var(--gold); font-size: 1.1rem;">$${priceTTC.toLocaleString()}</span>
+                    <span id="split-result-val" style="font-family: 'Cinzel'; color: var(--gold); font-size: 1.1rem;">$${priceTTC.toLocaleString()}</span>
                 </div>
             </div>
+        </div>
 
 
             <div class="checkout-box" style="background: #0a1a3a; padding: 20px; border: 1px solid #222;">
