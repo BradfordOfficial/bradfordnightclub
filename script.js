@@ -7645,9 +7645,33 @@ function selectMethod(el) {
         displayZone.innerHTML = `
             <div style="animation: fadeIn 0.3s ease; text-align:center; padding: 20px 0;">
                 <p style="font-size:0.6rem; color:#888; letter-spacing:2px; margin-bottom:25px; text-transform:uppercase;">Bradford Express Checkout</p>
-                <div style="background:#fff; border-radius:12px; height:60px; width:100%; display:flex; align-items:center; justify-content:center; cursor:pointer;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Apple_Pay_logo.svg/512px-Apple_Pay_logo.svg.png" style="height:26px;">
-                </div>
+             <div style="background:#000; color:#fff; border-radius:12px; height:60px; width:100%; display:flex; align-items:center; justify-content:center; cursor:pointer; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; transition: background 0.2s;" onmouseover="this.style.background='#1a1a1a'" onmouseout="this.style.background='#000'">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="18 8 133 163" style="height:25px; width:auto; margin-right:8px; margin-top:-4px;">
+        <path fill="#fff" d="m108,35
+              c5.587379,-6.7633 9.348007,-16.178439 8.322067,-25.546439
+              c-8.053787,0.32369 -17.792625,5.36682 -23.569427,12.126399
+              c-5.177124,5.985922 -9.711121,15.566772 -8.48777,24.749359
+              c8.976891,0.69453 18.147476,-4.561718 23.73513,-11.329308" />
+        
+        <path fill="#fff" d="M88,162.415214
+              c-12.24469,0 -16.072174,6.151901 -26.213551,6.550446
+              c-10.52422,0.398254 -18.538303,-10.539917 -25.26247,-20.251053
+              c-13.740021,-19.864456 -24.24024,-56.132286 -10.1411,-80.613663
+              c7.004152,-12.157551 19.521101,-19.85622 33.10713,-20.053638
+              c10.334515,-0.197132 20.089069,6.952717 26.406689,6.952717" />
+        
+        <path fill="#fff" d="M85,55
+              c6.313614,0 18.167473,-8.59832 30.628998,-7.335548
+              c5.21682,0.217129 19.860519,2.1073 29.263641,15.871029
+              c-0.75766,0.469692 -17.472931,10.200527 -17.291229,30.443592
+              c0.224838,24.213104 21.241287,32.270615 21.474121,32.373459
+              c-0.177704,0.56826 -3.358078,11.482742 -11.072464,22.756622
+              c-6.668747,9.746841 -13.590027,19.457977 -24.493088,19.659103
+              c-10.713348,0.197403 -14.158287,-6.353043 -26.406677,-6.353043" />
+    </svg>
+    <span style="font-size:25px; font-weight:500; letter-spacing:-0.6px;">Pay</span>
+</div>
+</div>
                 <div style="margin-top:30px; display:flex; flex-direction:column; align-items:center; gap:10px;">
                     <div style="width:35px; height:35px; border:1px solid #222; border-radius:10px; position:relative; display:flex; align-items:center; justify-content:center;">
                          <div style="width:12px; height:12px; border:2px solid var(--gold); border-radius:2px; animation: pulse 1.5s infinite;"></div>
