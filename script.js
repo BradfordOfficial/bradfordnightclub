@@ -3308,6 +3308,56 @@ APP_CONTENT.innerHTML = `
             </div>
 
     <div class="checkout-box">
+
+      <div class="split-pay-section">
+        <div class="split-pay-header" onclick="toggleSplitPay('${deposit}')">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <span class="split-pay-icon">⚡️</span>
+                <div style="text-align: left;">
+                    <h4 style="font-family:'Cinzel', serif; font-size:0.7rem; color:#fff; margin:0; letter-spacing:1px;">VIP ACTIVE SPLIT-PAY™</h4>
+                    <p style="font-size:0.55rem; color:rgba(255,255,255,0.4); margin:2px 0 0 0; line-height:1.3;">Partager le dépôt de garantie entre vos invités.</p>
+                </div>
+            </div>
+            <div class="custom-switch" id="split-pay-switch">
+                <div class="switch-handle"></div>
+            </div>
+        </div>
+        
+        <div class="split-pay-panel" id="split-pay-panel">
+            
+            <div style="margin-bottom: 20px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                    <span style="font-size:0.55rem; color:var(--gold); letter-spacing:1px; font-weight:bold;">NOMBRE DE PAYEURS (VOUS INCLUS) :</span>
+                    <span id="split-count-display" style="font-family:'Space Mono'; color:#fff; font-size:0.85rem; font-weight:bold;">2</span>
+                </div>
+                <input type="range" id="split-range-slider" min="2" max="10" value="2" class="premium-slider" oninput="handleSplitSliderChange(this.value, '${deposit}')">
+            </div>
+
+            <div class="split-ledger">
+                <div class="ledger-row">
+                    <span>VOTRE DÉPÔT À RÉGLER MAINTENANT :</span>
+                    <span id="your-share-display" class="gold-amount">$0</span>
+                </div>
+                <div class="ledger-row" style="opacity:0.5;">
+                    <span>PART PAR INVITÉ (SOUS 24H) :</span>
+                    <span id="others-share-display" style="font-family:'Space Mono';">$0 / invité</span>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 20px; text-align: left;">
+                <label style="font-size:0.55rem; color:var(--gold); letter-spacing:1px; display:block; margin-bottom:10px;">E-MAILS DE VOS INVITÉS REQUIS</label>
+                <div id="split-emails-container" class="emails-inputs-grid">
+                    </div>
+            </div>
+
+            <div style="display:flex; gap:10px; background: rgba(255, 255, 255, 0.01); padding: 12px; border-left: 2px solid var(--gold, #D4AF37); text-align: left;">
+                <span style="color:var(--gold); font-size:0.7rem;">ℹ</span>
+                <p style="margin:0; font-size:0.55rem; line-height:1.4; color:rgba(255,255,255,0.4);">
+                    <strong>Note :</strong> Ce paiement concerne uniquement la division du dépôt de réservation (${deposit}). Le solde restant (Minimum Spend lié à votre table) sera à régler sur place le soir de l'événement.
+                </p>
+            </div>
+        </div>
+    </div>
     <div id="payment-display-zone">
         <div style="margin-bottom:20px;">
             <label style="font-size:0.6rem; color:var(--gold); letter-spacing:1px; display:block; margin-bottom:5px;">INFORMATION DE FACTURATION</label>
