@@ -984,17 +984,17 @@ function openBottleCheckout(bottleName, priceHT, priceTTC) {
             }
 
             .combo-card {
-                background: rgba(255, 255, 255, 0.01);
-                border: 1px solid rgba(255, 255, 255, 0.05);
-                padding: 18px;
-                cursor: pointer;
-                position: relative;
-                transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                min-height: 180px; /* Aligne la hauteur des cartes sur PC */
-            }
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 18px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 145px; /* Réduit de 180px à 145px pour éliminer le grand vide sur mobile */
+}
             
             .combo-card:hover {
                 border-color: rgba(212, 175, 55, 0.3);
@@ -1022,15 +1022,16 @@ function openBottleCheckout(bottleName, priceHT, priceTTC) {
                 text-transform: uppercase;
             }
             
-            .combo-header {
-                font-family: 'Cinzel', serif;
-                font-size: 0.8rem;
-                color: #fff;
-                font-weight: bold;
-                margin-top: 5px;
-                margin-bottom: 6px;
-                letter-spacing: 1px;
-            }
+           .combo-header {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: #fff;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 12px; /* Augmenté de 6px à 12px pour pousser la description vers le bas et la centrer */
+    letter-spacing: 1px;
+}
+
             
             .combo-description {
                 font-size: 0.65rem;
