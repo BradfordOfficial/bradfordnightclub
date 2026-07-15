@@ -9760,7 +9760,8 @@ function handleSplitSliderChange(value, depositString) {
                 Une fois votre part de <strong>$${share}</strong> réglée via le formulaire ci-dessous, notre système enverra instantanément les liens de paiement uniques à vos invités. Ils auront <strong>24 heures</strong> pour régler leur part.
             </p>
         `;
-        emailsContainer.appendChild(infoBanner);
+        emailsContainer.after(infoBanner);
+
     }
 }
 
