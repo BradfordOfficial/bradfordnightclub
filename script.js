@@ -9602,6 +9602,184 @@ window.updateSplitResult = function() {
     splitValDisplay.innerText = `$${individualShare.toLocaleString()}`;
 };
 
+// ==========================================================================
+// MOTEUR PREMIUM BRADFORD ACTIVE SPLIT-PAY™ (CORRIGÉ & SÉCURISÉ)
+// ==========================================================================
+
+window.splitPayState = {
+    isActive: false,
+    numberOfPayers: 2,
+    baseDeposit: 200, // Valeur par défaut si non détectée
+    individualShare: 100
+};
+
+/**
+ * Nettoie la variable de dépôt pour extraire proprement le nombre
+ */
+function cleanDepositAmount(depositInput) {
+    if (!depositInput) return 200;
+    const cleanNum = parseFloat(String(depositInput).replace(/[^0-9.]/g, ''));
+    return isNaN(cleanNum) ? 200 : cleanNum;
+}
+
+/**
+ * Active / Désactive l'affichage du Split-Pay
+ */
+function toggleSplitPay(depositString) {
+    const numericDeposit = cleanDepositAmount(depositString);
+    window.splitPayState.baseDeposit = numericDeposit;
+    
+    const switchElement = document.getElementById('split-pay-switch');
+    const panelElement = document.getElementById('split-pay-panel');
+    
+    window.splitPayState.isActive = !window.splitPayState.isActive;
+    
+    if (window.splitPayState.isActive) {
+        if (switchElement) switchElement.classList.add('active');
+        if (panelElement) panelElement.classList.add('open');
+        
+        // Force le calcul initial immédiat
+        const currentSliderVal = document.getElementById('split-range-slider')?.value || 2;
+        handleSplitSliderChange(currentSliderVal, depositString);
+    } else {
+        if (switchElement) switchElement.classList.remove('active');
+        if (panelElement) panelElement.classList.remove('open');
+        
+        // Restaure le texte du bouton original de manière sécurisée
+        const ctaButton = document.querySelector('.cta-button');
+        if (ctaButton) {
+            ctaButton.innerHTML = `PAYER LE DÉPÔT ($${numericDeposit.toLocaleString()})`;
+        }
+    }
+}
+
+/**
+ * Calcule les parts et génère les champs d'e-mails avec validation en temps réel
+ */
+function handleSplitSliderChange(value, depositString) {
+    const numericDeposit = cleanDepositAmount(depositString);
+    const count = parseInt(value) || 2;
+    
+    window.splitPayState.numberOfPayers = count;
+    const share = Math.round(numericDeposit / count);
+    window.splitPayState.individualShare = share;
+    
+    // Mise à jour des textes
+    const countDisplay = document.getElementById('split-count-display');
+    const yourShareDisplay = document.getElementById('your-share-display');
+    const othersShareDisplay = document.getElementById('others-share-display');
+    
+    if (countDisplay) countDisplay.innerText = count;
+    if (yourShareDisplay) yourShareDisplay.innerText = `$${share.toLocaleString()}`;
+    if (othersShareDisplay) othersShareDisplay.innerText = `$${share.toLocaleString()} / invité`;
+    
+    // Met à jour le bouton vert avec la part correspondante
+    const ctaButton = document.querySelector('.cta-button');
+    if (ctaButton) {
+        ctaButton.innerHTML = `PAYER MA PART DE DÉPÔT ($${share.toLocaleString()})`;
+    }
+    
+    // Génération instantanée des inputs d'e-mails avec feedback visuel
+    const emailsContainer = document.getElementById('split-emails-container');
+    if (emailsContainer) {
+        emailsContainer.innerHTML = ''; // Reset
+        
+        for (let i = 1; i < count; i++) {
+            const wrapper = document.createElement('div');
+            wrapper.style.marginBottom = '12px';
+            wrapper.style.textAlign = 'left';
+            
+            const input = document.createElement('input');
+            input.type = 'email';
+            input.className = 'payment-input';
+            input.placeholder = `E-mail de l'invité ${i}`;
+            input.style.margin = '0';
+            input.style.width = '100%';
+            input.style.marginBottom = '4px';
+            input.required = true;
+            input.id = `guest-email-${i}`;
+            input.name = `guest_email_${i}`; // IMPORTANT : permet à ton formulaire d'envoyer l'e-mail à ton serveur !
+            
+            // Le feedback visuel sous chaque input
+            const feedback = document.createElement('div');
+            feedback.style.cssText = "font-size: 0.55rem; color: rgba(255,255,255,0.35); padding: 2px 2px 0 2px; transition: all 0.2s ease; letter-spacing: 0.5px;";
+            feedback.innerText = "⏳ En attente d'une adresse e-mail...";
+            
+            // Écouteur de saisie en temps réel
+            input.addEventListener('input', function() {
+                const emailVal = input.value.trim();
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (emailRegex.test(emailVal)) {
+                    feedback.style.color = "#4ce0b3"; // Joli vert menthe qui matche ton bouton
+                    feedback.innerHTML = `✓ Prêt — Recevra son invitation de $${share} sous 24h dès votre paiement.`;
+                } else if (emailVal === "") {
+                    feedback.style.color = "rgba(255,255,255,0.35)";
+                    feedback.innerText = "⏳ En attente d'une adresse e-mail...";
+                } else {
+                    feedback.style.color = "#ff4a4a"; // Rouge discret d'erreur
+                    feedback.innerText = "❌ Format d'e-mail incorrect.";
+                }
+            });
+            
+            wrapper.appendChild(input);
+            wrapper.appendChild(feedback);
+            emailsContainer.appendChild(wrapper);
+        }
+        
+        // Ajout d'une bannière informative globale très classe juste après les e-mails
+        const infoBanner = document.createElement('div');
+        infoBanner.style.cssText = "margin-top: 15px; padding: 12px; background: rgba(76, 224, 179, 0.05); border-left: 2px solid #4ce0b3; text-align: left;";
+        infoBanner.innerHTML = `
+            <p style="margin: 0; font-size: 0.55rem; line-height: 1.4; color: rgba(255, 255, 255, 0.8);">
+                <strong style="color: #4ce0b3; letter-spacing: 0.5px;">✉️ ENVOI AUTOMATIQUE DES INVITATIONS</strong><br>
+                Une fois votre part de <strong>$${share}</strong> réglée via le formulaire ci-dessous, notre système enverra instantanément les liens de paiement uniques à vos invités. Ils auront <strong>24 heures</strong> pour régler leur part.
+            </p>
+        `;
+        emailsContainer.appendChild(infoBanner);
+    }
+}
+
+/**
+ * SECURITÉ AVANT VALIDATION
+ * Ce script intercepte le clic sur ton bouton pour s'assurer que l'utilisateur a bien rempli 
+ * les e-mails de ses potes avant de payer. Si tout est OK, il laisse ton paiement s'exécuter normalement.
+ */
+document.addEventListener("DOMContentLoaded", function() {
+    const ctaButton = document.querySelector('.cta-button');
+    if (ctaButton) {
+        ctaButton.addEventListener('click', function(e) {
+            if (window.splitPayState && window.splitPayState.isActive) {
+                // On vérifie uniquement si les e-mails d'invités sont remplis et valides
+                for (let i = 1; i < window.splitPayState.numberOfPayers; i++) {
+                    const field = document.getElementById(`guest-email-${i}`);
+                    if (field) {
+                        const emailVal = field.value.trim();
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        
+                        if (!emailVal) {
+                            alert(`Veuillez renseigner l'e-mail de l'invité ${i} avant de procéder au paiement.`);
+                            field.focus();
+                            e.preventDefault();
+                            e.stopImmediatePropagation();
+                            return;
+                        }
+                        if (!emailRegex.test(emailVal)) {
+                            alert(`L'e-mail de l'invité ${i} est invalide.`);
+                            field.focus();
+                            e.preventDefault();
+                            e.stopImmediatePropagation();
+                            return;
+                        }
+                    }
+                }
+                // Si tout est valide, on ne fait PAS e.preventDefault(). 
+                // Ton code de paiement original s'exécute normalement ! On change juste le texte pour faire pro :
+                ctaButton.innerHTML = `TRAITEMENT EN COURS...`;
+            }
+        }, true);
+    }
+});
 
 
 /** Charge le JSON et démarre l'application */
