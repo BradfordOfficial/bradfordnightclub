@@ -1078,7 +1078,7 @@ function openBottleCheckout(bottleName, priceHT, priceTTC) {
                 color: #fff;
             }
 
-            /* ==================================================================
+                       /* ==================================================================
                MEDIA QUERIES : ADAPTATION TABLETTE (768px) & PC (1024px)
                ================================================================== */
             
@@ -1088,25 +1088,33 @@ function openBottleCheckout(bottleName, priceHT, priceTTC) {
                     grid-template-columns: 1fr 1fr; /* Aligne les deux offres côte à côte */
                 }
                 .combo-card {
-                    min-height: 200px; /* Donne un peu plus d'espace pour respirer */
+                    min-height: 165px; /* Réduit de 200px à 165px pour éviter le vide sous la description */
+                }
+                .combo-header {
+                    margin-bottom: 12px; /* Maintient l'espacement parfait pour centrer le texte */
                 }
             }
 
             /* ORDINATEUR / LAPTOP (1024px et plus) */
             @media (min-width: 1024px) {
                 .checkout-container {
-                    max-width: 750px; /* Légèrement plus large sur grand écran mais reste compact et élégant */
-                    padding: 40px;    /* Plus d'espace interne pour une sensation "Aérée / Luxe" */
-                    border: 1px solid rgba(255, 255, 255, 0.03); /* Un contour très fin et sombre pour habiller sur PC */
+                    max-width: 750px; /* Reste compact et élégant sur grand écran */
+                    padding: 40px;    
+                    border: 1px solid rgba(255, 255, 255, 0.03); 
                     background: rgba(255, 255, 255, 0.01);
                 }
+                .combo-card {
+                    min-height: 175px; /* Équilibre parfait pour accueillir les textes légèrement plus grands */
+                }
                 .combo-header {
-                    font-size: 0.85rem; /* Textes un poil plus lisibles sur ordinateur */
+                    font-size: 0.85rem; 
+                    margin-bottom: 14px; /* Augmenté à 14px pour s'adapter à la taille de police supérieure */
                 }
                 .combo-description {
                     font-size: 0.7rem;
                 }
             }
+
         </style>
 
 
