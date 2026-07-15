@@ -9751,19 +9751,24 @@ function handleSplitSliderChange(value, depositString) {
             emailsContainer.appendChild(wrapper);
         }
         
-        // Ajout d'une bannière informative globale très classe juste après les e-mails
+               // Ajout d'une bannière informative globale très classe juste après les e-mails
         const infoBanner = document.createElement('div');
-        infoBanner.style.cssText = "margin-top: 15px; padding: 12px; background: rgba(76, 224, 179, 0.05); border-left: 2px solid #4ce0b3; text-align: left;";
+        
+        // CSS ultra robuste : force le passage à la ligne (100% de largeur) sur Flexbox et Grid
+        infoBanner.style.cssText = "width: 100%; box-sizing: border-box; grid-column: 1 / -1; flex: 0 0 100%; margin-top: 15px; padding: 12px; background: rgba(76, 224, 179, 0.05); border-left: 2px solid #4ce0b3; text-align: left;";
+        
         infoBanner.innerHTML = `
             <p style="margin: 0; font-size: 0.55rem; line-height: 1.4; color: rgba(255, 255, 255, 0.8);">
                 <strong style="color: #4ce0b3; letter-spacing: 0.5px;">✉️ ENVOI AUTOMATIQUE DES INVITATIONS</strong><br>
                 Une fois votre part de <strong>$${share}</strong> réglée via le formulaire ci-dessous, notre système enverra instantanément les liens de paiement uniques à vos invités. Ils auront <strong>24 heures</strong> pour régler leur part.
             </p>
         `;
-        emailsContainer.after(infoBanner);
-
+        
+        // On conserve EXACTEMENT le même comportement pour éviter les doublons
+        emailsContainer.appendChild(infoBanner);
     }
 }
+
 
 /**
  * SECURITÉ AVANT VALIDATION
