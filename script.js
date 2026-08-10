@@ -1842,29 +1842,29 @@ const dateActuelle = new Date();
 
 // --- BASE DE DONNÉES COMPLÈTE DES ÉVÉNEMENTS ---
 const donneesEvenements = [
-    // --- JEUDI 23 JUILLET 2026 ---
-    { date: '2026-07-23', jour: 'JEU.', ville: 'LA', artiste: 'MASQUERADE NIGHT', details: 'ÉVÉNEMENT SPÉCIAL (Bal Masqué & Eyes Wide Shut Vibe / Melodic Techno - $130)' }, // SOIRÉE À THÈME #1
-    { date: '2026-07-23', jour: 'JEU.', ville: 'MIAMI', artiste: 'KEY GLOCK', details: 'Glockoma 2 Live (Memphis Hard Trap - Accès restreint)' },
-    { date: '2026-07-23', jour: 'JEU.', ville: 'NYC', artiste: '90s BABIES & ICE CREAM', details: 'ÉVÉNEMENT SPÉCIAL (Old School Hip-Hop/R&B & Open Bar Glaces - $110)' }, // SOIRÉE À THÈME #2
-    { date: '2026-07-23', jour: 'JEU.', ville: 'SF', artiste: 'FORCE21', details: 'Hard Groove & Fast Techno (Underground Session - $90)' },
+   // --- JEUDI 13 AOÛT 2026 ---
+    { date: '2026-08-13', jour: 'JEU.', ville: 'LA', artiste: 'HAWAIIAN LUAU & POOL CLUB', details: 'ÉVÉNEMENT SPÉCIAL (Colliers de fleurs / Tiki Bar & Tropical House - $115)' }, // SOIRÉE À THÈME #1
+    { date: '2026-08-13', jour: 'JEU.', ville: 'MIAMI', artiste: 'NLE CHOPPA', details: 'Cottonwood 2 Live (High-Energy Memphis Rap - Accès restreint)' },
+    { date: '2026-08-13', jour: 'JEU.', ville: 'NYC', artiste: 'PROCTOR & CO. SECRET RAVE', details: 'ÉVÉNEMENT SPÉCIAL (Lieu secret dévoilé à 20h / Dark Electro - $130)' }, // SOIRÉE À THÈME #2
+    { date: '2026-08-13', jour: 'JEU.', ville: 'SF', artiste: 'MALL GRAB', details: 'Looking for Trouble (Jumpy House & Raw Techno - $90)' },
 
-    // --- VENDREDI 24 JUILLET 2026 ---
-    { date: '2026-07-24', jour: 'VEN.', ville: 'LA', artiste: 'KIANA LEDÉ', details: 'Grudges Tour (Contemporary R&B/Soul - Accès restreint)' },
-    { date: '2026-07-24', jour: 'VEN.', ville: 'MIAMI', artiste: 'TROPICAL FOAM & GLOW', details: 'ÉVÉNEMENT SPÉCIAL (Soirée Mousse Fluo Géante / Afro-Latin Beats - $125)' }, // SOIRÉE À THÈME #3
-    { date: '2026-07-24', jour: 'VEN.', ville: 'NYC', artiste: 'PAWSA b2b DENNIS CRUZ', details: 'EXCLUSIF B2B (MUDD Show / Tech-House Legend Set - Accès sur liste VIP uniquement)' }, // GROS B2B #1
-    { date: '2026-07-24', jour: 'VEN.', ville: 'SF', artiste: 'OVERMONO b2b JOY ORBISON', details: 'EXCLUSIF B2B (UK Bass / Garage / Club Masterclass - $140)' }, // GROS B2B #2
+    // --- VENDREDI 14 AOÛT 2026 ---
+    { date: '2026-08-14', jour: 'VEN.', ville: 'LA', artiste: 'GIVEON', details: 'Give or Take Experience (Deep Soul/R&B - Accès restreint)' },
+    { date: '2026-08-14', jour: 'VEN.', ville: 'MIAMI', artiste: 'NEON ICE FOAM PARTY', details: 'ÉVÉNEMENT SPÉCIAL (Mousse rafraîchissante / Déco Glacée & Afro-Latino - $135)' }, // SOIRÉE À THÈME #3
+    { date: '2026-08-14', jour: 'VEN.', ville: 'NYC', artiste: 'HONEY DIJON b2b MOCHAKK', details: 'EXCLUSIF B2B (Chicago House Meets Brazilian Energy - Accès sur liste VIP uniquement)' }, // GROS B2B #1
+    { date: '2026-08-14', jour: 'VEN.', ville: 'SF', artiste: 'I HATE MODELS b2b NICO MORENO', details: 'EXCLUSIF B2B (Fast Industrial Techno & Hard Dance - $145)' }, // GROS B2B #2
 
-    // --- SAMEDI 25 JUILLET 2026 ---
-    { date: '2026-07-25', jour: 'SAM.', ville: 'LA', artiste: 'GLOW IN THE DARK SUMMIT', details: 'ÉVÉNEMENT SPÉCIAL (Peinture UV / Laser Show 360° / Electro - $145)' }, // SOIRÉE À THÈME #4
-    { date: '2026-07-25', jour: 'SAM.', ville: 'MIAMI', artiste: 'MONEYBAGG YO', details: 'Speak 7 Live (Raw Memphis Rap - Accès sur liste VIP uniquement)' },
-    { date: '2026-07-25', jour: 'SAM.', ville: 'NYC', artiste: 'DOECHII', details: 'Alligator Bites Never Heal (High Energy Rap/Performance - Accès restreint)' },
-    { date: '2026-07-25', jour: 'SAM.', ville: 'SF', artiste: 'CARIBOU', details: 'Honey Live Tour (Indie Electronic / House Set - $90)' },
+    // --- SAMEDI 15 AOÛT 2026 ---
+    { date: '2026-08-15', jour: 'SAM.', ville: 'LA', artiste: 'WHITE HORIZON ROOFTOP', details: 'ÉVÉNEMENT SPÉCIAL (Dress Code Blanc / Sunset View & Progressive House - $150)' }, // SOIRÉE À THÈME #4
+    { date: '2026-08-15', jour: 'SAM.', ville: 'MIAMI', artiste: 'FRENCH MONTANA', details: 'Coke Boys Summer Edition (New York to Miami Heat - Accès sur liste VIP uniquement)' },
+    { date: '2026-08-15', jour: 'SAM.', ville: 'NYC', artiste: 'LIL TAY', details: 'Viral Showcase (Modern Rap Energy - $90)' },
+    { date: '2026-08-15', jour: 'SAM.', ville: 'SF', artiste: 'SAMMY VIRJI', details: 'Isn’t It Live (UK Garage / Bassline Masterclass - $90)' },
 
-    // --- DIMANCHE 26 JUILLET 2026 ---
-    { date: '2026-07-26', jour: 'DIM.', ville: 'LA', artiste: 'DESERT HEARTS CLOSING', details: 'ÉVÉNEMENT SPÉCIAL (Vibe Burning Man / House & Love / Open Air Sunset - $150)' }, // SOIRÉE À THÈME #5
-    { date: '2026-07-26', jour: 'DIM.', ville: 'MIAMI', artiste: 'MUNI LONG', details: 'Made For Me Live (R&B Soul Performance - $90)' },
-    { date: '2026-07-26', jour: 'DIM.', ville: 'NYC', artiste: 'DESTIN CONRAD', details: 'Submissive Tour (Melodic Alternative R&B - $90)' },
-    { date: '2026-07-26', jour: 'DIM.', ville: 'SF', artiste: 'SPECIAL REQUEST', details: 'Jungle & Hardcore Energy Set (UK Underground - $90)' }
+    // --- DIMANCHE 16 AOÛT 2026 ---
+    { date: '2026-08-16', jour: 'DIM.', ville: 'LA', artiste: 'SZA & FRIENDS ACOUSTIC', details: 'Exclusive Sunset Lounge (Acoustic Soul Session - Accès sur liste VIP uniquement)' },
+    { date: '2026-08-16', jour: 'DIM.', ville: 'MIAMI', artiste: 'BLOCK PARTY CARIBBEAN', details: 'ÉVÉNEMENT SPÉCIAL (Dancehall / Reggae / Caribbean Food & Vibes - $120)' }, // SOIRÉE À THÈME #5
+    { date: '2026-08-16', jour: 'DIM.', ville: 'NYC', artiste: 'JOYCE WRICE', details: 'Motive Live (Laid-back West Coast R&B in NYC - $90)' },
+    { date: '2026-08-16', jour: 'DIM.', ville: 'SF', artiste: 'DJ STINGRAY 313', details: 'Detroit Electro Sound (Industrial Vinyl Only - $90)' }
 ];
 
 
