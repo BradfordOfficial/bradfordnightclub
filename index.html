@@ -1112,16 +1112,17 @@ async function askBradford() {
         // 4. Extraction et affichage INSTANTANÉ (comme ta V1)
                 if (data.candidates && data.candidates[0]?.content?.parts?.[0]?.text) {
             const reply = data.candidates[0].content.parts[0].text;
+            
+            // On remplace le texte de chargement par la réponse d'un coup
             document.getElementById(loadingId).innerText = reply;
+            
         } else {
-            // Affiche la vraie réponse de l'API (ou l'erreur brute) dans la bulle
-            document.getElementById(loadingId).innerText = JSON.stringify(data, null, 2);
+            document.getElementById(loadingId).innerText = "Je vous invite à contacter notre équipe au +1 305-VIP-BRAD.";
         }
 
 
-       } catch (e) {
-        // Affiche l'erreur JavaScript exacte
-        document.getElementById(loadingId).innerText = "BUG JS : " + e.message;
+        } catch (e) {
+        document.getElementById(loadingId).innerText = "ERREUR : Connexion perdue.";
     }
 
     
