@@ -1842,29 +1842,29 @@ const dateActuelle = new Date();
 
 // --- BASE DE DONNÉES COMPLÈTE DES ÉVÉNEMENTS ---
 const donneesEvenements = [
-  // --- JEUDI 10 SEPTEMBRE 2026 ---
-    { date: '2026-09-10', jour: 'JEU.', ville: 'LA', artiste: 'CYBERPUNK 2099', details: 'ÉVÉNEMENT SPÉCIAL (Néon Futuriste / Déco Cyber / Electro Dark - $120)' }, // SOIRÉE À THÈME #1
-    { date: '2026-09-10', jour: 'JEU.', ville: 'MIAMI', artiste: 'KOPPS', details: 'South Beach Groove (Indie Dance Showcase - $90)' },
-    { date: '2026-09-10', jour: 'JEU.', ville: 'NYC', artiste: 'AFROBEATS STREET MARKET', details: 'ÉVÉNEMENT SPÉCIAL (Food Court / Amapiano & Afrobeats / Dance - $115)' }, // SOIRÉE À THÈME #2
-    { date: '2026-09-10', jour: 'JEU.', ville: 'SF', artiste: 'DJ HEARTSTRING', details: 'Trance / Eurodance Energy Set (All Night - $90)' },
+// --- JEUDI 08 OCTOBRE 2026 ---
+    { date: '2026-10-08', jour: 'JEU.', ville: 'LA', artiste: 'OCTOBER HORROR CLUB', details: 'ÉVÉNEMENT SPÉCIAL (Décoration Halloween Immersive / Dark House - $125)' }, // SOIRÉE À THÈME #1
+    { date: '2026-10-08', jour: 'JEU.', ville: 'MIAMI', artiste: 'MARIAH THE SCIENTIST', details: 'To Be Eaten Alive (Alternative R&B Showcase - Accès restreint)' },
+    { date: '2026-10-08', jour: 'JEU.', ville: 'NYC', artiste: 'NEO-TOKYO NIGHTS', details: 'ÉVÉNEMENT SPÉCIAL (Visuals Manga / Cyber-Bass & UK Garage - $115)' }, // SOIRÉE À THÈME #2
+    { date: '2026-10-08', jour: 'JEU.', ville: 'SF', artiste: 'SMILEY', details: 'Buy or Bye Tour (OVO Sound Rap - $90)' },
 
-    // --- VENDREDI 11 SEPTEMBRE 2026 ---
-    { date: '2026-09-11', jour: 'VEN.', ville: 'LA', artiste: 'VICTORIA MONÉT', details: 'Jaguar Tour (Modern R&B/Soul - Accès restreint)' },
-    { date: '2026-09-11', jour: 'VEN.', ville: 'MIAMI', artiste: 'PROJECT X CLOSING', details: 'ÉVÉNEMENT SPÉCIAL (Mousse XXL / Structure Gonflable / Open Clubbing - $140)' }, // SOIRÉE À THÈME #3
-    { date: '2026-09-11', jour: 'VEN.', ville: 'NYC', artiste: 'BLOND:ISH b2b ANOTR', details: 'EXCLUSIF B2B (Melodic House / Groovy Clubbing - Accès sur liste VIP uniquement)' }, // GROS B2B #1
-    { date: '2026-09-11', jour: 'VEN.', ville: 'SF', artiste: 'CHARLOTTE DE WITTE b2b AMELIE LENS', details: 'EXCLUSIF B2B (Acid & Peak-Time Techno Masterclass - $150)' }, // GROS B2B #2
+    // --- VENDREDI 09 OCTOBRE 2026 ---
+    { date: '2026-10-09', jour: 'VEN.', ville: 'LA', artiste: 'BRENT FAIYAZ', details: 'Sonder Son Experience (Intimate R&B Live - Accès sur liste VIP uniquement)' },
+    { date: '2026-10-09', jour: 'VEN.', ville: 'MIAMI', artiste: 'LATIN BOILER ROOM', details: 'ÉVÉNEMENT SPÉCIAL (Scène 360° / Perreo, Baile Funk & Tech - $135)' }, // SOIRÉE À THÈME #3
+    { date: '2026-10-09', jour: 'VEN.', ville: 'NYC', artiste: 'JAMIE XX b2b FLOATING POINTS', details: 'EXCLUSIF B2B (Eclectic Electronic & Disco Odyssey - Accès sur liste VIP uniquement)' }, // GROS B2B #1
+    { date: '2026-10-09', jour: 'VEN.', ville: 'SF', artiste: 'REINIER ZONNEVELD b2b HI-LO', details: 'EXCLUSIF B2B (Filth on Acid Meets Peak-Time Techno - $145)' }, // GROS B2B #2
 
-    // --- SAMEDI 12 SEPTEMBRE 2026 ---
-    { date: '2026-09-12', jour: 'SAM.', ville: 'LA', artiste: 'GALAXY FOAM NIGHT', details: 'ÉVÉNEMENT SPÉCIAL (Mousse Fluo / Lasers Spatiaux / Progressive - $135)' }, // SOIRÉE À THÈME #4
-    { date: '2026-09-12', jour: 'SAM.', ville: 'MIAMI', artiste: 'BABY DRILL', details: 'MadMan Live (Atlanta Underground Trap - Accès sur liste VIP uniquement)' },
-    { date: '2026-09-12', jour: 'SAM.', ville: 'NYC', artiste: 'CLEO SOL', details: 'Mother Live (Intimate Soul Session - $90)' },
-    { date: '2026-09-12', jour: 'SAM.', ville: 'SF', artiste: 'HAAI', details: 'Baby We’re Ascending (Psychedelic Techno - $90)' },
+    // --- SAMEDI 10 OCTOBRE 2026 ---
+    { date: '2026-10-10', jour: 'SAM.', ville: 'LA', artiste: 'AUTUMN MASQUERADE', details: 'ÉVÉNEMENT SPÉCIAL (Masques & Tenues Chic / Melodic Techno - $140)' }, // SOIRÉE À THÈME #4
+    { date: '2026-10-10', jour: 'SAM.', ville: 'MIAMI', artiste: 'EST GEE', details: 'El Toro Live (Raw Gritty Street Rap - Accès restreint)' },
+    { date: '2026-10-10', jour: 'SAM.', ville: 'NYC', artiste: 'LITTLE SIMZ', details: 'No Thank You Tour (Conscious Hip-Hop Masterclass - $90)' },
+    { date: '2026-10-10', jour: 'SAM.', ville: 'SF', artiste: 'MOCHAKK', details: 'Cercle Style Extended Set (Brazilian Tech-House - Accès sur liste VIP uniquement)' },
 
-    // --- DIMANCHE 13 SEPTEMBRE 2026 ---
-    { date: '2026-09-13', jour: 'DIM.', ville: 'LA', artiste: 'LARRY JUNE', details: 'Uncle Larry Sunset Show (Smooth West Coast Rap - $90)' },
-    { date: '2026-09-13', jour: 'DIM.', ville: 'MIAMI', artiste: 'LUXURY RETRO CASINO', details: 'ÉVÉNEMENT SPÉCIAL (Tables de Poker & Blackjack / Funk & Disco - $130)' }, // SOIRÉE À THÈME #5
-    { date: '2026-09-13', jour: 'DIM.', ville: 'NYC', artiste: 'DESIIGNER', details: 'Panda 10th Anniversary (Trap Energy Live - Accès restreint)' },
-    { date: '2026-09-13', jour: 'DIM.', ville: 'SF', artiste: 'NICOLE MOUDABER', details: 'In The Mood (Deep Industrial Techno - $90)' }
+    // --- DIMANCHE 11 OCTOBRE 2026 ---
+    { date: '2026-10-11', jour: 'DIM.', ville: 'LA', artiste: 'GIVEON', details: 'Sunset Soul Session (Acoustic R&B - $90)' },
+    { date: '2026-10-11', jour: 'DIM.', ville: 'MIAMI', artiste: 'HAUNTED POOL PARTY', details: 'ÉVÉNEMENT SPÉCIAL (Jacuzzi Géant & Déco Spooky / Tropical House - $130)' }, // SOIRÉE À THÈME #5
+    { date: '2026-10-11', jour: 'DIM.', ville: 'NYC', artiste: 'WESTSIDE GUNN', details: 'Griselda Records Showcase (Hardcore Boom-Bap - Accès restreint)' },
+    { date: '2026-10-11', jour: 'DIM.', ville: 'SF', artiste: 'DANIEL AVERY', details: 'Ultra Truth (Ambient Industrial Techno - $90)' }
 ];
 
 
