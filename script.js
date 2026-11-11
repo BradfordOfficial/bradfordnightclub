@@ -1842,29 +1842,29 @@ const dateActuelle = new Date();
 
 // --- BASE DE DONNÉES COMPLÈTE DES ÉVÉNEMENTS ---
 const donneesEvenements = [
-// --- JEUDI 08 OCTOBRE 2026 ---
-    { date: '2026-10-08', jour: 'JEU.', ville: 'LA', artiste: 'OCTOBER HORROR CLUB', details: 'ÉVÉNEMENT SPÉCIAL (Décoration Halloween Immersive / Dark House - $125)' }, // SOIRÉE À THÈME #1
-    { date: '2026-10-08', jour: 'JEU.', ville: 'MIAMI', artiste: 'MARIAH THE SCIENTIST', details: 'To Be Eaten Alive (Alternative R&B Showcase - Accès restreint)' },
-    { date: '2026-10-08', jour: 'JEU.', ville: 'NYC', artiste: 'NEO-TOKYO NIGHTS', details: 'ÉVÉNEMENT SPÉCIAL (Visuals Manga / Cyber-Bass & UK Garage - $115)' }, // SOIRÉE À THÈME #2
-    { date: '2026-10-08', jour: 'JEU.', ville: 'SF', artiste: 'SMILEY', details: 'Buy or Bye Tour (OVO Sound Rap - $90)' },
+// --- JEUDI 12 NOVEMBRE 2026 ---
+    { date: '2026-11-12', jour: 'JEU.', ville: 'LA', artiste: 'JORDAN WARD', details: 'FORWARD Tour (Alternative R&B/Soul Showcase - $90)' },
+    { date: '2026-11-12', jour: 'JEU.', ville: 'MIAMI', artiste: 'REAL BOSTON RICHEY', details: 'Public Housing Live (Florida Trap Energy - Accès restreint)' },
+    { date: '2026-11-12', jour: 'JEU.', ville: 'NYC', artiste: 'RED VEIL', details: 'Learn 2 Swim (Conscious Underground Hip-Hop - $90)' },
+    { date: '2026-11-12', jour: 'JEU.', ville: 'SF', artiste: 'DJ HEARTSTRING', details: 'Eurodance & Trance Revival (High-Energy Set - $90)' },
 
-    // --- VENDREDI 09 OCTOBRE 2026 ---
-    { date: '2026-10-09', jour: 'VEN.', ville: 'LA', artiste: 'BRENT FAIYAZ', details: 'Sonder Son Experience (Intimate R&B Live - Accès sur liste VIP uniquement)' },
-    { date: '2026-10-09', jour: 'VEN.', ville: 'MIAMI', artiste: 'LATIN BOILER ROOM', details: 'ÉVÉNEMENT SPÉCIAL (Scène 360° / Perreo, Baile Funk & Tech - $135)' }, // SOIRÉE À THÈME #3
-    { date: '2026-10-09', jour: 'VEN.', ville: 'NYC', artiste: 'JAMIE XX b2b FLOATING POINTS', details: 'EXCLUSIF B2B (Eclectic Electronic & Disco Odyssey - Accès sur liste VIP uniquement)' }, // GROS B2B #1
-    { date: '2026-10-09', jour: 'VEN.', ville: 'SF', artiste: 'REINIER ZONNEVELD b2b HI-LO', details: 'EXCLUSIF B2B (Filth on Acid Meets Peak-Time Techno - $145)' }, // GROS B2B #2
+    // --- VENDREDI 13 NOVEMBRE 2026 ---
+    { date: '2026-11-13', jour: 'VEN.', ville: 'LA', artiste: 'LIL DURK', details: 'Almost Healed (Chicago Drill Legend - Accès sur liste VIP uniquement)' },
+    { date: '2026-11-13', jour: 'VEN.', ville: 'MIAMI', artiste: 'BLACK COFFEE', details: 'Afro-House Residency (Exclusivité Miami - Accès sur liste VIP uniquement)' },
+    { date: '2026-11-13', jour: 'VEN.', ville: 'NYC', artiste: 'WESTSIDE GUNN b2b CONWAY THE MACHINE', details: 'EXCLUSIF B2B (Griselda Live Dual Set / NY Boom-Bap - Accès restreint)' }, // GROS B2B #1
+    { date: '2026-11-13', jour: 'VEN.', ville: 'SF', artiste: 'KETTAMA b2b MALL GRAB', details: 'EXCLUSIF B2B (G-Town Meets Looking For Trouble / Raw House & Hard Groove - $135)' }, // GROS B2B #2
 
-    // --- SAMEDI 10 OCTOBRE 2026 ---
-    { date: '2026-10-10', jour: 'SAM.', ville: 'LA', artiste: 'AUTUMN MASQUERADE', details: 'ÉVÉNEMENT SPÉCIAL (Masques & Tenues Chic / Melodic Techno - $140)' }, // SOIRÉE À THÈME #4
-    { date: '2026-10-10', jour: 'SAM.', ville: 'MIAMI', artiste: 'EST GEE', details: 'El Toro Live (Raw Gritty Street Rap - Accès restreint)' },
-    { date: '2026-10-10', jour: 'SAM.', ville: 'NYC', artiste: 'LITTLE SIMZ', details: 'No Thank You Tour (Conscious Hip-Hop Masterclass - $90)' },
-    { date: '2026-10-10', jour: 'SAM.', ville: 'SF', artiste: 'MOCHAKK', details: 'Cercle Style Extended Set (Brazilian Tech-House - Accès sur liste VIP uniquement)' },
+    // --- SAMEDI 14 NOVEMBRE 2026 ---
+    { date: '2026-11-14', jour: 'SAM.', ville: 'LA', artiste: 'SZA', details: 'SOS Intimate Residency (R&B Super-Set - Accès sur liste VIP uniquement)' },
+    { date: '2026-11-14', jour: 'SAM.', ville: 'MIAMI', artiste: 'SKILLA BABY', details: 'Detroit Heat in MIA (Street Rap Night - Accès restreint)' },
+    { date: '2026-11-14', jour: 'SAM.', ville: 'NYC', artiste: 'JOY ORBISON', details: 'Hyrda Night (UK Bass & Garage Masterclass - $90)' },
+    { date: '2026-11-14', jour: 'SAM.', ville: 'SF', artiste: 'MARIBOU STATE', details: 'Fabric Presents Live (Electronic/Chill-Out Set - $90)' },
 
-    // --- DIMANCHE 11 OCTOBRE 2026 ---
-    { date: '2026-10-11', jour: 'DIM.', ville: 'LA', artiste: 'GIVEON', details: 'Sunset Soul Session (Acoustic R&B - $90)' },
-    { date: '2026-10-11', jour: 'DIM.', ville: 'MIAMI', artiste: 'HAUNTED POOL PARTY', details: 'ÉVÉNEMENT SPÉCIAL (Jacuzzi Géant & Déco Spooky / Tropical House - $130)' }, // SOIRÉE À THÈME #5
-    { date: '2026-10-11', jour: 'DIM.', ville: 'NYC', artiste: 'WESTSIDE GUNN', details: 'Griselda Records Showcase (Hardcore Boom-Bap - Accès restreint)' },
-    { date: '2026-10-11', jour: 'DIM.', ville: 'SF', artiste: 'DANIEL AVERY', details: 'Ultra Truth (Ambient Industrial Techno - $90)' }
+    // --- DIMANCHE 15 NOVEMBRE 2026 ---
+    { date: '2026-11-15', jour: 'DIM.', ville: 'LA', artiste: 'LARRY JUNE', details: 'Almond Milk Unlimited (Smooth West Coast Closing - $90)' },
+    { date: '2026-11-15', jour: 'DIM.', ville: 'MIAMI', artiste: 'SHENSEEA', details: 'Dancehall Queen Session (Caribbean Energy - $90)' },
+    { date: '2026-11-15', jour: 'DIM.', ville: 'NYC', artiste: 'SAMEED', details: 'Soul & Disco Edit Session (Vinyl Only Closing - $90)' },
+    { date: '2026-11-15', jour: 'DIM.', ville: 'SF', artiste: 'JOB JOBSE', details: 'Strangelove Night (Emotional House & Disco - $90)' }
 ];
 
 
